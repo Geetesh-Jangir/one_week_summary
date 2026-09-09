@@ -25,7 +25,7 @@ from xml.etree import ElementTree
 
 import requests
 
-from news_relevancy_agent import get_most_relevant_news
+from news_relevancy_agent import score_news_relevance
 
 logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger(__name__)
@@ -218,10 +218,10 @@ def _parse_pub_date(pub_date_str: str) -> datetime:
     return datetime.min
 
 
-def fetch_latest_news(url: str, limit: int = 5) -> list[dict]:
+def fetch_latest_news(url: str, limit: int = 5, news_type: str = "instrument") -> list[dict]:
     """
     Fetch and parse RSS feed from URL, return latest `limit` news items.
-    Each item contains only 'title' and 'description' (clean text).
+    Each item contains title, description, link, and metadata.
     """
     if not url:
         return []
@@ -278,6 +278,7 @@ def fetch_latest_news(url: str, limit: int = 5) -> list[dict]:
             "title": item["title"],
             "description": item["description"],
             "link": item["link"],
+            "news_type": news_type,
         }
         for item in items[:limit]
     ]
@@ -296,13 +297,13 @@ def fetch_news_for_urls(urls: dict) -> dict:
     if instrument_url:
         instrument_name = urls.get("instrument_name", "instrument")
         logger.info(f"Fetching news for instrument: {instrument_name}")
-        result[instrument_name] = fetch_latest_news(instrument_url)
+        result[instrument_name] = fetch_latest_news(instrument_url, news_type="instrument")
 
     industry_url = urls.get("industry_news_url")
     if industry_url:
         industry = urls.get("industry", "industry")
         logger.info(f"Fetching news for industry: {industry}")
-        result[f"Indian {industry}"] = fetch_latest_news(industry_url)
+        result[f"Indian {industry}"] = fetch_latest_news(industry_url, news_type="industry")
 
     return result
 
@@ -342,13 +343,34 @@ def process_instrument_lookup(data: dict, name: str):
         for article in articles:
             all_items.append(article)
 
-    if all_items:
-        print("\nFinding most relevant news...")
+    # Deduplicate by title (keep first occurrence with its original link)
+    seen_titles = set()
+    deduped_items = []
+    for item in all_items:
+        title = item.get("title", "")
+        if title and title not in seen_titles:
+            seen_titles.add(title)
+            deduped_items.append(item)
+
+    # Assign stable article_ids
+    for idx, item in enumerate(deduped_items, start=1):
+        item["article_id"] = idx
+
+    # Take max 5 instrument + 5 industry = 10 total
+    instrument_items = [item for item in deduped_items if item.get("news_type") == "instrument"][:5]
+    industry_items = [item for item in deduped_items if item.get("news_type") == "industry"][:5]
+    combined_items = instrument_items + industry_items
+
+    logger.info(f"Fetched {len(instrument_items)} instrument articles, {len(industry_items)} industry articles")
+    logger.info(f"Combined {len(combined_items)} articles for scoring")
+
+    if combined_items:
+        print("\nScoring news relevance...")
         instrument_name = holding["instrument_name"]
-        relevancy_result = get_most_relevant_news(
+        relevancy_result = score_news_relevance(
             instrument_name=instrument_name,
             industry=industry,
-            news_titles=[item["title"] for item in all_items],
+            articles=combined_items,
         )
         print(json.dumps(relevancy_result, indent=2))
 

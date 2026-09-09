@@ -1,7 +1,7 @@
 """
-News Relevancy Agent - Determines the most relevant news for a company's stock.
+News Relevancy Agent - Scores news articles for relevance to a company's stock.
 
-Uses Groq LLM to rank news by relevance to instrument_name and industry.
+Uses Groq LLM to independently score each article 0-10, then filters for >= 8.
 """
 
 import json
@@ -9,99 +9,167 @@ import logging
 import os
 from typing import Optional
 
+from dotenv import load_dotenv
 from groq import Groq
+
+load_dotenv()
 
 logger = logging.getLogger(__name__)
 
-GROQ_MODEL = "openai/gpt-oss-120b"
-GROQ_API_KEY = "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"
+GROQ_MODEL = os.getenv("GROQ_MODEL", "openai/gpt-oss-120b")
+GROQ_API_KEY = os.getenv("GROQ_API_KEY")
 
 
-SYSTEM_PROMPT = """You are a financial news relevance-ranking agent. Your task is to identify the 2 news titles most relevant to a specific company's stock performance.
+SYSTEM_PROMPT = """You are a financial news relevance-scoring agent. Your task is to independently score each news article for its relevance to a specific company's stock performance.
 
-RELEVANCE PRIORITY:
-1. COMPANY-SPECIFIC NEWS (Highest): Direct mentions of the company - earnings, revenue, management changes, regulatory actions, M&A, dividends, analyst ratings, major contracts, fraud/scandals, shareholder activity, etc.
-2. INDUSTRY/SECTOR NEWS (Secondary): Industry-wide regulations, policy changes, sector trends - ONLY if they could materially impact the specific company.
-3. GENERAL MARKET NEWS (Low): Broad market movements, unrelated companies, commodities, macro news without clear company connection.
+SCORING RUBRIC (0-10):
+
+10 = Extremely relevant. Direct company-specific event with very high potential to materially affect stock performance.
+9  = Very highly relevant. Direct company-specific development with strong potential stock impact.
+8  = Highly relevant. Meaningful company-specific or major industry event that could materially affect the company.
+7  = Relevant. Clear relationship to the company or industry, but expected stock impact is moderate or uncertain.
+6  = Moderately relevant. Some meaningful connection but limited expected stock impact.
+5  = Neutral/moderate relevance. Related to the company/industry but weak or unclear investment impact.
+4  = Low relevance. Peripheral connection.
+3  = Very low relevance. Weak relationship to the company or investment thesis.
+2  = Barely relevant. Mostly unrelated or only loosely connected.
+1  = Almost irrelevant.
+0  = Completely irrelevant to the company's stock.
+
+HIGH RELEVANCE EXAMPLES (score 8-10):
+- Earnings, profit/revenue changes
+- Management changes
+- Major regulatory action (RBI, SEBI, etc.) directly affecting the company
+- M&A activity involving the company
+- Major contracts/orders
+- Dividends, buybacks, capital raising
+- Fraud/scandal involving the company
+- Major legal action
+- Major analyst downgrade/upgrade
+- Major shareholder activity
+- Significant product/business event
+- Major sector regulation that materially affects the company
+
+LOW RELEVANCE EXAMPLES (score 0-4):
+- Unrelated company news
+- Generic market commentary
+- Generic financial education articles
+- Articles about another company with no meaningful connection
+- Minor market movements
+- Repetitive/duplicate stories
+- Generic macro news without clear company connection
+
+SCORING RULES:
+- Score EVERY article independently. Do NOT rank articles relative to one another.
+- Do NOT increase or decrease a score because another article is more/less relevant.
+- Evaluate each article using: company name, industry, article title, article description.
+- Company-specific news generally scores higher when potential stock impact is material.
+- Industry news scores higher only if it could materially impact the specific company.
 
 Return ONLY valid JSON with exactly this structure:
 {
-  "relevant_news": [
-    {"title": "exact original title 1"},
-    {"title": "exact original title 2"}
+  "scores": [
+    {"article_id": 1, "relevancy_score": 9},
+    {"article_id": 2, "relevancy_score": 4},
+    {"article_id": 3, "relevancy_score": 8}
   ]
 }
 
 Rules:
-- Return exactly 2 titles (or fewer if less than 2 valid inputs)
-- Titles MUST be exact matches from the provided input list
-- No explanations, no markdown, no extra text
-- If uncertain, prefer company-specific over industry news
-- If multiple company-specific news exist, prioritize by potential stock impact"""
+- Return exactly one score object per input article
+- article_id must match the input article_id
+- relevancy_score must be an integer 0-10
+- No explanations, no markdown, no extra text"""
 
 
 def build_user_prompt(
-    instrument_name: str, industry: str, news_titles: list[str]
+    instrument_name: str, industry: str, articles: list[dict]
 ) -> str:
-    """Build the user prompt with company, industry, and news titles."""
-    titles_json = json.dumps(news_titles, ensure_ascii=False)
+    """Build the user prompt with company, industry, and articles to score."""
+    articles_json = json.dumps(articles, ensure_ascii=False, indent=2)
     return f"""Instrument: {instrument_name}
 Industry: {industry}
 
-News Titles:
-{titles_json}
+Articles to score independently:
+{articles_json}
 
-Return the top 2 most relevant news titles for this company's stock."""
+Score each article independently 0-10. Return JSON with "scores" array."""
 
 
-def validate_response(response_data: dict, original_titles: list[str]) -> list[dict]:
-    """Validate and filter LLM response to ensure only original titles are returned."""
+def validate_scores_response(
+    response_data: dict, original_articles: list[dict]
+) -> list[dict]:
+    """Validate LLM response and return list of valid score objects."""
     if not isinstance(response_data, dict):
         logger.warning("LLM response is not a dict")
         return []
 
-    relevant_news = response_data.get("relevant_news")
-    if not isinstance(relevant_news, list):
-        logger.warning("LLM response missing 'relevant_news' list")
+    scores = response_data.get("scores")
+    if not isinstance(scores, list):
+        logger.warning("LLM response missing 'scores' list")
         return []
 
-    valid_results = []
-    original_set = set(original_titles)
+    original_ids = {a["article_id"] for a in original_articles}
+    seen_ids = set()
+    valid_scores = []
 
-    for item in relevant_news:
+    for item in scores:
         if not isinstance(item, dict):
             continue
-        title = item.get("title")
-        if not isinstance(title, str):
+
+        article_id = item.get("article_id")
+        score = item.get("relevancy_score")
+
+        if not isinstance(article_id, int):
+            logger.warning(f"Invalid article_id type: {article_id}")
             continue
-        if title in original_set:
-            valid_results.append({"title": title})
-        else:
-            logger.warning(f"LLM returned invalid title not in input: {title[:100]}")
+        if article_id not in original_ids:
+            logger.warning(f"LLM returned score for unknown article_id: {article_id}")
+            continue
+        if article_id in seen_ids:
+            logger.warning(f"Duplicate article_id in LLM response: {article_id}")
+            continue
+        if not isinstance(score, (int, float)):
+            logger.warning(f"Invalid score type for article_id {article_id}: {score}")
+            continue
 
-    return valid_results[:2]
+        score_int = int(score)
+        if not (0 <= score_int <= 10):
+            logger.warning(f"Score out of range 0-10 for article_id {article_id}: {score}")
+            continue
+
+        seen_ids.add(article_id)
+        valid_scores.append({"article_id": article_id, "relevancy_score": score_int})
+
+    # Check for missing articles
+    missing_ids = original_ids - seen_ids
+    if missing_ids:
+        logger.warning(f"LLM did not return scores for article_ids: {sorted(missing_ids)}")
+
+    return valid_scores
 
 
-def get_most_relevant_news(
+def score_news_relevance(
     instrument_name: str,
     industry: str,
-    news_titles: list[str],
+    articles: list[dict],
     model: Optional[str] = None,
 ) -> dict:
     """
-    Get the top 2 most relevant news titles for a company's stock.
+    Score news articles for relevance to a company's stock.
 
     Args:
         instrument_name: Company/instrument name (e.g., "ICICI Bank")
         industry: Industry/sector (e.g., "Banking")
-        news_titles: List of news title strings
+        articles: List of article dicts with at least 'article_id', 'title', 'description', 'link', 'news_type'
         model: Optional Groq model override
 
     Returns:
-        Dict with "relevant_news" list containing up to 2 title objects
+        Dict with "relevant_news" list containing articles with score >= 8,
+        sorted by score descending. Each item has title, link, relevancy_score.
     """
-    if not news_titles:
-        logger.info("No news titles provided")
+    if not articles:
+        logger.info("No articles provided for scoring")
         return {"relevant_news": []}
 
     if not GROQ_API_KEY:
@@ -115,7 +183,7 @@ def get_most_relevant_news(
         return {"relevant_news": [], "error": f"Groq client error: {e}"}
 
     model_name = model or GROQ_MODEL
-    user_prompt = build_user_prompt(instrument_name, industry, news_titles)
+    user_prompt = build_user_prompt(instrument_name, industry, articles)
 
     try:
         completion = client.chat.completions.create(
@@ -125,7 +193,7 @@ def get_most_relevant_news(
                 {"role": "user", "content": user_prompt},
             ],
             temperature=0.1,
-            max_tokens=500,
+            max_tokens=1000,
             response_format={"type": "json_object"},
         )
     except Exception as e:
@@ -142,5 +210,27 @@ def get_most_relevant_news(
         logger.error(f"Unexpected error parsing LLM response: {e}")
         return {"relevant_news": [], "error": f"Response parse error: {e}"}
 
-    valid_news = validate_response(response_data, news_titles)
-    return {"relevant_news": valid_news}
+    valid_scores = validate_scores_response(response_data, articles)
+
+    # Build article_id -> original article mapping
+    article_by_id = {a["article_id"]: a for a in articles}
+
+    # Join scores with original articles and filter >= 8
+    relevant_news = []
+    for score_obj in valid_scores:
+        article_id = score_obj["article_id"]
+        score = score_obj["relevancy_score"]
+
+        if score >= 8:
+            original = article_by_id[article_id]
+            relevant_news.append({
+                "title": original["title"],
+                "link": original.get("link", ""),
+                "relevancy_score": score
+            })
+
+    # Sort by score descending
+    relevant_news.sort(key=lambda x: x["relevancy_score"], reverse=True)
+
+    logger.info(f"Scored {len(articles)} articles, {len(relevant_news)} >= 8 threshold")
+    return {"relevant_news": relevant_news}
