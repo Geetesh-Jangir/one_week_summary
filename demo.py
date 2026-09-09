@@ -1,5 +1,6 @@
 import json
 import yfinance as yf
+from stocks_for_news import get_top_3_nav_impact_holdings
 
 # ---------------------------------------------------------
 # FIND TICKER DYNAMICALLY
@@ -252,7 +253,7 @@ def get_fund_top_10_prices(fund_name, rows):
     for holding in top_10:
 
         name = holding["name"]
-
+        industry = holding["detail"]
         nav_percentage = float(str(holding["percentage"]).replace("%", "").strip())
 
         print("\n" + "=" * 60)
@@ -326,6 +327,7 @@ def get_fund_top_10_prices(fund_name, rows):
         result["top_10_holdings"].append(
             {
                 "name": name,
+                "industry": industry,
                 "nav_percentage": nav_percentage,
                 "ticker": ticker,
                 "change_percentage": change_percentage,
@@ -421,10 +423,17 @@ if __name__ == "__main__":
     }
 
     result = get_fund_top_10_prices(fund_name="Fund Name", rows=data["rows"])
-
+    top_3_holdings = get_top_3_nav_impact_holdings(result)
     print("\n")
     print("=" * 70)
     print("FINAL RESULT")
     print("=" * 70)
 
     print(json.dumps(result, indent=2))
+
+    print("\n")
+    print("=" * 70)
+    print("TOP 3 HOLDINGS BY NAV IMPACT")
+    print("=" * 70)
+    for holding in top_3_holdings:
+        print(json.dumps(holding, indent=2))
