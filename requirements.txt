@@ -4,3 +4,4 @@ langchain-groq>=0.2.0
 langchain-core>=0.3.0
 pydantic>=2.0.0
 python-dotenv
+feedparser>=6.0.0

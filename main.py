@@ -17,7 +17,7 @@ import contextlib
 
 from demo import get_fund_top_10_prices
 from stocks_for_news import get_top_3_nav_impact_holdings
-from app import generate_urls_for_holding, fetch_news_for_urls
+from app import fetch_news_for_dates
 from news_relevancy_agent import score_news_relevance
 
 logging.basicConfig(level=logging.INFO)
@@ -41,54 +41,25 @@ def sort_by_nav_impact(holdings: list[dict]) -> list[dict]:
 
 def fetch_and_score_news(holding: dict) -> list[dict]:
     """
-    Fetch news for a holding and score relevance.
-    Returns list of relevant news items (score >= 8).
+    Fetch news for a holding from last 3 days, filter by date (2 days ago, 1 day ago),
+    score for relevance, and return top 2 articles per date (score >= 8).
+    Returns a flat list of articles with date, published, and relevancy_score.
     """
     instrument_name = holding["name"]
     industry = holding["industry"]
 
     logger.info(f"Processing news for: {instrument_name} (industry: {industry})")
 
-    urls = generate_urls_for_holding({
-        "instrument_name": instrument_name,
-        "industry": industry,
-    })
-
-    news = fetch_news_for_urls(urls)
-
-    all_items = []
-    for source, articles in news.items():
-        for article in articles:
-            all_items.append(article)
-
-    seen_titles = set()
-    deduped_items = []
-    for item in all_items:
-        title = item.get("title", "")
-        if title and title not in seen_titles:
-            seen_titles.add(title)
-            deduped_items.append(item)
-
-    for idx, item in enumerate(deduped_items, start=1):
-        item["article_id"] = idx
-
-    instrument_items = [item for item in deduped_items if item.get("news_type") == "instrument"][:5]
-    industry_items = [item for item in deduped_items if item.get("news_type") == "industry"][:5]
-    combined_items = instrument_items + industry_items
-
-    logger.info(f"Fetched {len(instrument_items)} instrument, {len(industry_items)} industry articles")
-
-    if not combined_items:
-        logger.info(f"No articles found for {instrument_name}")
-        return []
-
     try:
-        relevancy_result = score_news_relevance(
+        # fetch_news_for_dates handles: fetching, date filtering, scoring, threshold >= 8, top 2 per date
+        # Using max_per_date=3 to stay within Groq token limits (3 * 2 sources * 2 dates = 12 articles max)
+        relevant_news = fetch_news_for_dates(
             instrument_name=instrument_name,
             industry=industry,
-            articles=combined_items,
+            max_per_date=3,
+            min_relevancy_score=8,
+            top_per_date=2,
         )
-        relevant_news = relevancy_result.get("relevant_news", [])
         logger.info(f"Found {len(relevant_news)} relevant articles for {instrument_name}")
         return relevant_news
     except Exception as e:

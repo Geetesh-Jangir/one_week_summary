@@ -18,11 +18,11 @@ URL pattern:
 import json
 import logging
 import re
-from datetime import datetime
+from datetime import datetime, timedelta, timezone
 from html import unescape
 from urllib.parse import quote_plus
-from xml.etree import ElementTree
 
+import feedparser
 import requests
 
 from news_relevancy_agent import score_news_relevance
@@ -35,6 +35,9 @@ BASE_URL = "https://news.google.com/rss/search"
 # Prefixed onto the industry text before building its query,
 # e.g. "Banks" -> "Indian Banks"
 INDUSTRY_PREFIX = "Indian"
+
+# IST timezone (Asia/Kolkata)
+IST = timezone(timedelta(hours=5, minutes=30))
 
 # Sample data matching the structure you shared.
 SAMPLE_DATA = {
@@ -128,6 +131,12 @@ def build_news_url(query: str) -> str:
     return f"{BASE_URL}?q={encoded_query}&hl=en-IN&gl=IN&ceid=IN:en"
 
 
+def build_news_url_with_date(query: str, days_back: int = 3) -> str:
+    """Build a Google News RSS search URL with date restriction."""
+    encoded_query = quote_plus(f"{query} when:{days_back}d")
+    return f"{BASE_URL}?q={encoded_query}&hl=en-IN&gl=IN&ceid=IN:en"
+
+
 def find_holding(top_holdings: list, name: str):
     """
     Look up a holding by instrument_name (case-insensitive).
@@ -175,6 +184,29 @@ def generate_urls_for_holding(holding: dict) -> dict:
     return result
 
 
+def generate_date_filtered_urls_for_holding(holding: dict) -> dict:
+    """
+    Build the instrument URL and (if industry is present) the industry URL
+    with date filter (when:3d) for a single holding dict.
+    """
+    instrument_name = holding.get("instrument_name")
+    industry = holding.get("industry")
+
+    result = {
+        "instrument_name": instrument_name,
+        "industry": industry,
+        "instrument_news_url": (
+            build_news_url_with_date(instrument_name) if instrument_name else None
+        ),
+        "industry_news_url": None,
+    }
+
+    if industry:
+        result["industry_news_url"] = build_news_url_with_date(f"{INDUSTRY_PREFIX} {industry}")
+
+    return result
+
+
 def _clean_html_text(text: str) -> str:
     """Remove HTML tags and decode HTML entities from text."""
     if not text:
@@ -198,30 +230,226 @@ def _extract_link_from_description(description_html: str) -> str:
     return match.group(1) if match else ""
 
 
-def _parse_pub_date(pub_date_str: str) -> datetime:
-    """Parse RFC 822 / RFC 2822 date string to datetime."""
-    if not pub_date_str:
-        return datetime.min
-    # Try common RSS date formats
-    formats = [
-        "%a, %d %b %Y %H:%M:%S %Z",  # Tue, 08 Sep 2026 06:55:52 GMT
-        "%a, %d %b %Y %H:%M:%S %z",  # Tue, 08 Sep 2026 06:55:52 +0000
-        "%Y-%m-%dT%H:%M:%S%z",  # ISO 8601
-        "%Y-%m-%dT%H:%M:%SZ",  # ISO 8601 UTC
-    ]
-    for fmt in formats:
-        try:
-            return datetime.strptime(pub_date_str.strip(), fmt)
-        except ValueError:
+def _parse_feedparser_date(published_parsed) -> datetime:
+    """Parse feedparser's published_parsed struct_time to timezone-aware datetime."""
+    if not published_parsed:
+        return None
+    try:
+        # feedparser returns struct_time in UTC
+        dt = datetime(*published_parsed[:6], tzinfo=timezone.utc)
+        # Convert to IST
+        return dt.astimezone(IST)
+    except Exception as e:
+        logger.warning(f"Could not parse feedparser date: {published_parsed}, error: {e}")
+        return None
+
+
+def _get_source_from_entry(entry) -> str:
+    """Extract source from feedparser entry."""
+    # Try source field first
+    if hasattr(entry, 'source') and entry.source:
+        if hasattr(entry.source, 'title'):
+            return entry.source.title
+        return str(entry.source)
+    # Try to extract from title (Google News format: "Title - Source")
+    if hasattr(entry, 'title') and entry.title:
+        parts = entry.title.rsplit(" - ", 1)
+        if len(parts) == 2:
+            return parts[1]
+    return ""
+
+
+def fetch_news_for_dates(
+    instrument_name: str,
+    industry: str,
+    max_per_date: int = 5,
+    min_relevancy_score: int = 8,
+    top_per_date: int = 2,
+) -> list[dict]:
+    """
+    Fetch news for instrument and industry from Google News RSS,
+    filter by date (2 days ago and 1 day ago), score for relevance,
+    and return top N articles per date.
+
+    Returns a flat list of articles with date, published, and relevancy_score.
+    """
+    # Calculate target dates in IST
+    now_ist = datetime.now(IST)
+    two_days_ago = (now_ist - timedelta(days=2)).date()
+    one_day_ago = (now_ist - timedelta(days=1)).date()
+
+    logger.info(f"Fetching news for {instrument_name} (industry: {industry})")
+    logger.info(f"Target dates: {two_days_ago} (2 days ago), {one_day_ago} (1 day ago)")
+
+    # Build URLs with date filter
+    urls = generate_date_filtered_urls_for_holding({
+        "instrument_name": instrument_name,
+        "industry": industry,
+    })
+
+    # Fetch and parse RSS feeds
+    all_articles = []
+
+    # Only process URL keys (keys ending with "_news_url")
+    url_keys = [k for k in urls.keys() if k.endswith("_news_url")]
+
+    for url_type in url_keys:
+        url = urls[url_type]
+        if not url:
             continue
-    logger.warning(f"Could not parse date: {pub_date_str}")
-    return datetime.min
+
+        logger.info(f"Fetching {url_type} news from Google News RSS...")
+        try:
+            response = requests.get(url, timeout=10)
+            response.raise_for_status()
+        except requests.RequestException as e:
+            logger.error(f"Failed to fetch RSS from {url}: {e}")
+            continue
+
+        try:
+            feed = feedparser.parse(response.content)
+        except Exception as e:
+            logger.error(f"Failed to parse RSS feed from {url}: {e}")
+            continue
+
+        if not feed.entries:
+            logger.info(f"No entries found in RSS feed for {url_type}")
+            continue
+
+        # Process entries
+        # Track count per (news_type, date) to limit to max_per_date
+        collected_counts = {("instrument", two_days_ago): 0, ("instrument", one_day_ago): 0,
+                           ("industry", two_days_ago): 0, ("industry", one_day_ago): 0}
+
+        # Determine news type from url_type
+        news_type = "instrument" if "instrument" in url_type else "industry"
+
+        for entry in feed.entries:
+            # Get publication date
+            pub_dt = _parse_feedparser_date(entry.get('published_parsed'))
+            if not pub_dt:
+                continue
+
+            pub_date = pub_dt.date()
+
+            # Only keep articles from target dates
+            if pub_date not in (two_days_ago, one_day_ago):
+                continue
+
+            # Check if we've reached max_per_date for this source/date
+            count_key = (news_type, pub_date)
+            if collected_counts.get(count_key, 0) >= max_per_date:
+                continue
+
+            # Extract article data
+            title = _clean_html_text(entry.get('title', ''))
+            if not title:
+                continue
+
+            # Remove source from title if present (Google News format: "Title - Source")
+            title = title.rsplit(" - ", 1)[0] if " - " in title else title
+
+            description = _clean_html_text(entry.get('summary', ''))
+            link = entry.get('link', '')
+            source = _get_source_from_entry(entry)
+
+            all_articles.append({
+                "title": title,
+                "description": description,
+                "link": link,
+                "source": source,
+                "published": pub_dt.isoformat(),
+                "date": pub_date.isoformat(),
+                "news_type": news_type,
+            })
+
+            collected_counts[count_key] = collected_counts.get(count_key, 0) + 1
+
+    if not all_articles:
+        logger.info("No articles found for target dates")
+        return []
+
+    logger.info(f"Found {len(all_articles)} articles for target dates")
+
+    # Deduplicate by title
+    seen_titles = set()
+    deduped_articles = []
+    for article in all_articles:
+        title = article.get("title", "")
+        if title and title not in seen_titles:
+            seen_titles.add(title)
+            deduped_articles.append(article)
+
+    logger.info(f"After deduplication: {len(deduped_articles)} articles")
+
+    # Assign article IDs for scoring
+    for idx, article in enumerate(deduped_articles, start=1):
+        article["article_id"] = idx
+
+    # Score all articles for relevance
+    logger.info("Scoring news relevance...")
+    relevancy_result = score_news_relevance(
+        instrument_name=instrument_name,
+        industry=industry,
+        articles=deduped_articles,
+    )
+
+    scored_articles = relevancy_result.get("relevant_news", [])
+
+    # Build article_id -> original article mapping to get full article data
+    article_by_id = {a["article_id"]: a for a in deduped_articles}
+
+    # Enrich scored articles with full data (date, published, etc.)
+    enriched_articles = []
+    for scored in scored_articles:
+        article_id = None
+        # Find the original article by matching title
+        for orig_id, orig_article in article_by_id.items():
+            if orig_article["title"] == scored["title"]:
+                article_id = orig_id
+                break
+
+        if article_id and article_id in article_by_id:
+            original = article_by_id[article_id]
+            enriched = {
+                "title": scored["title"],
+                "description": original.get("description", ""),
+                "link": scored.get("link", original.get("link", "")),
+                "source": original.get("source", ""),
+                "published": original.get("published", ""),
+                "date": original.get("date", ""),
+                "relevancy_score": scored["relevancy_score"],
+            }
+            enriched_articles.append(enriched)
+
+    # Group by date
+    articles_by_date = {}
+    for article in enriched_articles:
+        date = article.get("date")
+        if date not in articles_by_date:
+            articles_by_date[date] = []
+        articles_by_date[date].append(article)
+
+    # Sort each date's articles by score descending, take top N
+    final_articles = []
+    for target_date in [two_days_ago.isoformat(), one_day_ago.isoformat()]:
+        if target_date in articles_by_date:
+            date_articles = articles_by_date[target_date]
+            # Sort by relevancy_score descending, then by published time for tie-breaking
+            date_articles.sort(key=lambda x: (-x.get("relevancy_score", 0), x.get("published", "")))
+            top_articles = date_articles[:top_per_date]
+            final_articles.extend(top_articles)
+            logger.info(f"Selected {len(top_articles)} articles for {target_date}")
+
+    logger.info(f"Final article count: {len(final_articles)}")
+    return final_articles
 
 
 def fetch_latest_news(url: str, limit: int = 5, news_type: str = "instrument") -> list[dict]:
     """
     Fetch and parse RSS feed from URL, return latest `limit` news items.
     Each item contains title, description, link, and metadata.
+    (Legacy function - kept for backwards compatibility)
     """
     if not url:
         return []
@@ -234,50 +462,44 @@ def fetch_latest_news(url: str, limit: int = 5, news_type: str = "instrument") -
         return []
 
     try:
-        root = ElementTree.fromstring(response.content)
-    except ElementTree.ParseError as e:
-        logger.error(f"Failed to parse XML from {url}: {e}")
+        feed = feedparser.parse(response.content)
+    except Exception as e:
+        logger.error(f"Failed to parse RSS feed from {url}: {e}")
         return []
 
     items = []
-    for item in root.findall(".//channel/item"):
-        title_elem = item.find("title")
-        description_elem = item.find("description")
-        pub_date_elem = item.find("pubDate")
+    for entry in feed.entries:
+        pub_dt = _parse_feedparser_date(entry.get('published_parsed'))
+        if not pub_dt:
+            continue
 
-        title = (
-            _clean_html_text(title_elem.text)
-            if title_elem is not None and title_elem.text
-            else ""
-        )
-        description_html = description_elem.text if description_elem is not None else ""
-        description = _clean_html_text(description_html)
-        link = _extract_link_from_description(description_html)
-        pub_date = (
-            _parse_pub_date(pub_date_elem.text)
-            if pub_date_elem is not None and pub_date_elem.text
-            else datetime.min
-        )
+        title = _clean_html_text(entry.get('title', ''))
+        if not title:
+            continue
 
-        if title:  # Only include items with a title
-            items.append(
-                {
-                    "title": title.rsplit(" - ", 1)[0],
-                    "description": description,
-                    "link": link,
-                    "_pub_date": pub_date,  # Used for sorting, not in final output
-                }
-            )
+        title = title.rsplit(" - ", 1)[0] if " - " in title else title
+        description = _clean_html_text(entry.get('summary', ''))
+        link = entry.get('link', '')
+        source = _get_source_from_entry(entry)
+
+        items.append({
+            "title": title,
+            "description": description,
+            "link": link,
+            "source": source,
+            "_pub_date": pub_dt,
+        })
 
     # Sort by pubDate descending (newest first)
     items.sort(key=lambda x: x["_pub_date"], reverse=True)
 
-    # Take top `limit` items and remove the internal _pub_date field
+    # Take top `limit` items
     result = [
         {
             "title": item["title"],
             "description": item["description"],
             "link": item["link"],
+            "source": item["source"],
             "news_type": news_type,
         }
         for item in items[:limit]
@@ -290,6 +512,7 @@ def fetch_news_for_urls(urls: dict) -> dict:
     """
     Fetch latest news for both instrument and industry URLs.
     Returns a dict with keys matching the URL types.
+    (Legacy function - kept for backwards compatibility)
     """
     result = {}
 
