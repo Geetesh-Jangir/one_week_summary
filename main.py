@@ -14,14 +14,20 @@ import logging
 import sys
 import io
 import contextlib
+from pathlib import Path
 
 from demo import get_fund_top_10_prices
 from stocks_for_news import get_top_3_nav_impact_holdings
 from app import fetch_news_for_dates
 from news_relevancy_agent import score_news_relevance
+from lib.fetch import thread_session
+from web_scrapper import scrape_one, _write_record
 
 logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger(__name__)
+
+ROOT = Path(__file__).resolve().parent
+OUT_DIR = ROOT / "out"
 
 
 def sort_by_nav_impact(holdings: list[dict]) -> list[dict]:
@@ -119,6 +125,44 @@ def process_holdings(holdings: list[dict], average_impact: float) -> list[dict]:
     return result
 
 
+def scrape_relevant_articles(holdings: list[dict], out_dir: Path = OUT_DIR) -> list[dict]:
+    """
+    For each relevant news article across all holdings, resolve Google News URL,
+    scrape publisher full article text, save JSON & HTML to out_dir,
+    and store scraped text in the article object.
+    """
+    out_dir.mkdir(parents=True, exist_ok=True)
+    session = thread_session()
+    article_index = 1
+
+    for holding in holdings:
+        holding_name = holding.get("name", "Unknown")
+        news_items = holding.get("relevant_news", [])
+        for article in news_items:
+            link = article.get("link")
+            title = article.get("title", "")
+            if not link:
+                article["text"] = ""
+                continue
+
+            logger.info(f"Scraping full text for [{holding_name}]: {title[:60]}...")
+            try:
+                record = scrape_one(session, link, retries=2)
+                article["text"] = record.get("text", "")
+                if record.get("resolved_url"):
+                    article["resolved_url"] = record.get("resolved_url")
+                
+                # Save scraped record to out folder
+                saved_json, saved_html = _write_record(out_dir, article_index, record, save_html=True)
+                logger.info(f"Saved scraped article #{article_index} to {saved_json.name}")
+                article_index += 1
+            except Exception as e:
+                logger.error(f"Failed to scrape article {link}: {e}")
+                article["text"] = ""
+
+    return holdings
+
+
 def main():
     fund_name = "Fund Name"
     rows = [
@@ -209,6 +253,9 @@ def main():
     holdings_with_news = process_holdings(top_3, average_impact)
 
     holdings_with_news = sort_by_nav_impact(holdings_with_news)
+
+    logger.info("Scraping full article content for relevant news links...")
+    holdings_with_news = scrape_relevant_articles(holdings_with_news, OUT_DIR)
 
     print(json.dumps(holdings_with_news, indent=2, ensure_ascii=False))
 

@@ -18,9 +18,14 @@ Given raw fund portfolio constituent data (company names, sector/industry classi
    - **`relevancy_score` (0–10)**: Financial materiality and expected impact on stock performance.
    - **`sentiment` (`"positive"` or `"negative"`)**: Directional stock movement expectation based on the headline.
 7. **Directional Sentiment-Aligned News Filtering**: Matches the news sentiment to the fund's net trend:
-   - If the fund experienced a **negative average NAV impact**, selects the **top 3 news articles with `negative` sentiment**, ranked by `relevancy_score` descending.
-   - If the fund experienced a **positive average NAV impact**, selects the **top 3 news articles with `positive` sentiment**, ranked by `relevancy_score` descending.
-8. **Structured Output**: Emits a clean, sorted JSON payload ready for downstream consumption.
+   - If the fund experienced a **negative average NAV impact**, selects the **top 3 news articles with `negative` sentiment** and `relevancy_score > 5`.
+   - If the fund experienced a **positive average NAV impact**, selects the **top 3 news articles with `positive` sentiment** and `relevancy_score > 5`.
+8. **Full Article Content Scraping & Out Folder Persistence**:
+   - Integrates [`web_scrapper.py`](file:///c:/Users/geete/Downloads/fetching-data-from-url/web_scrapper.py) into [`main.py`](file:///c:/Users/geete/Downloads/fetching-data-from-url/main.py) via `scrape_relevant_articles`.
+   - Resolves Google News redirects, bypasses anti-bot controls using TLS browser impersonation, and scrapes clean article text.
+   - Saves individual scraped JSON & raw HTML files to [`out/`](file:///c:/Users/geete/Downloads/fetching-data-from-url/out).
+   - Injects the extracted text into the `"text"` attribute of each article.
+9. **Structured Output**: Emits a clean, sorted JSON payload with full article text to stdout.
 
 ---
 
@@ -53,14 +58,17 @@ flowchart TD
         P --> Q[Enrich Original Articles\nAttach relevancy_score and sentiment]
     end
 
-    subgraph Aggregation_and_Output["4. Directional Filtering & Output (main.py)"]
+    subgraph Aggregation_and_Output["4. Directional Filtering & Web Scraping (main.py)"]
         Q --> R{Check average_signed_nav_impact}
-        R -- "Negative (< 0)" --> S1[Filter sentiment == 'negative'\nSort relevancy_score desc -> Top 3]
-        R -- "Positive (> 0)" --> S2[Filter sentiment == 'positive'\nSort relevancy_score desc -> Top 3]
+        R -- "Negative (< 0)" --> S1[Filter sentiment == 'negative' & score > 5\nSort relevancy_score desc -> Top 3]
+        R -- "Positive (> 0)" --> S2[Filter sentiment == 'positive' & score > 5\nSort relevancy_score desc -> Top 3]
         S1 --> T[Attach to Holding Object]
         S2 --> T
-        T --> U[sort_by_nav_impact\nNegatives asc | Positives desc]
-        U --> V[Final Structured JSON Output]
+        T --> U[scrape_relevant_articles\nResolve Google News URLs & Scrape Full Text via web_scrapper]
+        U --> V[Save scraped .json & .html files to out/ folder]
+        V --> W[Attach 'text' attribute to article JSON]
+        W --> X[sort_by_nav_impact\nNegatives asc | Positives desc]
+        X --> Y[Final Structured JSON Output to stdout]
     end
 ```
 
