@@ -28,6 +28,7 @@ logger = logging.getLogger(__name__)
 
 ROOT = Path(__file__).resolve().parent
 OUT_DIR = ROOT / "out"
+OUTPUT_SCRAPPER_DIR = ROOT / "output-scrapper"
 
 
 def sort_by_nav_impact(holdings: list[dict]) -> list[dict]:
@@ -257,7 +258,13 @@ def main():
     logger.info("Scraping full article content for relevant news links...")
     holdings_with_news = scrape_relevant_articles(holdings_with_news, OUT_DIR)
 
-    print(json.dumps(holdings_with_news, indent=2, ensure_ascii=False))
+    OUTPUT_SCRAPPER_DIR.mkdir(parents=True, exist_ok=True)
+    result_json_path = OUTPUT_SCRAPPER_DIR / "result.json"
+    result_json_str = json.dumps(holdings_with_news, indent=2, ensure_ascii=False)
+    result_json_path.write_text(result_json_str, encoding="utf-8")
+    logger.info(f"Saved complete result JSON to {result_json_path}")
+
+    print(result_json_str)
 
 
 if __name__ == "__main__":

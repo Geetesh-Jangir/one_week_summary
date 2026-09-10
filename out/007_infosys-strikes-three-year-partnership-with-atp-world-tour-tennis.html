@@ -107,7 +107,7 @@
     
     
 
-    <script type="21ec9aa4b3ccb482d1e37841-text/javascript" charset="utf-8">
+    <script type="6b70b5977db5835028bcf002-text/javascript" charset="utf-8">
     var ContentInfo = {
       "Site" : {
         "Domain" : "www.campaignlive.co.uk",
@@ -172,7 +172,7 @@
   }
 </script>
 
-    <script type="21ec9aa4b3ccb482d1e37841-text/javascript">
+    <script type="6b70b5977db5835028bcf002-text/javascript">
                 !function(T,l,y){var S=T.location,k="script",D="instrumentationKey",C="ingestionendpoint",I="disableExceptionTracking",E="ai.device.",b="toLowerCase",w="crossOrigin",N="POST",e="appInsightsSDK",t=y.name||"appInsights";(y.name||T[e])&&(T[e]=t);var n=T[t]||function(d){var g=!1,f=!1,m={initialize:!0,queue:[],sv:"5",version:2,config:d};function v(e,t){var n={},a="Browser";return n[E+"id"]=a[b](),n[E+"type"]=a,n["ai.operation.name"]=S&&S.pathname||"_unknown_",n["ai.internal.sdkVersion"]="javascript:snippet_"+(m.sv||m.version),{time:function(){var e=new Date;function t(e){var t=""+e;return 1===t.length&&(t="0"+t),t}return e.getUTCFullYear()+"-"+t(1+e.getUTCMonth())+"-"+t(e.getUTCDate())+"T"+t(e.getUTCHours())+":"+t(e.getUTCMinutes())+":"+t(e.getUTCSeconds())+"."+((e.getUTCMilliseconds()/1e3).toFixed(3)+"").slice(2,5)+"Z"}(),iKey:e,name:"Microsoft.ApplicationInsights."+e.replace(/-/g,"")+"."+t,sampleRate:100,tags:n,data:{baseData:{ver:2}}}}var h=d.url||y.src;if(h){function a(e){var t,n,a,i,r,o,s,c,u,p,l;g=!0,m.queue=[],f||(f=!0,t=h,s=function(){var e={},t=d.connectionString;if(t)for(var n=t.split(";"),a=0;a<n.length;a++){var i=n[a].split("=");2===i.length&&(e[i[0][b]()]=i[1])}if(!e[C]){var r=e.endpointsuffix,o=r?e.location:null;e[C]="https://"+(o?o+".":"")+"dc."+(r||"services.visualstudio.com")}return e}(),c=s[D]||d[D]||"",u=s[C],p=u?u+"/v2/track":d.endpointUrl,(l=[]).push((n="SDK LOAD Failure: Failed to load Application Insights SDK script (See stack for details)",a=t,i=p,(o=(r=v(c,"Exception")).data).baseType="ExceptionData",o.baseData.exceptions=[{typeName:"SDKLoadFailed",message:n.replace(/\./g,"-"),hasFullStack:!1,stack:n+"\nSnippet failed to load ["+a+"] -- Telemetry is disabled\nHelp Link: https://go.microsoft.com/fwlink/?linkid=2128109\nHost: "+(S&&S.pathname||"_unknown_")+"\nEndpoint: "+i,parsedStack:[]}],r)),l.push(function(e,t,n,a){var i=v(c,"Message"),r=i.data;r.baseType="MessageData";var o=r.baseData;return o.message='AI (Internal): 99 message:"'+("SDK LOAD Failure: Failed to load Application Insights SDK script (See stack for details) ("+n+")").replace(/\"/g,"")+'"',o.properties={endpoint:a},i}(0,0,t,p)),function(e,t){if(JSON){var n=T.fetch;if(n&&!y.useXhr)n(t,{method:N,body:JSON.stringify(e),mode:"cors"});else if(XMLHttpRequest){var a=new XMLHttpRequest;a.open(N,t),a.setRequestHeader("Content-type","application/json"),a.send(JSON.stringify(e))}}}(l,p))}function i(e,t){f||setTimeout(function(){!t&&m.core||a()},500)}var e=function(){var n=l.createElement(k);n.src=h;var e=y[w];return!e&&""!==e||"undefined"==n[w]||(n[w]=e),n.onload=i,n.onerror=a,n.onreadystatechange=function(e,t){"loaded"!==n.readyState&&"complete"!==n.readyState||i(0,t)},n}();y.ld<0?l.getElementsByTagName("head")[0].appendChild(e):setTimeout(function(){l.getElementsByTagName(k)[0].parentNode.appendChild(e)},y.ld||0)}try{m.cookie=l.cookie}catch(p){}function t(e){for(;e.length;)!function(t){m[t]=function(){var e=arguments;g||m.queue.push(function(){m[t].apply(m,e)})}}(e.pop())}var n="track",r="TrackPage",o="TrackEvent";t([n+"Event",n+"PageView",n+"Exception",n+"Trace",n+"DependencyData",n+"Metric",n+"PageViewPerformance","start"+r,"stop"+r,"start"+o,"stop"+o,"addTelemetryInitializer","setAuthenticatedUserContext","clearAuthenticatedUserContext","flush"]),m.SeverityLevel={Verbose:0,Information:1,Warning:2,Error:3,Critical:4};var s=(d.extensionConfig||{}).ApplicationInsightsAnalytics||{};if(!0!==d[I]&&!0!==s[I]){var c="onerror";t(["_"+c]);var u=T[c];T[c]=function(e,t,n,a,i){var r=u&&u(e,t,n,a,i);return!0!==r&&m["_"+c]({message:e,url:t,lineNumber:n,columnNumber:a,error:i}),r},d.autoExceptionInstrumented=!0}return m}(y.cfg);function a(){y.onInit&&y.onInit(n)}(T[t]=n).queue&&0===n.queue.length?(n.queue.push(a),n.trackPageView({})):a()}(window,document,{
 src: "https://js.monitor.azure.com/scripts/b/ai.2.min.js", // The SDK URL Source
 crossOrigin: "anonymous", 
@@ -180,11 +180,11 @@ cfg: { // Application Insights Configuration
     connectionString: 'InstrumentationKey=1f6680d0-6856-42b3-8429-571002e32308;IngestionEndpoint=https://ukwest-0.in.applicationinsights.azure.com/;LiveEndpoint=https://ukwest.livediagnostics.monitor.azure.com/;ApplicationId=25040326-610c-4c25-a7b3-2512ba2388e1'
 }});
                 appInsights.queue.push(function () {
-                    appInsights.context.telemetryTrace.traceID = '3280d268ae6f378cbd98b2974b20511b';
+                    appInsights.context.telemetryTrace.traceID = '0dd3646601f0682b6e09d2b1622a144e';
                 });
             </script>
 <!-- Google Tag Manager -->
-<script type="21ec9aa4b3ccb482d1e37841-text/javascript">(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+<script type="6b70b5977db5835028bcf002-text/javascript">(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
   new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
   j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
   'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
@@ -868,7 +868,7 @@ cfg: { // Application Insights Configuration
     
     
         <form action="/OrchardCore.Users/ExternalAuthentications/ExternalLogin" method="post" class="form-horizontal no-multisubmit d-inline">
-            <input name="__RequestVerificationToken" type="hidden" value="CfDJ8FyImdY6y75MirDOIWgsNzGZInnfD5j9hXzIRv5xHfP4_B9f_hGJs9_Kj3YVETjmHV_RihGEoZ0rn_H08i-gnwR9JZ6VzBGcrQV-P7y1owbDQ3BmA20_Z1INVgmqnwea5uGDTTfFYMqtIyDGmNJKNvA" />
+            <input name="__RequestVerificationToken" type="hidden" value="CfDJ8FyImdY6y75MirDOIWgsNzHasSYdAUYoLBO805X_7hJyEMno-TOQQJikmB6pr3bBtnz6KCSn0jOJTOzea8FDpwbLFwjOUSxwOTCqMswz3_-ygr_NKVQ-3bui_OVLsuNYFCCE2QU3RePtHLEaXFJ-MPQ" />
             <input type="hidden" name="provider" value="OpenIdConnect" />
             <input type="hidden" name="returnUrl" value="/article/infosys-strikes-three-year-partnership-with-atp-world-tour-tennis/4gr3vn2bgqkecrg0a49j9p8r5c" />
             <button type="submit" 
@@ -2743,7 +2743,7 @@ cfg: { // Application Insights Configuration
 
     <div class="widget widget-liquid">
     <div class="widget-body">
-        <script type="21ec9aa4b3ccb482d1e37841-text/javascript">
+        <script type="6b70b5977db5835028bcf002-text/javascript">
   window.addEventListener('message', (event) => {
     // Optional: Filter by expected message action
     if (event.data && event.data.type === 'GET_CSS_VARS') {
@@ -4405,14 +4405,14 @@ Transact Media Group expands beyond media with new products and strategic invest
     
     
     
-    <script src="/HbmCoreTheme/js/marketingBanner.js?v=doUxNKsRnVkua_JlGrttKxoMCdKxIfbpNiyZcoiDPE0" type="21ec9aa4b3ccb482d1e37841-text/javascript"></script>
-<script crossorigin="anonymous" integrity="sha384-1H217gwSVyLSIfaLxHbE7dRb3v4mYCKbpQvzx0cegeju1MVsGrX5xXxAvs/HgeFs" src="https://code.jquery.com/jquery-3.7.1.min.js" type="21ec9aa4b3ccb482d1e37841-text/javascript"></script>
-<script src="/HbmCoreTheme/js/owl.carousel.min.js?v=pFo6ErE7JAMRYz-uq2iXEq04WZ5HD-Xbxvf15JY7kX8" type="21ec9aa4b3ccb482d1e37841-text/javascript"></script>
-<script src="/HbmCoreTheme/js/owl.init.js?v=u9tqXYZzu_itEUxFR4AnU5PybLeptCqhCp5Qt0ITh8k" type="21ec9aa4b3ccb482d1e37841-text/javascript"></script>
-<script src="/HbmCoreTheme/js/core.js?v=JXixfWnrDhqfyigEqNZXZC571lyECxb8mg1cJN_rv-M" type="21ec9aa4b3ccb482d1e37841-text/javascript"></script>
-<script src="/HbmCoreTheme/js/menu.js?v=0doh5PH3XjHLka1muMT2CiW8Tdj-QHSqYh3fozUJ6sk" type="21ec9aa4b3ccb482d1e37841-text/javascript"></script>
-<script src="/HbmCoreTheme/js/expandingListing.js?v=vELztEkuIyx162Wux6CToG7_eV3TUdh2bACSZh77Ppk" type="21ec9aa4b3ccb482d1e37841-text/javascript"></script>
-<script src="/HbmCoreTheme/js/brightcoveScroller.js?v=ijtx0WKnwDkpRdomv8pNJKGDKSD2n2qNhAlWpmXEVKw" type="21ec9aa4b3ccb482d1e37841-text/javascript"></script>
+    <script src="/HbmCoreTheme/js/marketingBanner.js?v=doUxNKsRnVkua_JlGrttKxoMCdKxIfbpNiyZcoiDPE0" type="6b70b5977db5835028bcf002-text/javascript"></script>
+<script crossorigin="anonymous" integrity="sha384-1H217gwSVyLSIfaLxHbE7dRb3v4mYCKbpQvzx0cegeju1MVsGrX5xXxAvs/HgeFs" src="https://code.jquery.com/jquery-3.7.1.min.js" type="6b70b5977db5835028bcf002-text/javascript"></script>
+<script src="/HbmCoreTheme/js/owl.carousel.min.js?v=pFo6ErE7JAMRYz-uq2iXEq04WZ5HD-Xbxvf15JY7kX8" type="6b70b5977db5835028bcf002-text/javascript"></script>
+<script src="/HbmCoreTheme/js/owl.init.js?v=u9tqXYZzu_itEUxFR4AnU5PybLeptCqhCp5Qt0ITh8k" type="6b70b5977db5835028bcf002-text/javascript"></script>
+<script src="/HbmCoreTheme/js/core.js?v=JXixfWnrDhqfyigEqNZXZC571lyECxb8mg1cJN_rv-M" type="6b70b5977db5835028bcf002-text/javascript"></script>
+<script src="/HbmCoreTheme/js/menu.js?v=0doh5PH3XjHLka1muMT2CiW8Tdj-QHSqYh3fozUJ6sk" type="6b70b5977db5835028bcf002-text/javascript"></script>
+<script src="/HbmCoreTheme/js/expandingListing.js?v=vELztEkuIyx162Wux6CToG7_eV3TUdh2bACSZh77Ppk" type="6b70b5977db5835028bcf002-text/javascript"></script>
+<script src="/HbmCoreTheme/js/brightcoveScroller.js?v=ijtx0WKnwDkpRdomv8pNJKGDKSD2n2qNhAlWpmXEVKw" type="6b70b5977db5835028bcf002-text/javascript"></script>
 
     
             
@@ -4424,7 +4424,7 @@ Transact Media Group expands beyond media with new products and strategic invest
 
         
     
-<script src="/cdn-cgi/scripts/7d0fa10a/cloudflare-static/rocket-loader.min.js" data-cf-settings="21ec9aa4b3ccb482d1e37841-|49" defer></script><script>(function(){function c(){var b=a.contentDocument||(a.contentWindow&&a.contentWindow.document);if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'a38dcd635b9ca734',t:'MTc4OTAzNjY5OA=='};var a=document.createElement('script');a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script><script type="module" src="https://static.cloudflareinsights.com/beacon.min.js/v31edd6df95cf4e85bb4c19e7a9bdbcba1788362987495" integrity="sha512-iIg7k2xntmwu6/uSb5tpc/hySgZc4eoL31yB29W6tJFo2akwjPWcEqnCEdJvGexCL0KEQwVYv5BlowfhVz26hg==" data-cf-beacon='{"version":"2024.11.0","token":"fe3ca353c32941b9bdc64d5d0ae79b68","spa":2}' crossorigin="anonymous"></script>
-</body>
+<script src="/cdn-cgi/scripts/7d0fa10a/cloudflare-static/rocket-loader.min.js" data-cf-settings="6b70b5977db5835028bcf002-|49" defer></script><script type="module" src="https://static.cloudflareinsights.com/beacon.min.js/v31edd6df95cf4e85bb4c19e7a9bdbcba1788362987495" integrity="sha512-iIg7k2xntmwu6/uSb5tpc/hySgZc4eoL31yB29W6tJFo2akwjPWcEqnCEdJvGexCL0KEQwVYv5BlowfhVz26hg==" data-cf-beacon='{"version":"2024.11.0","token":"fe3ca353c32941b9bdc64d5d0ae79b68","spa":2}' crossorigin="anonymous"></script>
+<script>(function(){function c(){var b=a.contentDocument||(a.contentWindow&&a.contentWindow.document);if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'a38ddbdc9fa8d84f',t:'MTc4OTAzNzI5MA=='};var a=document.createElement('script');a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
 
 </html>

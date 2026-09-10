@@ -1,2 +1,5 @@
 .env-web
 .env
+
+./out/*.html
+./out/*.json

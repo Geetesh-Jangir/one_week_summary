@@ -25,7 +25,10 @@ Given raw fund portfolio constituent data (company names, sector/industry classi
    - Resolves Google News redirects, bypasses anti-bot controls using TLS browser impersonation, and scrapes clean article text.
    - Saves individual scraped JSON & raw HTML files to [`out/`](file:///c:/Users/geete/Downloads/fetching-data-from-url/out).
    - Injects the extracted text into the `"text"` attribute of each article.
-9. **Structured Output**: Emits a clean, sorted JSON payload with full article text to stdout.
+9. **Full Result JSON Persistence in `output-scrapper/`**:
+   - Automatically creates the [`output-scrapper/`](file:///c:/Users/geete/Downloads/fetching-data-from-url/output-scrapper) folder.
+   - Saves the entire enriched final portfolio intelligence JSON into [`output-scrapper/result.json`](file:///c:/Users/geete/Downloads/fetching-data-from-url/output-scrapper/result.json).
+10. **Structured Output**: Emits the clean, sorted JSON payload with full article text to stdout.
 
 ---
 
@@ -58,7 +61,7 @@ flowchart TD
         P --> Q[Enrich Original Articles\nAttach relevancy_score and sentiment]
     end
 
-    subgraph Aggregation_and_Output["4. Directional Filtering & Web Scraping (main.py)"]
+    subgraph Aggregation_and_Output["4. Directional Filtering, Web Scraping & Storage (main.py)"]
         Q --> R{Check average_signed_nav_impact}
         R -- "Negative (< 0)" --> S1[Filter sentiment == 'negative' & score > 5\nSort relevancy_score desc -> Top 3]
         R -- "Positive (> 0)" --> S2[Filter sentiment == 'positive' & score > 5\nSort relevancy_score desc -> Top 3]
@@ -68,7 +71,8 @@ flowchart TD
         U --> V[Save scraped .json & .html files to out/ folder]
         V --> W[Attach 'text' attribute to article JSON]
         W --> X[sort_by_nav_impact\nNegatives asc | Positives desc]
-        X --> Y[Final Structured JSON Output to stdout]
+        X --> Y[Save complete JSON to output-scrapper/result.json]
+        Y --> Z[Final Structured JSON Output to stdout]
     end
 ```
 
