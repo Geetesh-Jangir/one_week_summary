@@ -154,10 +154,10 @@ $$\overline{\text{Impact}} = \frac{1}{N} \sum_{i=1}^{N} \text{NAV Impact}_i$$
 ### 4.4 Directional Holding & News Selection
 - **Negative Session ($\overline{\text{Impact}} < 0$):**
   - **Holdings**: Isolates the top 3 holdings with negative NAV impact, sorted ascending (worst drag first).
-  - **News**: Filters news articles where `sentiment == "negative"`, sorted by `relevancy_score` descending, taking the top 3.
+  - **News**: Filters news articles where `sentiment == "negative"` and `relevancy_score > 5` (threshold above 5), sorted by `relevancy_score` descending, taking up to top 3.
 - **Positive Session ($\overline{\text{Impact}} > 0$):**
   - **Holdings**: Isolates the top 3 holdings with positive NAV impact, sorted descending (greatest gainer first).
-  - **News**: Filters news articles where `sentiment == "positive"`, sorted by `relevancy_score` descending, taking the top 3.
+  - **News**: Filters news articles where `sentiment == "positive"` and `relevancy_score > 5` (threshold above 5), sorted by `relevancy_score` descending, taking up to top 3.
 - **Neutral Session ($\overline{\text{Impact}} == 0$):**
   - Returns `[]` (no clear directional bias).
 

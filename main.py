@@ -39,16 +39,23 @@ def sort_by_nav_impact(holdings: list[dict]) -> list[dict]:
     return negative + positive
 
 
-def fetch_and_score_news(holding: dict, target_sentiment: str) -> list[dict]:
+def fetch_and_score_news(
+    holding: dict,
+    target_sentiment: str,
+    min_relevancy_score: int = 5,
+) -> list[dict]:
     """
     Fetch news for a holding from last 3 days (10 from 2 days ago, 10 from 1 day ago),
     score for relevance and sentiment, and return top 3 articles matching target_sentiment
-    sorted by relevancy_score descending.
+    with relevancy_score strictly above min_relevancy_score (relevancy_score > 5).
     """
     instrument_name = holding["name"]
     industry = holding["industry"]
 
-    logger.info(f"Processing news for: {instrument_name} (industry: {industry}) [target sentiment: {target_sentiment}]")
+    logger.info(
+        f"Processing news for: {instrument_name} (industry: {industry}) "
+        f"[target sentiment: {target_sentiment}, min relevancy: >{min_relevancy_score}]"
+    )
 
     try:
         # fetch_news_for_dates collects up to 10 from 2 days ago and 10 from 1 day ago
@@ -58,11 +65,12 @@ def fetch_and_score_news(holding: dict, target_sentiment: str) -> list[dict]:
             max_per_date=10,
         )
 
-        # Filter by target sentiment ("negative" or "positive")
+        # Filter by target sentiment ("negative" or "positive") and score strictly above 5
         matching_news = [
             article
             for article in scored_news
             if article.get("sentiment", "").lower() == target_sentiment.lower()
+            and article.get("relevancy_score", 0) > min_relevancy_score
         ]
 
         # Sort by relevancy_score descending (with published date as tiebreaker)
@@ -73,8 +81,8 @@ def fetch_and_score_news(holding: dict, target_sentiment: str) -> list[dict]:
         # Select top 3 news articles
         top_3_news = matching_news[:3]
         logger.info(
-            f"Found {len(matching_news)} articles with {target_sentiment} sentiment for {instrument_name}, "
-            f"selected top {len(top_3_news)}"
+            f"Found {len(matching_news)} articles with {target_sentiment} sentiment and score > {min_relevancy_score} "
+            f"for {instrument_name}, selected top {len(top_3_news)}"
         )
         return top_3_news
     except Exception as e:
