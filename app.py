@@ -262,16 +262,14 @@ def _get_source_from_entry(entry) -> str:
 def fetch_news_for_dates(
     instrument_name: str,
     industry: str,
-    max_per_date: int = 5,
-    min_relevancy_score: int = 8,
-    top_per_date: int = 2,
+    max_per_date: int = 10,
 ) -> list[dict]:
     """
     Fetch news for instrument and industry from Google News RSS,
-    filter by date (2 days ago and 1 day ago), score for relevance,
-    and return top N articles per date.
+    collect up to 10 articles from 2 days ago and 10 articles from 1 day ago (up to 20 total),
+    score titles for relevance (0-10) and sentiment (positive/negative) via LLM.
 
-    Returns a flat list of articles with date, published, and relevancy_score.
+    Returns a list of all enriched scored articles with sentiment and relevancy_score.
     """
     # Calculate target dates in IST
     now_ist = datetime.now(IST)
@@ -316,41 +314,28 @@ def fetch_news_for_dates(
             logger.info(f"No entries found in RSS feed for {url_type}")
             continue
 
-        # Process entries
-        # Track count per (news_type, date) to limit to max_per_date
-        collected_counts = {("instrument", two_days_ago): 0, ("instrument", one_day_ago): 0,
-                           ("industry", two_days_ago): 0, ("industry", one_day_ago): 0}
-
-        # Determine news type from url_type
         news_type = "instrument" if "instrument" in url_type else "industry"
 
         for entry in feed.entries:
-            # Get publication date
-            pub_dt = _parse_feedparser_date(entry.get('published_parsed'))
+            pub_dt = _parse_feedparser_date(entry.get("published_parsed"))
             if not pub_dt:
                 continue
 
             pub_date = pub_dt.date()
 
-            # Only keep articles from target dates
+            # Only keep articles from target dates (2 days ago and 1 day ago)
             if pub_date not in (two_days_ago, one_day_ago):
                 continue
 
-            # Check if we've reached max_per_date for this source/date
-            count_key = (news_type, pub_date)
-            if collected_counts.get(count_key, 0) >= max_per_date:
-                continue
-
-            # Extract article data
-            title = _clean_html_text(entry.get('title', ''))
+            title = _clean_html_text(entry.get("title", ""))
             if not title:
                 continue
 
-            # Remove source from title if present (Google News format: "Title - Source")
+            # Remove source suffix from title if present
             title = title.rsplit(" - ", 1)[0] if " - " in title else title
 
-            description = _clean_html_text(entry.get('summary', ''))
-            link = entry.get('link', '')
+            description = _clean_html_text(entry.get("summary", ""))
+            link = entry.get("link", "")
             source = _get_source_from_entry(entry)
 
             all_articles.append({
@@ -360,16 +345,13 @@ def fetch_news_for_dates(
                 "source": source,
                 "published": pub_dt.isoformat(),
                 "date": pub_date.isoformat(),
+                "pub_date_obj": pub_date,
                 "news_type": news_type,
             })
-
-            collected_counts[count_key] = collected_counts.get(count_key, 0) + 1
 
     if not all_articles:
         logger.info("No articles found for target dates")
         return []
-
-    logger.info(f"Found {len(all_articles)} articles for target dates")
 
     # Deduplicate by title
     seen_titles = set()
@@ -380,69 +362,69 @@ def fetch_news_for_dates(
             seen_titles.add(title)
             deduped_articles.append(article)
 
-    logger.info(f"After deduplication: {len(deduped_articles)} articles")
+    # Group by date and take up to max_per_date (10) for 2 days ago and 10 for 1 day ago
+    articles_by_date = {two_days_ago: [], one_day_ago: []}
+    for article in deduped_articles:
+        d = article["pub_date_obj"]
+        if d in articles_by_date and len(articles_by_date[d]) < max_per_date:
+            articles_by_date[d].append(article)
+
+    selected_articles = (
+        articles_by_date[two_days_ago] + articles_by_date[one_day_ago]
+    )
+
+    logger.info(
+        f"Selected {len(articles_by_date[two_days_ago])} articles from 2 days ago, "
+        f"{len(articles_by_date[one_day_ago])} articles from 1 day ago "
+        f"(Total: {len(selected_articles)} articles for scoring)"
+    )
+
+    if not selected_articles:
+        return []
 
     # Assign article IDs for scoring
-    for idx, article in enumerate(deduped_articles, start=1):
+    for idx, article in enumerate(selected_articles, start=1):
         article["article_id"] = idx
 
-    # Score all articles for relevance
-    logger.info("Scoring news relevance...")
+    # Score all articles for relevance and sentiment using titles only
+    logger.info("Scoring news relevance and sentiment via LLM...")
     relevancy_result = score_news_relevance(
         instrument_name=instrument_name,
         industry=industry,
-        articles=deduped_articles,
+        articles=selected_articles,
     )
 
-    scored_articles = relevancy_result.get("relevant_news", [])
+    scored_items = relevancy_result.get("scored_news", [])
 
-    # Build article_id -> original article mapping to get full article data
-    article_by_id = {a["article_id"]: a for a in deduped_articles}
+    # Map score and sentiment by article_id
+    score_map = {
+        item["article_id"]: {
+            "relevancy_score": item.get("relevancy_score", 0),
+            "sentiment": item.get("sentiment", "negative"),
+        }
+        for item in scored_items
+    }
 
-    # Enrich scored articles with full data (date, published, etc.)
+    # Enrich original articles
     enriched_articles = []
-    for scored in scored_articles:
-        article_id = None
-        # Find the original article by matching title
-        for orig_id, orig_article in article_by_id.items():
-            if orig_article["title"] == scored["title"]:
-                article_id = orig_id
-                break
+    for article in selected_articles:
+        aid = article["article_id"]
+        score_info = score_map.get(
+            aid, {"relevancy_score": 0, "sentiment": "negative"}
+        )
+        enriched_articles.append({
+            "title": article["title"],
+            "description": article.get("description", ""),
+            "link": article.get("link", ""),
+            "source": article.get("source", ""),
+            "published": article.get("published", ""),
+            "date": article.get("date", ""),
+            "relevancy_score": score_info["relevancy_score"],
+            "sentiment": score_info["sentiment"],
+        })
 
-        if article_id and article_id in article_by_id:
-            original = article_by_id[article_id]
-            enriched = {
-                "title": scored["title"],
-                "description": original.get("description", ""),
-                "link": scored.get("link", original.get("link", "")),
-                "source": original.get("source", ""),
-                "published": original.get("published", ""),
-                "date": original.get("date", ""),
-                "relevancy_score": scored["relevancy_score"],
-            }
-            enriched_articles.append(enriched)
-
-    # Group by date
-    articles_by_date = {}
-    for article in enriched_articles:
-        date = article.get("date")
-        if date not in articles_by_date:
-            articles_by_date[date] = []
-        articles_by_date[date].append(article)
-
-    # Sort each date's articles by score descending, take top N
-    final_articles = []
-    for target_date in [two_days_ago.isoformat(), one_day_ago.isoformat()]:
-        if target_date in articles_by_date:
-            date_articles = articles_by_date[target_date]
-            # Sort by relevancy_score descending, then by published time for tie-breaking
-            date_articles.sort(key=lambda x: (-x.get("relevancy_score", 0), x.get("published", "")))
-            top_articles = date_articles[:top_per_date]
-            final_articles.extend(top_articles)
-            logger.info(f"Selected {len(top_articles)} articles for {target_date}")
-
-    logger.info(f"Final article count: {len(final_articles)}")
-    return final_articles
+    logger.info(f"Total scored & enriched articles: {len(enriched_articles)}")
+    return enriched_articles
 
 
 def fetch_latest_news(url: str, limit: int = 5, news_type: str = "instrument") -> list[dict]:

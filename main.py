@@ -39,43 +39,61 @@ def sort_by_nav_impact(holdings: list[dict]) -> list[dict]:
     return negative + positive
 
 
-def fetch_and_score_news(holding: dict) -> list[dict]:
+def fetch_and_score_news(holding: dict, target_sentiment: str) -> list[dict]:
     """
-    Fetch news for a holding from last 3 days, filter by date (2 days ago, 1 day ago),
-    score for relevance, and return top 2 articles per date (score >= 8).
-    Returns a flat list of articles with date, published, and relevancy_score.
+    Fetch news for a holding from last 3 days (10 from 2 days ago, 10 from 1 day ago),
+    score for relevance and sentiment, and return top 3 articles matching target_sentiment
+    sorted by relevancy_score descending.
     """
     instrument_name = holding["name"]
     industry = holding["industry"]
 
-    logger.info(f"Processing news for: {instrument_name} (industry: {industry})")
+    logger.info(f"Processing news for: {instrument_name} (industry: {industry}) [target sentiment: {target_sentiment}]")
 
     try:
-        # fetch_news_for_dates handles: fetching, date filtering, scoring, threshold >= 8, top 2 per date
-        # Using max_per_date=3 to stay within Groq token limits (3 * 2 sources * 2 dates = 12 articles max)
-        relevant_news = fetch_news_for_dates(
+        # fetch_news_for_dates collects up to 10 from 2 days ago and 10 from 1 day ago
+        scored_news = fetch_news_for_dates(
             instrument_name=instrument_name,
             industry=industry,
-            max_per_date=3,
-            min_relevancy_score=8,
-            top_per_date=2,
+            max_per_date=10,
         )
-        logger.info(f"Found {len(relevant_news)} relevant articles for {instrument_name}")
-        return relevant_news
+
+        # Filter by target sentiment ("negative" or "positive")
+        matching_news = [
+            article
+            for article in scored_news
+            if article.get("sentiment", "").lower() == target_sentiment.lower()
+        ]
+
+        # Sort by relevancy_score descending (with published date as tiebreaker)
+        matching_news.sort(
+            key=lambda x: (-x.get("relevancy_score", 0), x.get("published", ""))
+        )
+
+        # Select top 3 news articles
+        top_3_news = matching_news[:3]
+        logger.info(
+            f"Found {len(matching_news)} articles with {target_sentiment} sentiment for {instrument_name}, "
+            f"selected top {len(top_3_news)}"
+        )
+        return top_3_news
     except Exception as e:
-        logger.error(f"Error scoring news for {instrument_name}: {e}")
+        logger.error(f"Error fetching/scoring news for {instrument_name}: {e}")
         return []
 
 
-def process_holdings(holdings: list[dict]) -> list[dict]:
+def process_holdings(holdings: list[dict], average_impact: float) -> list[dict]:
     """
-    Process each holding: fetch news, score relevance, attach to holding.
-    Returns holdings with relevant_news field added.
+    Process each holding: fetch news, filter by sentiment matching average_impact sign,
+    and attach top 3 relevant news to each holding.
     """
+    target_sentiment = "negative" if average_impact < 0 else "positive"
+    logger.info(f"Fund average signed NAV impact is {average_impact} -> Target sentiment: {target_sentiment}")
+
     result = []
     for holding in holdings:
         try:
-            relevant_news = fetch_and_score_news(holding)
+            relevant_news = fetch_and_score_news(holding, target_sentiment)
         except Exception as e:
             logger.error(f"Failed to process news for {holding.get('name')}: {e}")
             relevant_news = []
@@ -168,6 +186,9 @@ def main():
     with contextlib.redirect_stdout(io.StringIO()):
         fund_result = get_fund_top_10_prices(fund_name, rows)
 
+    average_impact = fund_result.get("average_signed_nav_impact", 0)
+    logger.info(f"Average Signed NAV Impact: {average_impact}")
+
     logger.info("Selecting top 3 holdings by NAV impact...")
     top_3 = get_top_3_nav_impact_holdings(fund_result)
 
@@ -177,7 +198,7 @@ def main():
         return
 
     logger.info(f"Processing {len(top_3)} holdings...")
-    holdings_with_news = process_holdings(top_3)
+    holdings_with_news = process_holdings(top_3, average_impact)
 
     holdings_with_news = sort_by_nav_impact(holdings_with_news)
 
