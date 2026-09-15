@@ -934,6 +934,160 @@
       "change_percentage": 0.14
     }
   ],
+  "price_only": [
+    {
+      "name": "Brookfield India Real Estate Trust",
+      "industry": "Realty",
+      "ticker": "BIRET.BO",
+      "nav_percentage": 1.59772917010666,
+      "weekly_change_pct": -1.57,
+      "weekly_nav_impact_pct": -0.025
+    },
+    {
+      "name": "Zydus Lifesciences Limited",
+      "industry": "Pharmaceuticals & Biotechnology",
+      "ticker": "ZYDUSLIFE.NS",
+      "nav_percentage": 1.51758392711176,
+      "weekly_change_pct": -0.08,
+      "weekly_nav_impact_pct": -0.001
+    },
+    {
+      "name": "Cipla Limited",
+      "industry": "Pharmaceuticals & Biotechnology",
+      "ticker": "CIPLA.NS",
+      "nav_percentage": 1.37202833661532,
+      "weekly_change_pct": -1.37,
+      "weekly_nav_impact_pct": -0.019
+    },
+    {
+      "name": "Dr. Reddy's Laboratories Limited",
+      "industry": "Pharmaceuticals & Biotechnology",
+      "ticker": "DRREDDY.NS",
+      "nav_percentage": 1.11987322374037,
+      "weekly_change_pct": 1.26,
+      "weekly_nav_impact_pct": 0.014
+    },
+    {
+      "name": "DLF Limited",
+      "industry": "Realty",
+      "ticker": "DLF.NS",
+      "nav_percentage": 0.642732248730311,
+      "weekly_change_pct": -5.48,
+      "weekly_nav_impact_pct": -0.035
+    },
+    {
+      "name": "Bajaj Finance Limited",
+      "industry": "Finance",
+      "ticker": "BAJFINANCE.NS",
+      "nav_percentage": 0.382917736383509,
+      "weekly_change_pct": -2.45,
+      "weekly_nav_impact_pct": -0.009
+    },
+    {
+      "name": "Sun Pharmaceutical Industries Limited",
+      "industry": "Pharmaceuticals & Biotechnology",
+      "ticker": "SUNPHARMA.NS",
+      "nav_percentage": 0.125688965875891,
+      "weekly_change_pct": -3.11,
+      "weekly_nav_impact_pct": -0.004
+    },
+    {
+      "name": "Maharashtra Scooters Limited",
+      "industry": "Finance",
+      "ticker": "MAHSCOOTER.NS",
+      "nav_percentage": 0.102447953243242,
+      "weekly_change_pct": -4.69,
+      "weekly_nav_impact_pct": -0.005
+    },
+    {
+      "name": "Canara Bank",
+      "industry": "Banks",
+      "ticker": "CANBK.NS",
+      "nav_percentage": 0.0958242073176886,
+      "weekly_change_pct": -1.2,
+      "weekly_nav_impact_pct": -0.001
+    },
+    {
+      "name": "State Bank of India",
+      "industry": "Banks",
+      "ticker": "SBIN.NS",
+      "nav_percentage": 0.0886662172104852,
+      "weekly_change_pct": -2.01,
+      "weekly_nav_impact_pct": -0.002
+    },
+    {
+      "name": "Divi's Laboratories Limited",
+      "industry": "Pharmaceuticals & Biotechnology",
+      "ticker": "DIVISLAB.NS",
+      "nav_percentage": 0.0872812527700561,
+      "weekly_change_pct": 2.44,
+      "weekly_nav_impact_pct": 0.002
+    },
+    {
+      "name": "Hindustan Unilever Limited",
+      "industry": "Diversified FMCG",
+      "ticker": "HINDUNILVR.NS",
+      "nav_percentage": 0.0422430775260978,
+      "weekly_change_pct": -2.35,
+      "weekly_nav_impact_pct": -0.001
+    },
+    {
+      "name": "IndusInd Bank Limited",
+      "industry": "Banks",
+      "ticker": "INDUSINDBK.NS",
+      "nav_percentage": 0.0339385146044103,
+      "weekly_change_pct": -3.0,
+      "weekly_nav_impact_pct": -0.001
+    },
+    {
+      "name": "Eicher Motors Limited",
+      "industry": "Automobiles",
+      "ticker": "EICHERMOT.NS",
+      "nav_percentage": 0.029460496833955,
+      "weekly_change_pct": -1.32,
+      "weekly_nav_impact_pct": -0.0
+    },
+    {
+      "name": "TVS Motor Company Limited",
+      "industry": "Automobiles",
+      "ticker": "TVSMOTOR.NS",
+      "nav_percentage": 0.028553333253381,
+      "weekly_change_pct": -0.2,
+      "weekly_nav_impact_pct": -0.0
+    },
+    {
+      "name": "Bajaj Finserv Limited",
+      "industry": "Finance",
+      "ticker": "BAJAJFINSV.NS",
+      "nav_percentage": 0.0244734037188521,
+      "weekly_change_pct": -2.87,
+      "weekly_nav_impact_pct": -0.001
+    },
+    {
+      "name": "IDFC First Bank Limited",
+      "industry": "Banks",
+      "ticker": "IDFCFIRSTB.NS",
+      "nav_percentage": 0.0163364069087424,
+      "weekly_change_pct": -0.58,
+      "weekly_nav_impact_pct": -0.0
+    },
+    {
+      "name": "Lupin Limited",
+      "industry": "Pharmaceuticals & Biotechnology",
+      "ticker": "LUPIN.NS",
+      "nav_percentage": 0.000757168166526057,
+      "weekly_change_pct": -0.71,
+      "weekly_nav_impact_pct": -0.0
+    },
+    {
+      "name": "JSW Energy Limited",
+      "industry": "Power",
+      "ticker": "JSWENERGY.NS",
+      "nav_percentage": 0.000189749965215785,
+      "weekly_change_pct": -2.48,
+      "weekly_nav_impact_pct": -0.0
+    }
+  ],
   "skipped": [],
   "sectors": [
     {
@@ -985,6 +1139,798 @@
       "sector": "Pharmaceuticals & Biotechnology",
       "percentage": 4.22,
       "overseas": false
+    }
+  ],
+  "sector_moves": [
+    {
+      "sector": "Banks",
+      "normalized": "banks",
+      "fund_weight_pct": 20.91,
+      "scope": "mixed",
+      "spread_pct": 2.54,
+      "avg_weekly_change_pct": -1.73,
+      "members": [
+        {
+          "name": "HDFC Bank Limited",
+          "nav_percentage": 7.6347068753731,
+          "weekly_change_pct": -0.54,
+          "weekly_nav_impact_pct": -0.041
+        },
+        {
+          "name": "ICICI Bank Limited",
+          "nav_percentage": 5.67351208785906,
+          "weekly_change_pct": -3.08,
+          "weekly_nav_impact_pct": -0.175
+        },
+        {
+          "name": "Kotak Mahindra Bank Limited",
+          "nav_percentage": 4.39914155243338,
+          "weekly_change_pct": -1.3,
+          "weekly_nav_impact_pct": -0.057
+        },
+        {
+          "name": "Axis Bank Limited",
+          "nav_percentage": 2.96962582825131,
+          "weekly_change_pct": -2.12,
+          "weekly_nav_impact_pct": -0.063
+        },
+        {
+          "name": "Canara Bank",
+          "nav_percentage": 0.0958242073176886,
+          "weekly_change_pct": -1.2,
+          "weekly_nav_impact_pct": -0.001
+        },
+        {
+          "name": "State Bank of India",
+          "nav_percentage": 0.0886662172104852,
+          "weekly_change_pct": -2.01,
+          "weekly_nav_impact_pct": -0.002
+        },
+        {
+          "name": "IndusInd Bank Limited",
+          "nav_percentage": 0.0339385146044103,
+          "weekly_change_pct": -3.0,
+          "weekly_nav_impact_pct": -0.001
+        },
+        {
+          "name": "IDFC First Bank Limited",
+          "nav_percentage": 0.0163364069087424,
+          "weekly_change_pct": -0.58,
+          "weekly_nav_impact_pct": -0.0
+        }
+      ]
+    },
+    {
+      "sector": "It - Software",
+      "normalized": "it - software",
+      "fund_weight_pct": 10.32,
+      "scope": "mixed",
+      "spread_pct": 3.69,
+      "avg_weekly_change_pct": -6.47,
+      "members": [
+        {
+          "name": "HCL Technologies Limited",
+          "nav_percentage": 4.15401912820486,
+          "weekly_change_pct": -6.75,
+          "weekly_nav_impact_pct": -0.28
+        },
+        {
+          "name": "Infosys Limited",
+          "nav_percentage": 3.28742513493817,
+          "weekly_change_pct": -8.17,
+          "weekly_nav_impact_pct": -0.269
+        },
+        {
+          "name": "Tata Consultancy Services Limited",
+          "nav_percentage": 2.88115655210232,
+          "weekly_change_pct": -4.48,
+          "weekly_nav_impact_pct": -0.129
+        }
+      ]
+    },
+    {
+      "sector": "Realty",
+      "normalized": "realty",
+      "fund_weight_pct": 6.81,
+      "scope": "mixed",
+      "spread_pct": 6.11,
+      "avg_weekly_change_pct": -1.57,
+      "members": [
+        {
+          "name": "Embassy Office Parks REIT",
+          "nav_percentage": 2.47826574930512,
+          "weekly_change_pct": 0.14,
+          "weekly_nav_impact_pct": 0.003
+        },
+        {
+          "name": "Knowledge Realty Trust",
+          "nav_percentage": 2.08671374501925,
+          "weekly_change_pct": 0.63,
+          "weekly_nav_impact_pct": 0.013
+        },
+        {
+          "name": "Brookfield India Real Estate Trust",
+          "nav_percentage": 1.59772917010666,
+          "weekly_change_pct": -1.57,
+          "weekly_nav_impact_pct": -0.025
+        },
+        {
+          "name": "DLF Limited",
+          "nav_percentage": 0.642732248730311,
+          "weekly_change_pct": -5.48,
+          "weekly_nav_impact_pct": -0.035
+        }
+      ]
+    },
+    {
+      "sector": "Automobiles",
+      "normalized": "automobiles",
+      "fund_weight_pct": 6.71,
+      "scope": "mixed",
+      "spread_pct": 2.12,
+      "avg_weekly_change_pct": -1.46,
+      "members": [
+        {
+          "name": "Mahindra & Mahindra Limited",
+          "nav_percentage": 3.97320043673617,
+          "weekly_change_pct": -1.99,
+          "weekly_nav_impact_pct": -0.079
+        },
+        {
+          "name": "Maruti Suzuki India Limited",
+          "nav_percentage": 2.6776058555051,
+          "weekly_change_pct": -2.32,
+          "weekly_nav_impact_pct": -0.062
+        },
+        {
+          "name": "Eicher Motors Limited",
+          "nav_percentage": 0.029460496833955,
+          "weekly_change_pct": -1.32,
+          "weekly_nav_impact_pct": -0.0
+        },
+        {
+          "name": "TVS Motor Company Limited",
+          "nav_percentage": 0.028553333253381,
+          "weekly_change_pct": -0.2,
+          "weekly_nav_impact_pct": -0.0
+        }
+      ]
+    },
+    {
+      "sector": "Finance",
+      "normalized": "finance",
+      "fund_weight_pct": 5.65,
+      "scope": "mixed",
+      "spread_pct": 4.44,
+      "avg_weekly_change_pct": -2.57,
+      "members": [
+        {
+          "name": "Bajaj Holdings & Investment Limited",
+          "nav_percentage": 5.13628149819403,
+          "weekly_change_pct": -0.25,
+          "weekly_nav_impact_pct": -0.013
+        },
+        {
+          "name": "Bajaj Finance Limited",
+          "nav_percentage": 0.382917736383509,
+          "weekly_change_pct": -2.45,
+          "weekly_nav_impact_pct": -0.009
+        },
+        {
+          "name": "Maharashtra Scooters Limited",
+          "nav_percentage": 0.102447953243242,
+          "weekly_change_pct": -4.69,
+          "weekly_nav_impact_pct": -0.005
+        },
+        {
+          "name": "Bajaj Finserv Limited",
+          "nav_percentage": 0.0244734037188521,
+          "weekly_change_pct": -2.87,
+          "weekly_nav_impact_pct": -0.001
+        }
+      ]
+    },
+    {
+      "sector": "Power",
+      "normalized": "power",
+      "fund_weight_pct": 5.58,
+      "scope": "mixed",
+      "spread_pct": 3.65,
+      "avg_weekly_change_pct": -0.66,
+      "members": [
+        {
+          "name": "Power Grid Corporation of India Limited",
+          "nav_percentage": 5.57877136166202,
+          "weekly_change_pct": 1.17,
+          "weekly_nav_impact_pct": 0.065
+        },
+        {
+          "name": "JSW Energy Limited",
+          "nav_percentage": 0.000189749965215785,
+          "weekly_change_pct": -2.48,
+          "weekly_nav_impact_pct": -0.0
+        }
+      ]
+    },
+    {
+      "sector": "Diversified Fmcg",
+      "normalized": "diversified fmcg",
+      "fund_weight_pct": 5.3,
+      "scope": "sector_wide",
+      "spread_pct": 0.74,
+      "avg_weekly_change_pct": -1.98,
+      "members": [
+        {
+          "name": "ITC Limited",
+          "nav_percentage": 5.25788029061521,
+          "weekly_change_pct": -1.61,
+          "weekly_nav_impact_pct": -0.085
+        },
+        {
+          "name": "Hindustan Unilever Limited",
+          "nav_percentage": 0.0422430775260978,
+          "weekly_change_pct": -2.35,
+          "weekly_nav_impact_pct": -0.001
+        }
+      ]
+    },
+    {
+      "sector": "Consumable Fuels",
+      "normalized": "consumable fuels",
+      "fund_weight_pct": 5.02,
+      "scope": "single",
+      "spread_pct": null,
+      "avg_weekly_change_pct": 2.66,
+      "members": [
+        {
+          "name": "Coal India Limited",
+          "nav_percentage": 5.01652817173773,
+          "weekly_change_pct": 2.66,
+          "weekly_nav_impact_pct": 0.133
+        }
+      ]
+    },
+    {
+      "sector": "Pharmaceuticals & Biotechnology",
+      "normalized": "pharmaceuticals & biotechnology",
+      "fund_weight_pct": 4.22,
+      "scope": "mixed",
+      "spread_pct": 5.55,
+      "avg_weekly_change_pct": -0.26,
+      "members": [
+        {
+          "name": "Zydus Lifesciences Limited",
+          "nav_percentage": 1.51758392711176,
+          "weekly_change_pct": -0.08,
+          "weekly_nav_impact_pct": -0.001
+        },
+        {
+          "name": "Cipla Limited",
+          "nav_percentage": 1.37202833661532,
+          "weekly_change_pct": -1.37,
+          "weekly_nav_impact_pct": -0.019
+        },
+        {
+          "name": "Dr. Reddy's Laboratories Limited",
+          "nav_percentage": 1.11987322374037,
+          "weekly_change_pct": 1.26,
+          "weekly_nav_impact_pct": 0.014
+        },
+        {
+          "name": "Sun Pharmaceutical Industries Limited",
+          "nav_percentage": 0.125688965875891,
+          "weekly_change_pct": -3.11,
+          "weekly_nav_impact_pct": -0.004
+        },
+        {
+          "name": "Divi's Laboratories Limited",
+          "nav_percentage": 0.0872812527700561,
+          "weekly_change_pct": 2.44,
+          "weekly_nav_impact_pct": 0.002
+        },
+        {
+          "name": "Lupin Limited",
+          "nav_percentage": 0.000757168166526057,
+          "weekly_change_pct": -0.71,
+          "weekly_nav_impact_pct": -0.0
+        }
+      ]
+    }
+  ],
+  "stock_moves": [
+    {
+      "type": "stock",
+      "name": "HCL Technologies Limited",
+      "industry": "IT - Software",
+      "scope": "company_specific",
+      "nav_percentage": 4.15401912820486,
+      "ticker": "HCLTECH.NS",
+      "weekly_change_pct": -6.75,
+      "weekly_nav_impact_pct": -0.28,
+      "target_sentiment": "negative"
+    },
+    {
+      "type": "stock",
+      "name": "Infosys Limited",
+      "industry": "IT - Software",
+      "scope": "company_specific",
+      "nav_percentage": 3.28742513493817,
+      "ticker": "INFY.NS",
+      "weekly_change_pct": -8.17,
+      "weekly_nav_impact_pct": -0.269,
+      "target_sentiment": "negative"
+    },
+    {
+      "type": "stock",
+      "name": "ICICI Bank Limited",
+      "industry": "Banks",
+      "scope": "company_specific",
+      "nav_percentage": 5.67351208785906,
+      "ticker": "ICICIBANK.NS",
+      "weekly_change_pct": -3.08,
+      "weekly_nav_impact_pct": -0.175,
+      "target_sentiment": "negative"
+    },
+    {
+      "type": "stock",
+      "name": "Tata Consultancy Services Limited",
+      "industry": "IT - Software",
+      "scope": "company_specific",
+      "nav_percentage": 2.88115655210232,
+      "ticker": "TCS.NS",
+      "weekly_change_pct": -4.48,
+      "weekly_nav_impact_pct": -0.129,
+      "target_sentiment": "negative"
+    },
+    {
+      "type": "stock",
+      "name": "Mahindra & Mahindra Limited",
+      "industry": "Automobiles",
+      "scope": "company_specific",
+      "nav_percentage": 3.97320043673617,
+      "ticker": "M&M.NS",
+      "weekly_change_pct": -1.99,
+      "weekly_nav_impact_pct": -0.079,
+      "target_sentiment": "negative"
+    },
+    {
+      "type": "stock",
+      "name": "Axis Bank Limited",
+      "industry": "Banks",
+      "scope": "company_specific",
+      "nav_percentage": 2.96962582825131,
+      "ticker": "AXISBANK.NS",
+      "weekly_change_pct": -2.12,
+      "weekly_nav_impact_pct": -0.063,
+      "target_sentiment": "negative"
+    },
+    {
+      "type": "stock",
+      "name": "Maruti Suzuki India Limited",
+      "industry": "Automobiles",
+      "scope": "company_specific",
+      "nav_percentage": 2.6776058555051,
+      "ticker": "MARUTI.NS",
+      "weekly_change_pct": -2.32,
+      "weekly_nav_impact_pct": -0.062,
+      "target_sentiment": "negative"
+    },
+    {
+      "type": "stock",
+      "name": "Kotak Mahindra Bank Limited",
+      "industry": "Banks",
+      "scope": "company_specific",
+      "nav_percentage": 4.39914155243338,
+      "ticker": "KOTAKBANK.NS",
+      "weekly_change_pct": -1.3,
+      "weekly_nav_impact_pct": -0.057,
+      "target_sentiment": "negative"
+    },
+    {
+      "type": "stock",
+      "name": "HDFC Bank Limited",
+      "industry": "Banks",
+      "scope": "company_specific",
+      "nav_percentage": 7.6347068753731,
+      "ticker": "HDFCBANK.NS",
+      "weekly_change_pct": -0.54,
+      "weekly_nav_impact_pct": -0.041,
+      "target_sentiment": "negative"
+    },
+    {
+      "type": "stock",
+      "name": "Bajaj Holdings & Investment Limited",
+      "industry": "Finance",
+      "scope": "company_specific",
+      "nav_percentage": 5.13628149819403,
+      "ticker": "BAJAJHLDNG.NS",
+      "weekly_change_pct": -0.25,
+      "weekly_nav_impact_pct": -0.013,
+      "target_sentiment": "negative"
+    },
+    {
+      "type": "stock",
+      "name": "Bharti Airtel Limited",
+      "industry": "Telecom - Services",
+      "scope": "company_specific",
+      "nav_percentage": 2.79914725483705,
+      "ticker": "BHARTIARTL.NS",
+      "weekly_change_pct": -0.48,
+      "weekly_nav_impact_pct": -0.013,
+      "target_sentiment": "negative"
+    },
+    {
+      "type": "stock",
+      "name": "Coal India Limited",
+      "industry": "Consumable Fuels",
+      "scope": "company_specific",
+      "nav_percentage": 5.01652817173773,
+      "ticker": "COALINDIA.NS",
+      "weekly_change_pct": 2.66,
+      "weekly_nav_impact_pct": 0.133,
+      "target_sentiment": "positive"
+    },
+    {
+      "type": "stock",
+      "name": "Power Grid Corporation of India Limited",
+      "industry": "Power",
+      "scope": "company_specific",
+      "nav_percentage": 5.57877136166202,
+      "ticker": "POWERGRID.NS",
+      "weekly_change_pct": 1.17,
+      "weekly_nav_impact_pct": 0.065,
+      "target_sentiment": "positive"
+    },
+    {
+      "type": "stock",
+      "name": "Knowledge Realty Trust",
+      "industry": "Realty",
+      "scope": "company_specific",
+      "nav_percentage": 2.08671374501925,
+      "ticker": "KRT.BO",
+      "weekly_change_pct": 0.63,
+      "weekly_nav_impact_pct": 0.013,
+      "target_sentiment": "positive"
+    },
+    {
+      "type": "stock",
+      "name": "Embassy Office Parks REIT",
+      "industry": "Realty",
+      "scope": "company_specific",
+      "nav_percentage": 2.47826574930512,
+      "ticker": "EMBASSY.BO",
+      "weekly_change_pct": 0.14,
+      "weekly_nav_impact_pct": 0.003,
+      "target_sentiment": "positive"
+    }
+  ],
+  "offsets": [
+    {
+      "name": "Coal India Limited",
+      "industry": "Consumable Fuels",
+      "ticker": "COALINDIA.NS",
+      "nav_percentage": 5.01652817173773,
+      "weekly_change_pct": 2.66,
+      "weekly_nav_impact_pct": 0.133
+    },
+    {
+      "name": "Power Grid Corporation of India Limited",
+      "industry": "Power",
+      "ticker": "POWERGRID.NS",
+      "nav_percentage": 5.57877136166202,
+      "weekly_change_pct": 1.17,
+      "weekly_nav_impact_pct": 0.065
+    },
+    {
+      "name": "Knowledge Realty Trust",
+      "industry": "Realty",
+      "ticker": "KRT.BO",
+      "nav_percentage": 2.08671374501925,
+      "weekly_change_pct": 0.63,
+      "weekly_nav_impact_pct": 0.013
+    },
+    {
+      "name": "Embassy Office Parks REIT",
+      "industry": "Realty",
+      "ticker": "EMBASSY.BO",
+      "nav_percentage": 2.47826574930512,
+      "weekly_change_pct": 0.14,
+      "weekly_nav_impact_pct": 0.003
+    }
+  ],
+  "drags": [
+    {
+      "name": "HCL Technologies Limited",
+      "industry": "IT - Software",
+      "ticker": "HCLTECH.NS",
+      "nav_percentage": 4.15401912820486,
+      "weekly_change_pct": -6.75,
+      "weekly_nav_impact_pct": -0.28
+    },
+    {
+      "name": "Infosys Limited",
+      "industry": "IT - Software",
+      "ticker": "INFY.NS",
+      "nav_percentage": 3.28742513493817,
+      "weekly_change_pct": -8.17,
+      "weekly_nav_impact_pct": -0.269
+    },
+    {
+      "name": "ICICI Bank Limited",
+      "industry": "Banks",
+      "ticker": "ICICIBANK.NS",
+      "nav_percentage": 5.67351208785906,
+      "weekly_change_pct": -3.08,
+      "weekly_nav_impact_pct": -0.175
+    },
+    {
+      "name": "Tata Consultancy Services Limited",
+      "industry": "IT - Software",
+      "ticker": "TCS.NS",
+      "nav_percentage": 2.88115655210232,
+      "weekly_change_pct": -4.48,
+      "weekly_nav_impact_pct": -0.129
+    },
+    {
+      "name": "ITC Limited",
+      "industry": "Diversified FMCG",
+      "ticker": "ITC.NS",
+      "nav_percentage": 5.25788029061521,
+      "weekly_change_pct": -1.61,
+      "weekly_nav_impact_pct": -0.085
+    },
+    {
+      "name": "Mahindra & Mahindra Limited",
+      "industry": "Automobiles",
+      "ticker": "M&M.NS",
+      "nav_percentage": 3.97320043673617,
+      "weekly_change_pct": -1.99,
+      "weekly_nav_impact_pct": -0.079
+    },
+    {
+      "name": "Axis Bank Limited",
+      "industry": "Banks",
+      "ticker": "AXISBANK.NS",
+      "nav_percentage": 2.96962582825131,
+      "weekly_change_pct": -2.12,
+      "weekly_nav_impact_pct": -0.063
+    },
+    {
+      "name": "Maruti Suzuki India Limited",
+      "industry": "Automobiles",
+      "ticker": "MARUTI.NS",
+      "nav_percentage": 2.6776058555051,
+      "weekly_change_pct": -2.32,
+      "weekly_nav_impact_pct": -0.062
+    },
+    {
+      "name": "Kotak Mahindra Bank Limited",
+      "industry": "Banks",
+      "ticker": "KOTAKBANK.NS",
+      "nav_percentage": 4.39914155243338,
+      "weekly_change_pct": -1.3,
+      "weekly_nav_impact_pct": -0.057
+    },
+    {
+      "name": "HDFC Bank Limited",
+      "industry": "Banks",
+      "ticker": "HDFCBANK.NS",
+      "nav_percentage": 7.6347068753731,
+      "weekly_change_pct": -0.54,
+      "weekly_nav_impact_pct": -0.041
+    },
+    {
+      "name": "Bajaj Holdings & Investment Limited",
+      "industry": "Finance",
+      "ticker": "BAJAJHLDNG.NS",
+      "nav_percentage": 5.13628149819403,
+      "weekly_change_pct": -0.25,
+      "weekly_nav_impact_pct": -0.013
+    },
+    {
+      "name": "Bharti Airtel Limited",
+      "industry": "Telecom - Services",
+      "ticker": "BHARTIARTL.NS",
+      "nav_percentage": 2.79914725483705,
+      "weekly_change_pct": -0.48,
+      "weekly_nav_impact_pct": -0.013
+    }
+  ],
+  "news_targets": [
+    {
+      "type": "sector",
+      "name": "Diversified Fmcg",
+      "industry": "Diversified Fmcg",
+      "scope": "sector_wide",
+      "fund_weight_pct": 5.3,
+      "weekly_change_pct": -1.98,
+      "target_sentiment": "negative",
+      "members": [
+        "ITC Limited",
+        "Hindustan Unilever Limited"
+      ]
+    },
+    {
+      "type": "stock",
+      "name": "HCL Technologies Limited",
+      "industry": "IT - Software",
+      "scope": "company_specific",
+      "nav_percentage": 4.15401912820486,
+      "ticker": "HCLTECH.NS",
+      "weekly_change_pct": -6.75,
+      "weekly_nav_impact_pct": -0.28,
+      "target_sentiment": "negative"
+    },
+    {
+      "type": "stock",
+      "name": "Infosys Limited",
+      "industry": "IT - Software",
+      "scope": "company_specific",
+      "nav_percentage": 3.28742513493817,
+      "ticker": "INFY.NS",
+      "weekly_change_pct": -8.17,
+      "weekly_nav_impact_pct": -0.269,
+      "target_sentiment": "negative"
+    },
+    {
+      "type": "stock",
+      "name": "ICICI Bank Limited",
+      "industry": "Banks",
+      "scope": "company_specific",
+      "nav_percentage": 5.67351208785906,
+      "ticker": "ICICIBANK.NS",
+      "weekly_change_pct": -3.08,
+      "weekly_nav_impact_pct": -0.175,
+      "target_sentiment": "negative"
+    },
+    {
+      "type": "stock",
+      "name": "Tata Consultancy Services Limited",
+      "industry": "IT - Software",
+      "scope": "company_specific",
+      "nav_percentage": 2.88115655210232,
+      "ticker": "TCS.NS",
+      "weekly_change_pct": -4.48,
+      "weekly_nav_impact_pct": -0.129,
+      "target_sentiment": "negative"
+    },
+    {
+      "type": "stock",
+      "name": "Mahindra & Mahindra Limited",
+      "industry": "Automobiles",
+      "scope": "company_specific",
+      "nav_percentage": 3.97320043673617,
+      "ticker": "M&M.NS",
+      "weekly_change_pct": -1.99,
+      "weekly_nav_impact_pct": -0.079,
+      "target_sentiment": "negative"
+    },
+    {
+      "type": "stock",
+      "name": "Axis Bank Limited",
+      "industry": "Banks",
+      "scope": "company_specific",
+      "nav_percentage": 2.96962582825131,
+      "ticker": "AXISBANK.NS",
+      "weekly_change_pct": -2.12,
+      "weekly_nav_impact_pct": -0.063,
+      "target_sentiment": "negative"
+    },
+    {
+      "type": "stock",
+      "name": "Maruti Suzuki India Limited",
+      "industry": "Automobiles",
+      "scope": "company_specific",
+      "nav_percentage": 2.6776058555051,
+      "ticker": "MARUTI.NS",
+      "weekly_change_pct": -2.32,
+      "weekly_nav_impact_pct": -0.062,
+      "target_sentiment": "negative"
+    },
+    {
+      "type": "stock",
+      "name": "Kotak Mahindra Bank Limited",
+      "industry": "Banks",
+      "scope": "company_specific",
+      "nav_percentage": 4.39914155243338,
+      "ticker": "KOTAKBANK.NS",
+      "weekly_change_pct": -1.3,
+      "weekly_nav_impact_pct": -0.057,
+      "target_sentiment": "negative"
+    },
+    {
+      "type": "stock",
+      "name": "HDFC Bank Limited",
+      "industry": "Banks",
+      "scope": "company_specific",
+      "nav_percentage": 7.6347068753731,
+      "ticker": "HDFCBANK.NS",
+      "weekly_change_pct": -0.54,
+      "weekly_nav_impact_pct": -0.041,
+      "target_sentiment": "negative"
+    },
+    {
+      "type": "stock",
+      "name": "Bajaj Holdings & Investment Limited",
+      "industry": "Finance",
+      "scope": "company_specific",
+      "nav_percentage": 5.13628149819403,
+      "ticker": "BAJAJHLDNG.NS",
+      "weekly_change_pct": -0.25,
+      "weekly_nav_impact_pct": -0.013,
+      "target_sentiment": "negative"
+    },
+    {
+      "type": "stock",
+      "name": "Bharti Airtel Limited",
+      "industry": "Telecom - Services",
+      "scope": "company_specific",
+      "nav_percentage": 2.79914725483705,
+      "ticker": "BHARTIARTL.NS",
+      "weekly_change_pct": -0.48,
+      "weekly_nav_impact_pct": -0.013,
+      "target_sentiment": "negative"
+    },
+    {
+      "type": "stock",
+      "name": "Coal India Limited",
+      "industry": "Consumable Fuels",
+      "scope": "company_specific",
+      "nav_percentage": 5.01652817173773,
+      "ticker": "COALINDIA.NS",
+      "weekly_change_pct": 2.66,
+      "weekly_nav_impact_pct": 0.133,
+      "target_sentiment": "positive"
+    },
+    {
+      "type": "stock",
+      "name": "Power Grid Corporation of India Limited",
+      "industry": "Power",
+      "scope": "company_specific",
+      "nav_percentage": 5.57877136166202,
+      "ticker": "POWERGRID.NS",
+      "weekly_change_pct": 1.17,
+      "weekly_nav_impact_pct": 0.065,
+      "target_sentiment": "positive"
+    },
+    {
+      "type": "stock",
+      "name": "Knowledge Realty Trust",
+      "industry": "Realty",
+      "scope": "company_specific",
+      "nav_percentage": 2.08671374501925,
+      "ticker": "KRT.BO",
+      "weekly_change_pct": 0.63,
+      "weekly_nav_impact_pct": 0.013,
+      "target_sentiment": "positive"
+    },
+    {
+      "type": "stock",
+      "name": "Embassy Office Parks REIT",
+      "industry": "Realty",
+      "scope": "company_specific",
+      "nav_percentage": 2.47826574930512,
+      "ticker": "EMBASSY.BO",
+      "weekly_change_pct": 0.14,
+      "weekly_nav_impact_pct": 0.003,
+      "target_sentiment": "positive"
+    },
+    {
+      "type": "sector",
+      "name": "Pharmaceuticals & Biotechnology",
+      "industry": "Pharmaceuticals & Biotechnology",
+      "scope": "mixed",
+      "fund_weight_pct": 4.22,
+      "weekly_change_pct": -0.26,
+      "target_sentiment": "negative",
+      "members": [
+        "Zydus Lifesciences Limited",
+        "Cipla Limited",
+        "Dr. Reddy's Laboratories Limited",
+        "Sun Pharmaceutical Industries Limited",
+        "Divi's Laboratories Limited",
+        "Lupin Limited"
+      ]
     }
   ]
 }

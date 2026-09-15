@@ -25,6 +25,38 @@ def _is_preferred_bse(symbol):
     return "-" not in stem
 
 
+_LEGAL_SUFFIXES = (
+    " limited",
+    " ltd.",
+    " ltd",
+)
+
+
+def _search_queries(company_name):
+    """Try the full name, then drop a trailing Limited/Ltd if Yahoo returns nothing."""
+    queries = [company_name.strip()]
+    lower = company_name.strip().lower()
+    for suffix in _LEGAL_SUFFIXES:
+        if lower.endswith(suffix):
+            shorter = company_name.strip()[: -len(suffix)].strip(" ,.")
+            if shorter and shorter not in queries:
+                queries.append(shorter)
+            break
+    return queries
+
+
+def _pick_ticker_from_quotes(quotes):
+    for quote in quotes:
+        symbol = quote.get("symbol")
+        if _is_preferred_nse(symbol):
+            return symbol
+    for quote in quotes:
+        symbol = quote.get("symbol")
+        if _is_preferred_bse(symbol):
+            return symbol
+    return None
+
+
 def find_ticker(company_name):
     """
     Find the NSE ticker dynamically using the company name.
@@ -45,29 +77,19 @@ def find_ticker(company_name):
         return None
 
     try:
-        print(f"Searching Yahoo for: {company_name}")
+        for query in _search_queries(company_name):
+            print(f"Searching Yahoo for: {query}")
+            search = yf.Search(query)
+            quotes = search.quotes
+            if not quotes:
+                print(f"No Yahoo Finance results found for: {query}")
+                continue
+            ticker = _pick_ticker_from_quotes(quotes)
+            if ticker:
+                print(f"Ticker found: {ticker}")
+                return ticker
+            print(f"No NSE ticker found for: {query}")
 
-        search = yf.Search(company_name)
-
-        quotes = search.quotes
-
-        if not quotes:
-            print(f"No Yahoo Finance results found for: {company_name}")
-            return None
-
-        for quote in quotes:
-            symbol = quote.get("symbol")
-            if _is_preferred_nse(symbol):
-                print(f"Ticker found: {symbol}")
-                return symbol
-
-        for quote in quotes:
-            symbol = quote.get("symbol")
-            if _is_preferred_bse(symbol):
-                print(f"Ticker found: {symbol}")
-                return symbol
-
-        print(f"No NSE ticker found for: {company_name}")
         return None
 
     except Exception as e:

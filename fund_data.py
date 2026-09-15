@@ -119,6 +119,36 @@ def holdings_for_weekly_prices(holdings: list[dict]) -> list[dict]:
     ]
 
 
+def holdings_for_price_universe(
+    holdings: list[dict],
+    large_sectors: list[dict],
+) -> list[dict]:
+    """
+    Price ≥2% equity-like names, plus smaller names in ≥3% domestic sectors
+    so sector-wide vs mixed classification has enough peers.
+    """
+    large_norms = {
+        row["normalized"]
+        for row in large_sectors
+        if row.get("normalized") and not row.get("overseas")
+    }
+    selected = []
+    seen = set()
+    for holding in equity_like_holdings(holdings):
+        pct = parse_nav_percentage(holding.get("percentage", 0))
+        industry_key = normalize_sector_label(holding.get("industry"))
+        if pct < MIN_HOLDING_PCT and industry_key not in large_norms:
+            continue
+        row = to_pipeline_row(holding)
+        name = row["name"]
+        if not name or name in seen:
+            continue
+        seen.add(name)
+        selected.append(row)
+    selected.sort(key=lambda row: parse_nav_percentage(row["percentage"]), reverse=True)
+    return selected
+
+
 def official_nav_week(
     nav_rows: list[dict],
     calendar_days: int = NAV_WEEK_CALENDAR_DAYS,
@@ -161,11 +191,13 @@ def load_fund_bundle(data_dir: Path = DATA_DIR) -> dict:
     holdings = load_holdings(data_dir / HOLDINGS_FILE.name)
     nav_history = load_nav_history(data_dir / NAV_HISTORY_FILE.name)
     sectors = load_sectors(data_dir / SECTOR_FILE.name)
+    large_sectors = sectors_at_least(sectors)
     return {
         "holdings": holdings,
         "nav_history": nav_history,
         "sectors": sectors,
         "official_nav": official_nav_week(nav_history),
+        "large_sectors": large_sectors,
         "price_rows": holdings_for_weekly_prices(holdings),
-        "large_sectors": sectors_at_least(sectors),
+        "price_universe": holdings_for_price_universe(holdings, large_sectors),
     }

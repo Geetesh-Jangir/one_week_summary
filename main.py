@@ -1,7 +1,7 @@
 """
-Main entry point: weekly fund prices from data/*.json (Phase 1).
+Main entry point: weekly prices + news-target routing from data/*.json (Phase 2).
 
-News, scraping, and Groq scoring are not run in this phase.
+RSS, scraping, and Groq scoring are not run in this phase.
 """
 
 import json
@@ -10,8 +10,15 @@ import io
 import contextlib
 from pathlib import Path
 
-from fund_data import load_fund_bundle
+from fund_data import MIN_HOLDING_PCT, load_fund_bundle
 from demo import get_fund_weekly_prices
+from stocks_for_news import (
+    build_sector_moves,
+    headline_holdings as select_headline_holdings,
+    select_drags,
+    select_news_targets,
+    select_offsets,
+)
 
 logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger(__name__)
@@ -29,19 +36,24 @@ def sort_by_weekly_nav_impact(holdings: list[dict]) -> list[dict]:
     return negative + positive
 
 
+def _compact_price_only(holding: dict) -> dict:
+    return {
+        "name": holding.get("name"),
+        "industry": holding.get("industry"),
+        "ticker": holding.get("ticker"),
+        "nav_percentage": holding.get("nav_percentage"),
+        "weekly_change_pct": holding.get("weekly_change_pct"),
+        "weekly_nav_impact_pct": holding.get("weekly_nav_impact_pct"),
+    }
+
+
 def main():
     logger.info("Loading fund holdings, NAV history, and sectors from data/")
     bundle = load_fund_bundle()
     official_nav = bundle["official_nav"]
-    price_rows = bundle["price_rows"]
-    large_sectors = [
-        {
-            "sector": row["sector"],
-            "percentage": row["percentage"],
-            "overseas": row["overseas"],
-        }
-        for row in bundle["large_sectors"]
-    ]
+    price_universe = bundle["price_universe"]
+    large_sectors = bundle["large_sectors"]
+    official_change = official_nav["change_pct"]
 
     logger.info(
         "Official NAV week %s to %s (%s -> %s, %s%%)",
@@ -49,31 +61,78 @@ def main():
         official_nav["end"],
         official_nav["start_nav"],
         official_nav["end_nav"],
-        official_nav["change_pct"],
+        official_change,
     )
     logger.info(
-        "Pricing %s domestic equity/REIT holdings with weight >= 2%%",
-        len(price_rows),
+        "Pricing %s equity/REIT names (>=2%% plus peers in >=3%% domestic sectors)",
+        len(price_universe),
     )
 
     with contextlib.redirect_stdout(io.StringIO()):
         fund_result = get_fund_weekly_prices(
             "Fund",
-            price_rows,
+            price_universe,
             official_nav["start"],
             official_nav["end"],
         )
 
-    holdings = sort_by_weekly_nav_impact(fund_result.get("holdings", []))
+    priced = fund_result.get("holdings", [])
     skipped = fund_result.get("skipped", [])
+    headline = sort_by_weekly_nav_impact(select_headline_holdings(priced))
+    price_only = [
+        _compact_price_only(item)
+        for item in priced
+        if float(item.get("nav_percentage") or 0) < MIN_HOLDING_PCT
+    ]
+
+    approx_equity_impact_pct = round(
+        sum(float(item.get("weekly_nav_impact_pct") or 0) for item in headline),
+        3,
+    )
+    if headline:
+        average_signed = round(
+            sum(float(item.get("weekly_nav_impact_pct") or 0) for item in headline)
+            / len(headline),
+            3,
+        )
+    else:
+        average_signed = 0.0
+
+    sector_moves = build_sector_moves(priced, large_sectors)
+    news_targets = select_news_targets(headline, sector_moves, official_change)
+    offsets = select_offsets(headline, official_change)
+    drags = select_drags(headline, official_change)
+    stock_moves = [target for target in news_targets if target.get("type") == "stock"]
 
     logger.info(
-        "Priced %s holdings, skipped %s, approx equity impact %s%% vs official NAV %s%%",
-        len(holdings),
+        "Priced %s names (%s >=2%%, %s peers), skipped %s",
+        len(priced),
+        len(headline),
+        len(price_only),
         len(skipped),
-        fund_result.get("approx_equity_impact_pct"),
-        official_nav["change_pct"],
     )
+    logger.info(
+        "Approx >=2%% equity impact %s%% vs official NAV %s%%",
+        approx_equity_impact_pct,
+        official_change,
+    )
+    logger.info(
+        "News targets: %s (%s sector, %s stock); offsets: %s; drags: %s",
+        len(news_targets),
+        sum(1 for item in news_targets if item.get("type") == "sector"),
+        len(stock_moves),
+        len(offsets),
+        len(drags),
+    )
+    for target in news_targets:
+        logger.info(
+            "  [%s] %s scope=%s sentiment=%s change=%s",
+            target.get("type"),
+            target.get("name"),
+            target.get("scope"),
+            target.get("target_sentiment"),
+            target.get("weekly_change_pct"),
+        )
 
     output = {
         "week": {
@@ -81,18 +140,31 @@ def main():
             "end": official_nav["end"],
         },
         "official_nav": official_nav,
-        "approx_equity_impact_pct": fund_result.get("approx_equity_impact_pct", 0.0),
-        "average_signed_nav_impact": fund_result.get("average_signed_nav_impact", 0.0),
-        "holdings": holdings,
+        "approx_equity_impact_pct": approx_equity_impact_pct,
+        "average_signed_nav_impact": average_signed,
+        "holdings": headline,
+        "price_only": price_only,
         "skipped": skipped,
-        "sectors": large_sectors,
+        "sectors": [
+            {
+                "sector": row["sector"],
+                "percentage": row["percentage"],
+                "overseas": row["overseas"],
+            }
+            for row in large_sectors
+        ],
+        "sector_moves": sector_moves,
+        "stock_moves": stock_moves,
+        "offsets": offsets,
+        "drags": drags,
+        "news_targets": news_targets,
     }
 
     OUTPUT_SCRAPPER_DIR.mkdir(parents=True, exist_ok=True)
     result_json_path = OUTPUT_SCRAPPER_DIR / "result.json"
     result_json_str = json.dumps(output, indent=2, ensure_ascii=False)
     result_json_path.write_text(result_json_str, encoding="utf-8")
-    logger.info("Saved Phase 1 result JSON to %s", result_json_path)
+    logger.info("Saved Phase 2 result JSON to %s", result_json_path)
     print(result_json_str)
 
 

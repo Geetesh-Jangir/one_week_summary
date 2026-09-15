@@ -2,7 +2,7 @@
 
 This is a **Python pipeline** that explains Indian mutual-fund NAV moves using NSE prices (Yahoo Finance), Google News RSS, Groq title scoring, and publisher-page scraping.
 
-**Implemented today:** Phase 1 of the weekly pipeline is live in `python main.py` (load `data/*.json`, official NAV week, Yahoo weekly prices for Domestic Equities + REITs ≥ 2%). News, scrape, and Groq are **not** wired yet. The old 1-day helpers still exist in `demo.py` but are not the entry point.
+**Implemented today:** Phase 2 of the weekly pipeline is live in `python main.py`: load `data/*.json`, official NAV week, Yahoo weekly prices for ≥2% Domestic Equities + REITs **and** smaller peers in ≥3% domestic sectors, then classify **sector-wide vs stock-specific** news targets plus **drags and offsets**. News, scrape, and Groq are **not** wired yet.
 
 **Live input is `data/`.** Hardcoded sample rows are no longer used by `main.py`.
 
@@ -22,12 +22,13 @@ This is a **Python pipeline** that explains Indian mutual-fund NAV moves using N
 
 **Live input is `data/`.** `main.py` loads holdings, NAV, and sectors from JSON.
 
-`python main.py` (Phase 1): load JSON → official NAV week (newest date minus 7 calendar days) → Domestic Equities + REITs with weight ≥ 2% → NSE tickers (`.NS` via `yf.Search`) → daily closes in that week → weekly `% change` and `weekly_nav_impact = weight * change / 100` → write `output-scrapper/result.json` (priced names + official vs approximate NAV). **No news, scrape, or Groq in this phase.**
+`python main.py` (Phase 2): load JSON → official NAV week → price ≥2% names plus peers in ≥3% domestic sectors → weekly NAV impact → **sector-wide vs stock-specific news targets** (no RSS yet) → write `output-scrapper/result.json`. **No news, scrape, or Groq in this phase.**
 
 ```
 main.py
   fund_data.load_fund_bundle
   demo.get_fund_weekly_prices
+  stocks_for_news.build_sector_moves / select_news_targets / select_offsets
 ```
 
 Formulas (live):
@@ -51,10 +52,10 @@ News dates are **calendar days in IST**, not trading sessions. Price “t-1 / t-
 
 | Path | Role |
 |---|---|
-| `main.py` | Orchestrator: Phase 1 weekly prices from `data/` (no news yet) |
-| `fund_data.py` | Load holdings / NAV / sectors, official week, ≥2% equity+REIT rows |
+| `main.py` | Orchestrator: weekly prices + news-target routing (no news fetch yet) |
+| `fund_data.py` | Load holdings / NAV / sectors, official week, ≥2% rows and price universe |
 | `demo.py` | Ticker search, last two closes (legacy), weekly prices, NAV math |
-| `stocks_for_news.py` | Top 3 directional holdings |
+| `stocks_for_news.py` | Sector vs stock news targets, drags/offsets (legacy top-3 kept) |
 | `app.py` | Google News RSS (`when:3d`), IST filter, title scoring hook; also interactive CLI |
 | `news_relevancy_agent.py` | Groq title-only JSON scoring |
 | `web_scrapper.py` | `scrape_one`, `_write_record`, CLI (`--preset india`) |
