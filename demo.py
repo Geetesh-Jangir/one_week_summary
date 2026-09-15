@@ -1,10 +1,28 @@
 import json
+from datetime import date, datetime, timedelta
+
 import yfinance as yf
 from stocks_for_news import get_top_3_nav_impact_holdings
+from fund_data import parse_nav_percentage
 
 # ---------------------------------------------------------
 # FIND TICKER DYNAMICALLY
 # ---------------------------------------------------------
+
+
+def _is_preferred_nse(symbol):
+    """NSE cash equity/REIT, not rights or special series (e.g. EMBASSY-RR.NS)."""
+    if not symbol or not symbol.endswith(".NS"):
+        return False
+    stem = symbol[:-3]
+    return "-" not in stem
+
+
+def _is_preferred_bse(symbol):
+    if not symbol or not symbol.endswith(".BO"):
+        return False
+    stem = symbol[:-3]
+    return "-" not in stem
 
 
 def find_ticker(company_name):
@@ -19,6 +37,8 @@ def find_ticker(company_name):
         Infosys Ltd -> INFY.NS
 
     No company-specific ticker mappings are hardcoded.
+    Prefers a clean .NS symbol, then a clean .BO symbol (REITs often
+    appear on BSE in Yahoo Search).
     """
 
     if not company_name:
@@ -35,17 +55,15 @@ def find_ticker(company_name):
             print(f"No Yahoo Finance results found for: {company_name}")
             return None
 
-        # -------------------------------------------------
-        # First look for NSE (.NS) stocks
-        # -------------------------------------------------
+        for quote in quotes:
+            symbol = quote.get("symbol")
+            if _is_preferred_nse(symbol):
+                print(f"Ticker found: {symbol}")
+                return symbol
 
         for quote in quotes:
             symbol = quote.get("symbol")
-
-            if not symbol:
-                continue
-
-            if symbol.endswith(".NS"):
+            if _is_preferred_bse(symbol):
                 print(f"Ticker found: {symbol}")
                 return symbol
 
@@ -122,6 +140,120 @@ def get_last_two_closing_prices(ticker):
         return None
 
 
+def _as_date(value):
+    if isinstance(value, datetime):
+        return value.date()
+    if isinstance(value, date):
+        return value
+    return date.fromisoformat(str(value)[:10])
+
+
+def _price_rows_from_history(df):
+    prices = []
+    for price_date, row in df.iterrows():
+        close_price = float(row["Close"])
+        if hasattr(price_date, "tz_localize"):
+            try:
+                price_date = price_date.tz_localize(None)
+            except Exception:
+                pass
+        if hasattr(price_date, "strftime"):
+            date_str = price_date.strftime("%Y-%m-%d")
+        else:
+            date_str = str(price_date)[:10]
+        prices.append({"date": date_str, "close": round(close_price, 2)})
+    return prices
+
+
+def get_weekly_prices(ticker, week_start, week_end):
+    """
+    Daily closes for sessions that fall inside the official NAV week.
+
+    Fetches a few extra days before week_start so a mid-week start still
+    has a first close. Returns chronological [{date, close}, ...] or None.
+    """
+    week_start = _as_date(week_start)
+    week_end = _as_date(week_end)
+    fetch_start = week_start - timedelta(days=5)
+    fetch_end = week_end + timedelta(days=1)
+
+    try:
+        stock = yf.Ticker(ticker)
+        df = stock.history(
+            start=fetch_start.isoformat(),
+            end=fetch_end.isoformat(),
+            interval="1d",
+            auto_adjust=False,
+        )
+
+        if df.empty:
+            print(f"No historical data returned for {ticker}")
+            return None
+
+        if "Close" not in df.columns:
+            print(f"'Close' column not found for {ticker}")
+            print(f"Available columns: {list(df.columns)}")
+            return None
+
+        df = df.dropna(subset=["Close"])
+        if df.empty:
+            print(f"No valid closes for {ticker}")
+            return None
+
+        prices = _price_rows_from_history(df)
+        in_week = [
+            item
+            for item in prices
+            if week_start <= _as_date(item["date"]) <= week_end
+        ]
+
+        if len(in_week) < 2:
+            print(
+                f"Less than two trading sessions in week "
+                f"{week_start} to {week_end} for {ticker}"
+            )
+            return None
+
+        return in_week
+
+    except Exception as e:
+        print(f"Error fetching weekly prices for {ticker}: {e}")
+        return None
+
+
+def compute_daily_changes(prices):
+    """Day-over-day % changes from chronological closing prices."""
+    changes = []
+    if not prices or len(prices) < 2:
+        return changes
+
+    for index in range(1, len(prices)):
+        previous = prices[index - 1]
+        current = prices[index]
+        prev_close = previous["close"]
+        if prev_close == 0:
+            continue
+        change_pct = ((current["close"] - prev_close) / prev_close) * 100
+        changes.append(
+            {
+                "date": current["date"],
+                "change_pct": round(change_pct, 2),
+            }
+        )
+    return changes
+
+
+def compute_weekly_change(prices):
+    """% change from first close in the week to last close in the week."""
+    if not prices or len(prices) < 2:
+        return None
+    first_close = prices[0]["close"]
+    last_close = prices[-1]["close"]
+    if first_close == 0:
+        return None
+    return round(((last_close - first_close) / first_close) * 100, 2)
+
+
 # ---------------------------------------------------------
 # GET TOP 10
 # ---------------------------------------------------------
@@ -134,7 +266,7 @@ def get_top_10_holdings(rows):
 
     sorted_holdings = sorted(
         rows,
-        key=lambda x: float(str(x["percentage"]).replace("%", "").strip()),
+        key=lambda x: parse_nav_percentage(x["percentage"]),
         reverse=True,
     )
 
@@ -254,7 +386,7 @@ def get_fund_top_10_prices(fund_name, rows):
 
         name = holding["name"]
         industry = holding["detail"]
-        nav_percentage = float(str(holding["percentage"]).replace("%", "").strip())
+        nav_percentage = parse_nav_percentage(holding["percentage"])
 
         print("\n" + "=" * 60)
 
@@ -343,6 +475,93 @@ def get_fund_top_10_prices(fund_name, rows):
         result["top_10_holdings"]
     )
 
+    return result
+
+
+def get_fund_weekly_prices(fund_name, rows, week_start, week_end):
+    """
+    Resolve NSE tickers and compute weekly price change + NAV impact
+    for each holding over [week_start, week_end].
+    """
+    result = {
+        "fund": fund_name,
+        "week": {
+            "start": _as_date(week_start).isoformat(),
+            "end": _as_date(week_end).isoformat(),
+        },
+        "holdings": [],
+        "skipped": [],
+    }
+
+    print(f"\nFound {len(rows)} holdings for weekly prices.")
+
+    for holding in rows:
+        name = holding["name"]
+        industry = holding.get("detail") or holding.get("industry") or ""
+        nav_percentage = parse_nav_percentage(holding["percentage"])
+        asset_type = holding.get("asset_type")
+
+        print("\n" + "=" * 60)
+        print(f"Processing: {name}")
+        print(f"NAV percentage: {nav_percentage}%")
+
+        ticker = find_ticker(name)
+        if not ticker:
+            print(f"Ticker not found for: {name}")
+            result["skipped"].append({"name": name, "reason": "ticker_not_found"})
+            continue
+
+        print(f"Using ticker: {ticker}")
+
+        prices = get_weekly_prices(ticker, week_start, week_end)
+        if not prices:
+            print(f"Weekly price data not found for: {name}")
+            result["skipped"].append(
+                {
+                    "name": name,
+                    "ticker": ticker,
+                    "reason": "price_data_not_found",
+                }
+            )
+            continue
+
+        weekly_change_pct = compute_weekly_change(prices)
+        if weekly_change_pct is None:
+            print(f"Could not compute weekly change for: {name}")
+            result["skipped"].append(
+                {
+                    "name": name,
+                    "ticker": ticker,
+                    "reason": "weekly_change_unavailable",
+                }
+            )
+            continue
+
+        weekly_nav_impact_pct = calculate_approx_nav_impact(
+            nav_percentage, weekly_change_pct
+        )
+
+        result["holdings"].append(
+            {
+                "name": name,
+                "industry": industry,
+                "asset_type": asset_type,
+                "nav_percentage": nav_percentage,
+                "ticker": ticker,
+                "weekly_prices": prices,
+                "daily_changes": compute_daily_changes(prices),
+                "weekly_change_pct": weekly_change_pct,
+                "weekly_nav_impact_pct": weekly_nav_impact_pct,
+                "nav_impact_percentage": weekly_nav_impact_pct,
+                "change_percentage": weekly_change_pct,
+            }
+        )
+
+    priced = result["holdings"]
+    result["approx_equity_impact_pct"] = round(
+        sum(item["weekly_nav_impact_pct"] for item in priced), 3
+    )
+    result["average_signed_nav_impact"] = calculate_average_signed_nav_impact(priced)
     return result
 
 

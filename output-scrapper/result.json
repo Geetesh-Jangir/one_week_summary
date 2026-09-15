@@ -1,55 +1,990 @@
-[
-  {
-    "name": "GE Vernova T&D India Ltd",
-    "industry": "Industrials",
-    "nav_percentage": 2.81,
-    "ticker": "GVT&D.NS",
-    "change_percentage": -6.62,
-    "nav_impact_percentage": -0.186,
-    "relevant_news": [
-      {
-        "title": "GE Vernova T&D India Publishes Postal Ballot Advertisement for USD 151 Million RPT",
-        "description": "GE Vernova T&D India Publishes Postal Ballot Advertisement for USD 151 Million RPT scanx.trade",
-        "link": "https://news.google.com/rss/articles/CBMi_AFBVV95cUxPWGxjOWFNMElHa0hzTXlBMHd3YkVEdWFPZm9Jd0V6RTd4T1p6TF9vYm1RcnFuUUNwejhzNy1VSFlRWElibW1rOFlVYTVQMWdTckQtVmJoNW1jY0xtcjNic3hIZWgtSHB3QXUyQmZVOVp2YVhRa0MzcGZHVTBfbjNkamdlSnZuNXRsOXlXZ0tjYWxLN0RGYkJDa1ZwUldGZmxDWlhNcWdmUzJncFVuRDFPbUVRQTVkNEkxbXpvYVVuQ3U4YUdrTmdnbnplMG1kVDV3NTYxa2JyTkdkd1dNcDBsOHlRa1RQVWtYOElDTTdqUm42d1l6YkhjT1Rhemw?oc=5",
-        "source": "scanx.trade",
-        "published": "2026-09-14T21:31:12+05:30",
-        "date": "2026-09-14",
-        "relevancy_score": 9,
-        "sentiment": "negative",
-        "text": "GE Vernova T&D India Publishes Postal Ballot Advertisement for USD 151 Million RPT Add as a preferred source on Google source on Google GE Vernova T&D India Limited has published newspaper advertisements in Financial Express and Jansatta regarding the dispatch of postal ballot notice seeking shareholder approval for material related party transactions worth up to USD 151 million with GE Grid Solutions LLC. The e-voting process is scheduled from April 17 to May 16, 2026, with results to be announced by May 19, 2026. *this image is generated using AI for illustrative purposes only.  GE Vernova T&D India   Limited has issued a postal ballot notice seeking shareholder approval for material related party transactions with GE Grid Solutions LLC, highlighting the company's strategic business relationships within the GE Vernova group. The company has now published newspaper advertisements regarding the dispatch of the postal ballot notice as per regulatory requirements. Transaction Details and Approval Requirements The company is seeking approval for transactions involving sale and purchase of goods and rendering of services with GE Grid Solutions LLC, a fellow subsidiary within the GE Vernova group. The proposed transaction details are outlined below: Parameter: Details Transaction Value: Up to USD 151 million Transaction Type: Sale and purchase of goods and/or availing and rendering of services Resolution Type: Ordinary Resolution Approval Threshold: 31.7% of annual consolidated turnover Under SEBI regulations, the proposed transactions require shareholder approval as they exceed 10% of the company's annual consolidated turnover. The transactions are expected to be conducted at arm's length basis, in the ordinary course of business, and in the interest of the company. Newspaper Advertisement Publication Pursuant to Regulation 30 of the SEBI (Listing Obligations and Disclosure Requirements) Regulations, 2015, the company has published newspaper advertisements in Financial Express (all editions) and Jansatta (New Delhi) regarding the dispatch of the postal ballot notice. The advertisements provide details about the postal ballot process and related information for shareholders. Publication Details: Information English Daily: Financial Express (all editions) Hindi Daily: Jansatta (New Delhi) Publication Date: April 17, 2026 Regulation: SEBI LODR Regulation 30 E-Voting Schedule and Process The company has established a comprehensive timeline for the postal ballot process, with all voting to be conducted through remote e-voting only: Timeline Element: Date/Period Cut-off Date: Friday, April 10, 2026 E-voting Commencement: Friday, April 17, 2026, 9:00 A.M. (IST) E-voting Conclusion: Saturday, May 16, 2026, 5:00 P.M. (IST) Result Announcement: On or before Tuesday, May 19, 2026 Members whose names appear in the Register of Members or Register of Beneficial Owners as on the cut-off date will be eligible to participate in the voting process. The company has appointed National Securities Depository Limited (NSDL) to facilitate the electronic voting process. Related Party Transaction Background GE Grid Solutions LLC, based in the United States, is part of the Electrification segment of the GE Vernova group. The entity enables power utilities and industries to effectively manage electricity from generation to consumption, helping improve grid reliability, efficiency, and stability. Both companies are fellow subsidiaries of GE Vernova Inc., establishing their related party status. Historical Transaction Data The explanatory statement provides context on previous transactions between the entities: Period: Transaction Value Financial Year 2024-25: INR 702.0 million April 1, 2025 to December 31, 2025: INR 963.6 million Proposed Transaction: Up to USD 151 million (approx. INR 13,600 million) Business Rationale and Strategic Benefits The company has outlined several strategic justifications for the proposed transactions. For sales activities, the transactions are expected to lead to increased orders, higher sales volumes, and improved contribution margins through better pricing. These factors are anticipated to enhance overall net profitability and strengthen the company's competitive position while providing access to international markets. For procurement activities, the company sources specific products and components from GE Grid Solutions LLC due to its technical expertise and specialized manufacturing capabilities. These components are integral to the composite products that the company manufactures and are specifically associated with the proprietary GE Vernova brand and technology. Regulatory Compliance and Governance The Audit Committee and Board of Directors approved and recommended the proposed transactions at their respective meetings held on March 18, 2026. The company's transfer pricing policy, based on OECD guidelines and Income Tax Act provisions, ensures that all transactions are conducted at arm's length basis. An independent transfer pricing consultant benchmarks the pricing principles to ensure compliance with regulatory requirements. The postal ballot notice has been distributed electronically to eligible shareholders, and the results will be announced within two working days from the last date of remote e-voting. Mr. Manish Gupta of M/s. RMG & Associates, Company Secretaries, has been appointed as the scrutinizer to ensure a fair and transparent voting process. Historical Stock Returns for GE Vernova T&D 1 Day 5 Days 1 Month 6 Months 1 Year 5 Years -6.62% -1.38% -3.92% +12.23% +54.81% 0.0% How might the significant increase in transaction value to USD 151 million impact GE Vernova T&D India's revenue mix and dependency on intra-group business? What potential risks could arise if shareholders reject this postal ballot, and how might it affect the company's access to GE Vernova's proprietary technology and international markets? Could this substantial related party transaction signal GE Vernova's strategy to consolidate more operations within its Indian subsidiary for cost optimization?",
-        "resolved_url": "https://scanx.trade/stock-market-news/companies/ge-vernova-t-d-india-limited-issues-postal-ballot-notice-for-usd-151-million-related-party-transaction-approval/37880741"
-      }
-    ]
+{
+  "week": {
+    "start": "2026-09-04",
+    "end": "2026-09-11"
   },
-  {
-    "name": "ICICI Bank Ltd",
-    "industry": "Financial Services",
-    "nav_percentage": 8.19,
-    "ticker": "ICICIBANK.NS",
-    "change_percentage": -2.1,
-    "nav_impact_percentage": -0.172,
-    "relevant_news": [
-      {
-        "title": "Weekly Recap: NIM squeeze and hybrid fixed-to-floating home loans",
-        "description": "Weekly Recap: NIM squeeze and hybrid fixed-to-floating home loans TradingView",
-        "link": "https://news.google.com/rss/articles/CBMixAFBVV95cUxObFY2Q1AzczZzeHNVNUNNZ0gxclk0WjBjamZHcUN6bVV4OWZPNU9xWnNSU3hpWDVoSGhTTVFqTFFfY2g5OHVXOWJiby1fU3YzZVlUWTdDU0FsWWxYbDhzVlFGMjc1ZExQeFZmLTIzUHJRWXY5S2NNdW1mbjU2NFRpSDVFcUxWZmxGUlY1QmkteVRpaWdYU2p3OTd4VHgyVFVJNjdQeU5oREoyUTV1a2xGNi1XVXpzME8tR25sYVVWMmpmSERU?oc=5",
-        "source": "TradingView",
-        "published": "2026-09-14T06:44:00+05:30",
-        "date": "2026-09-14",
-        "relevancy_score": 6,
-        "sentiment": "negative",
-        "text": "Weekly Recap: NIM squeeze and hybrid fixed-to-floating home loans Less than 1 min read ICICIBANK ICICI Bank Limited Sponsored ADR (NSE:ICICIBANK) slid as liquidity tightens and higher sovereign yields squeeze NIM, with recent earnings boosted more by lower credit provisions than core interest income; the bank is also marketing hybrid home loans that shift from fixed to floating rates, signaling rate-sensitive exposure risks. Previous Week Recap ICICI Bank Limited Sponsored ADR Slips On Tight Liquidity: ICICIBANK slid as liquidity tightens, global headwinds and higher sovereign yields squeeze NIM; recent earnings gains were driven more by lower credit provisions than core interest income growth.  Mint ICICIBANK ADR Hybrid Home Loans: ICICI Bank ADR (ICICIBANK) markets hybrid home loans: initial fixed-rate period, then switch to floating rate — relevant for traders tracking rate-sensitive lending exposure.  Mint This is an AI-generated summary and may contain inaccuracies. Please verify any important information with the original sources.",
-        "resolved_url": "https://www.tradingview.com/news/tradingview:c044fcb72773c:0-weekly-recap-nim-squeeze-and-hybrid-fixed-to-floating-home-loans/"
-      }
-    ]
+  "official_nav": {
+    "start": "2026-09-04",
+    "end": "2026-09-11",
+    "start_nav": 90.5289,
+    "end_nav": 89.5712,
+    "change_pct": -1.058
   },
-  {
-    "name": "Reliance Industries Ltd",
-    "industry": "Energy",
-    "nav_percentage": 4.2,
-    "ticker": "RELIANCE.NS",
-    "change_percentage": -1.77,
-    "nav_impact_percentage": -0.074,
-    "relevant_news": []
-  }
-]
+  "approx_equity_impact_pct": -1.052,
+  "average_signed_nav_impact": -0.066,
+  "holdings": [
+    {
+      "name": "HCL Technologies Limited",
+      "industry": "IT - Software",
+      "asset_type": "Domestic Equities",
+      "nav_percentage": 4.15401912820486,
+      "ticker": "HCLTECH.NS",
+      "weekly_prices": [
+        {
+          "date": "2026-09-04",
+          "close": 1293.4
+        },
+        {
+          "date": "2026-09-07",
+          "close": 1282.8
+        },
+        {
+          "date": "2026-09-08",
+          "close": 1277.0
+        },
+        {
+          "date": "2026-09-09",
+          "close": 1229.8
+        },
+        {
+          "date": "2026-09-10",
+          "close": 1207.0
+        },
+        {
+          "date": "2026-09-11",
+          "close": 1206.1
+        }
+      ],
+      "daily_changes": [
+        {
+          "date": "2026-09-07",
+          "change_pct": -0.82
+        },
+        {
+          "date": "2026-09-08",
+          "change_pct": -0.45
+        },
+        {
+          "date": "2026-09-09",
+          "change_pct": -3.7
+        },
+        {
+          "date": "2026-09-10",
+          "change_pct": -1.85
+        },
+        {
+          "date": "2026-09-11",
+          "change_pct": -0.07
+        }
+      ],
+      "weekly_change_pct": -6.75,
+      "weekly_nav_impact_pct": -0.28,
+      "nav_impact_percentage": -0.28,
+      "change_percentage": -6.75
+    },
+    {
+      "name": "Infosys Limited",
+      "industry": "IT - Software",
+      "asset_type": "Domestic Equities",
+      "nav_percentage": 3.28742513493817,
+      "ticker": "INFY.NS",
+      "weekly_prices": [
+        {
+          "date": "2026-09-04",
+          "close": 1130.0
+        },
+        {
+          "date": "2026-09-07",
+          "close": 1087.5
+        },
+        {
+          "date": "2026-09-08",
+          "close": 1082.0
+        },
+        {
+          "date": "2026-09-09",
+          "close": 1035.0
+        },
+        {
+          "date": "2026-09-10",
+          "close": 1036.5
+        },
+        {
+          "date": "2026-09-11",
+          "close": 1037.7
+        }
+      ],
+      "daily_changes": [
+        {
+          "date": "2026-09-07",
+          "change_pct": -3.76
+        },
+        {
+          "date": "2026-09-08",
+          "change_pct": -0.51
+        },
+        {
+          "date": "2026-09-09",
+          "change_pct": -4.34
+        },
+        {
+          "date": "2026-09-10",
+          "change_pct": 0.14
+        },
+        {
+          "date": "2026-09-11",
+          "change_pct": 0.12
+        }
+      ],
+      "weekly_change_pct": -8.17,
+      "weekly_nav_impact_pct": -0.269,
+      "nav_impact_percentage": -0.269,
+      "change_percentage": -8.17
+    },
+    {
+      "name": "ICICI Bank Limited",
+      "industry": "Banks",
+      "asset_type": "Domestic Equities",
+      "nav_percentage": 5.67351208785906,
+      "ticker": "ICICIBANK.NS",
+      "weekly_prices": [
+        {
+          "date": "2026-09-04",
+          "close": 1423.2
+        },
+        {
+          "date": "2026-09-07",
+          "close": 1427.5
+        },
+        {
+          "date": "2026-09-08",
+          "close": 1399.4
+        },
+        {
+          "date": "2026-09-09",
+          "close": 1389.1
+        },
+        {
+          "date": "2026-09-10",
+          "close": 1384.5
+        },
+        {
+          "date": "2026-09-11",
+          "close": 1379.3
+        }
+      ],
+      "daily_changes": [
+        {
+          "date": "2026-09-07",
+          "change_pct": 0.3
+        },
+        {
+          "date": "2026-09-08",
+          "change_pct": -1.97
+        },
+        {
+          "date": "2026-09-09",
+          "change_pct": -0.74
+        },
+        {
+          "date": "2026-09-10",
+          "change_pct": -0.33
+        },
+        {
+          "date": "2026-09-11",
+          "change_pct": -0.38
+        }
+      ],
+      "weekly_change_pct": -3.08,
+      "weekly_nav_impact_pct": -0.175,
+      "nav_impact_percentage": -0.175,
+      "change_percentage": -3.08
+    },
+    {
+      "name": "Tata Consultancy Services Limited",
+      "industry": "IT - Software",
+      "asset_type": "Domestic Equities",
+      "nav_percentage": 2.88115655210232,
+      "ticker": "TCS.NS",
+      "weekly_prices": [
+        {
+          "date": "2026-09-04",
+          "close": 2304.0
+        },
+        {
+          "date": "2026-09-07",
+          "close": 2270.0
+        },
+        {
+          "date": "2026-09-08",
+          "close": 2255.5
+        },
+        {
+          "date": "2026-09-09",
+          "close": 2208.0
+        },
+        {
+          "date": "2026-09-10",
+          "close": 2204.1
+        },
+        {
+          "date": "2026-09-11",
+          "close": 2200.8
+        }
+      ],
+      "daily_changes": [
+        {
+          "date": "2026-09-07",
+          "change_pct": -1.48
+        },
+        {
+          "date": "2026-09-08",
+          "change_pct": -0.64
+        },
+        {
+          "date": "2026-09-09",
+          "change_pct": -2.11
+        },
+        {
+          "date": "2026-09-10",
+          "change_pct": -0.18
+        },
+        {
+          "date": "2026-09-11",
+          "change_pct": -0.15
+        }
+      ],
+      "weekly_change_pct": -4.48,
+      "weekly_nav_impact_pct": -0.129,
+      "nav_impact_percentage": -0.129,
+      "change_percentage": -4.48
+    },
+    {
+      "name": "ITC Limited",
+      "industry": "Diversified FMCG",
+      "asset_type": "Domestic Equities",
+      "nav_percentage": 5.25788029061521,
+      "ticker": "ITC.NS",
+      "weekly_prices": [
+        {
+          "date": "2026-09-04",
+          "close": 264.1
+        },
+        {
+          "date": "2026-09-07",
+          "close": 263.5
+        },
+        {
+          "date": "2026-09-08",
+          "close": 263.5
+        },
+        {
+          "date": "2026-09-09",
+          "close": 260.8
+        },
+        {
+          "date": "2026-09-10",
+          "close": 259.3
+        },
+        {
+          "date": "2026-09-11",
+          "close": 259.85
+        }
+      ],
+      "daily_changes": [
+        {
+          "date": "2026-09-07",
+          "change_pct": -0.23
+        },
+        {
+          "date": "2026-09-08",
+          "change_pct": 0.0
+        },
+        {
+          "date": "2026-09-09",
+          "change_pct": -1.02
+        },
+        {
+          "date": "2026-09-10",
+          "change_pct": -0.58
+        },
+        {
+          "date": "2026-09-11",
+          "change_pct": 0.21
+        }
+      ],
+      "weekly_change_pct": -1.61,
+      "weekly_nav_impact_pct": -0.085,
+      "nav_impact_percentage": -0.085,
+      "change_percentage": -1.61
+    },
+    {
+      "name": "Mahindra & Mahindra Limited",
+      "industry": "Automobiles",
+      "asset_type": "Domestic Equities",
+      "nav_percentage": 3.97320043673617,
+      "ticker": "M&M.NS",
+      "weekly_prices": [
+        {
+          "date": "2026-09-04",
+          "close": 3170.0
+        },
+        {
+          "date": "2026-09-07",
+          "close": 3160.0
+        },
+        {
+          "date": "2026-09-08",
+          "close": 3160.0
+        },
+        {
+          "date": "2026-09-09",
+          "close": 3150.0
+        },
+        {
+          "date": "2026-09-10",
+          "close": 3123.8
+        },
+        {
+          "date": "2026-09-11",
+          "close": 3107.0
+        }
+      ],
+      "daily_changes": [
+        {
+          "date": "2026-09-07",
+          "change_pct": -0.32
+        },
+        {
+          "date": "2026-09-08",
+          "change_pct": 0.0
+        },
+        {
+          "date": "2026-09-09",
+          "change_pct": -0.32
+        },
+        {
+          "date": "2026-09-10",
+          "change_pct": -0.83
+        },
+        {
+          "date": "2026-09-11",
+          "change_pct": -0.54
+        }
+      ],
+      "weekly_change_pct": -1.99,
+      "weekly_nav_impact_pct": -0.079,
+      "nav_impact_percentage": -0.079,
+      "change_percentage": -1.99
+    },
+    {
+      "name": "Axis Bank Limited",
+      "industry": "Banks",
+      "asset_type": "Domestic Equities",
+      "nav_percentage": 2.96962582825131,
+      "ticker": "AXISBANK.NS",
+      "weekly_prices": [
+        {
+          "date": "2026-09-04",
+          "close": 1273.0
+        },
+        {
+          "date": "2026-09-08",
+          "close": 1244.9
+        },
+        {
+          "date": "2026-09-09",
+          "close": 1238.5
+        },
+        {
+          "date": "2026-09-10",
+          "close": 1246.0
+        },
+        {
+          "date": "2026-09-11",
+          "close": 1246.0
+        }
+      ],
+      "daily_changes": [
+        {
+          "date": "2026-09-08",
+          "change_pct": -2.21
+        },
+        {
+          "date": "2026-09-09",
+          "change_pct": -0.51
+        },
+        {
+          "date": "2026-09-10",
+          "change_pct": 0.61
+        },
+        {
+          "date": "2026-09-11",
+          "change_pct": 0.0
+        }
+      ],
+      "weekly_change_pct": -2.12,
+      "weekly_nav_impact_pct": -0.063,
+      "nav_impact_percentage": -0.063,
+      "change_percentage": -2.12
+    },
+    {
+      "name": "Maruti Suzuki India Limited",
+      "industry": "Automobiles",
+      "asset_type": "Domestic Equities",
+      "nav_percentage": 2.6776058555051,
+      "ticker": "MARUTI.NS",
+      "weekly_prices": [
+        {
+          "date": "2026-09-04",
+          "close": 12694.0
+        },
+        {
+          "date": "2026-09-07",
+          "close": 12760.0
+        },
+        {
+          "date": "2026-09-08",
+          "close": 12641.0
+        },
+        {
+          "date": "2026-09-09",
+          "close": 12618.0
+        },
+        {
+          "date": "2026-09-10",
+          "close": 12590.0
+        },
+        {
+          "date": "2026-09-11",
+          "close": 12400.0
+        }
+      ],
+      "daily_changes": [
+        {
+          "date": "2026-09-07",
+          "change_pct": 0.52
+        },
+        {
+          "date": "2026-09-08",
+          "change_pct": -0.93
+        },
+        {
+          "date": "2026-09-09",
+          "change_pct": -0.18
+        },
+        {
+          "date": "2026-09-10",
+          "change_pct": -0.22
+        },
+        {
+          "date": "2026-09-11",
+          "change_pct": -1.51
+        }
+      ],
+      "weekly_change_pct": -2.32,
+      "weekly_nav_impact_pct": -0.062,
+      "nav_impact_percentage": -0.062,
+      "change_percentage": -2.32
+    },
+    {
+      "name": "Kotak Mahindra Bank Limited",
+      "industry": "Banks",
+      "asset_type": "Domestic Equities",
+      "nav_percentage": 4.39914155243338,
+      "ticker": "KOTAKBANK.NS",
+      "weekly_prices": [
+        {
+          "date": "2026-09-04",
+          "close": 424.5
+        },
+        {
+          "date": "2026-09-07",
+          "close": 422.1
+        },
+        {
+          "date": "2026-09-08",
+          "close": 419.25
+        },
+        {
+          "date": "2026-09-09",
+          "close": 414.0
+        },
+        {
+          "date": "2026-09-10",
+          "close": 416.55
+        },
+        {
+          "date": "2026-09-11",
+          "close": 419.0
+        }
+      ],
+      "daily_changes": [
+        {
+          "date": "2026-09-07",
+          "change_pct": -0.57
+        },
+        {
+          "date": "2026-09-08",
+          "change_pct": -0.68
+        },
+        {
+          "date": "2026-09-09",
+          "change_pct": -1.25
+        },
+        {
+          "date": "2026-09-10",
+          "change_pct": 0.62
+        },
+        {
+          "date": "2026-09-11",
+          "change_pct": 0.59
+        }
+      ],
+      "weekly_change_pct": -1.3,
+      "weekly_nav_impact_pct": -0.057,
+      "nav_impact_percentage": -0.057,
+      "change_percentage": -1.3
+    },
+    {
+      "name": "HDFC Bank Limited",
+      "industry": "Banks",
+      "asset_type": "Domestic Equities",
+      "nav_percentage": 7.6347068753731,
+      "ticker": "HDFCBANK.NS",
+      "weekly_prices": [
+        {
+          "date": "2026-09-04",
+          "close": 712.1
+        },
+        {
+          "date": "2026-09-07",
+          "close": 710.5
+        },
+        {
+          "date": "2026-09-08",
+          "close": 703.0
+        },
+        {
+          "date": "2026-09-09",
+          "close": 687.1
+        },
+        {
+          "date": "2026-09-10",
+          "close": 693.8
+        },
+        {
+          "date": "2026-09-11",
+          "close": 708.25
+        }
+      ],
+      "daily_changes": [
+        {
+          "date": "2026-09-07",
+          "change_pct": -0.22
+        },
+        {
+          "date": "2026-09-08",
+          "change_pct": -1.06
+        },
+        {
+          "date": "2026-09-09",
+          "change_pct": -2.26
+        },
+        {
+          "date": "2026-09-10",
+          "change_pct": 0.98
+        },
+        {
+          "date": "2026-09-11",
+          "change_pct": 2.08
+        }
+      ],
+      "weekly_change_pct": -0.54,
+      "weekly_nav_impact_pct": -0.041,
+      "nav_impact_percentage": -0.041,
+      "change_percentage": -0.54
+    },
+    {
+      "name": "Bajaj Holdings & Investment Limited",
+      "industry": "Finance",
+      "asset_type": "Domestic Equities",
+      "nav_percentage": 5.13628149819403,
+      "ticker": "BAJAJHLDNG.NS",
+      "weekly_prices": [
+        {
+          "date": "2026-09-04",
+          "close": 11162.0
+        },
+        {
+          "date": "2026-09-07",
+          "close": 10956.0
+        },
+        {
+          "date": "2026-09-08",
+          "close": 11046.0
+        },
+        {
+          "date": "2026-09-09",
+          "close": 11078.0
+        },
+        {
+          "date": "2026-09-10",
+          "close": 10992.0
+        },
+        {
+          "date": "2026-09-11",
+          "close": 11134.0
+        }
+      ],
+      "daily_changes": [
+        {
+          "date": "2026-09-07",
+          "change_pct": -1.85
+        },
+        {
+          "date": "2026-09-08",
+          "change_pct": 0.82
+        },
+        {
+          "date": "2026-09-09",
+          "change_pct": 0.29
+        },
+        {
+          "date": "2026-09-10",
+          "change_pct": -0.78
+        },
+        {
+          "date": "2026-09-11",
+          "change_pct": 1.29
+        }
+      ],
+      "weekly_change_pct": -0.25,
+      "weekly_nav_impact_pct": -0.013,
+      "nav_impact_percentage": -0.013,
+      "change_percentage": -0.25
+    },
+    {
+      "name": "Bharti Airtel Limited",
+      "industry": "Telecom - Services",
+      "asset_type": "Domestic Equities",
+      "nav_percentage": 2.79914725483705,
+      "ticker": "BHARTIARTL.NS",
+      "weekly_prices": [
+        {
+          "date": "2026-09-04",
+          "close": 1840.0
+        },
+        {
+          "date": "2026-09-07",
+          "close": 1854.0
+        },
+        {
+          "date": "2026-09-08",
+          "close": 1844.0
+        },
+        {
+          "date": "2026-09-09",
+          "close": 1814.7
+        },
+        {
+          "date": "2026-09-10",
+          "close": 1839.0
+        },
+        {
+          "date": "2026-09-11",
+          "close": 1831.1
+        }
+      ],
+      "daily_changes": [
+        {
+          "date": "2026-09-07",
+          "change_pct": 0.76
+        },
+        {
+          "date": "2026-09-08",
+          "change_pct": -0.54
+        },
+        {
+          "date": "2026-09-09",
+          "change_pct": -1.59
+        },
+        {
+          "date": "2026-09-10",
+          "change_pct": 1.34
+        },
+        {
+          "date": "2026-09-11",
+          "change_pct": -0.43
+        }
+      ],
+      "weekly_change_pct": -0.48,
+      "weekly_nav_impact_pct": -0.013,
+      "nav_impact_percentage": -0.013,
+      "change_percentage": -0.48
+    },
+    {
+      "name": "Coal India Limited",
+      "industry": "Consumable Fuels",
+      "asset_type": "Domestic Equities",
+      "nav_percentage": 5.01652817173773,
+      "ticker": "COALINDIA.NS",
+      "weekly_prices": [
+        {
+          "date": "2026-09-04",
+          "close": 415.35
+        },
+        {
+          "date": "2026-09-07",
+          "close": 418.85
+        },
+        {
+          "date": "2026-09-08",
+          "close": 420.25
+        },
+        {
+          "date": "2026-09-09",
+          "close": 431.0
+        },
+        {
+          "date": "2026-09-10",
+          "close": 432.0
+        },
+        {
+          "date": "2026-09-11",
+          "close": 426.4
+        }
+      ],
+      "daily_changes": [
+        {
+          "date": "2026-09-07",
+          "change_pct": 0.84
+        },
+        {
+          "date": "2026-09-08",
+          "change_pct": 0.33
+        },
+        {
+          "date": "2026-09-09",
+          "change_pct": 2.56
+        },
+        {
+          "date": "2026-09-10",
+          "change_pct": 0.23
+        },
+        {
+          "date": "2026-09-11",
+          "change_pct": -1.3
+        }
+      ],
+      "weekly_change_pct": 2.66,
+      "weekly_nav_impact_pct": 0.133,
+      "nav_impact_percentage": 0.133,
+      "change_percentage": 2.66
+    },
+    {
+      "name": "Power Grid Corporation of India Limited",
+      "industry": "Power",
+      "asset_type": "Domestic Equities",
+      "nav_percentage": 5.57877136166202,
+      "ticker": "POWERGRID.NS",
+      "weekly_prices": [
+        {
+          "date": "2026-09-04",
+          "close": 266.0
+        },
+        {
+          "date": "2026-09-08",
+          "close": 265.75
+        },
+        {
+          "date": "2026-09-09",
+          "close": 265.85
+        },
+        {
+          "date": "2026-09-10",
+          "close": 271.75
+        },
+        {
+          "date": "2026-09-11",
+          "close": 269.1
+        }
+      ],
+      "daily_changes": [
+        {
+          "date": "2026-09-08",
+          "change_pct": -0.09
+        },
+        {
+          "date": "2026-09-09",
+          "change_pct": 0.04
+        },
+        {
+          "date": "2026-09-10",
+          "change_pct": 2.22
+        },
+        {
+          "date": "2026-09-11",
+          "change_pct": -0.98
+        }
+      ],
+      "weekly_change_pct": 1.17,
+      "weekly_nav_impact_pct": 0.065,
+      "nav_impact_percentage": 0.065,
+      "change_percentage": 1.17
+    },
+    {
+      "name": "Knowledge Realty Trust",
+      "industry": "Realty",
+      "asset_type": "REITs & InvITs",
+      "nav_percentage": 2.08671374501925,
+      "ticker": "KRT.BO",
+      "weekly_prices": [
+        {
+          "date": "2026-09-04",
+          "close": 112.57
+        },
+        {
+          "date": "2026-09-07",
+          "close": 113.15
+        },
+        {
+          "date": "2026-09-08",
+          "close": 113.51
+        },
+        {
+          "date": "2026-09-09",
+          "close": 113.32
+        },
+        {
+          "date": "2026-09-10",
+          "close": 112.73
+        },
+        {
+          "date": "2026-09-11",
+          "close": 113.28
+        }
+      ],
+      "daily_changes": [
+        {
+          "date": "2026-09-07",
+          "change_pct": 0.52
+        },
+        {
+          "date": "2026-09-08",
+          "change_pct": 0.32
+        },
+        {
+          "date": "2026-09-09",
+          "change_pct": -0.17
+        },
+        {
+          "date": "2026-09-10",
+          "change_pct": -0.52
+        },
+        {
+          "date": "2026-09-11",
+          "change_pct": 0.49
+        }
+      ],
+      "weekly_change_pct": 0.63,
+      "weekly_nav_impact_pct": 0.013,
+      "nav_impact_percentage": 0.013,
+      "change_percentage": 0.63
+    },
+    {
+      "name": "Embassy Office Parks REIT",
+      "industry": "Realty",
+      "asset_type": "REITs & InvITs",
+      "nav_percentage": 2.47826574930512,
+      "ticker": "EMBASSY.BO",
+      "weekly_prices": [
+        {
+          "date": "2026-09-04",
+          "close": 438.57
+        },
+        {
+          "date": "2026-09-08",
+          "close": 439.93
+        },
+        {
+          "date": "2026-09-09",
+          "close": 439.44
+        },
+        {
+          "date": "2026-09-10",
+          "close": 439.06
+        },
+        {
+          "date": "2026-09-11",
+          "close": 439.2
+        }
+      ],
+      "daily_changes": [
+        {
+          "date": "2026-09-08",
+          "change_pct": 0.31
+        },
+        {
+          "date": "2026-09-09",
+          "change_pct": -0.11
+        },
+        {
+          "date": "2026-09-10",
+          "change_pct": -0.09
+        },
+        {
+          "date": "2026-09-11",
+          "change_pct": 0.03
+        }
+      ],
+      "weekly_change_pct": 0.14,
+      "weekly_nav_impact_pct": 0.003,
+      "nav_impact_percentage": 0.003,
+      "change_percentage": 0.14
+    }
+  ],
+  "skipped": [],
+  "sectors": [
+    {
+      "sector": "Banks",
+      "percentage": 20.91,
+      "overseas": false
+    },
+    {
+      "sector": "It - Software",
+      "percentage": 10.32,
+      "overseas": false
+    },
+    {
+      "sector": "Realty",
+      "percentage": 6.81,
+      "overseas": false
+    },
+    {
+      "sector": "Automobiles",
+      "percentage": 6.71,
+      "overseas": false
+    },
+    {
+      "sector": "Computer Software: Programming, Data Processing ##",
+      "percentage": 6.32,
+      "overseas": true
+    },
+    {
+      "sector": "Finance",
+      "percentage": 5.65,
+      "overseas": false
+    },
+    {
+      "sector": "Power",
+      "percentage": 5.58,
+      "overseas": false
+    },
+    {
+      "sector": "Diversified Fmcg",
+      "percentage": 5.3,
+      "overseas": false
+    },
+    {
+      "sector": "Consumable Fuels",
+      "percentage": 5.02,
+      "overseas": false
+    },
+    {
+      "sector": "Pharmaceuticals & Biotechnology",
+      "percentage": 4.22,
+      "overseas": false
+    }
+  ]
+}

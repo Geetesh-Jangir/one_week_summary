@@ -2,7 +2,9 @@
 
 This is a **Python pipeline** that explains Indian mutual-fund NAV moves using NSE prices (Yahoo Finance), Google News RSS, Groq title scoring, and publisher-page scraping.
 
-**Implemented today is a 1-day (last two trading sessions) pipeline.** Weekly causal analysis and the factor-graph design exist only as markdown plans. Do not treat those plans as live code.
+**Implemented today:** Phase 1 of the weekly pipeline is live in `python main.py` (load `data/*.json`, official NAV week, Yahoo weekly prices for Domestic Equities + REITs ≥ 2%). News, scrape, and Groq are **not** wired yet. The old 1-day helpers still exist in `demo.py` but are not the entry point.
+
+**Live input is `data/`.** Hardcoded sample rows are no longer used by `main.py`.
 
 ---
 
@@ -18,16 +20,14 @@ This is a **Python pipeline** that explains Indian mutual-fund NAV moves using N
 
 ## Implemented pipeline (`python main.py`)
 
-**Live input is still the hardcoded sample list inside `main.py`.** Real fund dumps now sit in `data/` but no Python module loads them yet.
+**Live input is `data/`.** `main.py` loads holdings, NAV, and sectors from JSON.
 
-Hardcoded sample fund rows in `main.py` → top 10 by weight → NSE tickers (`.NS` via `yf.Search`) → last **two** daily closes → `% change` and `nav_impact = weight * change / 100` → mean signed impact over holdings that got prices → **top 3 holdings in that same direction** → Google News RSS for **calendar T-2 and T-1 IST** (up to 10 articles per date, instrument + `Indian {industry}`) → Groq scores **titles only** (`relevancy_score` 0–10, `sentiment` positive/negative) → keep articles with **matching sentiment** and **score > 5**, take top 3 → resolve Google News URLs and scrape body text → write `out/{index}_{slug}.json|.html` and `output-scrapper/result.json` → print JSON to stdout.
+`python main.py` (Phase 1): load JSON → official NAV week (newest date minus 7 calendar days) → Domestic Equities + REITs with weight ≥ 2% → NSE tickers (`.NS` via `yf.Search`) → daily closes in that week → weekly `% change` and `weekly_nav_impact = weight * change / 100` → write `output-scrapper/result.json` (priced names + official vs approximate NAV). **No news, scrape, or Groq in this phase.**
 
 ```
 main.py
-  demo.get_fund_top_10_prices
-  stocks_for_news.get_top_3_nav_impact_holdings
-  app.fetch_news_for_dates  →  news_relevancy_agent.score_news_relevance
-  scrape_relevant_articles  →  web_scrapper.scrape_one + lib/*
+  fund_data.load_fund_bundle
+  demo.get_fund_weekly_prices
 ```
 
 Formulas (live):
@@ -51,8 +51,9 @@ News dates are **calendar days in IST**, not trading sessions. Price “t-1 / t-
 
 | Path | Role |
 |---|---|
-| `main.py` | Orchestrator, sample holdings, sentiment filter, scrape, persist |
-| `demo.py` | Ticker search, last two closes, NAV math |
+| `main.py` | Orchestrator: Phase 1 weekly prices from `data/` (no news yet) |
+| `fund_data.py` | Load holdings / NAV / sectors, official week, ≥2% equity+REIT rows |
+| `demo.py` | Ticker search, last two closes (legacy), weekly prices, NAV math |
 | `stocks_for_news.py` | Top 3 directional holdings |
 | `app.py` | Google News RSS (`when:3d`), IST filter, title scoring hook; also interactive CLI |
 | `news_relevancy_agent.py` | Groq title-only JSON scoring |
@@ -202,7 +203,7 @@ If asked to “go weekly” or “reduce LLM calls,” start from `less_llm_call
 
 ## Known gaps
 
-- Holdings are still hardcoded in `main.py` even though `data/fund_holding_data.json` exists.
+- Holdings are loaded from `data/fund_holding_data.json` (Domestic Equities + REITs ≥ 2%). News/scrape/Groq not wired yet.
 - `fund_nav_history.json` and `fund_sector.json` are unused (needed for actual-vs-expected NAV and sector-aware news).
 - Holdings that fail ticker/price lookup are dropped and excluded from the average.
 - Title scoring can mismatch full-article meaning (seen in sample `result.json`).
