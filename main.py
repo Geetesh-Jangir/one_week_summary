@@ -1,7 +1,7 @@
 """
-Main entry point: weekly prices + news-target routing from data/*.json (Phase 2).
+Main entry point: weekly prices, news targets, and allowlisted RSS (Phase 3).
 
-RSS, scraping, and Groq scoring are not run in this phase.
+Scraping and Groq scoring are not run in this phase.
 """
 
 import json
@@ -19,6 +19,7 @@ from stocks_for_news import (
     select_news_targets,
     select_offsets,
 )
+from app import fetch_news_for_week
 
 logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger(__name__)
@@ -134,6 +135,28 @@ def main():
             target.get("weekly_change_pct"),
         )
 
+    logger.info("Harvesting allowlisted Google News RSS for the NAV week...")
+    total_articles = 0
+    for target in news_targets:
+        try:
+            articles = fetch_news_for_week(
+                target,
+                official_nav["start"],
+                official_nav["end"],
+            )
+        except Exception as exc:
+            logger.error("News harvest failed for %s: %s", target.get("name"), exc)
+            articles = []
+        target["articles"] = articles
+        target["article_count"] = len(articles)
+        total_articles += len(articles)
+        logger.info(
+            "  harvested %s articles for %s",
+            len(articles),
+            target.get("name"),
+        )
+    logger.info("Total allowlisted week articles: %s", total_articles)
+
     output = {
         "week": {
             "start": official_nav["start"],
@@ -164,8 +187,25 @@ def main():
     result_json_path = OUTPUT_SCRAPPER_DIR / "result.json"
     result_json_str = json.dumps(output, indent=2, ensure_ascii=False)
     result_json_path.write_text(result_json_str, encoding="utf-8")
-    logger.info("Saved Phase 2 result JSON to %s", result_json_path)
-    print(result_json_str)
+    logger.info("Saved Phase 3 result JSON to %s", result_json_path)
+    summary = {
+        "week": output["week"],
+        "official_nav": official_nav,
+        "approx_equity_impact_pct": approx_equity_impact_pct,
+        "news_targets": [
+            {
+                "type": target.get("type"),
+                "name": target.get("name"),
+                "scope": target.get("scope"),
+                "target_sentiment": target.get("target_sentiment"),
+                "article_count": target.get("article_count", 0),
+            }
+            for target in news_targets
+        ],
+        "total_articles": total_articles,
+        "result_path": str(result_json_path),
+    }
+    print(json.dumps(summary, indent=2, ensure_ascii=False))
 
 
 if __name__ == "__main__":

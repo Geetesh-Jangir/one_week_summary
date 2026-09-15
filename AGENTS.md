@@ -2,7 +2,7 @@
 
 This is a **Python pipeline** that explains Indian mutual-fund NAV moves using NSE prices (Yahoo Finance), Google News RSS, Groq title scoring, and publisher-page scraping.
 
-**Implemented today:** Phase 2 of the weekly pipeline is live in `python main.py`: load `data/*.json`, official NAV week, Yahoo weekly prices for ≥2% Domestic Equities + REITs **and** smaller peers in ≥3% domestic sectors, then classify **sector-wide vs stock-specific** news targets plus **drags and offsets**. News, scrape, and Groq are **not** wired yet.
+**Implemented today:** Phase 3 of the weekly pipeline is live in `python main.py`: JSON load, weekly Yahoo prices, sector vs stock news targets, then **Google News RSS for the NAV week** filtered to Business Standard / LiveMint / Economic Times / Moneycontrol / NDTV Profit / Bloomberg. Scrape and Groq are **not** wired yet.
 
 **Live input is `data/`.** Hardcoded sample rows are no longer used by `main.py`.
 
@@ -22,13 +22,14 @@ This is a **Python pipeline** that explains Indian mutual-fund NAV moves using N
 
 **Live input is `data/`.** `main.py` loads holdings, NAV, and sectors from JSON.
 
-`python main.py` (Phase 2): load JSON → official NAV week → price ≥2% names plus peers in ≥3% domestic sectors → weekly NAV impact → **sector-wide vs stock-specific news targets** (no RSS yet) → write `output-scrapper/result.json`. **No news, scrape, or Groq in this phase.**
+`python main.py` (Phase 3): load JSON → official NAV week → price ≥2% names plus peers in ≥3% domestic sectors → sector-wide vs stock-specific news targets → **Google News RSS (`when:Nd` covering the NAV week)** → keep allowlisted publishers → write `output-scrapper/result.json`. **No scrape or Groq in this phase.**
 
 ```
 main.py
   fund_data.load_fund_bundle
   demo.get_fund_weekly_prices
   stocks_for_news.build_sector_moves / select_news_targets / select_offsets
+  app.fetch_news_for_week
 ```
 
 Formulas (live):
@@ -56,7 +57,7 @@ News dates are **calendar days in IST**, not trading sessions. Price “t-1 / t-
 | `fund_data.py` | Load holdings / NAV / sectors, official week, ≥2% rows and price universe |
 | `demo.py` | Ticker search, last two closes (legacy), weekly prices, NAV math |
 | `stocks_for_news.py` | Sector vs stock news targets, drags/offsets (legacy top-3 kept) |
-| `app.py` | Google News RSS (`when:3d`), IST filter, title scoring hook; also interactive CLI |
+| `app.py` | Google News RSS: weekly harvest + publisher allowlist; legacy T-1/T-2 scoring CLI |
 | `news_relevancy_agent.py` | Groq title-only JSON scoring |
 | `web_scrapper.py` | `scrape_one`, `_write_record`, CLI (`--preset india`) |
 | `lib/fetch.py` | `curl_cffi` TLS impersonation + retries |

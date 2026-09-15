@@ -259,6 +259,220 @@ def _get_source_from_entry(entry) -> str:
     return ""
 
 
+RSS_HEADERS = {
+    "User-Agent": (
+        "Mozilla/5.0 (Windows NT 10.0; Win64; x64) "
+        "AppleWebKit/537.36 (KHTML, like Gecko) "
+        "Chrome/131.0.0.0 Safari/537.36"
+    )
+}
+
+ALLOWED_SOURCE_NEEDLES = (
+    "business standard",
+    "livemint",
+    "live mint",
+    "economic times",
+    "moneycontrol",
+    "money control",
+    "ndtv profit",
+    "bloomberg",
+)
+ALLOWED_EXACT_SOURCES = {"mint"}
+FUZZY_TITLE_OVERLAP = 0.8
+
+
+def clean_sector_query_name(label: str) -> str:
+    """Strip '##' suffixes used in overseas sector labels."""
+    if not label:
+        return ""
+    return " ".join(str(label).replace("##", " ").split()).strip()
+
+
+def week_rss_days_back(week_start) -> int:
+    """when:Nd must reach week_start from today, not only the last 7 days."""
+    start = datetime.fromisoformat(str(week_start)[:10]).date()
+    today = datetime.now(IST).date()
+    return max(7, min(21, (today - start).days + 1))
+
+
+def publisher_allowlisted(source: str) -> bool:
+    """
+    Keep allowlisted publishers. Empty source is kept until URL resolve (Phase 4).
+    """
+    if not source or not str(source).strip():
+        return True
+    text = str(source).strip().lower()
+    if text in ALLOWED_EXACT_SOURCES:
+        return True
+    return any(needle in text for needle in ALLOWED_SOURCE_NEEDLES)
+
+
+def _title_words(title: str) -> set[str]:
+    return set(re.findall(r"[a-z0-9]+", (title or "").lower()))
+
+
+def _is_fuzzy_duplicate(title: str, kept_titles: list[str], threshold: float = FUZZY_TITLE_OVERLAP) -> bool:
+    words = _title_words(title)
+    if not words:
+        return False
+    for existing in kept_titles:
+        other = _title_words(existing)
+        if not other:
+            continue
+        overlap = len(words & other)
+        smaller = min(len(words), len(other))
+        if smaller and (overlap / smaller) >= threshold:
+            return True
+    return False
+
+
+def _parse_rss_entry(entry, news_type: str) -> dict | None:
+    pub_dt = _parse_feedparser_date(entry.get("published_parsed"))
+    if not pub_dt:
+        return None
+    title = _clean_html_text(entry.get("title", ""))
+    if not title:
+        return None
+    title = title.rsplit(" - ", 1)[0] if " - " in title else title
+    return {
+        "title": title,
+        "description": _clean_html_text(entry.get("summary", "")),
+        "link": entry.get("link", "") or "",
+        "source": _get_source_from_entry(entry),
+        "published": pub_dt.isoformat(),
+        "date": pub_dt.date().isoformat(),
+        "pub_date_obj": pub_dt.date(),
+        "news_type": news_type,
+    }
+
+
+def _fetch_rss_articles(url: str, news_type: str) -> list[dict]:
+    if not url:
+        return []
+    try:
+        response = requests.get(url, timeout=15, headers=RSS_HEADERS)
+        response.raise_for_status()
+    except requests.RequestException as e:
+        logger.error("Failed to fetch RSS from %s: %s", url, e)
+        return []
+    try:
+        feed = feedparser.parse(response.content)
+    except Exception as e:
+        logger.error("Failed to parse RSS feed from %s: %s", url, e)
+        return []
+    articles = []
+    for entry in feed.entries or []:
+        parsed = _parse_rss_entry(entry, news_type)
+        if parsed:
+            articles.append(parsed)
+    return articles
+
+
+def _queries_for_news_target(target: dict) -> list[tuple[str, str]]:
+    """Return (query, news_type) pairs for a Phase 2 news target."""
+    name = (target.get("name") or "").strip()
+    industry = clean_sector_query_name(target.get("industry") or "")
+    target_type = target.get("type") or "stock"
+    queries = []
+    if target_type == "sector":
+        if industry:
+            queries.append((f"{INDUSTRY_PREFIX} {industry}", "industry"))
+            queries.append((f"{industry} sector India", "industry"))
+        return queries
+    if name:
+        queries.append((name, "instrument"))
+    if industry:
+        queries.append((f"{INDUSTRY_PREFIX} {industry}", "industry"))
+    return queries
+
+
+def _dedupe_week_articles(articles: list[dict]) -> list[dict]:
+    exact = []
+    seen = set()
+    for article in articles:
+        title = article.get("title") or ""
+        if not title or title in seen:
+            continue
+        seen.add(title)
+        exact.append(article)
+
+    kept = []
+    kept_titles = []
+    for article in exact:
+        title = article.get("title") or ""
+        if _is_fuzzy_duplicate(title, kept_titles):
+            continue
+        kept.append(article)
+        kept_titles.append(title)
+    return kept
+
+
+def fetch_news_for_week(
+    target: dict,
+    week_start,
+    week_end,
+) -> list[dict]:
+    """
+    Harvest Google News RSS for one news target over the official NAV week.
+    No LLM scoring. Publisher allowlist applied on RSS source.
+    Empty source is kept for later URL-host checks.
+    """
+    start = datetime.fromisoformat(str(week_start)[:10]).date()
+    end = datetime.fromisoformat(str(week_end)[:10]).date()
+    days_back = week_rss_days_back(start)
+    queries = _queries_for_news_target(target)
+    label = target.get("name") or "unknown"
+    logger.info(
+        "Fetching week news for [%s] %s (%s to %s, when:%sd, %s queries)",
+        target.get("type"),
+        label,
+        start,
+        end,
+        days_back,
+        len(queries),
+    )
+
+    raw = []
+    for query, news_type in queries:
+        url = build_news_url_with_date(query, days_back=days_back)
+        logger.info("  RSS query: %s", query)
+        raw.extend(_fetch_rss_articles(url, news_type))
+
+    in_week = [
+        article
+        for article in raw
+        if start <= article["pub_date_obj"] <= end
+    ]
+    allowlisted = [
+        article for article in in_week if publisher_allowlisted(article.get("source", ""))
+    ]
+    selected = _dedupe_week_articles(allowlisted)
+
+    cleaned = []
+    for index, article in enumerate(selected, start=1):
+        cleaned.append(
+            {
+                "article_id": index,
+                "title": article["title"],
+                "description": article.get("description", ""),
+                "link": article.get("link", ""),
+                "source": article.get("source", ""),
+                "published": article.get("published", ""),
+                "date": article.get("date", ""),
+                "news_type": article.get("news_type", ""),
+            }
+        )
+
+    logger.info(
+        "  %s: raw=%s in-week=%s allowlisted+deduped=%s",
+        label,
+        len(raw),
+        len(in_week),
+        len(cleaned),
+    )
+    return cleaned
+
+
 def fetch_news_for_dates(
     instrument_name: str,
     industry: str,

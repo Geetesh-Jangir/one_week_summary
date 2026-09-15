@@ -7,7 +7,7 @@ alwaysApply: true
 
 Read `AGENTS.md` first. It is the source of truth for what is **implemented** vs **planned**.
 
-- Live system (Phase 2): `python main.py` loads `data/*.json`, official NAV week, Yahoo weekly prices for Domestic Equities + REITs ≥ 2% plus peers in ≥3% domestic sectors, then sector-wide vs stock-specific **news targets**. No RSS/scrape/Groq yet.
+- Live system (Phase 3): `python main.py` loads `data/*.json`, weekly Yahoo prices, news-target routing, then Google News RSS for the NAV week from allowlisted publishers only. No scrape/Groq yet.
 - Holdings schema: `instrument_name`, float `percentage`, `industry`, `asset_type`. Filter **Domestic Equities** and **REITs** before Yahoo ticker lookup. Skip cash/debt/overseas.
 - Not live yet: weekly news funnel, causal LLM (`less_llm_call.md`), and factor-graph (`direct_indirect_relationship.md`).
 - Entry point: `python main.py`. Output: `output-scrapper/result.json`.
