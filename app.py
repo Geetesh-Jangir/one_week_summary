@@ -20,7 +20,7 @@ import logging
 import re
 from datetime import datetime, timedelta, timezone
 from html import unescape
-from urllib.parse import quote_plus
+from urllib.parse import quote_plus, urlparse
 
 import feedparser
 import requests
@@ -280,6 +280,16 @@ ALLOWED_SOURCE_NEEDLES = (
 ALLOWED_EXACT_SOURCES = {"mint"}
 FUZZY_TITLE_OVERLAP = 0.8
 
+ALLOWED_HOSTS = (
+    "business-standard.com",
+    "livemint.com",
+    "economictimes.indiatimes.com",
+    "moneycontrol.com",
+    "ndtvprofit.com",
+    "bloomberg.com",
+    "bloombergquint.com",
+)
+
 
 def clean_sector_query_name(label: str) -> str:
     """Strip '##' suffixes used in overseas sector labels."""
@@ -305,6 +315,23 @@ def publisher_allowlisted(source: str) -> bool:
     if text in ALLOWED_EXACT_SOURCES:
         return True
     return any(needle in text for needle in ALLOWED_SOURCE_NEEDLES)
+
+
+def publisher_host_allowlisted(url: str) -> bool:
+    """Keep only allowlisted publisher hosts after Google News URL resolve."""
+    if not url:
+        return False
+    parsed = urlparse(url)
+    host = (parsed.netloc or "").lower()
+    if host.startswith("www."):
+        host = host[4:]
+    path = (parsed.path or "").lower()
+    if host == "ndtv.com" or host.endswith(".ndtv.com"):
+        return "profit" in path
+    for allowed in ALLOWED_HOSTS:
+        if host == allowed or host.endswith("." + allowed):
+            return True
+    return False
 
 
 def _title_words(title: str) -> set[str]:

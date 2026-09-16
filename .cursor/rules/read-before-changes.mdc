@@ -7,10 +7,10 @@ alwaysApply: true
 
 Read `AGENTS.md` first. It is the source of truth for what is **implemented** vs **planned**.
 
-- Live system (Phase 3): `python main.py` loads `data/*.json`, weekly Yahoo prices, news-target routing, then Google News RSS for the NAV week from allowlisted publishers only. No scrape/Groq yet.
+- Live system (Phase 4): `python main.py` loads `data/*.json`, weekly prices, news targets, allowlisted RSS, scrape, DeepSeek V4 Flash causal scoring (batches of 8, first 400 characters), 3–5 events per target. Keep only if causal_score >= 5, timing_plausible, and sentiment matches the name’s weekly move. No investor-summary LLM yet.
 - Holdings schema: `instrument_name`, float `percentage`, `industry`, `asset_type`. Filter **Domestic Equities** and **REITs** before Yahoo ticker lookup. Skip cash/debt/overseas.
-- Not live yet: weekly news funnel, causal LLM (`less_llm_call.md`), and factor-graph (`direct_indirect_relationship.md`).
+- Not live yet: Phase 5 investor summary and factor-graph (`direct_indirect_relationship.md`).
 - Entry point: `python main.py`. Output: `output-scrapper/result.json`.
-- Secrets stay in `.env` (`GROQ_API_KEY`). Do not commit them.
+- Secrets stay in `.env` (`DEEPSEEK_API_KEY`). Do not commit them.
 - Keep ticker lookup dynamic (Yahoo `.NS`). Reuse `lib/` + `web_scrapper.scrape_one` for fetching when news is added.
 - Prefer small edits in existing modules. Do not implement later weekly news/factor phases unless the user asks.

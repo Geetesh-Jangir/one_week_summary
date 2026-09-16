@@ -1,8 +1,8 @@
 # Agent briefing — read this before any change
 
-This is a **Python pipeline** that explains Indian mutual-fund NAV moves using NSE prices (Yahoo Finance), Google News RSS, Groq title scoring, and publisher-page scraping.
+This is a **Python pipeline** that explains Indian mutual-fund NAV moves using NSE prices (Yahoo Finance), Google News RSS, DeepSeek V4 Flash causal scoring, and publisher-page scraping.
 
-**Implemented today:** Phase 3 of the weekly pipeline is live in `python main.py`: JSON load, weekly Yahoo prices, sector vs stock news targets, then **Google News RSS for the NAV week** filtered to Business Standard / LiveMint / Economic Times / Moneycontrol / NDTV Profit / Bloomberg. Scrape and Groq are **not** wired yet.
+**Implemented today:** Phase 4 of the weekly pipeline is live in `python main.py`: JSON load, weekly Yahoo prices, news-target routing, allowlisted RSS, **keyword filter**, **parallel scrape**, **DeepSeek V4 Flash causal scoring in batches of 8** (title + first 400 characters), and **event grouping** (3–5 events per target). Keep rule: `causal_score >= 5`, `timing_plausible`, and article `sentiment` matches that target’s weekly price direction. Short investor summary is **not** wired yet.
 
 **Live input is `data/`.** Hardcoded sample rows are no longer used by `main.py`.
 
@@ -14,7 +14,6 @@ This is a **Python pipeline** that explains Indian mutual-fund NAV moves using N
 2. Prefer small, linear changes in existing modules. Do not add frameworks, extra abstraction layers, or new packages unless the task requires them.
 3. Do not commit secrets. Never put `.env` or API keys in git.
 4. Do not scrape more articles than selected `relevant_news` unless the task explicitly expands the pipeline.
-5. `yfinance` is imported in `demo.py` but is **missing from `requirements.txt`**. If you touch deps, add it.
 
 ---
 
@@ -22,14 +21,16 @@ This is a **Python pipeline** that explains Indian mutual-fund NAV moves using N
 
 **Live input is `data/`.** `main.py` loads holdings, NAV, and sectors from JSON.
 
-`python main.py` (Phase 3): load JSON → official NAV week → price ≥2% names plus peers in ≥3% domestic sectors → sector-wide vs stock-specific news targets → **Google News RSS (`when:Nd` covering the NAV week)** → keep allowlisted publishers → write `output-scrapper/result.json`. **No scrape or Groq in this phase.**
+`python main.py` (Phase 4): load JSON → weekly prices → news targets → allowlisted RSS → keyword filter → scrape unique URLs → DeepSeek V4 Flash causal scores in batches of 8 (first 400 characters) → keep `causal_score >= 5` and `timing_plausible` and `sentiment == target_sentiment` → 3–5 events per target → `output-scrapper/result.json`. **No investor summary LLM yet.**
 
 ```
 main.py
   fund_data.load_fund_bundle
   demo.get_fund_weekly_prices
-  stocks_for_news.build_sector_moves / select_news_targets / select_offsets
+  stocks_for_news.*
   app.fetch_news_for_week
+  web_scrapper.scrape_one
+  news_relevancy_agent.score_articles_causal
 ```
 
 Formulas (live):
@@ -53,12 +54,12 @@ News dates are **calendar days in IST**, not trading sessions. Price “t-1 / t-
 
 | Path | Role |
 |---|---|
-| `main.py` | Orchestrator: weekly prices + news-target routing (no news fetch yet) |
+| `main.py` | Orchestrator: weekly prices, RSS, scrape, causal events |
 | `fund_data.py` | Load holdings / NAV / sectors, official week, ≥2% rows and price universe |
 | `demo.py` | Ticker search, last two closes (legacy), weekly prices, NAV math |
-| `stocks_for_news.py` | Sector vs stock news targets, drags/offsets (legacy top-3 kept) |
+| `stocks_for_news.py` | Sector vs stock news targets, keyword filter, event grouping |
 | `app.py` | Google News RSS: weekly harvest + publisher allowlist; legacy T-1/T-2 scoring CLI |
-| `news_relevancy_agent.py` | Groq title-only JSON scoring |
+| `news_relevancy_agent.py` | Groq title-only scorer (legacy) + DeepSeek V4 Flash batched causal scoring (400-char clips) |
 | `web_scrapper.py` | `scrape_one`, `_write_record`, CLI (`--preset india`) |
 | `lib/fetch.py` | `curl_cffi` TLS impersonation + retries |
 | `lib/google_news.py` | Google News `batchexecute` publisher URL resolve |
@@ -155,11 +156,12 @@ Each news item after scrape: `title`, `description`, `link`, `source`, `publishe
 `.env` (gitignored):
 
 ```
-GROQ_API_KEY=...
-GROQ_MODEL=openai/gpt-oss-120b
+DEEPSEEK_API_KEY=...
+DEEPSEEK_MODEL=deepseek-flash
+DEEPSEEK_BASE_URL=https://api.deepseek.com
 ```
 
-Defaults in code: model `openai/gpt-oss-120b`, temperature `0.1`, `max_tokens=3000`, JSON mode then text fallback.
+Weekly causal scoring uses DeepSeek V4 Flash (`deepseek-flash`), thinking mode, JSON output. Batches of **8 articles**, **first 400 characters** of extracted text. Title-only path in the same file still reads `GROQ_API_KEY` if used.
 
 ```
 pip install -r requirements.txt
@@ -171,7 +173,7 @@ python web_scrapper.py --preset india --limit 5
 
 `main.py` redirects stdout around `demo.py` because demo prints search/progress.
 
-Deps in `requirements.txt`: requests, groq, langchain-groq, langchain-core, pydantic, python-dotenv, feedparser, curl_cffi, trafilatura, beautifulsoup4, lxml. LangChain packages are listed but **not used** in current Python. `yfinance` is used and not listed.
+Deps in `requirements.txt`: requests, groq, langchain-groq, langchain-core, pydantic, python-dotenv, feedparser, curl_cffi, trafilatura, beautifulsoup4, lxml, yfinance. DeepSeek causal scoring uses `requests`. LangChain packages are listed but **not used** in current Python.
 
 ---
 
@@ -193,7 +195,8 @@ If asked to “go weekly” or “reduce LLM calls,” start from `less_llm_call
 
 - Keep ticker resolution dynamic (Yahoo `.NS`); no company→ticker dict unless requested.
 - Keep scraping in `lib/` + `web_scrapper.scrape_one`; do not invent a second fetch stack.
-- Groq sees **titles only** today; full-text LLM scoring is planned, not live.
+- Weekly `main.py` causal scoring uses **DeepSeek V4 Flash** on title + first 400 characters, in batches of 8.
+- Keep articles only when `causal_score >= 5`, `timing_plausible`, and `sentiment` matches the target’s weekly move (not the fund NAV sign).
 - `fetch_news_for_dates` already calls the LLM; `main.fetch_and_score_news` must not score again.
 - `app.py` `SAMPLE_DATA` and `data/fund_holding_data.json` use `instrument_name`; live `main.py` still uses `name` / `detail`.
 - Pipeline scrape in `main.py` is sequential; CLI scraper can use `--workers`.
@@ -205,9 +208,8 @@ If asked to “go weekly” or “reduce LLM calls,” start from `less_llm_call
 
 ## Known gaps
 
-- Holdings are loaded from `data/fund_holding_data.json` (Domestic Equities + REITs ≥ 2%). News/scrape/Groq not wired yet.
-- `fund_nav_history.json` and `fund_sector.json` are unused (needed for actual-vs-expected NAV and sector-aware news).
+- Investor-summary LLM call is not wired yet (Phase 5).
 - Holdings that fail ticker/price lookup are dropped and excluded from the average.
-- Title scoring can mismatch full-article meaning (seen in sample `result.json`).
+- Failed Google News resolves / thin extracts never reach DeepSeek.
 - RSS uses `requests`; page fetch uses `curl_cffi`.
 - Google News resolve depends on `data-n-a-sg` / `data-n-a-ts` and `garturlres`.

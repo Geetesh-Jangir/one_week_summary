@@ -265,3 +265,133 @@ def headline_holdings(priced_holdings: list[dict]) -> list[dict]:
     ]
     selected.sort(key=lambda item: item.get("nav_percentage") or 0, reverse=True)
     return selected
+
+
+FINANCIAL_KEYWORDS = {
+    "stock", "share", "shares", "equity", "market", "nifty", "sensex",
+    "bse", "nse", "trading", "rally", "crash", "bull", "bear",
+    "profit", "loss", "revenue", "earnings", "quarterly", "q1", "q2",
+    "q3", "q4", "results", "dividend", "buyback", "bonus", "split",
+    "merger", "acquisition", "takeover", "ipo", "listing", "delisting",
+    "board", "agm", "ceo", "cfo", "chairman", "director", "resign",
+    "appoint", "management",
+    "rbi", "sebi", "regulatory", "regulation", "compliance", "penalty",
+    "fine", "npa", "provisioning", "policy", "reform",
+    "bond", "debt", "loan", "credit", "rating", "downgrade", "upgrade",
+    "mutual fund", "etf", "futures", "options",
+    "sector", "industry", "bank", "banking", "pharma", "technology",
+    "energy", "infra", "infrastructure", "auto", "fmcg", "telecom",
+    "fii", "dii", "institutional", "investor", "analyst", "target",
+    "recommendation", "outlook", "forecast", "guidance",
+    "reit", "realty", "nav",
+}
+
+MAX_EVENTS_PER_TARGET = 5
+CAUSAL_SCORE_MIN = 5
+ARTICLE_EXCERPT_CHARS = 400
+
+
+def passes_keyword_filter(title: str, company_name: str, industry: str) -> bool:
+    """Generous keep: company tokens, industry, financial terms, or figures."""
+    title_lower = (title or "").lower()
+    company_parts = (
+        (company_name or "")
+        .lower()
+        .replace("ltd.", " ")
+        .replace("ltd", " ")
+        .replace("limited", " ")
+        .split()
+    )
+    significant_parts = [part for part in company_parts if len(part) > 2]
+    if any(part in title_lower for part in significant_parts):
+        return True
+    if industry and industry.lower() in title_lower:
+        return True
+    if any(keyword in title_lower for keyword in FINANCIAL_KEYWORDS):
+        return True
+    if any(marker in (title or "") for marker in ["₹", "Rs", "crore", "lakh", "%"]):
+        return True
+    return False
+
+
+def filter_articles_by_keyword(articles: list[dict], name: str, industry: str) -> list[dict]:
+    return [
+        article
+        for article in articles
+        if passes_keyword_filter(article.get("title") or "", name, industry)
+    ]
+
+
+def _labels_match(label_a: str, label_b: str) -> bool:
+    words_a = set((label_a or "").lower().split())
+    words_b = set((label_b or "").lower().split())
+    if not words_a or not words_b:
+        return False
+    overlap = len(words_a & words_b)
+    smaller = min(len(words_a), len(words_b))
+    return (overlap / smaller) >= 0.6
+
+
+def group_by_event(scored_articles: list[dict]) -> dict[str, list[dict]]:
+    groups = {}
+    for article in scored_articles:
+        label = (article.get("event_label") or "").strip().lower()
+        if not label:
+            label = (article.get("title") or "unlabeled")[:80].lower()
+        matched = None
+        for existing_label in groups:
+            if _labels_match(label, existing_label):
+                matched = existing_label
+                break
+        if matched:
+            groups[matched].append(article)
+        else:
+            groups[label] = [article]
+    return groups
+
+
+def select_final_events(groups: dict, max_events: int = MAX_EVENTS_PER_TARGET) -> list[dict]:
+    events = []
+    for label, articles in groups.items():
+        best = max(
+            articles,
+            key=lambda item: (
+                float(item.get("causal_score") or 0),
+                len(item.get("text") or ""),
+            ),
+        )
+        events.append(
+            {
+                "event_label": best.get("event_label") or label,
+                "event_summary": best.get("reasoning") or "",
+                "combined_causal_score": best.get("causal_score"),
+                "article_count": len(articles),
+                "best_article": best,
+            }
+        )
+    events.sort(key=lambda item: float(item.get("combined_causal_score") or 0), reverse=True)
+    ranked = []
+    for index, event in enumerate(events[:max_events], start=1):
+        article = event["best_article"]
+        ranked.append(
+            {
+                "event_rank": index,
+                "event_label": event["event_label"],
+                "event_summary": event["event_summary"],
+                "article_count": event["article_count"],
+                "title": article.get("title"),
+                "source": article.get("source"),
+                "published": article.get("published"),
+                "date": article.get("date"),
+                "link": article.get("link"),
+                "resolved_url": article.get("resolved_url"),
+                "text": (article.get("text") or "")[:ARTICLE_EXCERPT_CHARS],
+                "relevancy_score": article.get("relevancy_score"),
+                "causal_score": article.get("causal_score"),
+                "causal_link": article.get("causal_link"),
+                "timing_plausible": article.get("timing_plausible"),
+                "sentiment": article.get("sentiment"),
+                "reasoning": article.get("reasoning"),
+            }
+        )
+    return ranked
