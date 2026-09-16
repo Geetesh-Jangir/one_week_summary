@@ -58,6 +58,46 @@ def preferred_sentiment(change_pct, official_nav_change: float) -> str:
     return "negative" if official_nav_change < 0 else "positive"
 
 
+def _signed_pct(value) -> float | None:
+    if value is None:
+        return None
+    try:
+        return float(value)
+    except (TypeError, ValueError):
+        return None
+
+
+def article_matches_move_sentiment(target: dict, article: dict) -> bool:
+    """
+    Sentiment is checked against this name's weekly price, not the fund NAV.
+
+    Falling stock/sector: keep only negative stories.
+    Rising stock/sector: keep only positive stories (so offsets can appear
+    in the summary when NAV is down).
+    Flat or unknown: no sentiment gate.
+    """
+    change = _signed_pct(target.get("weekly_change_pct"))
+    article_sentiment = (article.get("sentiment") or "").strip().lower()
+    if change is None or change == 0:
+        return True
+    if change < 0:
+        return article_sentiment == "negative"
+    return article_sentiment == "positive"
+
+
+def target_vs_nav_role(target: dict, official_nav_change: float) -> str:
+    """drag = same direction as NAV; offset = moved the other way."""
+    signed = _signed_pct(target.get("weekly_nav_impact_pct"))
+    if signed is None:
+        signed = _signed_pct(target.get("weekly_change_pct"))
+    nav = _signed_pct(official_nav_change) or 0.0
+    if signed is None or nav == 0:
+        return "other"
+    if nav < 0:
+        return "offset" if signed > 0 else "drag"
+    return "offset" if signed < 0 else "drag"
+
+
 def group_priced_by_industry(holdings: list[dict]) -> dict[str, list[dict]]:
     groups = {}
     for holding in holdings:

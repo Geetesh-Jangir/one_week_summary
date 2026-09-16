@@ -10,6 +10,9 @@ DATA_DIR = ROOT / "data"
 HOLDINGS_FILE = DATA_DIR / "fund_holding_data.json"
 NAV_HISTORY_FILE = DATA_DIR / "fund_nav_history.json"
 SECTOR_FILE = DATA_DIR / "fund_sector.json"
+HOLDINGS_NAME = HOLDINGS_FILE.name
+NAV_HISTORY_NAME = NAV_HISTORY_FILE.name
+SECTOR_NAME = SECTOR_FILE.name
 
 EQUITY_ASSET_TYPES = {"Domestic Equities", "REITs & InvITs"}
 MIN_HOLDING_PCT = 2.0
@@ -187,10 +190,34 @@ def official_nav_week(
     }
 
 
+def available_fund_ids() -> list[str]:
+    """Subfolders of data/ that contain fund_holding_data.json."""
+    if not DATA_DIR.exists():
+        return []
+    ids = []
+    for path in sorted(DATA_DIR.iterdir()):
+        if path.is_dir() and (path / HOLDINGS_NAME).exists():
+            ids.append(path.name)
+    return ids
+
+
+def resolve_fund_data_dir(fund_id: str | None = None) -> Path:
+    """data/<fund_id>/ when a flag is passed, else the data/ root JSON files."""
+    if not fund_id:
+        return DATA_DIR
+    data_dir = DATA_DIR / fund_id
+    if not (data_dir / HOLDINGS_NAME).exists():
+        known = ", ".join(f"--{fid}" for fid in available_fund_ids()) or "(none)"
+        raise FileNotFoundError(
+            f"No fund data at {data_dir}. Known funds: {known}"
+        )
+    return data_dir
+
+
 def load_fund_bundle(data_dir: Path = DATA_DIR) -> dict:
-    holdings = load_holdings(data_dir / HOLDINGS_FILE.name)
-    nav_history = load_nav_history(data_dir / NAV_HISTORY_FILE.name)
-    sectors = load_sectors(data_dir / SECTOR_FILE.name)
+    holdings = load_holdings(data_dir / HOLDINGS_NAME)
+    nav_history = load_nav_history(data_dir / NAV_HISTORY_NAME)
+    sectors = load_sectors(data_dir / SECTOR_NAME)
     large_sectors = sectors_at_least(sectors)
     return {
         "holdings": holdings,

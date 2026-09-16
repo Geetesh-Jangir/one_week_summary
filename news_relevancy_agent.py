@@ -12,6 +12,8 @@ from dotenv import load_dotenv
 from groq import Groq
 import requests
 
+from stocks_for_news import target_vs_nav_role
+
 load_dotenv()
 
 logger = logging.getLogger(__name__)
@@ -272,7 +274,12 @@ def _first_chars(text: str, max_chars: int = CAUSAL_MAX_CHARS) -> str:
     return raw[:max_chars].rstrip()
 
 
-def _llm_json_chat(system_prompt: str, user_prompt: str, max_tokens: int = CAUSAL_MAX_TOKENS) -> dict:
+def _llm_json_chat(
+    system_prompt: str,
+    user_prompt: str,
+    max_tokens: int = CAUSAL_MAX_TOKENS,
+    thinking: bool = False,
+) -> dict:
     if not DEEPSEEK_API_KEY:
         raise RuntimeError("DEEPSEEK_API_KEY not configured")
     url = DEEPSEEK_BASE_URL.rstrip("/") + "/chat/completions"
@@ -284,7 +291,7 @@ def _llm_json_chat(system_prompt: str, user_prompt: str, max_tokens: int = CAUSA
         ],
         "max_tokens": max_tokens,
         "response_format": {"type": "json_object"},
-        "thinking": {"type": "disabled"},
+        "thinking": {"type": "enabled" if thinking else "disabled"},
     }
     response = requests.post(
         url,
@@ -298,7 +305,8 @@ def _llm_json_chat(system_prompt: str, user_prompt: str, max_tokens: int = CAUSA
     if not response.ok:
         raise RuntimeError(f"DeepSeek HTTP {response.status_code}: {response.text[:500]}")
     message = (response.json().get("choices") or [{}])[0].get("message") or {}
-    parsed = extract_json_from_text(message.get("content") or "")
+    content = message.get("content") or ""
+    parsed = extract_json_from_text(content)
     if parsed:
         return parsed
     raise ValueError("Invalid JSON response from DeepSeek")
@@ -393,7 +401,7 @@ Score these {count} articles:
 
 Score all {count} articles as json. Assign the SAME event_label to articles about the same underlying event.
 If TARGET_SENTIMENT is negative, do not give causal_score >= 5 to bullish performance/upgrade/beat stories.
-If TARGET_SENTIMENT is positive, do not give causal_score >= 5 to bearish deterioration stories."""
+If TARGET_SENTIMENT is positive, only bullish stories can explain this name even if the fund NAV fell."""
 
 
 def _score_causal_batch(target: dict, batch: list[dict], price_context: dict) -> list[dict]:
@@ -433,18 +441,60 @@ def score_articles_causal(
     return {"scored_news": scored}
 
 
-SUMMARY_SYSTEM_PROMPT = """You write a short Indian mutual-fund investor note.
+SUMMARY_SYSTEM_PROMPT = """You write an Indian mutual-fund investor note.
 
 Return a json object with one key:
 {"investor_summary": "..."}
 
-Rules:
-- 4 to 6 sentences, at most 120 words.
-- Cover the official NAV move, main drags, main offsets, and the strongest news events from the facts.
-- Do not list article titles, URLs, or every holding.
-- Do not invent numbers or events that are not in the facts.
-- If news is thin, say the move looks mostly price/flow rather than a single company catalyst.
+Length:
+- About 380 to 420 words (roughly 2.5 times a short 160-word note).
+- 12 to 18 sentences. Plain paragraphs, not bullets.
+
+Voice:
+- Simple, professional financial English. Clear, not flashy.
+- Prefer words such as: NAV, drag, offset, allocation, outflow, inflows,
+  provisioning, downgrade, upgrade, earnings, strike, liquidity, FII,
+  valuation, catalyst, headwind, tailwind.
+- Do not use slang, hype, or filler.
+
+What to write:
+- Open with the official NAV move for the week and the main equity drag or lift.
+- Then cover EVERY name in news_backed. For each one, pair the move with the news reason.
+  Pattern: "SBI Bank fell about 2.5% as bank unions called a strike and reports
+  pointed to foreign investors reducing exposure."
+- If NAV fell, explain the drop with drag names and their bearish news first.
+  Then cover offsets that still rose, with their bullish news.
+- If NAV rose, reverse that order.
+- The reader should finish knowing WHY names moved, not only by how much.
+- Never mention a stock or sector with only a percentage and no reason
+  unless it is listed under no_news_catalyst. For those, say the move looks
+  like price or flow action without a clear news catalyst.
+- Do not list article titles, URLs, or source names.
+- Do not invent numbers, FII flows, strikes, earnings, or any event not in the facts.
+- If news_backed is empty, say the NAV move looks mostly price/flow rather than a news catalyst.
 """
+
+
+def _event_briefs(news: list[dict], limit: int = 3) -> list[dict]:
+    briefs = []
+    for item in news[:limit]:
+        why = (item.get("event_summary") or item.get("reasoning") or "").strip()
+        briefs.append(
+            {
+                "event_label": item.get("event_label") or "",
+                "sentiment": item.get("sentiment"),
+                "why": why[:400],
+            }
+        )
+    return briefs
+
+
+def _compact_price_row(item: dict) -> dict:
+    return {
+        "name": item.get("name"),
+        "weekly_change_pct": item.get("weekly_change_pct"),
+        "weekly_nav_impact_pct": item.get("weekly_nav_impact_pct"),
+    }
 
 
 def build_summary_facts(
@@ -455,46 +505,45 @@ def build_summary_facts(
     sector_moves: list[dict],
     news_targets: list[dict],
 ) -> dict:
-    events = []
+    nav_change = official_nav.get("change_pct")
+    news_backed = []
+    names_with_news = set()
     for target in news_targets:
         news = target.get("relevant_news") or []
         if not news:
             continue
-        top = news[0]
-        events.append(
+        name = target.get("name")
+        names_with_news.add(name)
+        news_backed.append(
             {
-                "name": target.get("name"),
+                "name": name,
                 "type": target.get("type"),
                 "scope": target.get("scope"),
-                "event_label": top.get("event_label"),
-                "event_summary": (top.get("event_summary") or top.get("reasoning") or "")[:180],
+                "role": target_vs_nav_role(target, nav_change),
+                "weekly_change_pct": target.get("weekly_change_pct"),
+                "weekly_nav_impact_pct": target.get("weekly_nav_impact_pct"),
+                "news": _event_briefs(news),
             }
         )
+
+    no_news_catalyst = []
+    for item in list(drags or [])[:5] + list(offsets or [])[:5]:
+        name = item.get("name")
+        if name in names_with_news:
+            continue
+        no_news_catalyst.append(_compact_price_row(item))
+
     return {
         "week": {
             "start": official_nav.get("start"),
             "end": official_nav.get("end"),
         },
-        "official_nav_change_pct": official_nav.get("change_pct"),
+        "official_nav_change_pct": nav_change,
         "official_nav_start": official_nav.get("start_nav"),
         "official_nav_end": official_nav.get("end_nav"),
         "approx_equity_impact_pct": approx_equity_impact_pct,
-        "drags": [
-            {
-                "name": item.get("name"),
-                "weekly_change_pct": item.get("weekly_change_pct"),
-                "weekly_nav_impact_pct": item.get("weekly_nav_impact_pct"),
-            }
-            for item in (drags or [])[:3]
-        ],
-        "offsets": [
-            {
-                "name": item.get("name"),
-                "weekly_change_pct": item.get("weekly_change_pct"),
-                "weekly_nav_impact_pct": item.get("weekly_nav_impact_pct"),
-            }
-            for item in (offsets or [])[:3]
-        ],
+        "drags": [_compact_price_row(item) for item in (drags or [])[:5]],
+        "offsets": [_compact_price_row(item) for item in (offsets or [])[:5]],
         "sector_wide": [
             {
                 "sector": row.get("sector"),
@@ -503,26 +552,34 @@ def build_summary_facts(
             for row in (sector_moves or [])
             if row.get("scope") == "sector_wide"
         ],
-        "events": events,
+        "news_backed": news_backed,
+        "no_news_catalyst": no_news_catalyst,
     }
 
 
 def write_investor_summary(facts: dict) -> str:
-    """One DeepSeek call. Facts only. Returns a short investor paragraph."""
+    """One DeepSeek call. Facts only. Returns a news-backed investor note."""
     if not DEEPSEEK_API_KEY:
         logger.error("DEEPSEEK_API_KEY not set in environment")
         return ""
     user_prompt = (
-        "Write the investor_summary json from these facts only:\n"
+        "Write the investor_summary json from these facts only. "
+        "For every news_backed name, state the weekly move and the news reason "
+        "in the same sentence. Do not write percentage-only lines.\n"
         + json.dumps(facts, ensure_ascii=False, indent=2)
     )
     try:
-        parsed = _llm_json_chat(SUMMARY_SYSTEM_PROMPT, user_prompt, max_tokens=800)
+        parsed = _llm_json_chat(
+            SUMMARY_SYSTEM_PROMPT,
+            user_prompt,
+            max_tokens=8000,
+            thinking=True,
+        )
     except Exception as exc:
         logger.error("Investor summary failed: %s", exc)
         return ""
     text = str(parsed.get("investor_summary") or "").strip()
     words = text.split()
-    if len(words) > 140:
-        text = " ".join(words[:140]).rstrip(".,;") + "."
+    if len(words) > 450:
+        text = " ".join(words[:450]).rstrip(".,;") + "."
     return text

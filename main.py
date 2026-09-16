@@ -2,18 +2,25 @@
 Main entry point: weekly prices, allowlisted RSS, scrape, causal scoring, and investor summary.
 """
 
+import argparse
 import json
 import logging
 import io
 import contextlib
-import sys
+import shutil
 from concurrent.futures import ThreadPoolExecutor, as_completed
 from pathlib import Path
 
-from fund_data import MIN_HOLDING_PCT, load_fund_bundle
+from fund_data import (
+    MIN_HOLDING_PCT,
+    available_fund_ids,
+    load_fund_bundle,
+    resolve_fund_data_dir,
+)
 from demo import get_fund_weekly_prices
 from stocks_for_news import (
     CAUSAL_SCORE_MIN,
+    article_matches_move_sentiment,
     build_sector_moves,
     filter_articles_by_keyword,
     group_by_event,
@@ -39,6 +46,15 @@ ROOT = Path(__file__).resolve().parent
 OUTPUT_SCRAPPER_DIR = ROOT / "output-scrapper"
 OUT_DIR = ROOT / "out"
 SCRAPE_WORKERS = 8
+
+
+def clear_run_output_dirs() -> None:
+    """Wipe scrape dumps and previous result.json so this run writes only fresh files."""
+    for path in (OUT_DIR, OUTPUT_SCRAPPER_DIR):
+        if path.exists():
+            shutil.rmtree(path)
+        path.mkdir(parents=True, exist_ok=True)
+    logger.info("Cleared %s and %s", OUT_DIR.name, OUTPUT_SCRAPPER_DIR.name)
 
 
 def sort_by_weekly_nav_impact(holdings: list[dict]) -> list[dict]:
@@ -183,12 +199,10 @@ def apply_causal_scores(target: dict, priced: list[dict], official_nav: dict) ->
         if not scores:
             continue
         article.update(scores)
-        wanted = (target.get("target_sentiment") or "").strip().lower()
-        article_sentiment = (article.get("sentiment") or "").strip().lower()
         if (
             float(article.get("causal_score") or 0) >= CAUSAL_SCORE_MIN
             and article.get("timing_plausible")
-            and article_sentiment == wanted
+            and article_matches_move_sentiment(target, article)
         ):
             scored_articles.append(article)
 
@@ -197,9 +211,36 @@ def apply_causal_scores(target: dict, priced: list[dict], official_nav: dict) ->
     target["scored_count"] = len(scored_articles)
 
 
-def main():
-    logger.info("Loading fund holdings, NAV history, and sectors from data/")
-    bundle = load_fund_bundle()
+def parse_args(argv=None):
+    parser = argparse.ArgumentParser(description="Weekly fund NAV news pipeline")
+    fund_group = parser.add_mutually_exclusive_group()
+    for fund_id in available_fund_ids():
+        fund_group.add_argument(
+            f"--{fund_id}",
+            action="store_const",
+            const=fund_id,
+            dest="fund",
+            help=f"Load holdings, NAV, and sectors from data/{fund_id}/",
+        )
+    parser.add_argument(
+        "--resume-failed",
+        action="store_true",
+        help="Re-score names listed in RESUME_FAILED_NAMES",
+    )
+    return parser.parse_args(argv)
+
+
+def result_json_path_for(fund_id: str | None) -> Path:
+    if fund_id:
+        return OUTPUT_SCRAPPER_DIR / fund_id / "result.json"
+    return OUTPUT_SCRAPPER_DIR / "result.json"
+
+
+def main(fund_id: str | None = None):
+    clear_run_output_dirs()
+    data_dir = resolve_fund_data_dir(fund_id)
+    logger.info("Loading fund holdings, NAV history, and sectors from %s", data_dir)
+    bundle = load_fund_bundle(data_dir)
     official_nav = bundle["official_nav"]
     price_universe = bundle["price_universe"]
     large_sectors = bundle["large_sectors"]
@@ -216,7 +257,7 @@ def main():
 
     with contextlib.redirect_stdout(io.StringIO()):
         fund_result = get_fund_weekly_prices(
-            "Fund",
+            fund_id or "Fund",
             price_universe,
             official_nav["start"],
             official_nav["end"],
@@ -230,20 +271,6 @@ def main():
         for item in priced
         if float(item.get("nav_percentage") or 0) < MIN_HOLDING_PCT
     ]
-
-    approx_equity_impact_pct = round(
-        sum(float(item.get("weekly_nav_impact_pct") or 0) for item in headline),
-        3,
-    )
-    average_signed = (
-        round(
-            sum(float(item.get("weekly_nav_impact_pct") or 0) for item in headline)
-            / len(headline),
-            3,
-        )
-        if headline
-        else 0.0
-    )
 
     sector_moves = build_sector_moves(priced, large_sectors)
     news_targets = select_news_targets(headline, sector_moves, official_change)
@@ -312,8 +339,10 @@ def main():
             target.get("scored_count", 0),
         )
 
-    stock_moves = [target for target in news_targets if target.get("type") == "stock"]
-    total_events = sum(len(target.get("relevant_news") or []) for target in news_targets)
+    approx_equity_impact_pct = round(
+        sum(float(item.get("weekly_nav_impact_pct") or 0) for item in headline),
+        3,
+    )
 
     logger.info("Writing Phase 5 investor summary...")
     summary_facts = build_summary_facts(
@@ -330,62 +359,15 @@ def main():
     else:
         logger.warning("Investor summary was empty")
 
-    output = {
-        "week": {
-            "start": official_nav["start"],
-            "end": official_nav["end"],
-        },
-        "official_nav": official_nav,
-        "approx_equity_impact_pct": approx_equity_impact_pct,
-        "average_signed_nav_impact": average_signed,
-        "investor_summary": investor_summary,
-        "holdings": headline,
-        "price_only": price_only,
-        "skipped": skipped,
-        "sectors": [
-            {
-                "sector": row["sector"],
-                "percentage": row["percentage"],
-                "overseas": row["overseas"],
-            }
-            for row in large_sectors
-        ],
-        "sector_moves": sector_moves,
-        "stock_moves": stock_moves,
-        "offsets": offsets,
-        "drags": drags,
-        "news_targets": news_targets,
-    }
-
-    OUTPUT_SCRAPPER_DIR.mkdir(parents=True, exist_ok=True)
-    result_json_path = OUTPUT_SCRAPPER_DIR / "result.json"
-    result_json_str = json.dumps(output, indent=2, ensure_ascii=False)
-    result_json_path.write_text(result_json_str, encoding="utf-8")
-    logger.info("Saved Phase 5 result JSON to %s", result_json_path)
-    summary = {
-        "week": output["week"],
-        "official_nav": official_nav,
-        "approx_equity_impact_pct": approx_equity_impact_pct,
-        "investor_summary": investor_summary,
-        "harvested_articles": total_harvested,
-        "unique_urls_scraped": len(articles_by_link),
-        "successful_scrapes": scraped_ok,
-        "total_events": total_events,
-        "news_targets": [
-            {
-                "type": target.get("type"),
-                "name": target.get("name"),
-                "scope": target.get("scope"),
-                "target_sentiment": target.get("target_sentiment"),
-                "harvest_count": target.get("harvest_count", 0),
-                "keyword_count": target.get("keyword_count", 0),
-                "event_count": target.get("article_count", 0),
-            }
-            for target in news_targets
-        ],
-        "result_path": str(result_json_path),
-    }
-    print(json.dumps(summary, indent=2, ensure_ascii=False))
+    result_json_path = result_json_path_for(fund_id)
+    result_json_path.parent.mkdir(parents=True, exist_ok=True)
+    result_json_path.write_text(
+        json.dumps({"investor_summary": investor_summary.strip()}, indent=2, ensure_ascii=False)
+        + "\n",
+        encoding="utf-8",
+    )
+    logger.info("Saved investor summary to %s", result_json_path)
+    print(investor_summary.strip())
 
 
 RESUME_FAILED_NAMES = {
@@ -395,15 +377,15 @@ RESUME_FAILED_NAMES = {
 }
 
 
-def resume_failed_targets(names: set[str]) -> None:
+def resume_failed_targets(names: set[str], fund_id: str | None = None) -> None:
     """Re-harvest cached scrapes and Groq-score names that missed the daily quota."""
-    result_json_path = OUTPUT_SCRAPPER_DIR / "result.json"
+    result_json_path = result_json_path_for(fund_id)
     output = json.loads(result_json_path.read_text(encoding="utf-8"))
-    bundle = load_fund_bundle()
+    bundle = load_fund_bundle(resolve_fund_data_dir(fund_id))
     official_nav = bundle["official_nav"]
     with contextlib.redirect_stdout(io.StringIO()):
         fund_result = get_fund_weekly_prices(
-            "Fund",
+            fund_id or "Fund",
             bundle["price_universe"],
             official_nav["start"],
             official_nav["end"],
@@ -463,7 +445,8 @@ def resume_failed_targets(names: set[str]) -> None:
 
 
 if __name__ == "__main__":
-    if "--resume-failed" in sys.argv:
-        resume_failed_targets(RESUME_FAILED_NAMES)
+    args = parse_args()
+    if args.resume_failed:
+        resume_failed_targets(RESUME_FAILED_NAMES, args.fund)
     else:
-        main()
+        main(args.fund)
