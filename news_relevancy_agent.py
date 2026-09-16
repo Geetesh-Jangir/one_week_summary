@@ -284,8 +284,7 @@ def _llm_json_chat(system_prompt: str, user_prompt: str, max_tokens: int = CAUSA
         ],
         "max_tokens": max_tokens,
         "response_format": {"type": "json_object"},
-        "reasoning_effort": "high",
-        "thinking": {"type": "enabled"},
+        "thinking": {"type": "disabled"},
     }
     response = requests.post(
         url,
