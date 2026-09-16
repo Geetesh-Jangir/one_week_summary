@@ -1,0 +1,110 @@
+[
+    {
+      "sector": "Banks",
+      "percentage": 29.6
+    },
+    {
+      "sector": "Pharmaceuticals & Biotechnology",
+      "percentage": 8.22
+    },
+    {
+      "sector": "Consumer Durables",
+      "percentage": 6.62
+    },
+    {
+      "sector": "Finance",
+      "percentage": 6.52
+    },
+    {
+      "sector": "Automobiles",
+      "percentage": 6.46
+    },
+    {
+      "sector": "Telecom - Services",
+      "percentage": 6.23
+    },
+    {
+      "sector": "Retailing",
+      "percentage": 5.15
+    },
+    {
+      "sector": "Petroleum Products",
+      "percentage": 4.78
+    },
+    {
+      "sector": "It - Software",
+      "percentage": 2.76
+    },
+    {
+      "sector": "Capital Markets",
+      "percentage": 2.38
+    },
+    {
+      "sector": "Cement & Cement Products",
+      "percentage": 2.24
+    },
+    {
+      "sector": "Agricultural, Commercial & Construction Vehicles",
+      "percentage": 2.02
+    },
+    {
+      "sector": "Construction",
+      "percentage": 1.99
+    },
+    {
+      "sector": "Transport Services",
+      "percentage": 1.97
+    },
+    {
+      "sector": "Power",
+      "percentage": 1.83
+    },
+    {
+      "sector": "Beverages",
+      "percentage": 1.78
+    },
+    {
+      "sector": "Healthcare Services",
+      "percentage": 1.72
+    },
+    {
+      "sector": "Agricultural Food & Other Products",
+      "percentage": 1.31
+    },
+    {
+      "sector": "Chemicals & Petrochemicals",
+      "percentage": 0.89
+    },
+    {
+      "sector": "Transport Infrastructure",
+      "percentage": 0.87
+    },
+    {
+      "sector": "Personal Products",
+      "percentage": 0.66
+    },
+    {
+      "sector": "Electrical Equipment",
+      "percentage": 0.62
+    },
+    {
+      "sector": "Insurance",
+      "percentage": 0.58
+    },
+    {
+      "sector": "Aerospace & Defense",
+      "percentage": 0.47
+    },
+    {
+      "sector": "Realty",
+      "percentage": 0.37
+    },
+    {
+      "sector": "Industrial Products",
+      "percentage": 0.29
+    },
+    {
+      "sector": "Non - Ferrous Metals",
+      "percentage": 0.23
+    }
+  ]

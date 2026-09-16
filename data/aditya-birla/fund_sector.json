@@ -1,0 +1,122 @@
+[
+    {
+      "sector": "Banks",
+      "percentage": 26.29
+    },
+    {
+      "sector": "It - Software",
+      "percentage": 7.38
+    },
+    {
+      "sector": "Retailing",
+      "percentage": 7.34
+    },
+    {
+      "sector": "Finance",
+      "percentage": 7
+    },
+    {
+      "sector": "Automobiles",
+      "percentage": 6.95
+    },
+    {
+      "sector": "Petroleum Products",
+      "percentage": 5.43
+    },
+    {
+      "sector": "Pharmaceuticals & Biotechnology",
+      "percentage": 3.67
+    },
+    {
+      "sector": "Construction",
+      "percentage": 3.4
+    },
+    {
+      "sector": "Telecom - Services",
+      "percentage": 3.25
+    },
+    {
+      "sector": "Auto Components",
+      "percentage": 3.01
+    },
+    {
+      "sector": "Power",
+      "percentage": 2.95
+    },
+    {
+      "sector": "Insurance",
+      "percentage": 2.85
+    },
+    {
+      "sector": "Non - Ferrous Metals",
+      "percentage": 2.81
+    },
+    {
+      "sector": "Consumer Durables",
+      "percentage": 2.5
+    },
+    {
+      "sector": "Beverages",
+      "percentage": 2.24
+    },
+    {
+      "sector": "Cement & Cement Products",
+      "percentage": 1.93
+    },
+    {
+      "sector": "Personal Products",
+      "percentage": 1.52
+    },
+    {
+      "sector": "Healthcare Services",
+      "percentage": 1.26
+    },
+    {
+      "sector": "Food Products",
+      "percentage": 1.24
+    },
+    {
+      "sector": "Ferrous Metals",
+      "percentage": 1.2
+    },
+    {
+      "sector": "Realty",
+      "percentage": 0.83
+    },
+    {
+      "sector": "Fertilizers & Agrochemicals",
+      "percentage": 0.78
+    },
+    {
+      "sector": "Diversified Fmcg",
+      "percentage": 0.73
+    },
+    {
+      "sector": "Industrial Products",
+      "percentage": 0.62
+    },
+    {
+      "sector": "Aerospace & Defense",
+      "percentage": 0.61
+    },
+    {
+      "sector": "Transport Services",
+      "percentage": 0.35
+    },
+    {
+      "sector": "Financial Technology (fintech)",
+      "percentage": 0.32
+    },
+    {
+      "sector": "Diversified Metals",
+      "percentage": 0.3
+    },
+    {
+      "sector": "Industrial Manufacturing",
+      "percentage": 0.25
+    },
+    {
+      "sector": "Electrical Equipment",
+      "percentage": 0.17
+    }
+  ]
