@@ -2,7 +2,7 @@
 
 This is a **Python pipeline** that explains Indian mutual-fund NAV moves using NSE prices (Yahoo Finance), Google News RSS, DeepSeek V4 Flash causal scoring, and publisher-page scraping.
 
-**Implemented today:** Phase 4 of the weekly pipeline is live in `python main.py`: JSON load, weekly Yahoo prices, news-target routing, allowlisted RSS, **keyword filter**, **parallel scrape**, **DeepSeek V4 Flash causal scoring in batches of 8** (title + first 400 characters), and **event grouping** (3–5 events per target). Keep rule: `causal_score >= 5`, `timing_plausible`, and article `sentiment` matches that target’s weekly price direction. Short investor summary is **not** wired yet.
+**Implemented today:** Phase 5 is live in `python main.py`: Phase 4 funnel plus **one DeepSeek V4 Flash investor summary** (~120 words) from structured facts (NAV, drags, offsets, event labels). Thinking is off.
 
 **Live input is `data/`.** Hardcoded sample rows are no longer used by `main.py`.
 
@@ -21,7 +21,7 @@ This is a **Python pipeline** that explains Indian mutual-fund NAV moves using N
 
 **Live input is `data/`.** `main.py` loads holdings, NAV, and sectors from JSON.
 
-`python main.py` (Phase 4): load JSON → weekly prices → news targets → allowlisted RSS → keyword filter → scrape unique URLs → DeepSeek V4 Flash causal scores in batches of 8 (first 400 characters) → keep `causal_score >= 5` and `timing_plausible` and `sentiment == target_sentiment` → 3–5 events per target → `output-scrapper/result.json`. **No investor summary LLM yet.**
+`python main.py` (Phase 5): load JSON → weekly prices → news targets → allowlisted RSS → keyword filter → scrape unique URLs → DeepSeek V4 Flash causal scores in batches of 8 (first 400 characters) → keep `causal_score >= 5` and `timing_plausible` and `sentiment == target_sentiment` → 3–5 events per target → **one DeepSeek investor summary** → `output-scrapper/result.json`.
 
 ```
 main.py
@@ -31,6 +31,7 @@ main.py
   app.fetch_news_for_week
   web_scrapper.scrape_one
   news_relevancy_agent.score_articles_causal
+  news_relevancy_agent.write_investor_summary
 ```
 
 Formulas (live):
@@ -59,7 +60,7 @@ News dates are **calendar days in IST**, not trading sessions. Price “t-1 / t-
 | `demo.py` | Ticker search, last two closes (legacy), weekly prices, NAV math |
 | `stocks_for_news.py` | Sector vs stock news targets, keyword filter, event grouping |
 | `app.py` | Google News RSS: weekly harvest + publisher allowlist; legacy T-1/T-2 scoring CLI |
-| `news_relevancy_agent.py` | Groq title-only scorer (legacy) + DeepSeek V4 Flash batched causal scoring (400-char clips) |
+| `news_relevancy_agent.py` | Groq title-only scorer (legacy) + DeepSeek V4 Flash batched causal scoring (400-char clips) + investor summary |
 | `web_scrapper.py` | `scrape_one`, `_write_record`, CLI (`--preset india`) |
 | `lib/fetch.py` | `curl_cffi` TLS impersonation + retries |
 | `lib/google_news.py` | Google News `batchexecute` publisher URL resolve |
@@ -208,7 +209,7 @@ If asked to “go weekly” or “reduce LLM calls,” start from `less_llm_call
 
 ## Known gaps
 
-- Investor-summary LLM call is not wired yet (Phase 5).
+- Investor-summary LLM is live (Phase 5): one DeepSeek call on facts, not article bodies.
 - Holdings that fail ticker/price lookup are dropped and excluded from the average.
 - Failed Google News resolves / thin extracts never reach DeepSeek.
 - RSS uses `requests`; page fetch uses `curl_cffi`.

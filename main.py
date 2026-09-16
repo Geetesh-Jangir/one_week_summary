@@ -1,7 +1,5 @@
 """
-Main entry point: weekly prices, allowlisted RSS, scrape, and causal scoring (Phase 4).
-
-Investor summary LLM is not run in this phase.
+Main entry point: weekly prices, allowlisted RSS, scrape, causal scoring, and investor summary.
 """
 
 import json
@@ -26,7 +24,11 @@ from stocks_for_news import (
     select_offsets,
 )
 from app import fetch_news_for_week, publisher_host_allowlisted
-from news_relevancy_agent import score_articles_causal
+from news_relevancy_agent import (
+    build_summary_facts,
+    score_articles_causal,
+    write_investor_summary,
+)
 from lib.fetch import thread_session
 from web_scrapper import scrape_one, _write_record
 
@@ -313,6 +315,21 @@ def main():
     stock_moves = [target for target in news_targets if target.get("type") == "stock"]
     total_events = sum(len(target.get("relevant_news") or []) for target in news_targets)
 
+    logger.info("Writing Phase 5 investor summary...")
+    summary_facts = build_summary_facts(
+        official_nav,
+        approx_equity_impact_pct,
+        drags,
+        offsets,
+        sector_moves,
+        news_targets,
+    )
+    investor_summary = write_investor_summary(summary_facts)
+    if investor_summary:
+        logger.info("Investor summary ready (%s words)", len(investor_summary.split()))
+    else:
+        logger.warning("Investor summary was empty")
+
     output = {
         "week": {
             "start": official_nav["start"],
@@ -321,6 +338,7 @@ def main():
         "official_nav": official_nav,
         "approx_equity_impact_pct": approx_equity_impact_pct,
         "average_signed_nav_impact": average_signed,
+        "investor_summary": investor_summary,
         "holdings": headline,
         "price_only": price_only,
         "skipped": skipped,
@@ -343,11 +361,12 @@ def main():
     result_json_path = OUTPUT_SCRAPPER_DIR / "result.json"
     result_json_str = json.dumps(output, indent=2, ensure_ascii=False)
     result_json_path.write_text(result_json_str, encoding="utf-8")
-    logger.info("Saved Phase 4 result JSON to %s", result_json_path)
+    logger.info("Saved Phase 5 result JSON to %s", result_json_path)
     summary = {
         "week": output["week"],
         "official_nav": official_nav,
         "approx_equity_impact_pct": approx_equity_impact_pct,
+        "investor_summary": investor_summary,
         "harvested_articles": total_harvested,
         "unique_urls_scraped": len(articles_by_link),
         "successful_scrapes": scraped_ok,

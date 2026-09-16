@@ -7,9 +7,9 @@ alwaysApply: true
 
 Read `AGENTS.md` first. It is the source of truth for what is **implemented** vs **planned**.
 
-- Live system (Phase 4): `python main.py` loads `data/*.json`, weekly prices, news targets, allowlisted RSS, scrape, DeepSeek V4 Flash causal scoring (batches of 8, first 400 characters), 3–5 events per target. Keep only if causal_score >= 5, timing_plausible, and sentiment matches the name’s weekly move. No investor-summary LLM yet.
+- Live system (Phase 5): `python main.py` loads `data/*.json`, weekly prices, news targets, allowlisted RSS, scrape, DeepSeek V4 Flash causal scoring (batches of 8, first 400 characters, thinking off), 3–5 events per target, then one DeepSeek investor summary. Keep only if causal_score >= 5, timing_plausible, and sentiment matches the name’s weekly move.
 - Holdings schema: `instrument_name`, float `percentage`, `industry`, `asset_type`. Filter **Domestic Equities** and **REITs** before Yahoo ticker lookup. Skip cash/debt/overseas.
-- Not live yet: Phase 5 investor summary and factor-graph (`direct_indirect_relationship.md`).
+- Not live yet: factor-graph (`direct_indirect_relationship.md`).
 - Entry point: `python main.py`. Output: `output-scrapper/result.json`.
 - Secrets stay in `.env` (`DEEPSEEK_API_KEY`). Do not commit them.
 - Keep ticker lookup dynamic (Yahoo `.NS`). Reuse `lib/` + `web_scrapper.scrape_one` for fetching when news is added.

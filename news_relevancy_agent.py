@@ -431,3 +431,98 @@ def score_articles_causal(
         batch = articles[start : start + batch_size]
         scored.extend(_score_causal_batch(target, batch, price_context))
     return {"scored_news": scored}
+
+
+SUMMARY_SYSTEM_PROMPT = """You write a short Indian mutual-fund investor note.
+
+Return a json object with one key:
+{"investor_summary": "..."}
+
+Rules:
+- 4 to 6 sentences, at most 120 words.
+- Cover the official NAV move, main drags, main offsets, and the strongest news events from the facts.
+- Do not list article titles, URLs, or every holding.
+- Do not invent numbers or events that are not in the facts.
+- If news is thin, say the move looks mostly price/flow rather than a single company catalyst.
+"""
+
+
+def build_summary_facts(
+    official_nav: dict,
+    approx_equity_impact_pct: float,
+    drags: list[dict],
+    offsets: list[dict],
+    sector_moves: list[dict],
+    news_targets: list[dict],
+) -> dict:
+    events = []
+    for target in news_targets:
+        news = target.get("relevant_news") or []
+        if not news:
+            continue
+        top = news[0]
+        events.append(
+            {
+                "name": target.get("name"),
+                "type": target.get("type"),
+                "scope": target.get("scope"),
+                "event_label": top.get("event_label"),
+                "event_summary": (top.get("event_summary") or top.get("reasoning") or "")[:180],
+            }
+        )
+    return {
+        "week": {
+            "start": official_nav.get("start"),
+            "end": official_nav.get("end"),
+        },
+        "official_nav_change_pct": official_nav.get("change_pct"),
+        "official_nav_start": official_nav.get("start_nav"),
+        "official_nav_end": official_nav.get("end_nav"),
+        "approx_equity_impact_pct": approx_equity_impact_pct,
+        "drags": [
+            {
+                "name": item.get("name"),
+                "weekly_change_pct": item.get("weekly_change_pct"),
+                "weekly_nav_impact_pct": item.get("weekly_nav_impact_pct"),
+            }
+            for item in (drags or [])[:3]
+        ],
+        "offsets": [
+            {
+                "name": item.get("name"),
+                "weekly_change_pct": item.get("weekly_change_pct"),
+                "weekly_nav_impact_pct": item.get("weekly_nav_impact_pct"),
+            }
+            for item in (offsets or [])[:3]
+        ],
+        "sector_wide": [
+            {
+                "sector": row.get("sector"),
+                "avg_weekly_change_pct": row.get("avg_weekly_change_pct"),
+            }
+            for row in (sector_moves or [])
+            if row.get("scope") == "sector_wide"
+        ],
+        "events": events,
+    }
+
+
+def write_investor_summary(facts: dict) -> str:
+    """One DeepSeek call. Facts only. Returns a short investor paragraph."""
+    if not DEEPSEEK_API_KEY:
+        logger.error("DEEPSEEK_API_KEY not set in environment")
+        return ""
+    user_prompt = (
+        "Write the investor_summary json from these facts only:\n"
+        + json.dumps(facts, ensure_ascii=False, indent=2)
+    )
+    try:
+        parsed = _llm_json_chat(SUMMARY_SYSTEM_PROMPT, user_prompt, max_tokens=800)
+    except Exception as exc:
+        logger.error("Investor summary failed: %s", exc)
+        return ""
+    text = str(parsed.get("investor_summary") or "").strip()
+    words = text.split()
+    if len(words) > 140:
+        text = " ".join(words[:140]).rstrip(".,;") + "."
+    return text
