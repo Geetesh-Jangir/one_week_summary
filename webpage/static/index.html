@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Fund Insight</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600&family=Source+Sans+3:wght@400;500;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="/styles.css" />
+</head>
+<body>
+  <div class="app">
+    <aside class="rail">
+      <header class="brand">
+        <p class="eyebrow">Weekly desk</p>
+        <h1>Fund Insight</h1>
+        <p class="lede">Select a scheme, then run the news-backed NAV note.</p>
+      </header>
+      <nav class="fund-list" id="fund-list" aria-label="Funds">
+        <p class="muted">Loading funds…</p>
+      </nav>
+      <div class="rail-actions">
+        <button id="run-btn" type="button" disabled title="Select a fund first">Run</button>
+        <p class="hint" id="run-hint">Select a fund, then run.</p>
+      </div>
+    </aside>
+
+    <main class="stage">
+      <section class="hero-row">
+        <div>
+          <p class="eyebrow" id="fund-label">No fund selected</p>
+          <h2 id="fund-title">Select a fund, then run</h2>
+        </div>
+        <div class="chip hidden" id="nav-chip" aria-live="polite">
+          <span class="chip-label">7-day NAV</span>
+          <strong id="nav-value">—</strong>
+          <span class="chip-change" id="nav-change">—</span>
+        </div>
+      </section>
+
+      <section class="panel chart-panel">
+        <div class="panel-head">
+          <h3>Last 7 NAV prints</h3>
+          <p class="muted" id="chart-caption">Choose a fund to load the week.</p>
+        </div>
+        <div class="chart-wrap" id="chart-wrap">
+          <div class="skeleton" id="chart-skeleton" hidden></div>
+          <canvas id="nav-chart" aria-label="NAV chart"></canvas>
+          <p class="placeholder" id="chart-empty">The NAV line appears here after you pick a fund.</p>
+        </div>
+      </section>
+
+      <section class="split">
+        <article class="panel book-panel">
+          <div class="panel-head">
+            <h3>Top 5 holdings</h3>
+            <p class="muted">Portfolio weight</p>
+          </div>
+          <ol class="rank-list" id="holdings-list">
+            <li class="placeholder">Select a fund to see holdings.</li>
+          </ol>
+        </article>
+        <article class="panel book-panel">
+          <div class="panel-head">
+            <h3>Top 5 sectors</h3>
+            <p class="muted">Allocation</p>
+          </div>
+          <ol class="rank-list" id="sectors-list">
+            <li class="placeholder">Select a fund to see sectors.</li>
+          </ol>
+        </article>
+      </section>
+
+      <section class="panel summary-panel">
+        <div class="panel-head">
+          <h3>Investor note</h3>
+          <p class="muted" id="summary-caption">The pipeline writes a news-backed summary after Run.</p>
+        </div>
+        <div class="summary-body" id="summary-body">
+          <p class="placeholder">Select a fund, then run. The note will land here — reasons, not only percentages.</p>
+        </div>
+        <pre class="log-tail hidden" id="log-tail"></pre>
+      </section>
+    </main>
+  </div>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
+  <script src="/app.js"></script>
+</body>
+</html>

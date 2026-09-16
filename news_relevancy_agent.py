@@ -274,6 +274,22 @@ def _first_chars(text: str, max_chars: int = CAUSAL_MAX_CHARS) -> str:
     return raw[:max_chars].rstrip()
 
 
+def _message_text(message: dict) -> str:
+    """Join visible content plus thinking traces; thinking mode often leaves content blank."""
+    chunks = []
+    for key in ("content", "reasoning_content", "reasoning"):
+        value = message.get(key)
+        if isinstance(value, list):
+            for part in value:
+                if isinstance(part, dict):
+                    chunks.append(str(part.get("text") or part.get("content") or ""))
+                else:
+                    chunks.append(str(part or ""))
+        elif value:
+            chunks.append(str(value))
+    return "\n".join(chunk for chunk in chunks if chunk.strip())
+
+
 def _llm_json_chat(
     system_prompt: str,
     user_prompt: str,
@@ -304,12 +320,17 @@ def _llm_json_chat(
     )
     if not response.ok:
         raise RuntimeError(f"DeepSeek HTTP {response.status_code}: {response.text[:500]}")
-    message = (response.json().get("choices") or [{}])[0].get("message") or {}
-    content = message.get("content") or ""
-    parsed = extract_json_from_text(content)
+    body = response.json()
+    choice = (body.get("choices") or [{}])[0]
+    message = choice.get("message") or {}
+    parsed = extract_json_from_text(_message_text(message))
     if parsed:
         return parsed
-    raise ValueError("Invalid JSON response from DeepSeek")
+    finish = choice.get("finish_reason") or body.get("finish_reason")
+    raise ValueError(
+        f"Invalid JSON response from DeepSeek (finish_reason={finish!r}, "
+        f"content_len={len(str(message.get('content') or ''))})"
+    )
 
 
 def validate_causal_scores(response_data: dict, original_articles: list[dict]) -> list[dict]:
@@ -568,17 +589,27 @@ def write_investor_summary(facts: dict) -> str:
         "in the same sentence. Do not write percentage-only lines.\n"
         + json.dumps(facts, ensure_ascii=False, indent=2)
     )
+    parsed = None
     try:
         parsed = _llm_json_chat(
             SUMMARY_SYSTEM_PROMPT,
             user_prompt,
-            max_tokens=8000,
+            max_tokens=16000,
             thinking=True,
         )
     except Exception as exc:
-        logger.error("Investor summary failed: %s", exc)
-        return ""
-    text = str(parsed.get("investor_summary") or "").strip()
+        logger.warning("Investor summary with thinking failed (%s); retrying without thinking", exc)
+        try:
+            parsed = _llm_json_chat(
+                SUMMARY_SYSTEM_PROMPT,
+                user_prompt,
+                max_tokens=4000,
+                thinking=False,
+            )
+        except Exception as retry_exc:
+            logger.error("Investor summary failed: %s", retry_exc)
+            return ""
+    text = str((parsed or {}).get("investor_summary") or "").strip()
     words = text.split()
     if len(words) > 450:
         text = " ".join(words[:450]).rstrip(".,;") + "."

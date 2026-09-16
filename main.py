@@ -48,12 +48,21 @@ OUT_DIR = ROOT / "out"
 SCRAPE_WORKERS = 8
 
 
-def clear_run_output_dirs() -> None:
-    """Wipe scrape dumps and previous result.json so this run writes only fresh files."""
-    for path in (OUT_DIR, OUTPUT_SCRAPPER_DIR):
-        if path.exists():
-            shutil.rmtree(path)
-        path.mkdir(parents=True, exist_ok=True)
+def clear_run_output_dirs(fund_id: str | None = None) -> None:
+    """Wipe scrape dumps and this fund's result.json. Keep other funds' summaries."""
+    if OUT_DIR.exists():
+        shutil.rmtree(OUT_DIR)
+    OUT_DIR.mkdir(parents=True, exist_ok=True)
+    OUTPUT_SCRAPPER_DIR.mkdir(parents=True, exist_ok=True)
+    if fund_id:
+        target = OUTPUT_SCRAPPER_DIR / fund_id
+        if target.exists():
+            shutil.rmtree(target)
+        logger.info("Cleared %s and %s", OUT_DIR.name, target)
+        return
+    if OUTPUT_SCRAPPER_DIR.exists():
+        shutil.rmtree(OUTPUT_SCRAPPER_DIR)
+    OUTPUT_SCRAPPER_DIR.mkdir(parents=True, exist_ok=True)
     logger.info("Cleared %s and %s", OUT_DIR.name, OUTPUT_SCRAPPER_DIR.name)
 
 
@@ -237,7 +246,7 @@ def result_json_path_for(fund_id: str | None) -> Path:
 
 
 def main(fund_id: str | None = None):
-    clear_run_output_dirs()
+    clear_run_output_dirs(fund_id)
     data_dir = resolve_fund_data_dir(fund_id)
     logger.info("Loading fund holdings, NAV history, and sectors from %s", data_dir)
     bundle = load_fund_bundle(data_dir)
