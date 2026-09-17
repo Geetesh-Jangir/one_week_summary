@@ -421,14 +421,10 @@ async function loadIsin(rawIsin, token) {
     applyTokenUsage(payload.token_usage);
     renderRankList(els.holdingsList, payload.holdings, "No holdings in this file.", "industry");
     renderRankList(els.sectorsList, payload.sectors, "No sectors in this file.", "");
-    if (payload.cached && payload.investor_summary) {
-      els.summaryCaption.textContent = "Saved note for the current NAV date.";
-      renderSummary(payload.investor_summary);
-      renderNews(payload.important_news);
-    } else if (payload.investor_summary) {
+    if (payload.investor_summary) {
       els.summaryCaption.textContent = payload.nav_stale
-        ? "NAV has moved since this note. Run to refresh."
-        : "Last saved note for this fund.";
+        ? "NAV has moved since this note. Run to generate a new one."
+        : "Last saved note. Run to generate a new one from scratch.";
       renderSummary(payload.investor_summary);
       renderNews(payload.important_news);
     } else {
@@ -437,9 +433,7 @@ async function loadIsin(rawIsin, token) {
       renderNews([]);
     }
     if (!state.running) {
-      els.runHint.textContent = payload.cached
-        ? "NAV is unchanged. Run will show the saved note."
-        : "NAV is new or the note is missing. Run will fetch news and score it.";
+      els.runHint.textContent = "Run always starts a new pipeline from scratch. This can take several minutes.";
     }
     refreshRecents();
   } catch (error) {
@@ -534,31 +528,26 @@ async function startRun() {
   state.running = true;
   els.runBtn.textContent = "Running…";
   setRunEnabled(false, "A run is already in progress");
-  els.runHint.textContent = "Checking the latest NAV date…";
-  els.summaryCaption.textContent = "Preparing the investor note…";
-  showPlaceholder("Checking whether a saved note already matches the latest NAV.");
+  els.runHint.textContent = "RSS, scrape, and DeepSeek are in flight. This can take several minutes.";
+  els.summaryCaption.textContent = "Generating a new investor note…";
+  showPlaceholder("Starting from scratch. Previous note, news, and tokens are cleared.");
+  renderNews([]);
+  applyTokenUsage(null);
+  showLog([]);
   try {
     const result = await fetchJson("/api/run", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ isin }),
+      body: JSON.stringify({ isin, force: true }),
     });
-    if (result.status === "cached") {
-      state.running = false;
-      els.runBtn.textContent = "Run";
-      setRunEnabled(true, "Run the weekly pipeline");
-      els.runHint.textContent = "NAV is unchanged. Showing the saved note.";
-      els.summaryCaption.textContent = "Saved note for the current NAV date.";
-      const payload = await fetchJson(`/api/summary/${encodeURIComponent(isin)}`);
-      renderSummary(payload.investor_summary);
-      renderNews(payload.important_news);
-      applyTokenUsage(payload.token_usage);
-      showLog([]);
-      return;
+    if (result.status !== "running") {
+      throw new Error(
+        result.error ||
+          (result.status === "cached"
+            ? "Restart the Fund Insight server (python webpage/app.py), then click Run again."
+            : "The pipeline did not start.")
+      );
     }
-    els.runHint.textContent = "RSS, scrape, and DeepSeek are in flight. This can take several minutes.";
-    els.summaryCaption.textContent = "Generating the investor note…";
-    showPlaceholder("Working through prices, news, and scoring. Keep this tab open.");
     stopPolling();
     await pollStatus();
     state.pollTimer = setInterval(pollStatus, 2000);

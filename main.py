@@ -190,7 +190,8 @@ def scrape_unique_articles(articles_by_link: dict[str, list[dict]], out_dir: Pat
     return scraped_ok
 
 
-def apply_causal_scores(target: dict, priced: list[dict], official_nav: dict) -> None:
+def apply_causal_scores(target: dict, priced: list[dict], official_nav: dict) -> tuple[list[dict], dict]:
+    empty_clusters = {"clusters": [], "selected_events": []}
     survivors = [
         article
         for article in target.get("articles") or []
@@ -202,14 +203,16 @@ def apply_causal_scores(target: dict, priced: list[dict], official_nav: dict) ->
     if not survivors:
         target["relevant_news"] = []
         target["scored_count"] = 0
-        return
+        return [], empty_clusters
 
     price_context = _price_context_for_target(target, priced, official_nav)
     result = score_articles_causal(target, survivors, price_context)
     score_map = {item["article_id"]: item for item in result.get("scored_news") or []}
+    llm_before_filter = []
     scored_articles = []
     for article in survivors:
         scores = score_map.get(article["article_id"])
+        llm_before_filter.append(_llm_article_record(article, scores))
         if not scores:
             continue
         article.update(scores)
@@ -221,8 +224,10 @@ def apply_causal_scores(target: dict, priced: list[dict], official_nav: dict) ->
             scored_articles.append(article)
 
     groups = group_by_event(scored_articles)
-    target["relevant_news"] = select_final_events(groups)
+    selected = select_final_events(groups)
+    target["relevant_news"] = selected
     target["scored_count"] = len(scored_articles)
+    return llm_before_filter, _clusters_payload(groups, selected)
 
 
 RESERVED_FUND_FLAGS = {"isin", "help", "h", "resume-failed"}
@@ -274,6 +279,107 @@ def result_json_path_for(fund_id: str | None) -> Path:
     if fund_id:
         return OUTPUT_SCRAPPER_DIR / fund_id / "result.json"
     return OUTPUT_SCRAPPER_DIR / "result.json"
+
+
+def news_data_path_for(fund_id: str | None) -> Path:
+    if fund_id:
+        return OUTPUT_SCRAPPER_DIR / fund_id / "news_data.json"
+    return OUTPUT_SCRAPPER_DIR / "news_data.json"
+
+
+def clustered_path_for(fund_id: str | None) -> Path:
+    if fund_id:
+        return OUTPUT_SCRAPPER_DIR / fund_id / "clustered.json"
+    return OUTPUT_SCRAPPER_DIR / "clustered.json"
+
+
+LLM_SCORE_FIELDS = (
+    "relevancy_score",
+    "causal_score",
+    "event_label",
+    "causal_link",
+    "timing_plausible",
+    "sentiment",
+    "reasoning",
+)
+
+
+def _llm_article_record(article: dict, scores: dict | None) -> dict:
+    text = str(article.get("text") or "")
+    record = {
+        "article_id": article.get("article_id"),
+        "title": article.get("title") or "",
+        "link": article.get("link") or "",
+        "resolved_url": article.get("resolved_url") or "",
+        "source": article.get("source") or "",
+        "published": article.get("published") or "",
+        "date": article.get("date") or "",
+        "text_excerpt": text[:400],
+        "llm_returned": bool(scores),
+    }
+    if scores:
+        for field in LLM_SCORE_FIELDS:
+            record[field] = scores.get(field)
+    return record
+
+
+def _scores_from_article(article: dict) -> dict:
+    return {field: article.get(field) for field in LLM_SCORE_FIELDS}
+
+
+def _clusters_payload(groups: dict, selected: list[dict]) -> dict:
+    clusters = []
+    for label, articles in groups.items():
+        best_label = ""
+        if articles:
+            best_label = str(articles[0].get("event_label") or label)
+        clusters.append(
+            {
+                "event_label": best_label,
+                "cluster_key": label,
+                "article_count": len(articles),
+                "articles": [
+                    _llm_article_record(article, _scores_from_article(article))
+                    for article in articles
+                ],
+            }
+        )
+    clusters.sort(
+        key=lambda row: max(
+            (float(item.get("causal_score") or 0) for item in row["articles"]),
+            default=0.0,
+        ),
+        reverse=True,
+    )
+    return {"clusters": clusters, "selected_events": selected}
+
+
+def write_news_data(fund_id: str | None, official_nav: dict, targets: list[dict]) -> Path:
+    path = news_data_path_for(fund_id)
+    path.parent.mkdir(parents=True, exist_ok=True)
+    payload = {
+        "isin": fund_id,
+        "nav_date": (official_nav or {}).get("end"),
+        "week_start": (official_nav or {}).get("start"),
+        "targets": targets,
+    }
+    path.write_text(json.dumps(payload, indent=2, ensure_ascii=False) + "\n", encoding="utf-8")
+    logger.info("Saved pre-filter LLM scores to %s", path)
+    return path
+
+
+def write_clustered_data(fund_id: str | None, official_nav: dict, targets: list[dict]) -> Path:
+    path = clustered_path_for(fund_id)
+    path.parent.mkdir(parents=True, exist_ok=True)
+    payload = {
+        "isin": fund_id,
+        "nav_date": (official_nav or {}).get("end"),
+        "week_start": (official_nav or {}).get("start"),
+        "targets": targets,
+    }
+    path.write_text(json.dumps(payload, indent=2, ensure_ascii=False) + "\n", encoding="utf-8")
+    logger.info("Saved clustered events to %s", path)
+    return path
 
 
 def main(fund_id: str | None = None):
@@ -363,13 +469,33 @@ def main(fund_id: str | None = None):
     logger.info("Successful scrapes: %s / %s unique URLs", scraped_ok, len(articles_by_link))
 
     logger.info("Running DeepSeek V4 Flash causal scoring per news target...")
+    llm_news_targets = []
+    clustered_targets = []
     for target in news_targets:
+        llm_rows = []
+        clustered = {"clusters": [], "selected_events": []}
         try:
-            apply_causal_scores(target, priced, official_nav)
+            llm_rows, clustered = apply_causal_scores(target, priced, official_nav)
         except Exception as exc:
             logger.error("Causal scoring failed for %s: %s", target.get("name"), exc)
             target["relevant_news"] = []
             target["scored_count"] = 0
+        meta = {
+            "name": target.get("name"),
+            "type": target.get("type"),
+            "industry": target.get("industry"),
+            "ticker": target.get("ticker"),
+            "weekly_change_pct": target.get("weekly_change_pct"),
+            "target_sentiment": target.get("target_sentiment"),
+        }
+        llm_news_targets.append({**meta, "llm_scores": llm_rows or []})
+        clustered_targets.append(
+            {
+                **meta,
+                "clusters": (clustered or {}).get("clusters") or [],
+                "selected_events": (clustered or {}).get("selected_events") or [],
+            }
+        )
         target["article_count"] = len(target.get("relevant_news") or [])
         # Keep result.json smaller: drop raw scraped copies after events are selected.
         target.pop("articles", None)
@@ -379,6 +505,8 @@ def main(fund_id: str | None = None):
             target["article_count"],
             target.get("scored_count", 0),
         )
+    write_news_data(fund_id, official_nav, llm_news_targets)
+    write_clustered_data(fund_id, official_nav, clustered_targets)
 
     approx_equity_impact_pct = round(
         sum(float(item.get("weekly_nav_impact_pct") or 0) for item in headline),
@@ -493,8 +621,26 @@ def resume_failed_targets(names: set[str], fund_id: str | None = None) -> None:
 
     scraped_ok = scrape_unique_articles(articles_by_link, OUT_DIR)
     logger.info("Resume scrapes (cache+fetch): %s / %s", scraped_ok, len(articles_by_link))
+    llm_news_targets = []
+    clustered_targets = []
     for target in selected:
-        apply_causal_scores(target, priced, official_nav)
+        llm_rows, clustered = apply_causal_scores(target, priced, official_nav)
+        meta = {
+            "name": target.get("name"),
+            "type": target.get("type"),
+            "industry": target.get("industry"),
+            "ticker": target.get("ticker"),
+            "weekly_change_pct": target.get("weekly_change_pct"),
+            "target_sentiment": target.get("target_sentiment"),
+        }
+        llm_news_targets.append({**meta, "llm_scores": llm_rows or []})
+        clustered_targets.append(
+            {
+                **meta,
+                "clusters": (clustered or {}).get("clusters") or [],
+                "selected_events": (clustered or {}).get("selected_events") or [],
+            }
+        )
         target["article_count"] = len(target.get("relevant_news") or [])
         target.pop("articles", None)
         logger.info(
@@ -503,6 +649,8 @@ def resume_failed_targets(names: set[str], fund_id: str | None = None) -> None:
             target["article_count"],
             target.get("scored_count", 0),
         )
+    write_news_data(fund_id, official_nav, llm_news_targets)
+    write_clustered_data(fund_id, official_nav, clustered_targets)
 
     output["news_targets"] = news_targets
     output["stock_moves"] = [t for t in news_targets if t.get("type") == "stock"]

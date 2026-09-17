@@ -3,6 +3,7 @@
 from __future__ import annotations
 
 import json
+import os
 import sys
 import threading
 from collections import deque
@@ -420,19 +421,6 @@ def api_run(fund_id: str | None = None):
     raw = fund_id or payload.get("isin") or payload.get("fund_id") or ""
     try:
         isin = normalize_isin(raw)
-        latest = fetch_latest_nav_date(isin)
-        if has_cached_summary(isin, latest):
-            identity = identity_for_fund(isin)
-            return jsonify(
-                {
-                    "status": "cached",
-                    "fund_id": isin,
-                    "isin": isin,
-                    "nav_date": latest,
-                    "fund_name": identity["fund_name"],
-                    "subtitle": identity["subtitle"],
-                }
-            )
         sync_fund(isin)
         return _start_pipeline(isin)
     except FundFetchError as exc:
@@ -443,4 +431,6 @@ def api_run(fund_id: str | None = None):
 
 if __name__ == "__main__":
     STATIC_DIR.mkdir(parents=True, exist_ok=True)
-    app.run(host="127.0.0.1", port=5000, debug=False)
+    port = int(os.environ.get("PORT", "5000"))
+    host = os.environ.get("HOST", "127.0.0.1")
+    app.run(host=host, port=port, debug=False)
