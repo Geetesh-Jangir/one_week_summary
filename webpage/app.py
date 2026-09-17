@@ -32,7 +32,7 @@ STATIC_DIR = WEBPAGE_DIR / "static"
 OUTPUT_SCRAPPER_DIR = ROOT / "output-scrapper"
 LOG_TAIL_LIMIT = 40
 
-app = Flask(__name__, static_folder=str(STATIC_DIR), static_url_path="")
+app = Flask(__name__, static_folder=None)
 
 _job_lock = threading.Lock()
 _job = {
@@ -170,6 +170,34 @@ def index():
     return send_from_directory(STATIC_DIR, "index.html")
 
 
+@app.get("/styles.css")
+def styles_css():
+    return send_from_directory(STATIC_DIR, "styles.css")
+
+
+@app.get("/app.js")
+def app_js():
+    return send_from_directory(STATIC_DIR, "app.js")
+
+
+@app.get("/static/<path:filename>")
+def static_files(filename):
+    return send_from_directory(STATIC_DIR, filename)
+
+
+@app.get("/data/<fund_id>.json")
+def fund_book_file(fund_id: str):
+    if not known_fund(fund_id):
+        return jsonify({"error": "Unknown fund"}), 404
+    static_copy = STATIC_DIR / "data" / f"{fund_id}.json"
+    if static_copy.exists():
+        return send_from_directory(STATIC_DIR / "data", f"{fund_id}.json")
+    try:
+        return jsonify(top_book(fund_id))
+    except FileNotFoundError as exc:
+        return jsonify({"error": str(exc)}), 404
+
+
 @app.get("/api/funds")
 def api_funds():
     funds = [{"id": fund_id, "name": display_name(fund_id)} for fund_id in available_fund_ids()]
@@ -191,7 +219,9 @@ def api_nav(fund_id: str):
     if not known_fund(fund_id):
         return jsonify({"error": "Unknown fund"}), 404
     try:
-        return jsonify(last_seven_nav(fund_id))
+        payload = last_seven_nav(fund_id)
+        payload.update(top_book(fund_id))
+        return jsonify(payload)
     except FileNotFoundError as exc:
         return jsonify({"error": str(exc)}), 404
 

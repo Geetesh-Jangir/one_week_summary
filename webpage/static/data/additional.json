@@ -1,0 +1,52 @@
+{
+  "fund_id": "additional",
+  "holdings": [
+    {
+      "name": "HDFC Bank Limited",
+      "industry": "Banks",
+      "percentage": 7.63
+    },
+    {
+      "name": "ICICI Bank Limited",
+      "industry": "Banks",
+      "percentage": 5.67
+    },
+    {
+      "name": "Power Grid Corporation of India Limited",
+      "industry": "Power",
+      "percentage": 5.58
+    },
+    {
+      "name": "ITC Limited",
+      "industry": "Diversified FMCG",
+      "percentage": 5.26
+    },
+    {
+      "name": "Bajaj Holdings & Investment Limited",
+      "industry": "Finance",
+      "percentage": 5.14
+    }
+  ],
+  "sectors": [
+    {
+      "name": "Banks",
+      "percentage": 20.91
+    },
+    {
+      "name": "It - Software",
+      "percentage": 10.32
+    },
+    {
+      "name": "Realty",
+      "percentage": 6.81
+    },
+    {
+      "name": "Automobiles",
+      "percentage": 6.71
+    },
+    {
+      "name": "Computer Software: Programming, Data Processing",
+      "percentage": 6.32
+    }
+  ]
+}

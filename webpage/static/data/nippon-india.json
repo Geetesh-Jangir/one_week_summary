@@ -1,0 +1,52 @@
+{
+  "fund_id": "nippon-india",
+  "holdings": [
+    {
+      "name": "HDFC Bank Limited",
+      "industry": "Banks",
+      "percentage": 8.65
+    },
+    {
+      "name": "ICICI Bank Limited",
+      "industry": "Banks",
+      "percentage": 6.71
+    },
+    {
+      "name": "Axis Bank Limited",
+      "industry": "Banks",
+      "percentage": 5.29
+    },
+    {
+      "name": "Reliance Industries Limited",
+      "industry": "Petroleum Products",
+      "percentage": 4.11
+    },
+    {
+      "name": "Larsen & Toubro Limited",
+      "industry": "Construction",
+      "percentage": 3.7
+    }
+  ],
+  "sectors": [
+    {
+      "name": "Banks",
+      "percentage": 25.86
+    },
+    {
+      "name": "It - Software",
+      "percentage": 8.99
+    },
+    {
+      "name": "Retailing",
+      "percentage": 7.98
+    },
+    {
+      "name": "Pharmaceuticals & Biotechnology",
+      "percentage": 7.42
+    },
+    {
+      "name": "Automobiles",
+      "percentage": 5.25
+    }
+  ]
+}

@@ -224,6 +224,7 @@ function formatPct(value) {
 }
 
 function renderRankList(node, rows, emptyText, subtitleKey) {
+  if (!node) return;
   if (!rows || !rows.length) {
     node.innerHTML = `<li class="placeholder">${emptyText}</li>`;
     return;
@@ -246,16 +247,27 @@ function renderRankList(node, rows, emptyText, subtitleKey) {
 }
 
 async function loadBook(fundId, token) {
-  try {
-    const payload = await fetchJson(`/api/book/${encodeURIComponent(fundId)}`);
-    if (token !== state.selectToken) return;
-    renderRankList(els.holdingsList, payload.holdings, "No holdings in this file.", "industry");
-    renderRankList(els.sectorsList, payload.sectors, "No sectors in this file.", "");
-  } catch (error) {
-    if (token !== state.selectToken) return;
-    renderRankList(els.holdingsList, [], error.message, "industry");
-    renderRankList(els.sectorsList, [], error.message, "");
+  const urls = [
+    `/data/${encodeURIComponent(fundId)}.json`,
+    `/api/book/${encodeURIComponent(fundId)}`,
+    `/api/nav/${encodeURIComponent(fundId)}`,
+  ];
+  for (const url of urls) {
+    try {
+      const payload = await fetchJson(url);
+      if (token !== state.selectToken) return;
+      if (payload.holdings && payload.holdings.length) {
+        renderRankList(els.holdingsList, payload.holdings, "No holdings in this file.", "industry");
+        renderRankList(els.sectorsList, payload.sectors, "No sectors in this file.", "");
+        return;
+      }
+    } catch {
+      /* try next source */
+    }
   }
+  if (token !== state.selectToken) return;
+  renderRankList(els.holdingsList, [], "No holdings in this file.", "industry");
+  renderRankList(els.sectorsList, [], "No sectors in this file.", "");
 }
 
 async function selectFund(fund) {

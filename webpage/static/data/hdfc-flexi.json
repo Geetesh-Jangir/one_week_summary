@@ -1,0 +1,52 @@
+{
+  "fund_id": "hdfc-flexi",
+  "holdings": [
+    {
+      "name": "ICICI Bank Ltd.",
+      "industry": "Banks",
+      "percentage": 9.19
+    },
+    {
+      "name": "Axis Bank Ltd.",
+      "industry": "Banks",
+      "percentage": 6.19
+    },
+    {
+      "name": "HDFC Bank Ltd.",
+      "industry": "Banks",
+      "percentage": 5.71
+    },
+    {
+      "name": "State Bank of India",
+      "industry": "Banks",
+      "percentage": 4.16
+    },
+    {
+      "name": "Eternal Limited",
+      "industry": "Retailing",
+      "percentage": 3.39
+    }
+  ],
+  "sectors": [
+    {
+      "name": "Banks",
+      "percentage": 28.6
+    },
+    {
+      "name": "Automobiles",
+      "percentage": 8.47
+    },
+    {
+      "name": "Pharmaceuticals & Biotechnology",
+      "percentage": 8.46
+    },
+    {
+      "name": "Retailing",
+      "percentage": 5.68
+    },
+    {
+      "name": "It - Software",
+      "percentage": 4.84
+    }
+  ]
+}

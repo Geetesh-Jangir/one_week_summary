@@ -1,0 +1,52 @@
+{
+  "fund_id": "aditya-birla",
+  "holdings": [
+    {
+      "name": "ICICI Bank Ltd.",
+      "industry": "Banks",
+      "percentage": 8.0
+    },
+    {
+      "name": "HDFC Bank Ltd.",
+      "industry": "Banks",
+      "percentage": 6.57
+    },
+    {
+      "name": "Reliance Industries Ltd.",
+      "industry": "Petroleum Products",
+      "percentage": 4.9
+    },
+    {
+      "name": "Kotak Mahindra Bank Ltd.",
+      "industry": "Banks",
+      "percentage": 3.79
+    },
+    {
+      "name": "State Bank of India",
+      "industry": "Banks",
+      "percentage": 3.53
+    }
+  ],
+  "sectors": [
+    {
+      "name": "Banks",
+      "percentage": 26.29
+    },
+    {
+      "name": "It - Software",
+      "percentage": 7.38
+    },
+    {
+      "name": "Retailing",
+      "percentage": 7.34
+    },
+    {
+      "name": "Finance",
+      "percentage": 7.0
+    },
+    {
+      "name": "Automobiles",
+      "percentage": 6.95
+    }
+  ]
+}

@@ -1,0 +1,52 @@
+{
+  "fund_id": "hdfc-large",
+  "holdings": [
+    {
+      "name": "ICICI Bank Ltd.",
+      "industry": "Banks",
+      "percentage": 10.05
+    },
+    {
+      "name": "HDFC Bank Ltd.",
+      "industry": "Banks",
+      "percentage": 6.88
+    },
+    {
+      "name": "Bharti Airtel Ltd.",
+      "industry": "Telecom - Services",
+      "percentage": 6.23
+    },
+    {
+      "name": "Kotak Mahindra Bank Limited",
+      "industry": "Banks",
+      "percentage": 5.71
+    },
+    {
+      "name": "Titan Company Ltd.",
+      "industry": "Consumer Durables",
+      "percentage": 5.27
+    }
+  ],
+  "sectors": [
+    {
+      "name": "Banks",
+      "percentage": 29.6
+    },
+    {
+      "name": "Pharmaceuticals & Biotechnology",
+      "percentage": 8.22
+    },
+    {
+      "name": "Consumer Durables",
+      "percentage": 6.62
+    },
+    {
+      "name": "Finance",
+      "percentage": 6.52
+    },
+    {
+      "name": "Automobiles",
+      "percentage": 6.46
+    }
+  ]
+}
