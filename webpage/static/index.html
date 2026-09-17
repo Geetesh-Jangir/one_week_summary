@@ -15,22 +15,36 @@
       <header class="brand">
         <p class="eyebrow">Weekly desk</p>
         <h1>Fund Insight</h1>
-        <p class="lede">Select a scheme, then run the news-backed NAV note.</p>
+        <p class="lede">Enter a scheme ISIN, then run the news-backed NAV note.</p>
       </header>
-      <nav class="fund-list" id="fund-list" aria-label="Funds">
-        <p class="muted">Loading funds…</p>
+      <form class="isin-form" id="isin-form">
+        <label class="eyebrow" for="isin-input">Scheme ISIN</label>
+        <input
+          id="isin-input"
+          name="isin"
+          type="text"
+          spellcheck="false"
+          autocomplete="off"
+          placeholder="INF179K01UT0"
+          maxlength="12"
+        />
+        <button id="load-btn" type="submit">Load fund</button>
+      </form>
+      <nav class="fund-list" id="fund-list" aria-label="Recently loaded funds">
+        <p class="muted">Recently loaded ISINs appear here.</p>
       </nav>
       <div class="rail-actions">
-        <button id="run-btn" type="button" disabled title="Select a fund first">Run</button>
-        <p class="hint" id="run-hint">Select a fund, then run.</p>
+        <button id="run-btn" type="button" disabled title="Load an ISIN first">Run</button>
+        <p class="hint" id="run-hint">Enter an ISIN, load the fund, then run.</p>
       </div>
     </aside>
 
     <main class="stage">
       <section class="hero-row">
         <div>
-          <p class="eyebrow" id="fund-label">No fund selected</p>
-          <h2 id="fund-title">Select a fund, then run</h2>
+          <p class="eyebrow" id="fund-label">No fund loaded</p>
+          <h2 id="fund-title">Enter an ISIN, then run</h2>
+          <p class="muted fund-subtitle hidden" id="fund-subtitle"></p>
         </div>
         <div class="chip hidden" id="nav-chip" aria-live="polite">
           <span class="chip-label">7-day NAV</span>
@@ -42,12 +56,12 @@
       <section class="panel chart-panel">
         <div class="panel-head">
           <h3>Last 7 NAV prints</h3>
-          <p class="muted" id="chart-caption">Choose a fund to load the week.</p>
+          <p class="muted" id="chart-caption">Load an ISIN to see the week.</p>
         </div>
         <div class="chart-wrap" id="chart-wrap">
           <div class="skeleton" id="chart-skeleton" hidden></div>
           <canvas id="nav-chart" aria-label="NAV chart"></canvas>
-          <p class="placeholder" id="chart-empty">The NAV line appears here after you pick a fund.</p>
+          <p class="placeholder" id="chart-empty">The NAV line appears here after you load an ISIN.</p>
         </div>
       </section>
 
@@ -58,7 +72,7 @@
             <p class="muted">Portfolio weight</p>
           </div>
           <ol class="rank-list" id="holdings-list">
-            <li class="placeholder">Select a fund to see holdings.</li>
+            <li class="placeholder">Load a fund to see holdings.</li>
           </ol>
         </article>
         <article class="panel book-panel">
@@ -67,7 +81,7 @@
             <p class="muted">Allocation</p>
           </div>
           <ol class="rank-list" id="sectors-list">
-            <li class="placeholder">Select a fund to see sectors.</li>
+            <li class="placeholder">Load a fund to see sectors.</li>
           </ol>
         </article>
       </section>
@@ -78,7 +92,7 @@
           <p class="muted" id="summary-caption">The pipeline writes a news-backed summary after Run.</p>
         </div>
         <div class="summary-body" id="summary-body">
-          <p class="placeholder">Select a fund, then run. The note will land here — reasons, not only percentages.</p>
+          <p class="placeholder">Load an ISIN, then run. The note will land here — reasons, not only percentages.</p>
         </div>
         <pre class="log-tail hidden" id="log-tail"></pre>
       </section>

@@ -1,0 +1,1162 @@
+[
+  {
+    "instrument_name": "HDFC Bank Limited",
+    "percentage": 7.6347068753731,
+    "industry": "Banks",
+    "asset_type": "Domestic Equities",
+    "rating": "Equity",
+    "market_value": 1125390.2,
+    "fincode": 100180,
+    "isin": null
+  },
+  {
+    "instrument_name": "ICICI Bank Limited",
+    "percentage": 5.67351208785906,
+    "industry": "Banks",
+    "asset_type": "Domestic Equities",
+    "rating": "Equity",
+    "market_value": 836301.25,
+    "fincode": 132174,
+    "isin": null
+  },
+  {
+    "instrument_name": "Power Grid Corporation of India Limited",
+    "percentage": 5.57877136166202,
+    "industry": "Power",
+    "asset_type": "Domestic Equities",
+    "rating": "Equity",
+    "market_value": 822336.04,
+    "fincode": 132898,
+    "isin": null
+  },
+  {
+    "instrument_name": "ITC Limited",
+    "percentage": 5.25788029061521,
+    "industry": "Diversified FMCG",
+    "asset_type": "Domestic Equities",
+    "rating": "Equity",
+    "market_value": 775035.25,
+    "fincode": 100875,
+    "isin": null
+  },
+  {
+    "instrument_name": "Bajaj Holdings & Investment Limited",
+    "percentage": 5.13628149819403,
+    "industry": "Finance",
+    "asset_type": "Domestic Equities",
+    "rating": "Equity",
+    "market_value": 757111.04,
+    "fincode": 100490,
+    "isin": null
+  },
+  {
+    "instrument_name": "Coal India Limited",
+    "percentage": 5.01652817173773,
+    "industry": "Consumable Fuels",
+    "asset_type": "Domestic Equities",
+    "rating": "Equity",
+    "market_value": 739458.86,
+    "fincode": 219300,
+    "isin": null
+  },
+  {
+    "instrument_name": "Kotak Mahindra Bank Limited",
+    "percentage": 4.39914155243338,
+    "industry": "Banks",
+    "asset_type": "Domestic Equities",
+    "rating": "Equity",
+    "market_value": 648453.29,
+    "fincode": 100247,
+    "isin": null
+  },
+  {
+    "instrument_name": "HCL Technologies Limited",
+    "percentage": 4.15401912820486,
+    "industry": "IT - Software",
+    "asset_type": "Domestic Equities",
+    "rating": "Equity",
+    "market_value": 612321.14,
+    "fincode": 132281,
+    "isin": null
+  },
+  {
+    "instrument_name": "Mahindra & Mahindra Limited",
+    "percentage": 3.97320043673617,
+    "industry": "Automobiles",
+    "asset_type": "Domestic Equities",
+    "rating": "Equity",
+    "market_value": 585667.65,
+    "fincode": 100520,
+    "isin": null
+  },
+  {
+    "instrument_name": "Infosys Limited",
+    "percentage": 3.28742513493817,
+    "industry": "IT - Software",
+    "asset_type": "Domestic Equities",
+    "rating": "Equity",
+    "market_value": 484581.28,
+    "fincode": 100209,
+    "isin": null
+  },
+  {
+    "instrument_name": "Axis Bank Limited",
+    "percentage": 2.96962582825131,
+    "industry": "Banks",
+    "asset_type": "Domestic Equities",
+    "rating": "Equity",
+    "market_value": 437736.23,
+    "fincode": 132215,
+    "isin": null
+  },
+  {
+    "instrument_name": "Tata Consultancy Services Limited",
+    "percentage": 2.88115655210232,
+    "industry": "IT - Software",
+    "asset_type": "Domestic Equities",
+    "rating": "Equity",
+    "market_value": 424695.46,
+    "fincode": 132540,
+    "isin": null
+  },
+  {
+    "instrument_name": "Bharti Airtel Limited",
+    "percentage": 2.79914725483705,
+    "industry": "Telecom - Services",
+    "asset_type": "Domestic Equities",
+    "rating": "Equity",
+    "market_value": 412606.92,
+    "fincode": 132454,
+    "isin": null
+  },
+  {
+    "instrument_name": "Maruti Suzuki India Limited",
+    "percentage": 2.6776058555051,
+    "industry": "Automobiles",
+    "asset_type": "Domestic Equities",
+    "rating": "Equity",
+    "market_value": 394691.17,
+    "fincode": 132500,
+    "isin": null
+  },
+  {
+    "instrument_name": "Zydus Lifesciences Limited",
+    "percentage": 1.51758392711176,
+    "industry": "Pharmaceuticals & Biotechnology",
+    "asset_type": "Domestic Equities",
+    "rating": "Equity",
+    "market_value": 223698.71,
+    "fincode": 132321,
+    "isin": null
+  },
+  {
+    "instrument_name": "Cipla Limited",
+    "percentage": 1.37202833661532,
+    "industry": "Pharmaceuticals & Biotechnology",
+    "asset_type": "Domestic Equities",
+    "rating": "Equity",
+    "market_value": 202243.16,
+    "fincode": 100087,
+    "isin": null
+  },
+  {
+    "instrument_name": "Indraprastha Gas Limited",
+    "percentage": 1.17427671644878,
+    "industry": "Gas",
+    "asset_type": "Domestic Equities",
+    "rating": "Equity",
+    "market_value": 173093.68,
+    "fincode": 132514,
+    "isin": null
+  },
+  {
+    "instrument_name": "Dr. Reddy's Laboratories Limited",
+    "percentage": 1.11987322374037,
+    "industry": "Pharmaceuticals & Biotechnology",
+    "asset_type": "Domestic Equities",
+    "rating": "Equity",
+    "market_value": 165074.36,
+    "fincode": 100124,
+    "isin": null
+  },
+  {
+    "instrument_name": "Zydus Wellness Limited",
+    "percentage": 0.797272367790687,
+    "industry": "Food Products",
+    "asset_type": "Domestic Equities",
+    "rating": "Equity",
+    "market_value": 117521.54,
+    "fincode": 131335,
+    "isin": null
+  },
+  {
+    "instrument_name": "Indian Energy Exchange Limited",
+    "percentage": 0.68746751600334,
+    "industry": "Capital Markets",
+    "asset_type": "Domestic Equities",
+    "rating": "Equity",
+    "market_value": 101335.81,
+    "fincode": 224623,
+    "isin": null
+  },
+  {
+    "instrument_name": "DLF Limited",
+    "percentage": 0.642732248730311,
+    "industry": "Realty",
+    "asset_type": "Domestic Equities",
+    "rating": "Equity",
+    "market_value": 94741.63,
+    "fincode": 132868,
+    "isin": null
+  },
+  {
+    "instrument_name": "EID Parry India Limited",
+    "percentage": 0.57149270360232,
+    "industry": "Food Products",
+    "asset_type": "Domestic Equities",
+    "rating": "Equity",
+    "market_value": 84240.6,
+    "fincode": 100125,
+    "isin": null
+  },
+  {
+    "instrument_name": "Petronet LNG Limited",
+    "percentage": 0.47727190723489,
+    "industry": "Gas",
+    "asset_type": "Domestic Equities",
+    "rating": "Equity",
+    "market_value": 70352.03,
+    "fincode": 132522,
+    "isin": null
+  },
+  {
+    "instrument_name": "Narayana Hrudayalaya Limited",
+    "percentage": 0.258242240200273,
+    "industry": "Healthcare Services",
+    "asset_type": "Domestic Equities",
+    "rating": "Equity",
+    "market_value": 38066.07,
+    "fincode": 218533,
+    "isin": null
+  },
+  {
+    "instrument_name": "Mahanagar Gas Limited",
+    "percentage": 0.249473580205994,
+    "industry": "Gas",
+    "asset_type": "Domestic Equities",
+    "rating": "Equity",
+    "market_value": 36773.53,
+    "fincode": 208661,
+    "isin": null
+  },
+  {
+    "instrument_name": "Central Depository Services (India) Limited",
+    "percentage": 0.215468717562262,
+    "industry": "Capital Markets",
+    "asset_type": "Domestic Equities",
+    "rating": "Equity",
+    "market_value": 31761.06,
+    "fincode": 207950,
+    "isin": null
+  },
+  {
+    "instrument_name": "CMS Info System Limited",
+    "percentage": 0.160248017817387,
+    "industry": "Commercial Services & Supplies",
+    "asset_type": "Domestic Equities",
+    "rating": "Equity",
+    "market_value": 23621.28,
+    "fincode": 234556,
+    "isin": null
+  },
+  {
+    "instrument_name": "CIE Automotive India Limited",
+    "percentage": 0.156473913396621,
+    "industry": "Auto Components",
+    "asset_type": "Domestic Equities",
+    "rating": "Equity",
+    "market_value": 23064.96,
+    "fincode": 132756,
+    "isin": null
+  },
+  {
+    "instrument_name": "The Great Eastern Shipping Company Limited",
+    "percentage": 0.112508703991008,
+    "industry": "Transport Services",
+    "asset_type": "Domestic Equities",
+    "rating": "Equity",
+    "market_value": 16584.29,
+    "fincode": 100620,
+    "isin": null
+  },
+  {
+    "instrument_name": "Maharashtra Scooters Limited",
+    "percentage": 0.102447953243242,
+    "industry": "Finance",
+    "asset_type": "Domestic Equities",
+    "rating": "Equity",
+    "market_value": 15101.29,
+    "fincode": 100266,
+    "isin": null
+  },
+  {
+    "instrument_name": "ICRA Limited",
+    "percentage": 0.095854532035047,
+    "industry": "Capital Markets",
+    "asset_type": "Domestic Equities",
+    "rating": "Equity",
+    "market_value": 14129.39,
+    "fincode": 132835,
+    "isin": null
+  },
+  {
+    "instrument_name": "Indus Towers Limited",
+    "percentage": 0.0228372936326494,
+    "industry": "Telecom - Services",
+    "asset_type": "Domestic Equities",
+    "rating": "Equity",
+    "market_value": 3366.32,
+    "fincode": 209967,
+    "isin": null
+  },
+  {
+    "instrument_name": "Nesco Limited",
+    "percentage": 0.0136989027444023,
+    "industry": "Commercial Services & Supplies",
+    "asset_type": "Domestic Equities",
+    "rating": "Equity",
+    "market_value": 2019.28,
+    "fincode": 105355,
+    "isin": null
+  },
+  {
+    "instrument_name": "Swaraj Engines Limited",
+    "percentage": 0.0114516851549232,
+    "industry": "Industrial Products",
+    "asset_type": "Domestic Equities",
+    "rating": "Equity",
+    "market_value": 1688.03,
+    "fincode": 100407,
+    "isin": null
+  },
+  {
+    "instrument_name": "Bajaj Finance Limited",
+    "percentage": 0.382917736383509,
+    "industry": "Finance",
+    "asset_type": "Domestic Equities",
+    "rating": "Equity",
+    "market_value": 56443.8,
+    "fincode": 100034,
+    "isin": null
+  },
+  {
+    "instrument_name": "Reliance Industries Limited",
+    "percentage": 0.351814006207596,
+    "industry": "Petroleum Products",
+    "asset_type": "Domestic Equities",
+    "rating": "Equity",
+    "market_value": 51858.97,
+    "fincode": 100325,
+    "isin": null
+  },
+  {
+    "instrument_name": "Sun Pharmaceutical Industries Limited",
+    "percentage": 0.125688965875891,
+    "industry": "Pharmaceuticals & Biotechnology",
+    "asset_type": "Domestic Equities",
+    "rating": "Equity",
+    "market_value": 18527.12,
+    "fincode": 124715,
+    "isin": null
+  },
+  {
+    "instrument_name": "Titan Company Limited",
+    "percentage": 0.112308235221894,
+    "industry": "Consumer Durables",
+    "asset_type": "Domestic Equities",
+    "rating": "Equity",
+    "market_value": 16554.74,
+    "fincode": 100114,
+    "isin": null
+  },
+  {
+    "instrument_name": "Hindustan Aeronautics Limited",
+    "percentage": 0.104759008772395,
+    "industry": "Aerospace & Defense",
+    "asset_type": "Domestic Equities",
+    "rating": "Equity",
+    "market_value": 15441.95,
+    "fincode": 219494,
+    "isin": null
+  },
+  {
+    "instrument_name": "Canara Bank",
+    "percentage": 0.0958242073176886,
+    "industry": "Banks",
+    "asset_type": "Domestic Equities",
+    "rating": "Equity",
+    "market_value": 14124.92,
+    "fincode": 132483,
+    "isin": null
+  },
+  {
+    "instrument_name": "State Bank of India",
+    "percentage": 0.0886662172104852,
+    "industry": "Banks",
+    "asset_type": "Domestic Equities",
+    "rating": "Equity",
+    "market_value": 13069.8,
+    "fincode": 100112,
+    "isin": null
+  },
+  {
+    "instrument_name": "Divi's Laboratories Limited",
+    "percentage": 0.0872812527700561,
+    "industry": "Pharmaceuticals & Biotechnology",
+    "asset_type": "Domestic Equities",
+    "rating": "Equity",
+    "market_value": 12865.65,
+    "fincode": 132488,
+    "isin": null
+  },
+  {
+    "instrument_name": "UltraTech Cement Limited",
+    "percentage": 0.08719292439869,
+    "industry": "Cement & Cement Products",
+    "asset_type": "Domestic Equities",
+    "rating": "Equity",
+    "market_value": 12852.63,
+    "fincode": 132538,
+    "isin": null
+  },
+  {
+    "instrument_name": "Hindalco Industries Limited",
+    "percentage": 0.0583004563308243,
+    "industry": "Non - Ferrous Metals",
+    "asset_type": "Domestic Equities",
+    "rating": "Equity",
+    "market_value": 8593.75,
+    "fincode": 100440,
+    "isin": null
+  },
+  {
+    "instrument_name": "Oil & Natural Gas Corporation Limited",
+    "percentage": 0.0524364565119748,
+    "industry": "Oil",
+    "asset_type": "Domestic Equities",
+    "rating": "Equity",
+    "market_value": 7729.37,
+    "fincode": 100312,
+    "isin": null
+  },
+  {
+    "instrument_name": "Tata Steel Limited",
+    "percentage": 0.0457765515833964,
+    "industry": "Ferrous Metals",
+    "asset_type": "Domestic Equities",
+    "rating": "Equity",
+    "market_value": 6747.67,
+    "fincode": 100470,
+    "isin": null
+  },
+  {
+    "instrument_name": "Hindustan Unilever Limited",
+    "percentage": 0.0422430775260978,
+    "industry": "Diversified FMCG",
+    "asset_type": "Domestic Equities",
+    "rating": "Equity",
+    "market_value": 6226.82,
+    "fincode": 100696,
+    "isin": null
+  },
+  {
+    "instrument_name": "Bharat Electronics Limited",
+    "percentage": 0.0417487914172089,
+    "industry": "Aerospace & Defense",
+    "asset_type": "Domestic Equities",
+    "rating": "Equity",
+    "market_value": 6153.96,
+    "fincode": 100049,
+    "isin": null
+  },
+  {
+    "instrument_name": "Grasim Industries Limited",
+    "percentage": 0.0372765400918889,
+    "industry": "Cement & Cement Products",
+    "asset_type": "Domestic Equities",
+    "rating": "Equity",
+    "market_value": 5494.73,
+    "fincode": 100300,
+    "isin": null
+  },
+  {
+    "instrument_name": "IndusInd Bank Limited",
+    "percentage": 0.0339385146044103,
+    "industry": "Banks",
+    "asset_type": "Domestic Equities",
+    "rating": "Equity",
+    "market_value": 5002.69,
+    "fincode": 132187,
+    "isin": null
+  },
+  {
+    "instrument_name": "Eicher Motors Limited",
+    "percentage": 0.029460496833955,
+    "industry": "Automobiles",
+    "asset_type": "Domestic Equities",
+    "rating": "Equity",
+    "market_value": 4342.61,
+    "fincode": 105200,
+    "isin": null
+  },
+  {
+    "instrument_name": "TVS Motor Company Limited",
+    "percentage": 0.028553333253381,
+    "industry": "Automobiles",
+    "asset_type": "Domestic Equities",
+    "rating": "Equity",
+    "market_value": 4208.89,
+    "fincode": 132343,
+    "isin": null
+  },
+  {
+    "instrument_name": "Bajaj Finserv Limited",
+    "percentage": 0.0244734037188521,
+    "industry": "Finance",
+    "asset_type": "Domestic Equities",
+    "rating": "Equity",
+    "market_value": 3607.49,
+    "fincode": 205198,
+    "isin": null
+  },
+  {
+    "instrument_name": "IDFC First Bank Limited",
+    "percentage": 0.0163364069087424,
+    "industry": "Banks",
+    "asset_type": "Domestic Equities",
+    "rating": "Equity",
+    "market_value": 2408.06,
+    "fincode": 278580,
+    "isin": null
+  },
+  {
+    "instrument_name": "Ashok Leyland Limited",
+    "percentage": 0.016026375682058,
+    "industry": "Agricultural, Commercial & Construction Vehicles",
+    "asset_type": "Domestic Equities",
+    "rating": "Equity",
+    "market_value": 2362.36,
+    "fincode": 100477,
+    "isin": null
+  },
+  {
+    "instrument_name": "JSW Steel Limited",
+    "percentage": 0.0106591042312135,
+    "industry": "Ferrous Metals",
+    "asset_type": "Domestic Equities",
+    "rating": "Equity",
+    "market_value": 1571.2,
+    "fincode": 100228,
+    "isin": null
+  },
+  {
+    "instrument_name": "Tata Consumer Products Limited",
+    "percentage": 0.00282596515946684,
+    "industry": "Agricultural Food & other Products",
+    "asset_type": "Domestic Equities",
+    "rating": "Equity",
+    "market_value": 416.56,
+    "fincode": 100800,
+    "isin": null
+  },
+  {
+    "instrument_name": "Lupin Limited",
+    "percentage": 0.000757168166526057,
+    "industry": "Pharmaceuticals & Biotechnology",
+    "asset_type": "Domestic Equities",
+    "rating": "Equity",
+    "market_value": 111.61,
+    "fincode": 100257,
+    "isin": null
+  },
+  {
+    "instrument_name": "JSW Energy Limited",
+    "percentage": 0.000189749965215785,
+    "industry": "Power",
+    "asset_type": "Domestic Equities",
+    "rating": "Equity",
+    "market_value": 27.97,
+    "fincode": 208461,
+    "isin": null
+  },
+  {
+    "instrument_name": "Embassy Office Parks REIT",
+    "percentage": 2.47826574930512,
+    "industry": "Realty",
+    "asset_type": "REITs & InvITs",
+    "rating": "REITs & InvITs",
+    "market_value": 365307.54,
+    "fincode": 294683,
+    "isin": null
+  },
+  {
+    "instrument_name": "Knowledge Realty Trust",
+    "percentage": 2.08671374501925,
+    "industry": "Realty",
+    "asset_type": "REITs & InvITs",
+    "rating": "REITs & InvITs",
+    "market_value": 307591.01,
+    "fincode": 321253,
+    "isin": null
+  },
+  {
+    "instrument_name": "Brookfield India Real Estate Trust",
+    "percentage": 1.59772917010666,
+    "industry": "Realty",
+    "asset_type": "REITs & InvITs",
+    "rating": "REITs & InvITs",
+    "market_value": 235512.48,
+    "fincode": 301200,
+    "isin": null
+  },
+  {
+    "instrument_name": "Alphabet Inc A",
+    "percentage": 4.14058622818252,
+    "industry": "Computer Software: Programming, Data Processing ##",
+    "asset_type": "Overseas Equities",
+    "rating": "Equity",
+    "market_value": 610341.07,
+    "fincode": 279017,
+    "isin": null
+  },
+  {
+    "instrument_name": "Microsoft Corp",
+    "percentage": 2.40093025758278,
+    "industry": "Computer Software: Prepackaged Software ##",
+    "asset_type": "Overseas Equities",
+    "rating": "Equity",
+    "market_value": 353907.94,
+    "fincode": 218241,
+    "isin": null
+  },
+  {
+    "instrument_name": "Amazon Com Inc",
+    "percentage": 2.33246009861139,
+    "industry": "Catalog/Specialty Distribution ##",
+    "asset_type": "Overseas Equities",
+    "rating": "Equity",
+    "market_value": 343815.13,
+    "fincode": 224342,
+    "isin": null
+  },
+  {
+    "instrument_name": "Meta Platforms Registered Shares A",
+    "percentage": 2.1841917009612,
+    "industry": "Computer Software: Programming, Data Processing ##",
+    "asset_type": "Overseas Equities",
+    "rating": "Equity",
+    "market_value": 321959.7,
+    "fincode": 240763,
+    "isin": null
+  },
+  {
+    "instrument_name": "Kotak Mahindra Bank Limited (18/12/2026)",
+    "percentage": 0.33284057001823,
+    "industry": null,
+    "asset_type": "Certificate of Deposit",
+    "rating": "CRISIL A1+",
+    "market_value": 49062.2,
+    "fincode": 1131796,
+    "isin": null
+  },
+  {
+    "instrument_name": "Canara Bank (18/12/2026)",
+    "percentage": 0.299539145840471,
+    "industry": null,
+    "asset_type": "Certificate of Deposit",
+    "rating": "CRISIL A1+",
+    "market_value": 44153.42,
+    "fincode": 1131816,
+    "isin": null
+  },
+  {
+    "instrument_name": "National Bank For Agriculture and Rural Development (18/09/2026)",
+    "percentage": 0.270587113786384,
+    "industry": null,
+    "asset_type": "Certificate of Deposit",
+    "rating": "CRISIL A1+",
+    "market_value": 39885.76,
+    "fincode": 1130217,
+    "isin": null
+  },
+  {
+    "instrument_name": "HDFC Bank Limited (10/09/2026)",
+    "percentage": 0.254019913391169,
+    "industry": null,
+    "asset_type": "Certificate of Deposit",
+    "rating": "CARE A1+",
+    "market_value": 37443.68,
+    "fincode": 1129994,
+    "isin": null
+  },
+  {
+    "instrument_name": "Kotak Mahindra Bank Limited (24/09/2026)",
+    "percentage": 0.236536255262633,
+    "industry": null,
+    "asset_type": "Certificate of Deposit",
+    "rating": "CRISIL A1+",
+    "market_value": 34866.51,
+    "fincode": 1130336,
+    "isin": null
+  },
+  {
+    "instrument_name": "Small Industries Dev Bank of India (24/09/2026)",
+    "percentage": 0.202732336271732,
+    "industry": null,
+    "asset_type": "Certificate of Deposit",
+    "rating": "CRISIL A1+",
+    "market_value": 29883.66,
+    "fincode": 1130417,
+    "isin": null
+  },
+  {
+    "instrument_name": "Canara Bank (11/11/2026)",
+    "percentage": 0.201024993627976,
+    "industry": null,
+    "asset_type": "Certificate of Deposit",
+    "rating": "CRISIL A1+",
+    "market_value": 29631.99,
+    "fincode": 1131021,
+    "isin": null
+  },
+  {
+    "instrument_name": "Indian Bank (22/01/2027)",
+    "percentage": 0.198281929597395,
+    "industry": null,
+    "asset_type": "Certificate of Deposit",
+    "rating": "CRISIL A1+",
+    "market_value": 29227.65,
+    "fincode": 1132172,
+    "isin": null
+  },
+  {
+    "instrument_name": "Axis Bank Limited (01/09/2026)",
+    "percentage": 0.169601327507852,
+    "industry": null,
+    "asset_type": "Certificate of Deposit",
+    "rating": "CRISIL A1+",
+    "market_value": 25000,
+    "fincode": 1134861,
+    "isin": null
+  },
+  {
+    "instrument_name": "National Bank For Agriculture and Rural Development (19/01/2027)",
+    "percentage": 0.165259397842589,
+    "industry": null,
+    "asset_type": "Certificate of Deposit",
+    "rating": "ICRA A1+",
+    "market_value": 24359.98,
+    "fincode": 1132143,
+    "isin": null
+  },
+  {
+    "instrument_name": "National Bank For Agriculture and Rural Development (14/01/2027)",
+    "percentage": 0.148869464754886,
+    "industry": null,
+    "asset_type": "Certificate of Deposit",
+    "rating": "CRISIL A1+",
+    "market_value": 21944.03,
+    "fincode": 1132066,
+    "isin": null
+  },
+  {
+    "instrument_name": "Small Industries Dev Bank of India (13/10/2026)",
+    "percentage": 0.134701444738597,
+    "industry": null,
+    "asset_type": "Certificate of Deposit",
+    "rating": "CRISIL A1+",
+    "market_value": 19855.6,
+    "fincode": 1130549,
+    "isin": null
+  },
+  {
+    "instrument_name": "Bank of Baroda (15/12/2026)",
+    "percentage": 0.133203254451923,
+    "industry": null,
+    "asset_type": "Certificate of Deposit",
+    "rating": "IND A1+",
+    "market_value": 19634.76,
+    "fincode": 1131876,
+    "isin": null
+  },
+  {
+    "instrument_name": "Kotak Mahindra Bank Limited (08/01/2027)",
+    "percentage": 0.132542487679953,
+    "industry": null,
+    "asset_type": "Certificate of Deposit",
+    "rating": "CRISIL A1+",
+    "market_value": 19537.36,
+    "fincode": 1132059,
+    "isin": null
+  },
+  {
+    "instrument_name": "ICICI Bank Limited (27/01/2027)",
+    "percentage": 0.132082121836565,
+    "industry": null,
+    "asset_type": "Certificate of Deposit",
+    "rating": "ICRA A1+",
+    "market_value": 19469.5,
+    "fincode": 1132186,
+    "isin": null
+  },
+  {
+    "instrument_name": "Small Industries Dev Bank of India (16/12/2026)",
+    "percentage": 0.116511431001255,
+    "industry": null,
+    "asset_type": "Certificate of Deposit",
+    "rating": "CARE A1+",
+    "market_value": 17174.31,
+    "fincode": 1131588,
+    "isin": null
+  },
+  {
+    "instrument_name": "National Bank For Agriculture and Rural Development (22/01/2027)",
+    "percentage": 0.0991011763272643,
+    "industry": null,
+    "asset_type": "Certificate of Deposit",
+    "rating": "ICRA A1+",
+    "market_value": 14607.96,
+    "fincode": 1132158,
+    "isin": null
+  },
+  {
+    "instrument_name": "National Bank For Agriculture and Rural Development (28/01/2027)",
+    "percentage": 0.0989926993181903,
+    "industry": null,
+    "asset_type": "Certificate of Deposit",
+    "rating": "CRISIL A1+",
+    "market_value": 14591.97,
+    "fincode": 1132177,
+    "isin": null
+  },
+  {
+    "instrument_name": "Punjab National Bank (02/09/2026)",
+    "percentage": 0.0678295408371185,
+    "industry": null,
+    "asset_type": "Certificate of Deposit",
+    "rating": "CRISIL A1+",
+    "market_value": 9998.38,
+    "fincode": 1133804,
+    "isin": null
+  },
+  {
+    "instrument_name": "HDFC Bank Limited (21/09/2026)",
+    "percentage": 0.0676117727325984,
+    "industry": null,
+    "asset_type": "Certificate of Deposit",
+    "rating": "CARE A1+",
+    "market_value": 9966.28,
+    "fincode": 1130416,
+    "isin": null
+  },
+  {
+    "instrument_name": "Small Industries Dev Bank of India (10/11/2026)",
+    "percentage": 0.0670122659601236,
+    "industry": null,
+    "asset_type": "Certificate of Deposit",
+    "rating": "CARE A1+",
+    "market_value": 9877.91,
+    "fincode": 1130913,
+    "isin": null
+  },
+  {
+    "instrument_name": "HDFC Bank Limited (13/11/2026)",
+    "percentage": 0.066976514000285,
+    "industry": null,
+    "asset_type": "Certificate of Deposit",
+    "rating": "CARE A1+",
+    "market_value": 9872.64,
+    "fincode": 1131054,
+    "isin": null
+  },
+  {
+    "instrument_name": "HDFC Bank Limited (22/01/2027)",
+    "percentage": 0.0660825793232566,
+    "industry": null,
+    "asset_type": "Certificate of Deposit",
+    "rating": "CARE A1+",
+    "market_value": 9740.87,
+    "fincode": 1132173,
+    "isin": null
+  },
+  {
+    "instrument_name": "Bank of Baroda (04/02/2027)",
+    "percentage": 0.0659355010520418,
+    "industry": null,
+    "asset_type": "Certificate of Deposit",
+    "rating": "CARE A1+",
+    "market_value": 9719.19,
+    "fincode": 1132504,
+    "isin": null
+  },
+  {
+    "instrument_name": "Bank of Baroda (05/02/2027)",
+    "percentage": 0.0659250536102673,
+    "industry": null,
+    "asset_type": "Certificate of Deposit",
+    "rating": "CARE A1+",
+    "market_value": 9717.65,
+    "fincode": 1132471,
+    "isin": null
+  },
+  {
+    "instrument_name": "Bank of Baroda (16/09/2026)",
+    "percentage": 0.0338358040404716,
+    "industry": null,
+    "asset_type": "Certificate of Deposit",
+    "rating": "IND A1+",
+    "market_value": 4987.55,
+    "fincode": 1130467,
+    "isin": null
+  },
+  {
+    "instrument_name": "Axis Bank Limited (27/11/2026)",
+    "percentage": 0.0334105795921439,
+    "industry": null,
+    "asset_type": "Certificate of Deposit",
+    "rating": "CRISIL A1+",
+    "market_value": 4924.87,
+    "fincode": 1131199,
+    "isin": null
+  },
+  {
+    "instrument_name": "Punjab National Bank (05/02/2027)",
+    "percentage": 0.0329620858416821,
+    "industry": null,
+    "asset_type": "Certificate of Deposit",
+    "rating": "CRISIL A1+",
+    "market_value": 4858.76,
+    "fincode": 1132466,
+    "isin": null
+  },
+  {
+    "instrument_name": "Small Industries Dev Bank of India (11/06/2027)",
+    "percentage": 0.0321020714301553,
+    "industry": null,
+    "asset_type": "Certificate of Deposit",
+    "rating": "CRISIL A1+",
+    "market_value": 4731.99,
+    "fincode": 1134790,
+    "isin": null
+  },
+  {
+    "instrument_name": "HDFC Bank Limited (16/09/2026)",
+    "percentage": 0.0169171896946603,
+    "industry": null,
+    "asset_type": "Certificate of Deposit",
+    "rating": "CARE A1+",
+    "market_value": 2493.67,
+    "fincode": 1135057,
+    "isin": null
+  },
+  {
+    "instrument_name": "Bank of Baroda (25/11/2026)",
+    "percentage": 0.0167118364073137,
+    "industry": null,
+    "asset_type": "Certificate of Deposit",
+    "rating": "IND A1+",
+    "market_value": 2463.4,
+    "fincode": 1131198,
+    "isin": null
+  },
+  {
+    "instrument_name": "Bank of Baroda (07/12/2026)",
+    "percentage": 0.016674117072076,
+    "industry": null,
+    "asset_type": "Certificate of Deposit",
+    "rating": "IND A1+",
+    "market_value": 2457.84,
+    "fincode": 1134697,
+    "isin": null
+  },
+  {
+    "instrument_name": "Bharat Petroleum Corporation Limited (24/09/2026)",
+    "percentage": 0.337885870308934,
+    "industry": null,
+    "asset_type": "Commercial Paper",
+    "rating": "CRISIL A1+",
+    "market_value": 49805.9,
+    "fincode": 1135335,
+    "isin": null
+  },
+  {
+    "instrument_name": "Export Import Bank of India (14/12/2026)",
+    "percentage": 0.299689344776111,
+    "industry": null,
+    "asset_type": "Commercial Paper",
+    "rating": "CRISIL A1+",
+    "market_value": 44175.56,
+    "fincode": 1135178,
+    "isin": null
+  },
+  {
+    "instrument_name": "Hindustan Petroleum Corporation Limited (15/09/2026)",
+    "percentage": 0.135361804467381,
+    "industry": null,
+    "asset_type": "Commercial Paper",
+    "rating": "CRISIL A1+",
+    "market_value": 19952.94,
+    "fincode": 1135096,
+    "isin": null
+  },
+  {
+    "instrument_name": "REC Limited (21/09/2026)",
+    "percentage": 0.135221645930329,
+    "industry": null,
+    "asset_type": "Commercial Paper",
+    "rating": "CRISIL A1+",
+    "market_value": 19932.28,
+    "fincode": 1135093,
+    "isin": null
+  },
+  {
+    "instrument_name": "Bajaj Finance Limited (26/10/2026)",
+    "percentage": 0.134271878496285,
+    "industry": null,
+    "asset_type": "Commercial Paper",
+    "rating": "ICRA A1+",
+    "market_value": 19792.28,
+    "fincode": 1135680,
+    "isin": null
+  },
+  {
+    "instrument_name": "Hindustan Petroleum Corporation Limited (17/09/2026)",
+    "percentage": 0.101485635310963,
+    "industry": null,
+    "asset_type": "Commercial Paper",
+    "rating": "CRISIL A1+",
+    "market_value": 14959.44,
+    "fincode": 1135070,
+    "isin": null
+  },
+  {
+    "instrument_name": "Export Import Bank of India (22/09/2026)",
+    "percentage": 0.101403548268449,
+    "industry": null,
+    "asset_type": "Commercial Paper",
+    "rating": "CRISIL A1+",
+    "market_value": 14947.34,
+    "fincode": 1135055,
+    "isin": null
+  },
+  {
+    "instrument_name": "NTPC Limited (23/09/2026)",
+    "percentage": 0.0844849339226376,
+    "industry": null,
+    "asset_type": "Commercial Paper",
+    "rating": "CRISIL A1+",
+    "market_value": 12453.46,
+    "fincode": 1135158,
+    "isin": null
+  },
+  {
+    "instrument_name": "Sundaram Finance Limited (17/08/2027)",
+    "percentage": 0.0632323950942216,
+    "industry": null,
+    "asset_type": "Commercial Paper",
+    "rating": "CRISIL A1+",
+    "market_value": 9320.74,
+    "fincode": 1136048,
+    "isin": null
+  },
+  {
+    "instrument_name": "Bajaj Finance Limited (04/11/2026)",
+    "percentage": 0.0335095589268775,
+    "industry": null,
+    "asset_type": "Commercial Paper",
+    "rating": "ICRA A1+",
+    "market_value": 4939.46,
+    "fincode": 1131745,
+    "isin": null
+  },
+  {
+    "instrument_name": "Power Finance Corporation Limited (18/11/2026)",
+    "percentage": 0.0334639700900434,
+    "industry": null,
+    "asset_type": "Commercial Paper",
+    "rating": "CRISIL A1+",
+    "market_value": 4932.74,
+    "fincode": 1136020,
+    "isin": null
+  },
+  {
+    "instrument_name": "ICICI Securities Limited (28/09/2026)",
+    "percentage": 0.0168763496949964,
+    "industry": null,
+    "asset_type": "Commercial Paper",
+    "rating": "CRISIL A1+",
+    "market_value": 2487.65,
+    "fincode": 1135400,
+    "isin": null
+  },
+  {
+    "instrument_name": "364 Days Tbill (MD 15/10/2026)",
+    "percentage": 0.235987561047879,
+    "industry": null,
+    "asset_type": "Treasury Bills",
+    "rating": "Sovereign",
+    "market_value": 34785.63,
+    "fincode": 1130616,
+    "isin": null
+  },
+  {
+    "instrument_name": "364 Days Tbill (MD 15/01/2027)",
+    "percentage": 0.136245563064759,
+    "industry": null,
+    "asset_type": "Treasury Bills",
+    "rating": "Sovereign",
+    "market_value": 20083.21,
+    "fincode": 1132111,
+    "isin": null
+  },
+  {
+    "instrument_name": "364 Days Tbill (MD 01/07/2027)",
+    "percentage": 0.0712269946297558,
+    "industry": null,
+    "asset_type": "Treasury Bills",
+    "rating": "Sovereign",
+    "market_value": 10499.18,
+    "fincode": 1135401,
+    "isin": null
+  },
+  {
+    "instrument_name": "Parag Parikh Liquid Fund- Direct Plan- Growth",
+    "percentage": 0.38352036382041,
+    "industry": null,
+    "asset_type": "Domestic Mutual Funds Units",
+    "rating": "MFU",
+    "market_value": 56532.63,
+    "fincode": 39563,
+    "isin": "INF879O01068"
+  },
+  {
+    "instrument_name": "TRP_010926",
+    "percentage": 4.85239574079616,
+    "industry": null,
+    "asset_type": "Cash & Cash Equivalents and Net Assets",
+    "rating": "Cash",
+    "market_value": 715265,
+    "fincode": 293680,
+    "isin": null
+  },
+  {
+    "instrument_name": "Net Receivables / (Payables)",
+    "percentage": -1.42871554511889,
+    "industry": null,
+    "asset_type": "Cash & Cash Equivalents and Net Assets",
+    "rating": "Cash",
+    "market_value": -210599.11,
+    "fincode": 217287,
+    "isin": null
+  }
+]

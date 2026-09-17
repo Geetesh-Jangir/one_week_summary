@@ -1,0 +1,130 @@
+[
+  {
+    "sector": "Banks",
+    "percentage": 21.02
+  },
+  {
+    "sector": "Retailing",
+    "percentage": 8.11
+  },
+  {
+    "sector": "It - Software",
+    "percentage": 5.73
+  },
+  {
+    "sector": "Pharmaceuticals & Biotechnology",
+    "percentage": 4.46
+  },
+  {
+    "sector": "Petroleum Products",
+    "percentage": 4.38
+  },
+  {
+    "sector": "Finance",
+    "percentage": 4.35
+  },
+  {
+    "sector": "Consumer Durables",
+    "percentage": 4.32
+  },
+  {
+    "sector": "Automobiles",
+    "percentage": 3.9
+  },
+  {
+    "sector": "Electrical Equipment",
+    "percentage": 3.6
+  },
+  {
+    "sector": "Auto Components",
+    "percentage": 3.55
+  },
+  {
+    "sector": "Capital Markets",
+    "percentage": 3.53
+  },
+  {
+    "sector": "Industrial Products",
+    "percentage": 3.34
+  },
+  {
+    "sector": "Telecom - Services",
+    "percentage": 3.21
+  },
+  {
+    "sector": "Beverages",
+    "percentage": 2.83
+  },
+  {
+    "sector": "Construction",
+    "percentage": 2.66
+  },
+  {
+    "sector": "Power",
+    "percentage": 2.27
+  },
+  {
+    "sector": "Transport Services",
+    "percentage": 2.26
+  },
+  {
+    "sector": "Financial Technology (fintech)",
+    "percentage": 2.03
+  },
+  {
+    "sector": "Ferrous Metals",
+    "percentage": 1.64
+  },
+  {
+    "sector": "Leisure Services",
+    "percentage": 1.64
+  },
+  {
+    "sector": "Aerospace & Defense",
+    "percentage": 1.56
+  },
+  {
+    "sector": "Industrial Manufacturing",
+    "percentage": 1.53
+  },
+  {
+    "sector": "Non - Ferrous Metals",
+    "percentage": 1.28
+  },
+  {
+    "sector": "Healthcare Services",
+    "percentage": 1.25
+  },
+  {
+    "sector": "Agricultural, Commercial & Construction Vehicles",
+    "percentage": 1.12
+  },
+  {
+    "sector": "Diversified Metals",
+    "percentage": 0.82
+  },
+  {
+    "sector": "Personal Products",
+    "percentage": 0.74
+  },
+  {
+    "sector": "Insurance",
+    "percentage": 0.58
+  },
+  {
+    "sector": "Realty",
+    "percentage": 0.57
+  },
+  {
+    "sector": "Cement & Cement Products",
+    "percentage": 0.4
+  },
+  {
+    "sector": "It - Services",
+    "percentage": 0.36
+  },
+  {
+    "sector": "Commercial Services & Supplies",
+    "percentage": 0.13
+  }
+]

@@ -1,0 +1,114 @@
+[
+  {
+    "sector": "Banks",
+    "percentage": 28.6
+  },
+  {
+    "sector": "Automobiles",
+    "percentage": 8.47
+  },
+  {
+    "sector": "Pharmaceuticals & Biotechnology",
+    "percentage": 8.46
+  },
+  {
+    "sector": "Retailing",
+    "percentage": 5.68
+  },
+  {
+    "sector": "It - Software",
+    "percentage": 4.84
+  },
+  {
+    "sector": "Healthcare Services",
+    "percentage": 4.03
+  },
+  {
+    "sector": "Construction",
+    "percentage": 3.72
+  },
+  {
+    "sector": "Insurance",
+    "percentage": 3.47
+  },
+  {
+    "sector": "Auto Components",
+    "percentage": 3.22
+  },
+  {
+    "sector": "Transport Services",
+    "percentage": 2.98
+  },
+  {
+    "sector": "Realty",
+    "percentage": 2.68
+  },
+  {
+    "sector": "Power",
+    "percentage": 2.61
+  },
+  {
+    "sector": "Telecom - Services",
+    "percentage": 2.58
+  },
+  {
+    "sector": "Ferrous Metals",
+    "percentage": 2.32
+  },
+  {
+    "sector": "Cement & Cement Products",
+    "percentage": 1.9
+  },
+  {
+    "sector": "Capital Markets",
+    "percentage": 1.68
+  },
+  {
+    "sector": "Petroleum Products",
+    "percentage": 1.66
+  },
+  {
+    "sector": "Financial Technology (fintech)",
+    "percentage": 1.52
+  },
+  {
+    "sector": "Consumer Durables",
+    "percentage": 1.15
+  },
+  {
+    "sector": "Agricultural, Commercial & Construction Vehicles",
+    "percentage": 0.78
+  },
+  {
+    "sector": "Beverages",
+    "percentage": 0.75
+  },
+  {
+    "sector": "Leisure Services",
+    "percentage": 0.7
+  },
+  {
+    "sector": "Food Products",
+    "percentage": 0.7
+  },
+  {
+    "sector": "Aerospace & Defense",
+    "percentage": 0.62
+  },
+  {
+    "sector": "Electrical Equipment",
+    "percentage": 0.6
+  },
+  {
+    "sector": "Transport Infrastructure",
+    "percentage": 0.55
+  },
+  {
+    "sector": "Metals & Minerals Trading",
+    "percentage": 0.51
+  },
+  {
+    "sector": "Oil",
+    "percentage": 0.26
+  }
+]

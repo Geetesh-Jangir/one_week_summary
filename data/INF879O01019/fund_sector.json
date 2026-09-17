@@ -1,0 +1,122 @@
+[
+  {
+    "sector": "Banks",
+    "percentage": 20.91
+  },
+  {
+    "sector": "It - Software",
+    "percentage": 10.32
+  },
+  {
+    "sector": "Realty",
+    "percentage": 6.81
+  },
+  {
+    "sector": "Automobiles",
+    "percentage": 6.71
+  },
+  {
+    "sector": "Computer Software: Programming, Data Processing ##",
+    "percentage": 6.32
+  },
+  {
+    "sector": "Finance",
+    "percentage": 5.65
+  },
+  {
+    "sector": "Power",
+    "percentage": 5.58
+  },
+  {
+    "sector": "Diversified Fmcg",
+    "percentage": 5.3
+  },
+  {
+    "sector": "Consumable Fuels",
+    "percentage": 5.02
+  },
+  {
+    "sector": "Pharmaceuticals & Biotechnology",
+    "percentage": 4.22
+  },
+  {
+    "sector": "Telecom - Services",
+    "percentage": 2.82
+  },
+  {
+    "sector": "Computer Software: Prepackaged Software ##",
+    "percentage": 2.4
+  },
+  {
+    "sector": "Catalog/specialty Distribution ##",
+    "percentage": 2.33
+  },
+  {
+    "sector": "Gas",
+    "percentage": 1.9
+  },
+  {
+    "sector": "Food Products",
+    "percentage": 1.37
+  },
+  {
+    "sector": "Capital Markets",
+    "percentage": 1.0
+  },
+  {
+    "sector": "Petroleum Products",
+    "percentage": 0.35
+  },
+  {
+    "sector": "Healthcare Services",
+    "percentage": 0.26
+  },
+  {
+    "sector": "Commercial Services & Supplies",
+    "percentage": 0.17
+  },
+  {
+    "sector": "Auto Components",
+    "percentage": 0.16
+  },
+  {
+    "sector": "Aerospace & Defense",
+    "percentage": 0.15
+  },
+  {
+    "sector": "Cement & Cement Products",
+    "percentage": 0.12
+  },
+  {
+    "sector": "Transport Services",
+    "percentage": 0.11
+  },
+  {
+    "sector": "Consumer Durables",
+    "percentage": 0.11
+  },
+  {
+    "sector": "Non - Ferrous Metals",
+    "percentage": 0.06
+  },
+  {
+    "sector": "Ferrous Metals",
+    "percentage": 0.06
+  },
+  {
+    "sector": "Oil",
+    "percentage": 0.05
+  },
+  {
+    "sector": "Agricultural, Commercial & Construction Vehicles",
+    "percentage": 0.02
+  },
+  {
+    "sector": "Industrial Products",
+    "percentage": 0.01
+  },
+  {
+    "sector": "Agricultural Food & Other Products",
+    "percentage": 0.0
+  }
+]

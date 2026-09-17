@@ -9,10 +9,14 @@ const state = {
 
 const els = {
   list: document.getElementById("fund-list"),
+  isinForm: document.getElementById("isin-form"),
+  isinInput: document.getElementById("isin-input"),
+  loadBtn: document.getElementById("load-btn"),
   runBtn: document.getElementById("run-btn"),
   runHint: document.getElementById("run-hint"),
   fundLabel: document.getElementById("fund-label"),
   fundTitle: document.getElementById("fund-title"),
+  fundSubtitle: document.getElementById("fund-subtitle"),
   navChip: document.getElementById("nav-chip"),
   navValue: document.getElementById("nav-value"),
   navChange: document.getElementById("nav-change"),
@@ -45,7 +49,7 @@ function formatChange(pct) {
 
 function setRunEnabled(enabled, title) {
   els.runBtn.disabled = !enabled;
-  els.runBtn.title = title || (enabled ? "Run the weekly pipeline" : "Select a fund first");
+  els.runBtn.title = title || (enabled ? "Run the weekly pipeline" : "Load an ISIN first");
 }
 
 async function fetchJson(url, options) {
@@ -62,7 +66,7 @@ async function fetchJson(url, options) {
 
 function renderFunds(funds) {
   if (!funds.length) {
-    els.list.innerHTML = '<p class="muted">No fund folders found in data/.</p>';
+    els.list.innerHTML = '<p class="muted">Recently loaded ISINs appear here.</p>';
     return;
   }
   els.list.innerHTML = "";
@@ -71,8 +75,12 @@ function renderFunds(funds) {
     button.type = "button";
     button.className = "fund-btn";
     button.dataset.id = fund.id;
-    button.innerHTML = `<span>${fund.name}</span><span class="fund-id">${fund.id}</span>`;
-    button.addEventListener("click", () => selectFund(fund));
+    const subtitle = fund.subtitle ? `<span class="fund-id">${fund.subtitle}</span>` : "";
+    button.innerHTML = `<span>${fund.name}</span>${subtitle}<span class="fund-id">${fund.isin || fund.id}</span>`;
+    button.addEventListener("click", () => {
+      els.isinInput.value = fund.isin || fund.id;
+      loadIsin(fund.isin || fund.id);
+    });
     els.list.appendChild(button);
   });
 }
@@ -103,6 +111,35 @@ function renderNews(items) {
       </article>`;
     })
     .join("");
+}
+
+function applyIdentity(payload) {
+  const name = payload.fund_name || payload.name || payload.isin || "Fund";
+  const subtitle = payload.subtitle || "";
+  els.fundLabel.textContent = payload.isin || payload.fund_id || "Loaded scheme";
+  els.fundTitle.textContent = name;
+  if (els.fundSubtitle) {
+    if (subtitle) {
+      els.fundSubtitle.textContent = subtitle;
+      els.fundSubtitle.classList.remove("hidden");
+    } else {
+      els.fundSubtitle.textContent = "";
+      els.fundSubtitle.classList.add("hidden");
+    }
+  }
+}
+
+function applyNavChart(payload) {
+  const down = (payload.change_pct || 0) < 0;
+  els.navChip.classList.remove("hidden");
+  els.navValue.textContent = formatNav(payload.end_nav);
+  els.navChange.textContent = formatChange(payload.change_pct);
+  els.navChange.classList.toggle("down", down);
+  els.navChange.classList.toggle("up", !down);
+  const start = payload.dates[0] || "—";
+  const end = payload.dates[payload.dates.length - 1] || "—";
+  els.chartCaption.textContent = `${start} → ${end}`;
+  drawChart(payload);
 }
 
 function showPlaceholder(message) {
@@ -332,22 +369,67 @@ async function loadBook(fundId, token) {
   renderRankList(els.sectorsList, [], "No sectors in this file.", "");
 }
 
-async function selectFund(fund) {
-  const token = ++state.selectToken;
-  state.selectedId = fund.id;
-  state.selectedName = fund.name;
-  markActive(fund.id);
-  els.fundLabel.textContent = "Selected scheme";
-  els.fundTitle.textContent = fund.name;
+async function loadIsin(rawIsin, token) {
+  const isin = String(rawIsin || "").trim().toUpperCase();
+  if (!isin) return;
+  const selectToken = token || ++state.selectToken;
+  state.selectedId = isin;
+  state.selectedName = isin;
+  els.isinInput.value = isin;
+  markActive(isin);
+  els.fundLabel.textContent = isin;
+  els.fundTitle.textContent = "Loading fund…";
+  if (els.fundSubtitle) els.fundSubtitle.classList.add("hidden");
   if (!state.running) {
     setRunEnabled(true, "Run the weekly pipeline");
     els.runHint.textContent = "Run builds a news-backed note. This can take several minutes.";
   }
-  await Promise.all([
-    loadNav(fund.id, token),
-    loadBook(fund.id, token),
-    loadExistingSummary(fund.id, token),
-  ]);
+  setChartLoading(true);
+  try {
+    const payload = await fetchJson("/api/lookup", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ isin }),
+    });
+    if (selectToken !== state.selectToken) return;
+    state.selectedName = payload.fund_name || isin;
+    applyIdentity(payload);
+    applyNavChart(payload);
+    renderRankList(els.holdingsList, payload.holdings, "No holdings in this file.", "industry");
+    renderRankList(els.sectorsList, payload.sectors, "No sectors in this file.", "");
+    if (payload.cached && payload.investor_summary) {
+      els.summaryCaption.textContent = "Saved note for the current NAV date.";
+      renderSummary(payload.investor_summary);
+      renderNews(payload.important_news);
+    } else if (payload.investor_summary) {
+      els.summaryCaption.textContent = payload.nav_stale
+        ? "NAV has moved since this note. Run to refresh."
+        : "Last saved note for this fund.";
+      renderSummary(payload.investor_summary);
+      renderNews(payload.important_news);
+    } else {
+      els.summaryCaption.textContent = "The pipeline writes a news-backed summary after Run.";
+      showPlaceholder("Load looks good. Click Run to generate the investor note.");
+      renderNews([]);
+    }
+    if (!state.running) {
+      els.runHint.textContent = payload.cached
+        ? "NAV is unchanged. Run will show the saved note."
+        : "NAV is new or the note is missing. Run will fetch news and score it.";
+    }
+    refreshRecents();
+  } catch (error) {
+    if (selectToken !== state.selectToken) return;
+    destroyChart();
+    els.navChip.classList.add("hidden");
+    els.chartCaption.textContent = "Fund could not be loaded.";
+    els.chartEmpty.textContent = error.message;
+    els.chartEmpty.classList.remove("hidden");
+    showPlaceholder(error.message);
+    setRunEnabled(false, "Fix the ISIN, then load again");
+  } finally {
+    if (selectToken === state.selectToken) setChartLoading(false);
+  }
 }
 
 function showLog(lines) {
@@ -420,15 +502,36 @@ async function pollStatus() {
 }
 
 async function startRun() {
-  if (!state.selectedId || state.running) return;
+  const isin = String(els.isinInput.value || state.selectedId || "").trim().toUpperCase();
+  if (!isin || state.running) return;
+  state.selectedId = isin;
   state.running = true;
   els.runBtn.textContent = "Running…";
   setRunEnabled(false, "A run is already in progress");
-  els.runHint.textContent = "RSS, scrape, and DeepSeek are in flight. This can take several minutes.";
-  els.summaryCaption.textContent = "Generating the investor note…";
-  showPlaceholder("Working through prices, news, and scoring. Keep this tab open.");
+  els.runHint.textContent = "Checking the latest NAV date…";
+  els.summaryCaption.textContent = "Preparing the investor note…";
+  showPlaceholder("Checking whether a saved note already matches the latest NAV.");
   try {
-    await fetchJson(`/api/run/${encodeURIComponent(state.selectedId)}`, { method: "POST" });
+    const result = await fetchJson("/api/run", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ isin }),
+    });
+    if (result.status === "cached") {
+      state.running = false;
+      els.runBtn.textContent = "Run";
+      setRunEnabled(true, "Run the weekly pipeline");
+      els.runHint.textContent = "NAV is unchanged. Showing the saved note.";
+      els.summaryCaption.textContent = "Saved note for the current NAV date.";
+      const payload = await fetchJson(`/api/summary/${encodeURIComponent(isin)}`);
+      renderSummary(payload.investor_summary);
+      renderNews(payload.important_news);
+      showLog([]);
+      return;
+    }
+    els.runHint.textContent = "RSS, scrape, and DeepSeek are in flight. This can take several minutes.";
+    els.summaryCaption.textContent = "Generating the investor note…";
+    showPlaceholder("Working through prices, news, and scoring. Keep this tab open.");
     stopPolling();
     await pollStatus();
     state.pollTimer = setInterval(pollStatus, 2000);
@@ -448,14 +551,32 @@ async function startRun() {
   }
 }
 
+async function refreshRecents() {
+  try {
+    const payload = await fetchJson("/api/funds");
+    renderFunds(payload.funds || []);
+    if (state.selectedId) markActive(state.selectedId);
+  } catch {
+    /* ignore */
+  }
+}
+
 async function boot() {
+  if (els.isinForm) {
+    els.isinForm.addEventListener("submit", (event) => {
+      event.preventDefault();
+      loadIsin(els.isinInput.value);
+    });
+  }
+  if (els.runBtn) {
+    els.runBtn.addEventListener("click", startRun);
+  }
   try {
     const payload = await fetchJson("/api/funds");
     renderFunds(payload.funds || []);
   } catch (error) {
-    els.list.innerHTML = `<p class="muted">${error.message}</p>`;
+    if (els.list) els.list.innerHTML = `<p class="muted">${error.message}</p>`;
   }
-  els.runBtn.addEventListener("click", startRun);
   try {
     const status = await fetchJson("/api/run/status");
     if (status.status === "running") {

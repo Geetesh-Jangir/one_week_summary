@@ -1,0 +1,862 @@
+[
+  {
+    "instrument_name": "ICICI Bank Ltd.",
+    "percentage": 9.19386133001383,
+    "industry": "Banks",
+    "asset_type": "Domestic Equities",
+    "rating": "Equity",
+    "market_value": 1044482.09,
+    "fincode": 132174,
+    "isin": null
+  },
+  {
+    "instrument_name": "Axis Bank Ltd.",
+    "percentage": 6.19129075888731,
+    "industry": "Banks",
+    "asset_type": "Domestic Equities",
+    "rating": "Equity",
+    "market_value": 703370.66,
+    "fincode": 132215,
+    "isin": null
+  },
+  {
+    "instrument_name": "HDFC Bank Ltd.£",
+    "percentage": 5.71320661322749,
+    "industry": "Banks",
+    "asset_type": "Domestic Equities",
+    "rating": "Equity",
+    "market_value": 649057.21,
+    "fincode": 100180,
+    "isin": null
+  },
+  {
+    "instrument_name": "State Bank of India",
+    "percentage": 4.15948016620586,
+    "industry": "Banks",
+    "asset_type": "Domestic Equities",
+    "rating": "Equity",
+    "market_value": 472543.84,
+    "fincode": 100112,
+    "isin": null
+  },
+  {
+    "instrument_name": "Eternal Limited",
+    "percentage": 3.3861964484759,
+    "industry": "Retailing",
+    "asset_type": "Domestic Equities",
+    "rating": "Equity",
+    "market_value": 384693.81,
+    "fincode": 252306,
+    "isin": null
+  },
+  {
+    "instrument_name": "Kotak Mahindra Bank Limited",
+    "percentage": 3.26523502308942,
+    "industry": "Banks",
+    "asset_type": "Domestic Equities",
+    "rating": "Equity",
+    "market_value": 370951.81,
+    "fincode": 100247,
+    "isin": null
+  },
+  {
+    "instrument_name": "SBI Life Insurance Company Ltd.",
+    "percentage": 3.1885162381009,
+    "industry": "Insurance",
+    "asset_type": "Domestic Equities",
+    "rating": "Equity",
+    "market_value": 362236.06,
+    "fincode": 211385,
+    "isin": null
+  },
+  {
+    "instrument_name": "Larsen and Toubro Ltd.",
+    "percentage": 3.16096895031032,
+    "industry": "Construction",
+    "asset_type": "Domestic Equities",
+    "rating": "Equity",
+    "market_value": 359106.51,
+    "fincode": 100510,
+    "isin": null
+  },
+  {
+    "instrument_name": "InterGlobe Aviation Ltd.",
+    "percentage": 2.97791986143606,
+    "industry": "Transport Services",
+    "asset_type": "Domestic Equities",
+    "rating": "Equity",
+    "market_value": 338310.95,
+    "fincode": 222055,
+    "isin": null
+  },
+  {
+    "instrument_name": "Maruti Suzuki India Limited",
+    "percentage": 2.73511836348786,
+    "industry": "Automobiles",
+    "asset_type": "Domestic Equities",
+    "rating": "Equity",
+    "market_value": 310727.13,
+    "fincode": 132500,
+    "isin": null
+  },
+  {
+    "instrument_name": "Bharti Airtel Ltd.",
+    "percentage": 2.58306812652313,
+    "industry": "Telecom - Services",
+    "asset_type": "Domestic Equities",
+    "rating": "Equity",
+    "market_value": 293453.24,
+    "fincode": 132454,
+    "isin": null
+  },
+  {
+    "instrument_name": "HCL Technologies Ltd.",
+    "percentage": 2.48465163278933,
+    "industry": "IT - Software",
+    "asset_type": "Domestic Equities",
+    "rating": "Equity",
+    "market_value": 282272.49,
+    "fincode": 132281,
+    "isin": null
+  },
+  {
+    "instrument_name": "Cipla Ltd.",
+    "percentage": 2.46874179885475,
+    "industry": "Pharmaceuticals & Biotechnology",
+    "asset_type": "Domestic Equities",
+    "rating": "Equity",
+    "market_value": 280465.03,
+    "fincode": 100087,
+    "isin": null
+  },
+  {
+    "instrument_name": "Eicher Motors Ltd.",
+    "percentage": 2.44163031372541,
+    "industry": "Automobiles",
+    "asset_type": "Domestic Equities",
+    "rating": "Equity",
+    "market_value": 277384.99,
+    "fincode": 105200,
+    "isin": null
+  },
+  {
+    "instrument_name": "Power Grid Corporation of India Ltd.",
+    "percentage": 2.03828267150869,
+    "industry": "Power",
+    "asset_type": "Domestic Equities",
+    "rating": "Equity",
+    "market_value": 231562.09,
+    "fincode": 132898,
+    "isin": null
+  },
+  {
+    "instrument_name": "Hyundai Motor India Limited",
+    "percentage": 1.74681959452387,
+    "industry": "Automobiles",
+    "asset_type": "Domestic Equities",
+    "rating": "Equity",
+    "market_value": 198450,
+    "fincode": 208361,
+    "isin": null
+  },
+  {
+    "instrument_name": "Divis Laboratories Ltd.",
+    "percentage": 1.57818491413237,
+    "industry": "Pharmaceuticals & Biotechnology",
+    "asset_type": "Domestic Equities",
+    "rating": "Equity",
+    "market_value": 179292.01,
+    "fincode": 132488,
+    "isin": null
+  },
+  {
+    "instrument_name": "PB Fintech Limited",
+    "percentage": 1.5158454163861,
+    "industry": "Financial Technology (Fintech)",
+    "asset_type": "Domestic Equities",
+    "rating": "Equity",
+    "market_value": 172209.84,
+    "fincode": 254493,
+    "isin": null
+  },
+  {
+    "instrument_name": "Max Healthcare Institute Limited",
+    "percentage": 1.49144680502361,
+    "industry": "Healthcare Services",
+    "asset_type": "Domestic Equities",
+    "rating": "Equity",
+    "market_value": 169438,
+    "fincode": 218071,
+    "isin": null
+  },
+  {
+    "instrument_name": "JSW Steel Ltd.",
+    "percentage": 1.44664715407417,
+    "industry": "Ferrous Metals",
+    "asset_type": "Domestic Equities",
+    "rating": "Equity",
+    "market_value": 164348.47,
+    "fincode": 100228,
+    "isin": null
+  },
+  {
+    "instrument_name": "Piramal Pharma Limited",
+    "percentage": 1.44253629649274,
+    "industry": "Pharmaceuticals & Biotechnology",
+    "asset_type": "Domestic Equities",
+    "rating": "Equity",
+    "market_value": 163881.45,
+    "fincode": 307332,
+    "isin": null
+  },
+  {
+    "instrument_name": "Reliance Industries Ltd.",
+    "percentage": 1.43724231962837,
+    "industry": "Petroleum Products",
+    "asset_type": "Domestic Equities",
+    "rating": "Equity",
+    "market_value": 163280.02,
+    "fincode": 100325,
+    "isin": null
+  },
+  {
+    "instrument_name": "Bosch Limited",
+    "percentage": 1.34235317795359,
+    "industry": "Auto Components",
+    "asset_type": "Domestic Equities",
+    "rating": "Equity",
+    "market_value": 152500,
+    "fincode": 100530,
+    "isin": null
+  },
+  {
+    "instrument_name": "Persistent Systems Limited",
+    "percentage": 1.34025268130536,
+    "industry": "IT - Software",
+    "asset_type": "Domestic Equities",
+    "rating": "Equity",
+    "market_value": 152261.37,
+    "fincode": 210590,
+    "isin": null
+  },
+  {
+    "instrument_name": "Lupin Ltd.",
+    "percentage": 0.941745520636764,
+    "industry": "Pharmaceuticals & Biotechnology",
+    "asset_type": "Domestic Equities",
+    "rating": "Equity",
+    "market_value": 106988.38,
+    "fincode": 100257,
+    "isin": null
+  },
+  {
+    "instrument_name": "Tata Steel Ltd.",
+    "percentage": 0.877697405347058,
+    "industry": "Ferrous Metals",
+    "asset_type": "Domestic Equities",
+    "rating": "Equity",
+    "market_value": 99712.1,
+    "fincode": 100470,
+    "isin": null
+  },
+  {
+    "instrument_name": "Varroc Engineering Limited",
+    "percentage": 0.88179224271351,
+    "industry": "Auto Components",
+    "asset_type": "Domestic Equities",
+    "rating": "Equity",
+    "market_value": 100177.3,
+    "fincode": 214437,
+    "isin": null
+  },
+  {
+    "instrument_name": "UltraTech Cement Limited",
+    "percentage": 0.869974077311648,
+    "industry": "Cement & Cement Products",
+    "asset_type": "Domestic Equities",
+    "rating": "Equity",
+    "market_value": 98834.68,
+    "fincode": 132538,
+    "isin": null
+  },
+  {
+    "instrument_name": "TVS Motor Company Ltd.",
+    "percentage": 0.853504504107647,
+    "industry": "Automobiles",
+    "asset_type": "Domestic Equities",
+    "rating": "Equity",
+    "market_value": 96963.63,
+    "fincode": 132343,
+    "isin": null
+  },
+  {
+    "instrument_name": "Aster DM Quality Care Limited",
+    "percentage": 0.813276335931779,
+    "industry": "Healthcare Services",
+    "asset_type": "Domestic Equities",
+    "rating": "Equity",
+    "market_value": 92393.45,
+    "fincode": 221033,
+    "isin": null
+  },
+  {
+    "instrument_name": "Fsn Ecommerce Ventures Limited (Nykaa)",
+    "percentage": 0.747674435835697,
+    "industry": "Retailing",
+    "asset_type": "Domestic Equities",
+    "rating": "Equity",
+    "market_value": 84940.65,
+    "fincode": 302988,
+    "isin": null
+  },
+  {
+    "instrument_name": "United Spirits Limited",
+    "percentage": 0.752171098923943,
+    "industry": "Beverages",
+    "asset_type": "Domestic Equities",
+    "rating": "Equity",
+    "market_value": 85451.5,
+    "fincode": 132432,
+    "isin": null
+  },
+  {
+    "instrument_name": "Dr. Lal Path Labs Ltd",
+    "percentage": 0.71154673850847,
+    "industry": "Healthcare Services",
+    "asset_type": "Domestic Equities",
+    "rating": "Equity",
+    "market_value": 80836.31,
+    "fincode": 218763,
+    "isin": null
+  },
+  {
+    "instrument_name": "Britannia Industries Ltd.",
+    "percentage": 0.697120622945531,
+    "industry": "Food Products",
+    "asset_type": "Domestic Equities",
+    "rating": "Equity",
+    "market_value": 79197.41,
+    "fincode": 100825,
+    "isin": null
+  },
+  {
+    "instrument_name": "LENSKART SOLUTIONS LIMITED",
+    "percentage": 0.703855450903012,
+    "industry": "Retailing",
+    "asset_type": "Domestic Equities",
+    "rating": "Equity",
+    "market_value": 79962.53,
+    "fincode": 233063,
+    "isin": null
+  },
+  {
+    "instrument_name": "Apollo Hospitals Enterprise Ltd.",
+    "percentage": 0.676198134163412,
+    "industry": "Healthcare Services",
+    "asset_type": "Domestic Equities",
+    "rating": "Equity",
+    "market_value": 76820.48,
+    "fincode": 108869,
+    "isin": null
+  },
+  {
+    "instrument_name": "Bharat Electronics Ltd.",
+    "percentage": 0.622612275531097,
+    "industry": "Aerospace & Defense",
+    "asset_type": "Domestic Equities",
+    "rating": "Equity",
+    "market_value": 70732.78,
+    "fincode": 100049,
+    "isin": null
+  },
+  {
+    "instrument_name": "Anthem Biosciences Limited",
+    "percentage": 0.610443425862941,
+    "industry": "Pharmaceuticals & Biotechnology",
+    "asset_type": "Domestic Equities",
+    "rating": "Equity",
+    "market_value": 69350.32,
+    "fincode": 228049,
+    "isin": null
+  },
+  {
+    "instrument_name": "ACME Solar Holdings Limited",
+    "percentage": 0.569923724983769,
+    "industry": "Power",
+    "asset_type": "Domestic Equities",
+    "rating": "Equity",
+    "market_value": 64747.02,
+    "fincode": 287433,
+    "isin": null
+  },
+  {
+    "instrument_name": "Vishal Mega Mart Limited",
+    "percentage": 0.569003794946864,
+    "industry": "Retailing",
+    "asset_type": "Domestic Equities",
+    "rating": "Equity",
+    "market_value": 64642.51,
+    "fincode": 317635,
+    "isin": null
+  },
+  {
+    "instrument_name": "Craftsman Automation Ltd",
+    "percentage": 0.555057141532143,
+    "industry": "Auto Components",
+    "asset_type": "Domestic Equities",
+    "rating": "Equity",
+    "market_value": 63058.08,
+    "fincode": 215216,
+    "isin": null
+  },
+  {
+    "instrument_name": "Kalpataru Projects International Ltd",
+    "percentage": 0.563678569860974,
+    "industry": "Construction",
+    "asset_type": "Domestic Equities",
+    "rating": "Equity",
+    "market_value": 64037.53,
+    "fincode": 122287,
+    "isin": null
+  },
+  {
+    "instrument_name": "JSW Infrastructure Limited",
+    "percentage": 0.551498893344235,
+    "industry": "Transport Infrastructure",
+    "asset_type": "Domestic Equities",
+    "rating": "Equity",
+    "market_value": 62653.84,
+    "fincode": 237831,
+    "isin": null
+  },
+  {
+    "instrument_name": "Havells India Ltd.",
+    "percentage": 0.537307447523751,
+    "industry": "Consumer Durables",
+    "asset_type": "Domestic Equities",
+    "rating": "Equity",
+    "market_value": 61041.6,
+    "fincode": 117354,
+    "isin": null
+  },
+  {
+    "instrument_name": "Infosys Limited",
+    "percentage": 0.536563651828425,
+    "industry": "IT - Software",
+    "asset_type": "Domestic Equities",
+    "rating": "Equity",
+    "market_value": 60957.1,
+    "fincode": 100209,
+    "isin": null
+  },
+  {
+    "instrument_name": "Neuland Laboratories Limited",
+    "percentage": 0.516265599337742,
+    "industry": "Pharmaceuticals & Biotechnology",
+    "asset_type": "Domestic Equities",
+    "rating": "Equity",
+    "market_value": 58651.11,
+    "fincode": 124558,
+    "isin": null
+  },
+  {
+    "instrument_name": "ADANI ENTERPRISES LIMTIED",
+    "percentage": 0.510666622226708,
+    "industry": "Metals & Minerals Trading",
+    "asset_type": "Domestic Equities",
+    "rating": "Equity",
+    "market_value": 58015.03,
+    "fincode": 112599,
+    "isin": null
+  },
+  {
+    "instrument_name": "Nuvoco Vistas Corporation Ltd.",
+    "percentage": 0.493710280952276,
+    "industry": "Cement & Cement Products",
+    "asset_type": "Domestic Equities",
+    "rating": "Equity",
+    "market_value": 56088.68,
+    "fincode": 216147,
+    "isin": null
+  },
+  {
+    "instrument_name": "Hexaware Technologies Ltd.",
+    "percentage": 0.478892286284534,
+    "industry": "IT - Software",
+    "asset_type": "Domestic Equities",
+    "rating": "Equity",
+    "market_value": 54405.26,
+    "fincode": 132129,
+    "isin": null
+  },
+  {
+    "instrument_name": "Prestige Estates Projects Ltd.",
+    "percentage": 0.48311264467602,
+    "industry": "Realty",
+    "asset_type": "Domestic Equities",
+    "rating": "Equity",
+    "market_value": 54884.72,
+    "fincode": 213838,
+    "isin": null
+  },
+  {
+    "instrument_name": "Ashok Leyland Ltd",
+    "percentage": 0.459811506062567,
+    "industry": "Agricultural, Commercial & Construction Vehicles",
+    "asset_type": "Domestic Equities",
+    "rating": "Equity",
+    "market_value": 52237.56,
+    "fincode": 100477,
+    "isin": null
+  },
+  {
+    "instrument_name": "Bajaj Auto Limited",
+    "percentage": 0.460925527165529,
+    "industry": "Automobiles",
+    "asset_type": "Domestic Equities",
+    "rating": "Equity",
+    "market_value": 52364.12,
+    "fincode": 200132,
+    "isin": null
+  },
+  {
+    "instrument_name": "ICICI PRUDENTIAL ASSET MANAGEMENT COMPANY LIMITED",
+    "percentage": 0.458750562924608,
+    "industry": "Capital Markets",
+    "asset_type": "Domestic Equities",
+    "rating": "Equity",
+    "market_value": 52117.03,
+    "fincode": 208364,
+    "isin": null
+  },
+  {
+    "instrument_name": "Bombay Stock Exchange Limited (BSE)",
+    "percentage": 0.453303601809529,
+    "industry": "Capital Markets",
+    "asset_type": "Domestic Equities",
+    "rating": "Equity",
+    "market_value": 51498.22,
+    "fincode": 207901,
+    "isin": null
+  },
+  {
+    "instrument_name": "CORONA REMEDIES LIMITED",
+    "percentage": 0.421105698425236,
+    "industry": "Pharmaceuticals & Biotechnology",
+    "asset_type": "Domestic Equities",
+    "rating": "Equity",
+    "market_value": 47840.33,
+    "fincode": 320396,
+    "isin": null
+  },
+  {
+    "instrument_name": "SAPPHIRE FOODS INDIA LIMITED",
+    "percentage": 0.412670175008658,
+    "industry": "Leisure Services",
+    "asset_type": "Domestic Equities",
+    "rating": "Equity",
+    "market_value": 46882,
+    "fincode": 303107,
+    "isin": null
+  },
+  {
+    "instrument_name": "Nippon Life India Asset Management Limited",
+    "percentage": 0.384756886922074,
+    "industry": "Capital Markets",
+    "asset_type": "Domestic Equities",
+    "rating": "Equity",
+    "market_value": 43710.87,
+    "fincode": 209078,
+    "isin": null
+  },
+  {
+    "instrument_name": "SBI Funds Management Limited",
+    "percentage": 0.382363449199993,
+    "industry": "Capital Markets",
+    "asset_type": "Domestic Equities",
+    "rating": "Equity",
+    "market_value": 43438.96,
+    "fincode": 223586,
+    "isin": null
+  },
+  {
+    "instrument_name": "CIE Automotive India Ltd",
+    "percentage": 0.344214564090985,
+    "industry": "Auto Components",
+    "asset_type": "Domestic Equities",
+    "rating": "Equity",
+    "market_value": 39105,
+    "fincode": 132756,
+    "isin": null
+  },
+  {
+    "instrument_name": "Metropolis Healthcare Ltd.",
+    "percentage": 0.333191863978904,
+    "industry": "Healthcare Services",
+    "asset_type": "Domestic Equities",
+    "rating": "Equity",
+    "market_value": 37852.75,
+    "fincode": 235506,
+    "isin": null
+  },
+  {
+    "instrument_name": "Dixon Technologies (India) Ltd.",
+    "percentage": 0.315332757183613,
+    "industry": "Consumer Durables",
+    "asset_type": "Domestic Equities",
+    "rating": "Equity",
+    "market_value": 35823.84,
+    "fincode": 210072,
+    "isin": null
+  },
+  {
+    "instrument_name": "ESCORTS KUBOTA LIMITED",
+    "percentage": 0.316355234200997,
+    "industry": "Agricultural, Commercial & Construction Vehicles",
+    "asset_type": "Domestic Equities",
+    "rating": "Equity",
+    "market_value": 35940,
+    "fincode": 100495,
+    "isin": null
+  },
+  {
+    "instrument_name": "The Ramco Cements Ltd.",
+    "percentage": 0.306917655139971,
+    "industry": "Cement & Cement Products",
+    "asset_type": "Domestic Equities",
+    "rating": "Equity",
+    "market_value": 34867.83,
+    "fincode": 100260,
+    "isin": null
+  },
+  {
+    "instrument_name": "Crompton Greaves Consumer Elec. Ltd.",
+    "percentage": 0.30108761723601,
+    "industry": "Consumer Durables",
+    "asset_type": "Domestic Equities",
+    "rating": "Equity",
+    "market_value": 34205.5,
+    "fincode": 280713,
+    "isin": null
+  },
+  {
+    "instrument_name": "Life Insurance Corporation of India",
+    "percentage": 0.285151024261027,
+    "industry": "Insurance",
+    "asset_type": "Domestic Equities",
+    "rating": "Equity",
+    "market_value": 32395,
+    "fincode": 217376,
+    "isin": null
+  },
+  {
+    "instrument_name": "Restaurant Brands Asia Limited",
+    "percentage": 0.289274909270019,
+    "industry": "Leisure Services",
+    "asset_type": "Domestic Equities",
+    "rating": "Equity",
+    "market_value": 32863.5,
+    "fincode": 296214,
+    "isin": null
+  },
+  {
+    "instrument_name": "Swiggy Limited",
+    "percentage": 0.269304126885278,
+    "industry": "Retailing",
+    "asset_type": "Domestic Equities",
+    "rating": "Equity",
+    "market_value": 30594.69,
+    "fincode": 293862,
+    "isin": null
+  },
+  {
+    "instrument_name": "Apar Industries Limited",
+    "percentage": 0.263121556228682,
+    "industry": "Electrical Equipment",
+    "asset_type": "Domestic Equities",
+    "rating": "Equity",
+    "market_value": 29892.31,
+    "fincode": 132259,
+    "isin": null
+  },
+  {
+    "instrument_name": "Biocon Ltd.",
+    "percentage": 0.264809488329694,
+    "industry": "Pharmaceuticals & Biotechnology",
+    "asset_type": "Domestic Equities",
+    "rating": "Equity",
+    "market_value": 30084.07,
+    "fincode": 132523,
+    "isin": null
+  },
+  {
+    "instrument_name": "Oil & Natural Gas Corporation Ltd.",
+    "percentage": 0.261335918420946,
+    "industry": "Oil",
+    "asset_type": "Domestic Equities",
+    "rating": "Equity",
+    "market_value": 29689.45,
+    "fincode": 100312,
+    "isin": null
+  },
+  {
+    "instrument_name": "Ather Energy Limited",
+    "percentage": 0.232819319601137,
+    "industry": "Automobiles",
+    "asset_type": "Domestic Equities",
+    "rating": "Equity",
+    "market_value": 26449.78,
+    "fincode": 294388,
+    "isin": null
+  },
+  {
+    "instrument_name": "Hindustan Petroleum Corp. Ltd.",
+    "percentage": 0.225871299552049,
+    "industry": "Petroleum Products",
+    "asset_type": "Domestic Equities",
+    "rating": "Equity",
+    "market_value": 25660.44,
+    "fincode": 100104,
+    "isin": null
+  },
+  {
+    "instrument_name": "JK Lakshmi Cement Ltd",
+    "percentage": 0.233657476123135,
+    "industry": "Cement & Cement Products",
+    "asset_type": "Domestic Equities",
+    "rating": "Equity",
+    "market_value": 26545,
+    "fincode": 100380,
+    "isin": null
+  },
+  {
+    "instrument_name": "Diamond Power Infrastructure Limited",
+    "percentage": 0.212639306166954,
+    "industry": "Electrical Equipment",
+    "asset_type": "Domestic Equities",
+    "rating": "Equity",
+    "market_value": 24157.2,
+    "fincode": 122163,
+    "isin": null
+  },
+  {
+    "instrument_name": "Rubicon Research Limited",
+    "percentage": 0.213468748396191,
+    "industry": "Pharmaceuticals & Biotechnology",
+    "asset_type": "Domestic Equities",
+    "rating": "Equity",
+    "market_value": 24251.43,
+    "fincode": 254962,
+    "isin": null
+  },
+  {
+    "instrument_name": "ABB India Ltd.",
+    "percentage": 0.119835609180184,
+    "industry": "Electrical Equipment",
+    "asset_type": "Domestic Equities",
+    "rating": "Equity",
+    "market_value": 13614.1,
+    "fincode": 100002,
+    "isin": null
+  },
+  {
+    "instrument_name": "TENNECO CLEAN AIR INDIA LIMITED",
+    "percentage": 0.10081899784128,
+    "industry": "Auto Components",
+    "asset_type": "Domestic Equities",
+    "rating": "Equity",
+    "market_value": 11453.69,
+    "fincode": 321331,
+    "isin": null
+  },
+  {
+    "instrument_name": "Bank of Baroda",
+    "percentage": 0.0808658200883822,
+    "industry": "Banks",
+    "asset_type": "Domestic Equities",
+    "rating": "Equity",
+    "market_value": 9186.88,
+    "fincode": 132134,
+    "isin": null
+  },
+  {
+    "instrument_name": "Nexus Select Trust REIT",
+    "percentage": 1.62463464722437,
+    "industry": "Realty",
+    "asset_type": "REITs & InvITs",
+    "rating": "REITs & InvITs",
+    "market_value": 184569,
+    "fincode": 309632,
+    "isin": null
+  },
+  {
+    "instrument_name": "Embassy Office Parks REIT",
+    "percentage": 0.567367004301353,
+    "industry": "Realty",
+    "asset_type": "REITs & InvITs",
+    "rating": "REITs & InvITs",
+    "market_value": 64456.56,
+    "fincode": 294683,
+    "isin": null
+  },
+  {
+    "instrument_name": "7.38% GOI MAT 200627",
+    "percentage": 0.258394184440145,
+    "industry": null,
+    "asset_type": "Government Securities",
+    "rating": "Sovereign",
+    "market_value": 29355.25,
+    "fincode": 1112784,
+    "isin": null
+  },
+  {
+    "instrument_name": "7.32% GOI MAT 131130",
+    "percentage": 0.0995674845636317,
+    "industry": null,
+    "asset_type": "Government Securities",
+    "rating": "Sovereign",
+    "market_value": 11311.51,
+    "fincode": 1119536,
+    "isin": null
+  },
+  {
+    "instrument_name": "7.37% GOI MAT 231028",
+    "percentage": 0.0900123065619008,
+    "industry": null,
+    "asset_type": "Government Securities",
+    "rating": "Sovereign",
+    "market_value": 10225.98,
+    "fincode": 1119309,
+    "isin": null
+  },
+  {
+    "instrument_name": "TREPS - Tri-party Repo",
+    "percentage": 2.55026568008139,
+    "industry": null,
+    "asset_type": "Cash & Cash Equivalents and Net Assets",
+    "rating": "Cash",
+    "market_value": 289726.67,
+    "fincode": 293680,
+    "isin": null
+  },
+  {
+    "instrument_name": "Net Current Assets",
+    "percentage": -0.0479522003965523,
+    "industry": null,
+    "asset_type": "Cash & Cash Equivalents and Net Assets",
+    "rating": "Cash",
+    "market_value": -5447.68,
+    "fincode": 217287,
+    "isin": null
+  },
+  {
+    "instrument_name": "Eternal Limited",
+    "percentage": -0.000839388846227243,
+    "industry": null,
+    "asset_type": "Derivatives-Options (Others)",
+    "rating": "Derivatives",
+    "market_value": -95.36,
+    "fincode": 1130805,
+    "isin": null
+  }
+]

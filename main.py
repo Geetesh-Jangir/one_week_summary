@@ -12,6 +12,8 @@ from concurrent.futures import ThreadPoolExecutor, as_completed
 from pathlib import Path
 
 from fund_data import (
+    DATA_DIR,
+    HOLDINGS_NAME,
     MIN_HOLDING_PCT,
     available_fund_ids,
     load_fund_bundle,
@@ -221,10 +223,20 @@ def apply_causal_scores(target: dict, priced: list[dict], official_nav: dict) ->
     target["scored_count"] = len(scored_articles)
 
 
+RESERVED_FUND_FLAGS = {"isin", "help", "h", "resume-failed"}
+
+
 def parse_args(argv=None):
     parser = argparse.ArgumentParser(description="Weekly fund NAV news pipeline")
     fund_group = parser.add_mutually_exclusive_group()
+    fund_group.add_argument(
+        "--isin",
+        dest="fund",
+        help="Load holdings, NAV, and sectors from data/<ISIN>/",
+    )
     for fund_id in available_fund_ids():
+        if fund_id in RESERVED_FUND_FLAGS:
+            continue
         fund_group.add_argument(
             f"--{fund_id}",
             action="store_const",
@@ -238,6 +250,22 @@ def parse_args(argv=None):
         help="Re-score names listed in RESUME_FAILED_NAMES",
     )
     return parser.parse_args(argv)
+
+
+def ensure_isin_data(fund_id: str | None) -> str | None:
+    """If fund_id is an ISIN and local files are missing, pull them from Rupeestop."""
+    if not fund_id:
+        return fund_id
+    from rupeestop_fund import FundFetchError, normalize_isin, sync_fund
+
+    try:
+        isin = normalize_isin(fund_id)
+    except FundFetchError:
+        return fund_id
+    if not (DATA_DIR / isin / HOLDINGS_NAME).exists():
+        logger.info("No local files for %s; fetching from Rupeestop", isin)
+        sync_fund(isin)
+    return isin
 
 
 def result_json_path_for(fund_id: str | None) -> Path:
@@ -378,6 +406,8 @@ def main(fund_id: str | None = None):
             {
                 "investor_summary": investor_summary.strip(),
                 "important_news": important_news,
+                "isin": fund_id,
+                "nav_date": official_nav["end"],
             },
             indent=2,
             ensure_ascii=False,
@@ -479,7 +509,8 @@ def resume_failed_targets(names: set[str], fund_id: str | None = None) -> None:
 
 if __name__ == "__main__":
     args = parse_args()
+    fund_id = ensure_isin_data(args.fund)
     if args.resume_failed:
-        resume_failed_targets(RESUME_FAILED_NAMES, args.fund)
+        resume_failed_targets(RESUME_FAILED_NAMES, fund_id)
     else:
-        main(args.fund)
+        main(fund_id)

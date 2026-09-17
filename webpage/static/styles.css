@@ -169,6 +169,55 @@ h3,
   color: var(--cream);
 }
 
+.isin-form {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.isin-form input {
+  appearance: none;
+  border: 1px solid var(--line);
+  background: var(--bg-soft);
+  color: var(--cream);
+  border-radius: 14px;
+  padding: 12px 14px;
+  font: inherit;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+.isin-form input:focus {
+  outline: 0;
+  border-color: rgba(201, 164, 106, 0.55);
+}
+
+.isin-form button,
+#run-btn {
+  appearance: none;
+  border: 0;
+  border-radius: 999px;
+  font: inherit;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+#load-btn {
+  background: var(--bg-soft);
+  color: var(--cream);
+  border: 1px solid var(--line);
+  padding: 10px 14px;
+}
+
+#load-btn:hover {
+  border-color: rgba(201, 164, 106, 0.35);
+}
+
+.fund-subtitle {
+  margin: 8px 0 0;
+  max-width: 52ch;
+}
+
 .fund-btn .fund-id {
   display: block;
   margin-top: 2px;

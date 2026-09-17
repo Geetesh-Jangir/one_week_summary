@@ -10,9 +10,11 @@ DATA_DIR = ROOT / "data"
 HOLDINGS_FILE = DATA_DIR / "fund_holding_data.json"
 NAV_HISTORY_FILE = DATA_DIR / "fund_nav_history.json"
 SECTOR_FILE = DATA_DIR / "fund_sector.json"
+META_FILE = DATA_DIR / "fund_meta.json"
 HOLDINGS_NAME = HOLDINGS_FILE.name
 NAV_HISTORY_NAME = NAV_HISTORY_FILE.name
 SECTOR_NAME = SECTOR_FILE.name
+META_NAME = META_FILE.name
 
 EQUITY_ASSET_TYPES = {"Domestic Equities", "REITs & InvITs"}
 MIN_HOLDING_PCT = 2.0
@@ -61,6 +63,50 @@ def load_holdings(path: Path = HOLDINGS_FILE) -> list[dict]:
 def load_nav_history(path: Path = NAV_HISTORY_FILE) -> list[dict]:
     rows = _read_json_array(path)
     return sorted(rows, key=lambda row: row["nav_date"])
+
+
+def load_fund_meta(path: Path) -> dict:
+    if not path.exists():
+        return {}
+    try:
+        data = json.loads(path.read_text(encoding="utf-8"))
+    except (OSError, json.JSONDecodeError):
+        return {}
+    return data if isinstance(data, dict) else {}
+
+
+def identity_for_fund(fund_id: str, data_dir: Path | None = None) -> dict:
+    folder = data_dir or (DATA_DIR / fund_id)
+    meta = load_fund_meta(folder / META_NAME)
+    fund_name = str(meta.get("fund_name") or "").strip()
+    plan_label = str(meta.get("plan_label") or "").strip()
+    option_label = str(meta.get("option_label") or "").strip()
+    if not fund_name:
+        fund_name = " ".join(part.capitalize() for part in fund_id.replace("_", "-").split("-"))
+    subtitle_parts = []
+    if plan_label:
+        subtitle_parts.append(f"Plan: {plan_label}")
+    if option_label:
+        subtitle_parts.append(f"Option: {option_label}")
+    return {
+        "fund_id": fund_id,
+        "isin": str(meta.get("isin") or fund_id).strip(),
+        "fund_name": fund_name,
+        "plan": str(meta.get("plan") or "").strip(),
+        "option": str(meta.get("option") or "").strip(),
+        "plan_label": plan_label,
+        "option_label": option_label,
+        "subtitle": " · ".join(subtitle_parts),
+    }
+
+
+def listed_fund_ids() -> list[str]:
+    """ISIN folders that were synced from Rupeestop (have fund_meta.json)."""
+    ids = []
+    for fund_id in available_fund_ids():
+        if (DATA_DIR / fund_id / META_NAME).exists():
+            ids.append(fund_id)
+    return ids
 
 
 def load_sectors(path: Path = SECTOR_FILE) -> list[dict]:

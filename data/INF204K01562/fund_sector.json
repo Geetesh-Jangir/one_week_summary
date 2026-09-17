@@ -1,0 +1,110 @@
+[
+  {
+    "sector": "Banks",
+    "percentage": 25.86
+  },
+  {
+    "sector": "It - Software",
+    "percentage": 8.99
+  },
+  {
+    "sector": "Retailing",
+    "percentage": 7.98
+  },
+  {
+    "sector": "Pharmaceuticals & Biotechnology",
+    "percentage": 7.42
+  },
+  {
+    "sector": "Automobiles",
+    "percentage": 5.25
+  },
+  {
+    "sector": "Diversified Fmcg",
+    "percentage": 4.63
+  },
+  {
+    "sector": "Finance",
+    "percentage": 4.57
+  },
+  {
+    "sector": "Electrical Equipment",
+    "percentage": 4.23
+  },
+  {
+    "sector": "Petroleum Products",
+    "percentage": 4.11
+  },
+  {
+    "sector": "Power",
+    "percentage": 3.74
+  },
+  {
+    "sector": "Leisure Services",
+    "percentage": 3.71
+  },
+  {
+    "sector": "Construction",
+    "percentage": 3.7
+  },
+  {
+    "sector": "Insurance",
+    "percentage": 3.0
+  },
+  {
+    "sector": "Auto Components",
+    "percentage": 2.0
+  },
+  {
+    "sector": "Personal Products",
+    "percentage": 1.96
+  },
+  {
+    "sector": "Beverages",
+    "percentage": 1.5
+  },
+  {
+    "sector": "Consumer Durables",
+    "percentage": 1.14
+  },
+  {
+    "sector": "Financial Technology (fintech)",
+    "percentage": 0.92
+  },
+  {
+    "sector": "Agricultural Food & Other Products",
+    "percentage": 0.87
+  },
+  {
+    "sector": "Cement & Cement Products",
+    "percentage": 0.78
+  },
+  {
+    "sector": "Consumable Fuels",
+    "percentage": 0.74
+  },
+  {
+    "sector": "Ferrous Metals",
+    "percentage": 0.7
+  },
+  {
+    "sector": "Aerospace & Defense",
+    "percentage": 0.67
+  },
+  {
+    "sector": "Non - Ferrous Metals",
+    "percentage": 0.64
+  },
+  {
+    "sector": "Chemicals & Petrochemicals",
+    "percentage": 0.26
+  },
+  {
+    "sector": "Entertainment",
+    "percentage": 0.23
+  },
+  {
+    "sector": "Capital Markets",
+    "percentage": 0.1
+  }
+]
