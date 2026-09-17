@@ -9,8 +9,6 @@ services:
     startCommand: gunicorn --bind 0.0.0.0:$PORT --worker-class gthread --workers 1 --threads 8 --timeout 180 webpage.app:app
     healthCheckPath: /
     envVars:
-      - key: PYTHON_VERSION
-        value: "3.12.8"
       - key: HOST
         value: "0.0.0.0"
       - key: DEEPSEEK_API_KEY
