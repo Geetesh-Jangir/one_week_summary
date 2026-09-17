@@ -1,0 +1,1132 @@
+{
+  "isin": "INF179K01UT0",
+  "nav_date": "2026-09-16",
+  "week_start": "2026-09-09",
+  "targets": [
+    {
+      "name": "ICICI Bank Ltd.",
+      "type": "stock",
+      "industry": "Banks",
+      "ticker": "ICICIBANK.NS",
+      "weekly_change_pct": -2.18,
+      "target_sentiment": "negative",
+      "clusters": [
+        {
+          "event_label": "FCNR(B) deposit costs rise",
+          "cluster_key": "fcnr(b) deposit costs rise",
+          "article_count": 1,
+          "articles": [
+            {
+              "article_id": 5,
+              "title": "Banks likely to see 15-20 basis points rise in FCNR(B) deposit costs",
+              "link": "https://news.google.com/rss/articles/CBMizwFBVV95cUxNYWthb25PWkZJWU1reUJvX0Jia01UZmJmQ053TmtlSDdiT185c1pEYm1tbHBXT1JLdnZjMFE2S3NUWmRpTjlxci1QR3JPLVJyZ3NlelVXQ1ZZdV82b3hsMmRrN3NUOUZScXplMVFkUmJWTVJSU3BfWGp1ejU0OV9HQ2ZsZkF1SnFPSlNzaGwyalBNMFRmclpON1ZTRVVyR1lGUXpLakVaSjNQQTZTZE5CQ2ZVbV9KbVBkaTBYSG1GMDF5bDQ5cmpEUk1NLTNZQWvSAdQBQVVfeXFMTnQ1V2dUaXdIbWN2alJNdGZ2Q3ZuckVhbEhWdFNsbHplaVg3eTNMeEFzN2xxc1drdElWNzd3SWtoR2tlRkl1NC1LakZGM01MTnphTXdZVU14VDJzYkhrb3p4djJMdkJGamRWdVpGUXUzSXdlM3VuZ0lVLVFvdFRZODd0ejJYRjh6T0l1UHlNX3A3U1FkVlVzN2VzaWRvVnBkdXlaMW5JVWczdEFCSV9WVUhzc0w4REtCV1FZT3JqNGJfaXB6NXd3b3lhb1FzZ2FRSC13Ulk?oc=5",
+              "resolved_url": "https://www.business-standard.com/finance/news/banks-likely-to-see-15-20-basis-points-rise-in-fcnr-b-deposit-costs-126091401048_1.html",
+              "source": "Business Standard",
+              "published": "2026-09-14T23:27:02+05:30",
+              "date": "2026-09-14",
+              "text_excerpt": "Banks likely to see 15-20 basis points rise in FCNR(B) deposit costs Rise due to hedging costs on interest, not absorbed by RBI Illustration: Binay Sinha Anjali Kumari Subrata Panda Mumbai Listen to This Article Costs on FCNR(B) deposits are likely to rise by 15-20 basis points for Indian banks, over and above the interest cost committed to depositors, as banks have to separately hedge the dollar ",
+              "llm_returned": true,
+              "relevancy_score": 8,
+              "causal_score": 6,
+              "event_label": "FCNR(B) deposit costs rise",
+              "causal_link": "sector",
+              "timing_plausible": true,
+              "sentiment": "negative",
+              "reasoning": "Rising FCNR(B) deposit costs could pressure bank margins, a negative for the banking sector including ICICI Bank. This plausibly contributed to the weekly decline."
+            }
+          ]
+        },
+        {
+          "event_label": "Stock declines for fifth session",
+          "cluster_key": "stock declines for fifth session",
+          "article_count": 1,
+          "articles": [
+            {
+              "article_id": 2,
+              "title": "ICICI Bank Ltd eases for fifth straight session",
+              "link": "https://news.google.com/rss/articles/CBMiyAFBVV95cUxNbGRTLWtHc09ZcE5sWlcxQ0VkM2ptUUZTUTZHTmZ0UUVOZ1RGZU9ncUQ3SDZNNk5PQ29xTGNnRGFyYXl2c3E4aVhiaTNmblh2Sm5XdTdJTGw4aVg3MG9PZ2I4NjhyWDVoMmV4T2JxS3l1bVMySnVORVdPMWVDeWJKNm45RVFZS2dVUVdhMmxiTDVwb2hidm5HN1VFNUN0UGExaUo1TlBEM1M5SFNZWTY5SnJIbTd6WVBPZENINEhuU0VpcW9KZ1NkctIBzgFBVV95cUxNUnROWTBwTG11amhwS1djbExFbm5FTTdZVUpESlUxQkt2YTZfNXVnWHVsRHR2dDdhRVlWcHZhV3c1NGZDczkzbzRGRHItcHVuNHZkS0E3YlJnbEtxbVJhYzFYVXMyTjRxQnREVEFLV0kzekV4X0kxNnV4aVJqQUtYbHRPS1dwa0NLbGlXbGF2cnFETGh3V0FkZ3JUMGdRR1BWLUR1LXhVRFEwX1ozNnhHSGdVUXJuWlZaWkMxaU1Db3BaYzBnOFNyQTlEQkp0UQ?oc=5",
+              "resolved_url": "https://www.business-standard.com/markets/capital-market-news/icici-bank-ltd-eases-for-fifth-straight-session-126091500585_1.html",
+              "source": "Business Standard",
+              "published": "2026-09-15T14:50:22+05:30",
+              "date": "2026-09-15",
+              "text_excerpt": "ICICI Bank Ltd eases for fifth straight session ICICI Bank Ltd is quoting at Rs 1355.3, down 1.74% on the day as on 13:19 IST on the NSE. The stock tumbled 4.66% in last one year as compared to a 7.71% slide in NIFTY and a 1.91% spurt in the Nifty Bank index. ICICI Bank Ltd dropped for a fifth straight session today. The stock is quoting at Rs 1355.3, down 1.74% on the day as on 13:19 IST on the N",
+              "llm_returned": true,
+              "relevancy_score": 9,
+              "causal_score": 5,
+              "event_label": "Stock declines for fifth session",
+              "causal_link": "direct",
+              "timing_plausible": true,
+              "sentiment": "negative",
+              "reasoning": "The article highlights the stock's decline, which is consistent with the negative weekly move. It may reflect or contribute to negative sentiment, but it describes the price action rather than an underlying cause."
+            }
+          ]
+        },
+        {
+          "event_label": "Foreign investors may rejig Indian financials allocation",
+          "cluster_key": "foreign investors may rejig indian financials allocation",
+          "article_count": 1,
+          "articles": [
+            {
+              "article_id": 10,
+              "title": "Foreign investors may rejig allocation to Indian financials: Jefferies",
+              "link": "https://news.google.com/rss/articles/CBMi0gFBVV95cUxNVzAxY29jV2tXNG9HNjRxRXZmM0hsMV9KRDM2c2NscXNMNHRUcFpraWJUUHN6dHAwQmNFamJuN0tsdGg0eGZXZkNwcExWRlF3VS03RjdhLVFyQVVISnZ6N0pma1BtTUdCZVQ3ZGVYdFpJakF3aHdPUHJIZnAtMmJ5eHdYWm1wUDRlQkxxYmt3QmRqSVVtUnYzMjNWTXRPMWpxcGRxa1paU19CQVNaWTYtbUhselAyeU5sQVp2SVJNNUphbEEzQmFtNHBBWE9zZGx4dXfSAdcBQVVfeXFMTmZnUzNGNDAta2FXc3c0S3ZNUUd4d0hHbXBLVEZmRVRGN00xbnRFVG5adDhUQmZnaXZydWFKWV9qMzdkRmo0MDcwUHE5b3BuMUQ2aVgzNzJwa3hRQmktZWk5aXFlNVJoTXMwQm94bVV5R1B4eWQ4MXRNb0VUNERQTHVBS1ZqY25YbWlzNTk4Uy1obzU5MzFRblNXbzVUR3ozTUgwWDFmUHdaX1h0ckZEVU1rQzdmLUw2d2hlNzhKWmttU3lPYklWaGJuMjMzSVc4TnN1QnVDb28?oc=5",
+              "resolved_url": "https://www.business-standard.com/markets/news/foreign-investors-may-rejig-allocation-to-indian-financials-jefferies-126091100183_1.html",
+              "source": "Business Standard",
+              "published": "2026-09-11T09:42:00+05:30",
+              "date": "2026-09-11",
+              "text_excerpt": "Foreign investors may rejig allocation to Indian financials: Jefferies Beyond the core earnings trajectory, clarity on the tenure and succession plans of chief executives at large financial institutions will also be important for the sector, analysts said. Banks, Banking sector, Indian banking sector Puneet Wadhwa New Delhi Listen to This Article Global financials have significantly outperformed t",
+              "llm_returned": true,
+              "relevancy_score": 7,
+              "causal_score": 5,
+              "event_label": "Foreign investors may rejig Indian financials allocation",
+              "causal_link": "sector",
+              "timing_plausible": true,
+              "sentiment": "negative",
+              "reasoning": "Jefferies note suggesting foreign investors could reallocate away from Indian financials is a sector-wide negative that may have contributed to ICICI Bank's decline, especially on September 15. However, the article does not specifically name ICICI Bank, so causality is moderate."
+            }
+          ]
+        }
+      ],
+      "selected_events": [
+        {
+          "event_rank": 1,
+          "event_label": "FCNR(B) deposit costs rise",
+          "event_summary": "Rising FCNR(B) deposit costs could pressure bank margins, a negative for the banking sector including ICICI Bank. This plausibly contributed to the weekly decline.",
+          "article_count": 1,
+          "title": "Banks likely to see 15-20 basis points rise in FCNR(B) deposit costs",
+          "source": "Business Standard",
+          "published": "2026-09-14T23:27:02+05:30",
+          "date": "2026-09-14",
+          "link": "https://news.google.com/rss/articles/CBMizwFBVV95cUxNYWthb25PWkZJWU1reUJvX0Jia01UZmJmQ053TmtlSDdiT185c1pEYm1tbHBXT1JLdnZjMFE2S3NUWmRpTjlxci1QR3JPLVJyZ3NlelVXQ1ZZdV82b3hsMmRrN3NUOUZScXplMVFkUmJWTVJSU3BfWGp1ejU0OV9HQ2ZsZkF1SnFPSlNzaGwyalBNMFRmclpON1ZTRVVyR1lGUXpLakVaSjNQQTZTZE5CQ2ZVbV9KbVBkaTBYSG1GMDF5bDQ5cmpEUk1NLTNZQWvSAdQBQVVfeXFMTnQ1V2dUaXdIbWN2alJNdGZ2Q3ZuckVhbEhWdFNsbHplaVg3eTNMeEFzN2xxc1drdElWNzd3SWtoR2tlRkl1NC1LakZGM01MTnphTXdZVU14VDJzYkhrb3p4djJMdkJGamRWdVpGUXUzSXdlM3VuZ0lVLVFvdFRZODd0ejJYRjh6T0l1UHlNX3A3U1FkVlVzN2VzaWRvVnBkdXlaMW5JVWczdEFCSV9WVUhzc0w4REtCV1FZT3JqNGJfaXB6NXd3b3lhb1FzZ2FRSC13Ulk?oc=5",
+          "resolved_url": "https://www.business-standard.com/finance/news/banks-likely-to-see-15-20-basis-points-rise-in-fcnr-b-deposit-costs-126091401048_1.html",
+          "text": "Banks likely to see 15-20 basis points rise in FCNR(B) deposit costs Rise due to hedging costs on interest, not absorbed by RBI Illustration: Binay Sinha Anjali Kumari Subrata Panda Mumbai Listen to This Article Costs on FCNR(B) deposits are likely to rise by 15-20 basis points for Indian banks, over and above the interest cost committed to depositors, as banks have to separately hedge the dollar ",
+          "relevancy_score": 8,
+          "causal_score": 6,
+          "causal_link": "sector",
+          "timing_plausible": true,
+          "sentiment": "negative",
+          "reasoning": "Rising FCNR(B) deposit costs could pressure bank margins, a negative for the banking sector including ICICI Bank. This plausibly contributed to the weekly decline."
+        },
+        {
+          "event_rank": 2,
+          "event_label": "Stock declines for fifth session",
+          "event_summary": "The article highlights the stock's decline, which is consistent with the negative weekly move. It may reflect or contribute to negative sentiment, but it describes the price action rather than an underlying cause.",
+          "article_count": 1,
+          "title": "ICICI Bank Ltd eases for fifth straight session",
+          "source": "Business Standard",
+          "published": "2026-09-15T14:50:22+05:30",
+          "date": "2026-09-15",
+          "link": "https://news.google.com/rss/articles/CBMiyAFBVV95cUxNbGRTLWtHc09ZcE5sWlcxQ0VkM2ptUUZTUTZHTmZ0UUVOZ1RGZU9ncUQ3SDZNNk5PQ29xTGNnRGFyYXl2c3E4aVhiaTNmblh2Sm5XdTdJTGw4aVg3MG9PZ2I4NjhyWDVoMmV4T2JxS3l1bVMySnVORVdPMWVDeWJKNm45RVFZS2dVUVdhMmxiTDVwb2hidm5HN1VFNUN0UGExaUo1TlBEM1M5SFNZWTY5SnJIbTd6WVBPZENINEhuU0VpcW9KZ1NkctIBzgFBVV95cUxNUnROWTBwTG11amhwS1djbExFbm5FTTdZVUpESlUxQkt2YTZfNXVnWHVsRHR2dDdhRVlWcHZhV3c1NGZDczkzbzRGRHItcHVuNHZkS0E3YlJnbEtxbVJhYzFYVXMyTjRxQnREVEFLV0kzekV4X0kxNnV4aVJqQUtYbHRPS1dwa0NLbGlXbGF2cnFETGh3V0FkZ3JUMGdRR1BWLUR1LXhVRFEwX1ozNnhHSGdVUXJuWlZaWkMxaU1Db3BaYzBnOFNyQTlEQkp0UQ?oc=5",
+          "resolved_url": "https://www.business-standard.com/markets/capital-market-news/icici-bank-ltd-eases-for-fifth-straight-session-126091500585_1.html",
+          "text": "ICICI Bank Ltd eases for fifth straight session ICICI Bank Ltd is quoting at Rs 1355.3, down 1.74% on the day as on 13:19 IST on the NSE. The stock tumbled 4.66% in last one year as compared to a 7.71% slide in NIFTY and a 1.91% spurt in the Nifty Bank index. ICICI Bank Ltd dropped for a fifth straight session today. The stock is quoting at Rs 1355.3, down 1.74% on the day as on 13:19 IST on the N",
+          "relevancy_score": 9,
+          "causal_score": 5,
+          "causal_link": "direct",
+          "timing_plausible": true,
+          "sentiment": "negative",
+          "reasoning": "The article highlights the stock's decline, which is consistent with the negative weekly move. It may reflect or contribute to negative sentiment, but it describes the price action rather than an underlying cause."
+        },
+        {
+          "event_rank": 3,
+          "event_label": "Foreign investors may rejig Indian financials allocation",
+          "event_summary": "Jefferies note suggesting foreign investors could reallocate away from Indian financials is a sector-wide negative that may have contributed to ICICI Bank's decline, especially on September 15. However, the article does not specifically name ICICI Bank, so causality is moderate.",
+          "article_count": 1,
+          "title": "Foreign investors may rejig allocation to Indian financials: Jefferies",
+          "source": "Business Standard",
+          "published": "2026-09-11T09:42:00+05:30",
+          "date": "2026-09-11",
+          "link": "https://news.google.com/rss/articles/CBMi0gFBVV95cUxNVzAxY29jV2tXNG9HNjRxRXZmM0hsMV9KRDM2c2NscXNMNHRUcFpraWJUUHN6dHAwQmNFamJuN0tsdGg0eGZXZkNwcExWRlF3VS03RjdhLVFyQVVISnZ6N0pma1BtTUdCZVQ3ZGVYdFpJakF3aHdPUHJIZnAtMmJ5eHdYWm1wUDRlQkxxYmt3QmRqSVVtUnYzMjNWTXRPMWpxcGRxa1paU19CQVNaWTYtbUhselAyeU5sQVp2SVJNNUphbEEzQmFtNHBBWE9zZGx4dXfSAdcBQVVfeXFMTmZnUzNGNDAta2FXc3c0S3ZNUUd4d0hHbXBLVEZmRVRGN00xbnRFVG5adDhUQmZnaXZydWFKWV9qMzdkRmo0MDcwUHE5b3BuMUQ2aVgzNzJwa3hRQmktZWk5aXFlNVJoTXMwQm94bVV5R1B4eWQ4MXRNb0VUNERQTHVBS1ZqY25YbWlzNTk4Uy1obzU5MzFRblNXbzVUR3ozTUgwWDFmUHdaX1h0ckZEVU1rQzdmLUw2d2hlNzhKWmttU3lPYklWaGJuMjMzSVc4TnN1QnVDb28?oc=5",
+          "resolved_url": "https://www.business-standard.com/markets/news/foreign-investors-may-rejig-allocation-to-indian-financials-jefferies-126091100183_1.html",
+          "text": "Foreign investors may rejig allocation to Indian financials: Jefferies Beyond the core earnings trajectory, clarity on the tenure and succession plans of chief executives at large financial institutions will also be important for the sector, analysts said. Banks, Banking sector, Indian banking sector Puneet Wadhwa New Delhi Listen to This Article Global financials have significantly outperformed t",
+          "relevancy_score": 7,
+          "causal_score": 5,
+          "causal_link": "sector",
+          "timing_plausible": true,
+          "sentiment": "negative",
+          "reasoning": "Jefferies note suggesting foreign investors could reallocate away from Indian financials is a sector-wide negative that may have contributed to ICICI Bank's decline, especially on September 15. However, the article does not specifically name ICICI Bank, so causality is moderate."
+        }
+      ]
+    },
+    {
+      "name": "InterGlobe Aviation Ltd.",
+      "type": "stock",
+      "industry": "Transport Services",
+      "ticker": "INDIGO.NS",
+      "weekly_change_pct": -4.85,
+      "target_sentiment": "negative",
+      "clusters": [
+        {
+          "event_label": "Retail inflation breaches RBI target",
+          "cluster_key": "retail inflation breaches rbi target",
+          "article_count": 1,
+          "articles": [
+            {
+              "article_id": 2,
+              "title": "Retail inflation breaches RBl's midpoint target for third successive month",
+              "link": "https://news.google.com/rss/articles/CBMiyAFBVV95cUxQOTBOMTh6SnlpNlVBVTNqTE41MERMTzVMTkNFbGdlNGxfR1o5YTJpckpEeW96Qm54S2tQVktiUjJxQWF1S1RvQzRxbHFlU0d2YVd2aGY1RjF3b3NNejNxWWx3VlNfLTZkZEFqd3NYaFZRV09IY0YzT05fcUhaa0IyZU9aVjRDYXNBX3FpUmo2NXg3ZlNDWlUzcEFzT254LXVEQnlldEI3b2dzbjlSNk14SzFTMUlIWllHaEl2THYwcmQ2dWNwRldjedIBzgFBVV95cUxQUzdRM05uSXJvanBYX25ZcGJlcm9oN2pfWGU2SVdSeXpsc1Jwc2VNREFSeHJVVUpYYTZIZWhXRHlyTjQ4akVxb09LTkhaMi1KeS1HanNEWEZKTmpUNE1yYmp3NF9rOThJQmZLYkdJaFRua0J2QjlZd3dpOVVyN2VhSnEtZnczZUtnaDFFZlIwbFdDS1BVYVBaQjVncVdVMTVaN3V0QU90NGh3OUNIU01FZUtIRms3N0J4MUFmUEpCYm5DZW43Y3ZLS2NrMmhPUQ?oc=5",
+              "resolved_url": "https://www.livemint.com/economy/india-retail-inflation-august-2026-cpi-food-fuel-prices-rbi-inflation-target-11789113577685.html",
+              "source": "Livemint",
+              "published": "2026-09-14T17:12:38+05:30",
+              "date": "2026-09-14",
+              "text_excerpt": "Published14 Sep 2026, 05:12 PM IST India’s retail inflation rose to a 20-month high of 4.82% in August, driven by higher food and fuel prices, taking it above the Reserve Bank of India’s (RBI’s) 4% target midpoint for the third consecutive month since January 2025. Inflation, as measured by the Consumer Price Index (CPI), was broadly in line with the median estimate of 4.9% from 21 economists  pol",
+              "llm_returned": true,
+              "relevancy_score": 6,
+              "causal_score": 5,
+              "event_label": "Retail inflation breaches RBI target",
+              "causal_link": "macro",
+              "timing_plausible": true,
+              "sentiment": "negative",
+              "reasoning": "Higher-than-target retail inflation at a 20-month high raises concerns about sustained RBI tightening, which can pressure aviation stocks through higher fuel and borrowing costs; the timing (Sept 14) precedes the -3.96% drop on Sept 15."
+            }
+          ]
+        }
+      ],
+      "selected_events": [
+        {
+          "event_rank": 1,
+          "event_label": "Retail inflation breaches RBI target",
+          "event_summary": "Higher-than-target retail inflation at a 20-month high raises concerns about sustained RBI tightening, which can pressure aviation stocks through higher fuel and borrowing costs; the timing (Sept 14) precedes the -3.96% drop on Sept 15.",
+          "article_count": 1,
+          "title": "Retail inflation breaches RBl's midpoint target for third successive month",
+          "source": "Livemint",
+          "published": "2026-09-14T17:12:38+05:30",
+          "date": "2026-09-14",
+          "link": "https://news.google.com/rss/articles/CBMiyAFBVV95cUxQOTBOMTh6SnlpNlVBVTNqTE41MERMTzVMTkNFbGdlNGxfR1o5YTJpckpEeW96Qm54S2tQVktiUjJxQWF1S1RvQzRxbHFlU0d2YVd2aGY1RjF3b3NNejNxWWx3VlNfLTZkZEFqd3NYaFZRV09IY0YzT05fcUhaa0IyZU9aVjRDYXNBX3FpUmo2NXg3ZlNDWlUzcEFzT254LXVEQnlldEI3b2dzbjlSNk14SzFTMUlIWllHaEl2THYwcmQ2dWNwRldjedIBzgFBVV95cUxQUzdRM05uSXJvanBYX25ZcGJlcm9oN2pfWGU2SVdSeXpsc1Jwc2VNREFSeHJVVUpYYTZIZWhXRHlyTjQ4akVxb09LTkhaMi1KeS1HanNEWEZKTmpUNE1yYmp3NF9rOThJQmZLYkdJaFRua0J2QjlZd3dpOVVyN2VhSnEtZnczZUtnaDFFZlIwbFdDS1BVYVBaQjVncVdVMTVaN3V0QU90NGh3OUNIU01FZUtIRms3N0J4MUFmUEpCYm5DZW43Y3ZLS2NrMmhPUQ?oc=5",
+          "resolved_url": "https://www.livemint.com/economy/india-retail-inflation-august-2026-cpi-food-fuel-prices-rbi-inflation-target-11789113577685.html",
+          "text": "Published14 Sep 2026, 05:12 PM IST India’s retail inflation rose to a 20-month high of 4.82% in August, driven by higher food and fuel prices, taking it above the Reserve Bank of India’s (RBI’s) 4% target midpoint for the third consecutive month since January 2025. Inflation, as measured by the Consumer Price Index (CPI), was broadly in line with the median estimate of 4.9% from 21 economists  pol",
+          "relevancy_score": 6,
+          "causal_score": 5,
+          "causal_link": "macro",
+          "timing_plausible": true,
+          "sentiment": "negative",
+          "reasoning": "Higher-than-target retail inflation at a 20-month high raises concerns about sustained RBI tightening, which can pressure aviation stocks through higher fuel and borrowing costs; the timing (Sept 14) precedes the -3.96% drop on Sept 15."
+        }
+      ]
+    },
+    {
+      "name": "Maruti Suzuki India Limited",
+      "type": "stock",
+      "industry": "Automobiles",
+      "ticker": "MARUTI.NS",
+      "weekly_change_pct": -3.58,
+      "target_sentiment": "negative",
+      "clusters": [],
+      "selected_events": []
+    },
+    {
+      "name": "Eicher Motors Ltd.",
+      "type": "stock",
+      "industry": "Automobiles",
+      "ticker": "EICHERMOT.NS",
+      "weekly_change_pct": -3.03,
+      "target_sentiment": "negative",
+      "clusters": [],
+      "selected_events": []
+    },
+    {
+      "name": "State Bank of India",
+      "type": "stock",
+      "industry": "Banks",
+      "ticker": "SBIN.NS",
+      "weekly_change_pct": -0.91,
+      "target_sentiment": "negative",
+      "clusters": [
+        {
+          "event_label": "Bank strike disrupts operations",
+          "cluster_key": "bank strike disrupts operations",
+          "article_count": 1,
+          "articles": [
+            {
+              "article_id": 21,
+              "title": "Bank strike disrupts PSB operations across states, digital services normal",
+              "link": "https://news.google.com/rss/articles/CBMi3AFBVV95cUxOcVNCRjVCODNfWmVHNHgzSExrTlN5Q3Fac1lTZm9YSXE5MXdvVFRielptWGdsdW9Da2ZON2Y4b2JYQndVaXVoVGRhVk9UOTR0cjN5czlJeWNIVGItUG5jM1ExaXNTdy01U2RIVVNaWUh4dVNQczBFcEZBa2taMlpVM1pxQ056UU55ZjJESWFHUk9RQVR2RlRFSm92Vi1vYXlRaGZoS3BCcmtTelpoRkswR21pbkQ0azdUdEgtaTdkUEl3TW8zS0NpeUp5U01Kd3NsSFRobnkwNDFnVm1y0gHiAUFVX3lxTE5yUThQWWVkWFZsbnhRTkNxRzRlY0NHbThUbEw4NGJRT08zbW1vUUVjc0ZfenAwV2lYSDRvek1jcFZfd0liOTA3VEJfUGc5dHZ6LWRjbjY3ZmgwbHc5WkpKdFRpS1JvSVFMYmhjX3hTMGNkMTh5SHJXSEYtcEZxNjNXUlVOd2hVWDZlNkRTSFkxV0UxbW1EeEdSMUdiMEFrRFF1Z3V2MU1JNFZCZFNXc2NoQlNrTkR5RUgyU3dOYTMwbWZfZEFYeEdFV1B0TkVrQllfNTJiOFphZ2ZuMUNKUWQ5dFE?oc=5",
+              "resolved_url": "https://www.business-standard.com/industry/banking/bank-strike-disrupts-psb-operations-across-states-digital-services-normal-126091101171_1.html",
+              "source": "Business Standard",
+              "published": "2026-09-11T19:00:56+05:30",
+              "date": "2026-09-11",
+              "text_excerpt": "Bank strike disrupts PSB operations across states, digital services normal Branch-level operations at public sector banks were hit across several states, affecting cash transactions and cheque clearances, while digital banking services remained available Members of the United Forum of Bank Unions demand the implementation of a five-day banking week, in Guwahati, on Friday Photo: PTI Anupreksha Jai",
+              "llm_returned": true,
+              "relevancy_score": 8,
+              "causal_score": 7,
+              "event_label": "Bank strike disrupts operations",
+              "causal_link": "direct",
+              "timing_plausible": true,
+              "sentiment": "negative",
+              "reasoning": "A nationwide bank strike disrupts public sector bank operations, a clear negative event that likely contributed to SBI's price decline."
+            }
+          ]
+        },
+        {
+          "event_label": "Bank strike by UFBU",
+          "cluster_key": "bank strike by ufbu",
+          "article_count": 3,
+          "articles": [
+            {
+              "article_id": 4,
+              "title": "Bank strike today: Are banks closed, and when will they open? Check details",
+              "link": "https://news.google.com/rss/articles/CBMi5gFBVV95cUxPbjV4TDV4cEFjUkNtZTVpV1lKZGpKWENFNXQwSE42MDZUTjZEQ3Fzck9iaW50cWowTGRwemdSUm1Sc3NJeG9EcjRpZnRoZ0UyeENod21EUExNT0ltdlVkX0FrREJOVWhCLUExT0ZTakU0NnYxREhUV1BaT3d6TnZYVUxtRW53VmR1X3RtZTU0elpZVElzdjRvMFQwUVV4TmhrS0tXNHk5MENSZEpTSS1hbmQ4TzZURVkyZFhzU0YtUVREc2prQ0xLeFlPdF9FZngwQXc1TEYySURaSGttSUlQX0thal85QdIB6wFBVV95cUxNY3MzMm1xaVFaX2tyMWZpTmx2RnJGZ2x4WnA3blJYbWNrd2xBXzJlOHE0SGl0X08yTEhkWDVUZjJCQTVsODZZYmZSenRrZElxTWF4dW5wZFZEREFZNFI4X0M4LURqZmFtY0k2LVNfOUdzd1VqUEFYbl9UdnBWSnNoZ2pCTllhVFFMN0tHUjZqWHNUWEF0Tm1NOGZBWEJpbE05YjhaXzE5QlVJT3ZWX0Jaa0NsUnlzd2dkQ0xUYl9DMEYxUExjZXd4LThlSW1fNnlUM1JRSk1DYU1nZUVjbWVJb0pPdE5YNlNrcVlr?oc=5",
+              "resolved_url": "https://www.business-standard.com/finance/personal-finance/bank-strike-today-are-banks-closed-and-when-will-they-open-check-details-126091100343_1.html",
+              "source": "Business Standard",
+              "published": "2026-09-11T10:37:18+05:30",
+              "date": "2026-09-11",
+              "text_excerpt": "Bank strike today: Are banks closed, and when will they open? Check details Bank branches may face disruption as UFBU's nationwide strike coincides with the second Saturday and Sunday holidays, with some states also observing Ganesh Chaturthi holidays on September 14 and 15 State Bank of India (SBI), Punjab National Bank (PNB), UCO Bank, Indian Bank and Bank of Maharashtra, among others have issue",
+              "llm_returned": true,
+              "relevancy_score": 5,
+              "causal_score": 5,
+              "event_label": "Bank strike by UFBU",
+              "causal_link": "sector",
+              "timing_plausible": true,
+              "sentiment": "negative",
+              "reasoning": "The strike causes operational disruption and negative sentiment for banks, plausibly contributing to the decline."
+            },
+            {
+              "article_id": 5,
+              "title": "SBI, Bank of Baroda flag possible disruption from bank unions' strike calls",
+              "link": "https://news.google.com/rss/articles/CBMi3AFBVV95cUxNUVlWU3oxSG5tbmFRUlVZVk1nc1psUWhkbm1rS3FMRkNxQ1pwLVNzbnlQbGJ3U2doWFRyYTgxSUM2MUNsdDFMX25aZm1IUE1XalpWemRsaXgxVkprQmc2Nkl4UG1aMEhwZHZ6bmhxa3k1b1FrWW5qUlFTOUlRQW9uYUFLdkphVl9IN2JPNFFNMUJNMGFPdkMxU25vaEh4MUdnVjBOTkN1XzRZLThELTJFeG5VMG13WmwzaU1CUWxUVkRQeUdGSG44bGRpR0psZ3BEVHpiSnBaeDlIbnUt0gHiAUFVX3lxTE5Idks5Yi1lSVg3RjNIT3JkUGdpUGpFS19wc1FWNllIaUplbng0b2V2cWVpSFdzZDdsYWJVckFlalZ4ZEcyaGJQU1k2SXdhWm1BS3FsTVNnc3pJclpaY1lMTzhNdktmNUprU3AxT1YwTUwzQi1GTUdmT2dhdjZhaDRPQlBpY3VWdHVJcmNqSEE0UDJKelBmaEZ3RTk3YTZpQ1FrNjRJYk9ob3REUnNXcmhjSXdBOEFlYXFueGlCX3RxcGJLQ3FqVHM0bFgtdVRnUDZPZk5pM3U2Yl9KNldSWVRrb2c?oc=5",
+              "resolved_url": "https://www.business-standard.com/industry/banking/sbi-bank-of-baroda-flag-possible-disruption-from-bank-unions-strike-calls-126090701306_1.html",
+              "source": "Business Standard",
+              "published": "2026-09-11T12:30:00+05:30",
+              "date": "2026-09-11",
+              "text_excerpt": "SBI, Bank of Baroda flag possible disruption from bank unions' strike calls The UFBU has called strikes on September 11, September 28-30 and an indefinite strike from October 26 over demands including a five-day working week and incentives Representative Image (Photo: Kamlesh Pednekar) Subrata Panda Mumbai Listen to This Article The country’s largest lender, State Bank of India (SBI), and state-ow",
+              "llm_returned": true,
+              "relevancy_score": 6,
+              "causal_score": 6,
+              "event_label": "Bank strike by UFBU",
+              "causal_link": "direct",
+              "timing_plausible": true,
+              "sentiment": "negative",
+              "reasoning": "SBI flags possible disruption from strikes, a negative event that could weigh on the stock."
+            },
+            {
+              "article_id": 7,
+              "title": "Banking services impacted as unions go on nationwide strike to press for 5-day work week",
+              "link": "https://news.google.com/rss/articles/CBMiswFBVV95cUxOemx4ajVQUjhaQkJrNHJ6S2VYRTBVUU9tejE2ejFfZGxRR2hoSnRGMFF3eXhHV05KN3lJc1JGOUN3SUlFdllYeWVFVG0wdmRvbExXWEp5R0x0MmkzMTRzV0tOZmtld0pTaE5yakRaQmxSMzY5NkV5N19IdXhXcUQzWkpuQU96MnZNN21Ibno2Z1NMakkzSUJ0YnhDcXkwSlEzcE80Vm5FOUFrRXdYaW50TE5wWdIBuAFBVV95cUxObkV3SGxOYzM3RlVWdFE1aGl0aHIycS1pN1EzYzhFLVRmSkpCR0wxd0xkUFByZXNqVEtOSmY0cjlENUE4OEJQdmhEYVFtdC1IY243aThuRHdiaGowZUFaNzlFZFgtZXRvVkRRZ1JjQkQ2aDR0Qi00dV9CdGg2Y0V0dDRtWVlCcmhHQ0JXMXBNNVVMZ0d0dE1QTVNKYmZqV1YyUnc0V2taMm1XY3p2OW9xWFVIbHhMemY0?oc=5",
+              "resolved_url": "https://www.moneycontrol.com/news/india/bank-strike-today-will-branches-be-open-here-s-what-we-know-14027602.html",
+              "source": "Moneycontrol.com",
+              "published": "2026-09-11T08:16:34+05:30",
+              "date": "2026-09-11",
+              "text_excerpt": "My Alerts Go Ad-Free Follow us on: 15                          Quick, easy & completely paperless. As September 11 is a Friday, followed by the weekend and the Ganesh Chaturthi holiday in some states on September 14, customers in those states could face up to four consecutive days of disruption.   September 11, 2026 / 12:22 IST             Banks across the country will be closed today, September 1",
+              "llm_returned": true,
+              "relevancy_score": 5,
+              "causal_score": 5,
+              "event_label": "Bank strike by UFBU",
+              "causal_link": "sector",
+              "timing_plausible": true,
+              "sentiment": "negative",
+              "reasoning": "Nationwide strike disrupts banking services, contributing to negative sentiment."
+            }
+          ]
+        },
+        {
+          "event_label": "SBI-led $3.5 billion debt to Vodafone Idea",
+          "cluster_key": "sbi-led $3.5 billion debt to vodafone idea",
+          "article_count": 2,
+          "articles": [
+            {
+              "article_id": 9,
+              "title": "SBI-led group of banks to provide $3.5 billion of debt financing to Vi",
+              "link": "https://news.google.com/rss/articles/CBMizgFBVV95cUxQU2t5X095YlRJczBNanVQWlhuNENucUdDZ0N2SFJWeWFtRUc5cEZ1cXM1NUZ5aXc2ZmVPSmZzUW1lMU1DTFRZbmNyU3dVbmZ0dmJzRkJ5dDZQelROcTdEQWpHMUY5WV85UWR3Q0JIUnNJUm1UUXN6b1haNWRzRG80LWdJMzB5M284TjNMZW9WSnAwc3c4UDFHeVU0RFBfckZkT191cGhkU1ZrOTNVbVNQeFFqNURINi1xVnBNemItc3JZMVpqdjNxbzYydk9ld9IB0wFBVV95cUxNaW5idExjVzRhZmdfYVpZTkZ0SDVtRnZQZmREZlNyalpxOU5YZVRFZy14NVYzR3hyNHR0MVlZd04zenBoM0FJSmtkMGlGMkdPLWpGRDJLX0Z3NExGRzljX3FZVDFObnpsemFCblpFQ2pIcTVCRTJxM1Z0cTFHXzJUaXREQzVBWU1fS0pfT1hjU1l4MUlIa3lZakoxc1d0bWR3emRCTjVUTGRHUVZDMU91aDdLaFJuLXJlekoybmhTNDJ5MEptbnpGMlJNcmR0RkRCV2xv?oc=5",
+              "resolved_url": "https://www.business-standard.com/companies/news/sbi-led-group-of-lenders-to-provide-3-5-billion-to-vodafone-idea-126091100452_1.html",
+              "source": "Business Standard",
+              "published": "2026-09-11T12:05:00+05:30",
+              "date": "2026-09-11",
+              "text_excerpt": "SBI-led group of banks to provide $3.5 billion of debt financing to Vi Vodafone Idea, the country's third-biggest wireless operator in terms of users but still loss-making, plans to use some funds to improve its network and better compete with Airtel and Jio Consortium led by SBI has agreed to provide about $3.5 billion in debt to Vodafone Idea | Image: Bloomberg Bloomberg Listen to This Article B",
+              "llm_returned": true,
+              "relevancy_score": 7,
+              "causal_score": 5,
+              "event_label": "SBI-led $3.5 billion debt to Vodafone Idea",
+              "causal_link": "direct",
+              "timing_plausible": true,
+              "sentiment": "negative",
+              "reasoning": "Large exposure to loss-making Vodafone Idea raises credit risk concerns for SBI, aligning with the negative weekly price move; plausibly contributed to the stock's decline."
+            },
+            {
+              "article_id": 15,
+              "title": "SBI-Led Group Said to Provide $3.5 Billion Debt to Vodafone Idea",
+              "link": "https://news.google.com/rss/articles/CBMitAFBVV95cUxNNkpZRTNfZ0FNUXRlaVNVX2hiYUc1Y0tRcEIwbExVTDZhOVlOYmlqZVZPRFhHYm90Z1FVWHVKa3Y1V2xCUXhObTFpb3hPbFJiVVBVcEVNb0Z6WXZJcEJsT1pIbExSc2FLcVV4SktDT3QySXA1bzc4aEtEV0xkZlhaXzFneUwzTW9sUi1sNkl3T05EVUVEUTlDU3c4ajZlSUVIdWZCMDFGQW1XeW1iX1RpR1ZCeDk?oc=5",
+              "resolved_url": "https://www.bloomberg.com/news/articles/2026-09-10/sbi-led-group-said-to-provide-3-5-billion-debt-to-vodafone-idea",
+              "source": "Bloomberg.com",
+              "published": "2026-09-11T11:05:00+05:30",
+              "date": "2026-09-11",
+              "text_excerpt": "SBI-Led Group Is Said to Lend $3.5 Billion to Vodafone Idea State Bank of India headquarters in Mumbai. Photographer: Abeer Khan/Bloomberg A group of lenders led by  State Bank of India  agreed to provide about $3.5 billion of debt financing to  Vodafone Idea Ltd.  to help the mobile telephone operator rebuild its business, people familiar with the matter said. Other local lenders in the consortiu",
+              "llm_returned": true,
+              "relevancy_score": 7,
+              "causal_score": 6,
+              "event_label": "SBI-led $3.5 billion debt to Vodafone Idea",
+              "causal_link": "direct",
+              "timing_plausible": true,
+              "sentiment": "negative",
+              "reasoning": "Same event as Article 9; the large debt financing to a loss-making telecom operator raises credit risk concerns for SBI, plausibly contributing to the stock's decline."
+            }
+          ]
+        },
+        {
+          "event_label": "FCNR(B) deposit costs rise",
+          "cluster_key": "fcnr(b) deposit costs rise",
+          "article_count": 1,
+          "articles": [
+            {
+              "article_id": 24,
+              "title": "Banks likely to see 15-20 basis points rise in FCNR(B) deposit costs",
+              "link": "https://news.google.com/rss/articles/CBMizwFBVV95cUxNYWthb25PWkZJWU1reUJvX0Jia01UZmJmQ053TmtlSDdiT185c1pEYm1tbHBXT1JLdnZjMFE2S3NUWmRpTjlxci1QR3JPLVJyZ3NlelVXQ1ZZdV82b3hsMmRrN3NUOUZScXplMVFkUmJWTVJSU3BfWGp1ejU0OV9HQ2ZsZkF1SnFPSlNzaGwyalBNMFRmclpON1ZTRVVyR1lGUXpLakVaSjNQQTZTZE5CQ2ZVbV9KbVBkaTBYSG1GMDF5bDQ5cmpEUk1NLTNZQWvSAdQBQVVfeXFMTnQ1V2dUaXdIbWN2alJNdGZ2Q3ZuckVhbEhWdFNsbHplaVg3eTNMeEFzN2xxc1drdElWNzd3SWtoR2tlRkl1NC1LakZGM01MTnphTXdZVU14VDJzYkhrb3p4djJMdkJGamRWdVpGUXUzSXdlM3VuZ0lVLVFvdFRZODd0ejJYRjh6T0l1UHlNX3A3U1FkVlVzN2VzaWRvVnBkdXlaMW5JVWczdEFCSV9WVUhzc0w4REtCV1FZT3JqNGJfaXB6NXd3b3lhb1FzZ2FRSC13Ulk?oc=5",
+              "resolved_url": "https://www.business-standard.com/finance/news/banks-likely-to-see-15-20-basis-points-rise-in-fcnr-b-deposit-costs-126091401048_1.html",
+              "source": "Business Standard",
+              "published": "2026-09-14T23:27:02+05:30",
+              "date": "2026-09-14",
+              "text_excerpt": "Banks likely to see 15-20 basis points rise in FCNR(B) deposit costs Rise due to hedging costs on interest, not absorbed by RBI Illustration: Binay Sinha Anjali Kumari Subrata Panda Mumbai Listen to This Article Costs on FCNR(B) deposits are likely to rise by 15-20 basis points for Indian banks, over and above the interest cost committed to depositors, as banks have to separately hedge the dollar ",
+              "llm_returned": true,
+              "relevancy_score": 7,
+              "causal_score": 6,
+              "event_label": "FCNR(B) deposit costs rise",
+              "causal_link": "direct",
+              "timing_plausible": true,
+              "sentiment": "negative",
+              "reasoning": "Rising FCNR(B) deposit costs could pressure banks' margins, a negative for SBI, and likely contributed to the weekly decline."
+            }
+          ]
+        },
+        {
+          "event_label": "Foreign investors may rejig Indian financials allocation",
+          "cluster_key": "foreign investors may rejig indian financials allocation",
+          "article_count": 1,
+          "articles": [
+            {
+              "article_id": 28,
+              "title": "Foreign investors may rejig allocation to Indian financials: Jefferies",
+              "link": "https://news.google.com/rss/articles/CBMi0gFBVV95cUxNVzAxY29jV2tXNG9HNjRxRXZmM0hsMV9KRDM2c2NscXNMNHRUcFpraWJUUHN6dHAwQmNFamJuN0tsdGg0eGZXZkNwcExWRlF3VS03RjdhLVFyQVVISnZ6N0pma1BtTUdCZVQ3ZGVYdFpJakF3aHdPUHJIZnAtMmJ5eHdYWm1wUDRlQkxxYmt3QmRqSVVtUnYzMjNWTXRPMWpxcGRxa1paU19CQVNaWTYtbUhselAyeU5sQVp2SVJNNUphbEEzQmFtNHBBWE9zZGx4dXfSAdcBQVVfeXFMTmZnUzNGNDAta2FXc3c0S3ZNUUd4d0hHbXBLVEZmRVRGN00xbnRFVG5adDhUQmZnaXZydWFKWV9qMzdkRmo0MDcwUHE5b3BuMUQ2aVgzNzJwa3hRQmktZWk5aXFlNVJoTXMwQm94bVV5R1B4eWQ4MXRNb0VUNERQTHVBS1ZqY25YbWlzNTk4Uy1obzU5MzFRblNXbzVUR3ozTUgwWDFmUHdaX1h0ckZEVU1rQzdmLUw2d2hlNzhKWmttU3lPYklWaGJuMjMzSVc4TnN1QnVDb28?oc=5",
+              "resolved_url": "https://www.business-standard.com/markets/news/foreign-investors-may-rejig-allocation-to-indian-financials-jefferies-126091100183_1.html",
+              "source": "Business Standard",
+              "published": "2026-09-11T09:42:00+05:30",
+              "date": "2026-09-11",
+              "text_excerpt": "Foreign investors may rejig allocation to Indian financials: Jefferies Beyond the core earnings trajectory, clarity on the tenure and succession plans of chief executives at large financial institutions will also be important for the sector, analysts said. Banks, Banking sector, Indian banking sector Puneet Wadhwa New Delhi Listen to This Article Global financials have significantly outperformed t",
+              "llm_returned": true,
+              "relevancy_score": 7,
+              "causal_score": 5,
+              "event_label": "Foreign investors may rejig Indian financials allocation",
+              "causal_link": "sector",
+              "timing_plausible": true,
+              "sentiment": "negative",
+              "reasoning": "Jefferies indicating foreign investors may rejig allocations away from Indian financials could plausibly contribute to negative sentiment on SBI and bank stocks during the week."
+            }
+          ]
+        }
+      ],
+      "selected_events": [
+        {
+          "event_rank": 1,
+          "event_label": "Bank strike disrupts operations",
+          "event_summary": "A nationwide bank strike disrupts public sector bank operations, a clear negative event that likely contributed to SBI's price decline.",
+          "article_count": 1,
+          "title": "Bank strike disrupts PSB operations across states, digital services normal",
+          "source": "Business Standard",
+          "published": "2026-09-11T19:00:56+05:30",
+          "date": "2026-09-11",
+          "link": "https://news.google.com/rss/articles/CBMi3AFBVV95cUxOcVNCRjVCODNfWmVHNHgzSExrTlN5Q3Fac1lTZm9YSXE5MXdvVFRielptWGdsdW9Da2ZON2Y4b2JYQndVaXVoVGRhVk9UOTR0cjN5czlJeWNIVGItUG5jM1ExaXNTdy01U2RIVVNaWUh4dVNQczBFcEZBa2taMlpVM1pxQ056UU55ZjJESWFHUk9RQVR2RlRFSm92Vi1vYXlRaGZoS3BCcmtTelpoRkswR21pbkQ0azdUdEgtaTdkUEl3TW8zS0NpeUp5U01Kd3NsSFRobnkwNDFnVm1y0gHiAUFVX3lxTE5yUThQWWVkWFZsbnhRTkNxRzRlY0NHbThUbEw4NGJRT08zbW1vUUVjc0ZfenAwV2lYSDRvek1jcFZfd0liOTA3VEJfUGc5dHZ6LWRjbjY3ZmgwbHc5WkpKdFRpS1JvSVFMYmhjX3hTMGNkMTh5SHJXSEYtcEZxNjNXUlVOd2hVWDZlNkRTSFkxV0UxbW1EeEdSMUdiMEFrRFF1Z3V2MU1JNFZCZFNXc2NoQlNrTkR5RUgyU3dOYTMwbWZfZEFYeEdFV1B0TkVrQllfNTJiOFphZ2ZuMUNKUWQ5dFE?oc=5",
+          "resolved_url": "https://www.business-standard.com/industry/banking/bank-strike-disrupts-psb-operations-across-states-digital-services-normal-126091101171_1.html",
+          "text": "Bank strike disrupts PSB operations across states, digital services normal Branch-level operations at public sector banks were hit across several states, affecting cash transactions and cheque clearances, while digital banking services remained available Members of the United Forum of Bank Unions demand the implementation of a five-day banking week, in Guwahati, on Friday Photo: PTI Anupreksha Jai",
+          "relevancy_score": 8,
+          "causal_score": 7,
+          "causal_link": "direct",
+          "timing_plausible": true,
+          "sentiment": "negative",
+          "reasoning": "A nationwide bank strike disrupts public sector bank operations, a clear negative event that likely contributed to SBI's price decline."
+        },
+        {
+          "event_rank": 2,
+          "event_label": "Bank strike by UFBU",
+          "event_summary": "SBI flags possible disruption from strikes, a negative event that could weigh on the stock.",
+          "article_count": 3,
+          "title": "SBI, Bank of Baroda flag possible disruption from bank unions' strike calls",
+          "source": "Business Standard",
+          "published": "2026-09-11T12:30:00+05:30",
+          "date": "2026-09-11",
+          "link": "https://news.google.com/rss/articles/CBMi3AFBVV95cUxNUVlWU3oxSG5tbmFRUlVZVk1nc1psUWhkbm1rS3FMRkNxQ1pwLVNzbnlQbGJ3U2doWFRyYTgxSUM2MUNsdDFMX25aZm1IUE1XalpWemRsaXgxVkprQmc2Nkl4UG1aMEhwZHZ6bmhxa3k1b1FrWW5qUlFTOUlRQW9uYUFLdkphVl9IN2JPNFFNMUJNMGFPdkMxU25vaEh4MUdnVjBOTkN1XzRZLThELTJFeG5VMG13WmwzaU1CUWxUVkRQeUdGSG44bGRpR0psZ3BEVHpiSnBaeDlIbnUt0gHiAUFVX3lxTE5Idks5Yi1lSVg3RjNIT3JkUGdpUGpFS19wc1FWNllIaUplbng0b2V2cWVpSFdzZDdsYWJVckFlalZ4ZEcyaGJQU1k2SXdhWm1BS3FsTVNnc3pJclpaY1lMTzhNdktmNUprU3AxT1YwTUwzQi1GTUdmT2dhdjZhaDRPQlBpY3VWdHVJcmNqSEE0UDJKelBmaEZ3RTk3YTZpQ1FrNjRJYk9ob3REUnNXcmhjSXdBOEFlYXFueGlCX3RxcGJLQ3FqVHM0bFgtdVRnUDZPZk5pM3U2Yl9KNldSWVRrb2c?oc=5",
+          "resolved_url": "https://www.business-standard.com/industry/banking/sbi-bank-of-baroda-flag-possible-disruption-from-bank-unions-strike-calls-126090701306_1.html",
+          "text": "SBI, Bank of Baroda flag possible disruption from bank unions' strike calls The UFBU has called strikes on September 11, September 28-30 and an indefinite strike from October 26 over demands including a five-day working week and incentives Representative Image (Photo: Kamlesh Pednekar) Subrata Panda Mumbai Listen to This Article The country’s largest lender, State Bank of India (SBI), and state-ow",
+          "relevancy_score": 6,
+          "causal_score": 6,
+          "causal_link": "direct",
+          "timing_plausible": true,
+          "sentiment": "negative",
+          "reasoning": "SBI flags possible disruption from strikes, a negative event that could weigh on the stock."
+        },
+        {
+          "event_rank": 3,
+          "event_label": "SBI-led $3.5 billion debt to Vodafone Idea",
+          "event_summary": "Same event as Article 9; the large debt financing to a loss-making telecom operator raises credit risk concerns for SBI, plausibly contributing to the stock's decline.",
+          "article_count": 2,
+          "title": "SBI-Led Group Said to Provide $3.5 Billion Debt to Vodafone Idea",
+          "source": "Bloomberg.com",
+          "published": "2026-09-11T11:05:00+05:30",
+          "date": "2026-09-11",
+          "link": "https://news.google.com/rss/articles/CBMitAFBVV95cUxNNkpZRTNfZ0FNUXRlaVNVX2hiYUc1Y0tRcEIwbExVTDZhOVlOYmlqZVZPRFhHYm90Z1FVWHVKa3Y1V2xCUXhObTFpb3hPbFJiVVBVcEVNb0Z6WXZJcEJsT1pIbExSc2FLcVV4SktDT3QySXA1bzc4aEtEV0xkZlhaXzFneUwzTW9sUi1sNkl3T05EVUVEUTlDU3c4ajZlSUVIdWZCMDFGQW1XeW1iX1RpR1ZCeDk?oc=5",
+          "resolved_url": "https://www.bloomberg.com/news/articles/2026-09-10/sbi-led-group-said-to-provide-3-5-billion-debt-to-vodafone-idea",
+          "text": "SBI-Led Group Is Said to Lend $3.5 Billion to Vodafone Idea State Bank of India headquarters in Mumbai. Photographer: Abeer Khan/Bloomberg A group of lenders led by  State Bank of India  agreed to provide about $3.5 billion of debt financing to  Vodafone Idea Ltd.  to help the mobile telephone operator rebuild its business, people familiar with the matter said. Other local lenders in the consortiu",
+          "relevancy_score": 7,
+          "causal_score": 6,
+          "causal_link": "direct",
+          "timing_plausible": true,
+          "sentiment": "negative",
+          "reasoning": "Same event as Article 9; the large debt financing to a loss-making telecom operator raises credit risk concerns for SBI, plausibly contributing to the stock's decline."
+        },
+        {
+          "event_rank": 4,
+          "event_label": "FCNR(B) deposit costs rise",
+          "event_summary": "Rising FCNR(B) deposit costs could pressure banks' margins, a negative for SBI, and likely contributed to the weekly decline.",
+          "article_count": 1,
+          "title": "Banks likely to see 15-20 basis points rise in FCNR(B) deposit costs",
+          "source": "Business Standard",
+          "published": "2026-09-14T23:27:02+05:30",
+          "date": "2026-09-14",
+          "link": "https://news.google.com/rss/articles/CBMizwFBVV95cUxNYWthb25PWkZJWU1reUJvX0Jia01UZmJmQ053TmtlSDdiT185c1pEYm1tbHBXT1JLdnZjMFE2S3NUWmRpTjlxci1QR3JPLVJyZ3NlelVXQ1ZZdV82b3hsMmRrN3NUOUZScXplMVFkUmJWTVJSU3BfWGp1ejU0OV9HQ2ZsZkF1SnFPSlNzaGwyalBNMFRmclpON1ZTRVVyR1lGUXpLakVaSjNQQTZTZE5CQ2ZVbV9KbVBkaTBYSG1GMDF5bDQ5cmpEUk1NLTNZQWvSAdQBQVVfeXFMTnQ1V2dUaXdIbWN2alJNdGZ2Q3ZuckVhbEhWdFNsbHplaVg3eTNMeEFzN2xxc1drdElWNzd3SWtoR2tlRkl1NC1LakZGM01MTnphTXdZVU14VDJzYkhrb3p4djJMdkJGamRWdVpGUXUzSXdlM3VuZ0lVLVFvdFRZODd0ejJYRjh6T0l1UHlNX3A3U1FkVlVzN2VzaWRvVnBkdXlaMW5JVWczdEFCSV9WVUhzc0w4REtCV1FZT3JqNGJfaXB6NXd3b3lhb1FzZ2FRSC13Ulk?oc=5",
+          "resolved_url": "https://www.business-standard.com/finance/news/banks-likely-to-see-15-20-basis-points-rise-in-fcnr-b-deposit-costs-126091401048_1.html",
+          "text": "Banks likely to see 15-20 basis points rise in FCNR(B) deposit costs Rise due to hedging costs on interest, not absorbed by RBI Illustration: Binay Sinha Anjali Kumari Subrata Panda Mumbai Listen to This Article Costs on FCNR(B) deposits are likely to rise by 15-20 basis points for Indian banks, over and above the interest cost committed to depositors, as banks have to separately hedge the dollar ",
+          "relevancy_score": 7,
+          "causal_score": 6,
+          "causal_link": "direct",
+          "timing_plausible": true,
+          "sentiment": "negative",
+          "reasoning": "Rising FCNR(B) deposit costs could pressure banks' margins, a negative for SBI, and likely contributed to the weekly decline."
+        },
+        {
+          "event_rank": 5,
+          "event_label": "Foreign investors may rejig Indian financials allocation",
+          "event_summary": "Jefferies indicating foreign investors may rejig allocations away from Indian financials could plausibly contribute to negative sentiment on SBI and bank stocks during the week.",
+          "article_count": 1,
+          "title": "Foreign investors may rejig allocation to Indian financials: Jefferies",
+          "source": "Business Standard",
+          "published": "2026-09-11T09:42:00+05:30",
+          "date": "2026-09-11",
+          "link": "https://news.google.com/rss/articles/CBMi0gFBVV95cUxNVzAxY29jV2tXNG9HNjRxRXZmM0hsMV9KRDM2c2NscXNMNHRUcFpraWJUUHN6dHAwQmNFamJuN0tsdGg0eGZXZkNwcExWRlF3VS03RjdhLVFyQVVISnZ6N0pma1BtTUdCZVQ3ZGVYdFpJakF3aHdPUHJIZnAtMmJ5eHdYWm1wUDRlQkxxYmt3QmRqSVVtUnYzMjNWTXRPMWpxcGRxa1paU19CQVNaWTYtbUhselAyeU5sQVp2SVJNNUphbEEzQmFtNHBBWE9zZGx4dXfSAdcBQVVfeXFMTmZnUzNGNDAta2FXc3c0S3ZNUUd4d0hHbXBLVEZmRVRGN00xbnRFVG5adDhUQmZnaXZydWFKWV9qMzdkRmo0MDcwUHE5b3BuMUQ2aVgzNzJwa3hRQmktZWk5aXFlNVJoTXMwQm94bVV5R1B4eWQ4MXRNb0VUNERQTHVBS1ZqY25YbWlzNTk4Uy1obzU5MzFRblNXbzVUR3ozTUgwWDFmUHdaX1h0ckZEVU1rQzdmLUw2d2hlNzhKWmttU3lPYklWaGJuMjMzSVc4TnN1QnVDb28?oc=5",
+          "resolved_url": "https://www.business-standard.com/markets/news/foreign-investors-may-rejig-allocation-to-indian-financials-jefferies-126091100183_1.html",
+          "text": "Foreign investors may rejig allocation to Indian financials: Jefferies Beyond the core earnings trajectory, clarity on the tenure and succession plans of chief executives at large financial institutions will also be important for the sector, analysts said. Banks, Banking sector, Indian banking sector Puneet Wadhwa New Delhi Listen to This Article Global financials have significantly outperformed t",
+          "relevancy_score": 7,
+          "causal_score": 5,
+          "causal_link": "sector",
+          "timing_plausible": true,
+          "sentiment": "negative",
+          "reasoning": "Jefferies indicating foreign investors may rejig allocations away from Indian financials could plausibly contribute to negative sentiment on SBI and bank stocks during the week."
+        }
+      ]
+    },
+    {
+      "name": "Eternal Limited",
+      "type": "stock",
+      "industry": "Retailing",
+      "ticker": "ETERNAL.NS",
+      "weekly_change_pct": -1.12,
+      "target_sentiment": "negative",
+      "clusters": [],
+      "selected_events": []
+    },
+    {
+      "name": "Power Grid Corporation of India Ltd.",
+      "type": "stock",
+      "industry": "Power",
+      "ticker": "POWERGRID.NS",
+      "weekly_change_pct": -1.15,
+      "target_sentiment": "negative",
+      "clusters": [],
+      "selected_events": []
+    },
+    {
+      "name": "Cipla Ltd.",
+      "type": "stock",
+      "industry": "Pharmaceuticals & Biotechnology",
+      "ticker": "CIPLA.NS",
+      "weekly_change_pct": -0.37,
+      "target_sentiment": "negative",
+      "clusters": [],
+      "selected_events": []
+    },
+    {
+      "name": "HDFC Bank Ltd.£",
+      "type": "stock",
+      "industry": "Banks",
+      "ticker": "HDFCBANK.NS",
+      "weekly_change_pct": 5.01,
+      "target_sentiment": "positive",
+      "clusters": [
+        {
+          "event_label": "CEO succession candidates named to RBI",
+          "cluster_key": "ceo succession candidates named to rbi",
+          "article_count": 4,
+          "articles": [
+            {
+              "article_id": 1,
+              "title": "HDFC Bank Submits Names of Two CEO Candidates to RBI",
+              "link": "https://news.google.com/rss/articles/CBMisgFBVV95cUxPQnBzUWV6RW5ka2YxVUl5QUxmX2QyRzRiVldvUU5rWk9YSGJlMWZpRFlORXVackYxY1hrOV9HYjAwc3dyOVpGVzFuT2FjclRyT3QtMC1BNHM1VVZEYWU1YWhXd3dYU3haakNyNURPd1ZRQzJsRmFfNm43MWkxWFg0TVFJdkExRm1kTENUN3QzQUNjTVl5ZjdWOS1fNUY2SENsZjNXbFdHWWZpZ2l1RWZaRndn?oc=5",
+              "resolved_url": "https://www.bloomberg.com/news/articles/2026-09-12/hdfc-bank-submits-names-of-two-candidates-for-ceo-role-to-rbi",
+              "source": "Bloomberg.com",
+              "published": "2026-09-12T18:20:11+05:30",
+              "date": "2026-09-12",
+              "text_excerpt": "Banking HDFC Bank Submits Names of Two CEO Candidates to RBI HDFC Bank Ltd.  said it has submitted the names of two candidates to the  Reserve Bank of India  for the position of managing director and chief executive officer. The names were provided in order of preference, along with the proposed remuneration for a three-year term subject to RBI approval, the bank said in an exchange  filing  Satur",
+              "llm_returned": true,
+              "relevancy_score": 7,
+              "causal_score": 6,
+              "event_label": "CEO succession candidates named to RBI",
+              "causal_link": "direct",
+              "timing_plausible": true,
+              "sentiment": "positive",
+              "reasoning": "Submitting CEO candidates to RBI is part of the succession process that the market viewed positively, and it is the earliest article on the CEO appointment event, making it a plausible contributing factor to the weekly rise."
+            },
+            {
+              "article_id": 4,
+              "title": "HDFC Bank CEO Race Narrows Down To Kaizad Bharucha And Anup Bagchi | Profit Exclusive",
+              "link": "https://news.google.com/rss/articles/CBMixwFBVV95cUxPbU50cEZXNDhFWDVsZ05NVl9HNFRZaWRZUXFRQjVzYk5za09fdTNpbWtxSkduMXZDRHZlcl82NENJQTcxZkRpU1AtYUM0ZlgzTDNPTl9SS2VhN3NyajFJX202WlJXVzRvdnJHa1Q0M3gxYzNhSVZlcl9xLUdlaHNzdmVBQzlXMUxoWkNxWW9ON1dKdFJ5MmVhSE1OdmVndU1PNFlEVFlwRmF1UFRucHhISFUwTmQwc1B6bmg4MFZzQjVSaHBGdEE00gHPAUFVX3lxTE9yd1BsYWxNdi1aYmZ5dm1Kc1BmS1hEQWdvVzVkNGQ3Z28wUHQ0QjVDWklCUjg2enc4THhfeGRzUmFvV295ODhsZHBodFczMVlMVEpYZzFvTDltR3J2VzNITVc0NDNFeTJ3OEVqMU5xOTZLU2o0STlxamNOMnZ1TTVnd01RTGxRUzRmOHlCdk9henlfS3JnenJSSDJyQ0IxeTh6LTRrVlpSdWFMODliU0s5akdnMjVKem9JM1IxUVJVQXlmR3UxbWtYVWRFVW5lNA?oc=5",
+              "resolved_url": "https://www.ndtvprofit.com/business/hdfc-bank-ceo-race-narrows-down-to-kaizad-bharucha-and-anup-bagchi-profit-exclusive-12046191",
+              "source": "NDTV Profit",
+              "published": "2026-09-14T21:44:38+05:30",
+              "date": "2026-09-14",
+              "text_excerpt": "HDFC Bank nominated Anup Bagchi and Kaizad Bharucha for CEO, pending RBI approval Bharucha is an internal candidate with nearly 30 years at HDFC, now Deputy MD Bagchi is an external candidate with 30 years in banking, currently ICICI Prudential CEO HDFC Bank has sent the names of Anup Bagchi, MD & CEO of ICICI Prudential Life Insurance, and Kaizad Bharucha, Deputy MD of HDFC Bank, to the Reserve B",
+              "llm_returned": true,
+              "relevancy_score": 7,
+              "causal_score": 7,
+              "event_label": "CEO succession candidates named to RBI",
+              "causal_link": "direct",
+              "timing_plausible": true,
+              "sentiment": "positive",
+              "reasoning": "Narrowing the CEO race to two well-regarded candidates helped provide clarity on leadership succession, which investors viewed positively and likely contributed to the stock's rise."
+            },
+            {
+              "article_id": 5,
+              "title": "HDFC Bank sends two names to RBI for MD, CEO post",
+              "link": "https://news.google.com/rss/articles/CBMi6gFBVV95cUxNa1ppUUdxLWs5Q1hNaTl0YkF3TkFvOUhsNldSZXY2bGN0WjRZYkxPdWNpdUkzUTlzSUdHT0tmaS1IV0pKZC1teEoyVnlURm9LcG43UlExTFpTX1hCZGkyZGM0UHNQa1hpM3NLQjg2WWdISFdvWmh6SjU1YVBZMWpNSDZQNUN6eXAzLVZlVmlFTkd1VUtMU25JeTBaVlU5a1pUd1BWN2dBV3cwaG96b20wT19qTjFIWktsUkowUDdfVklKU1FpQS1EcTBLSEZjS0htRlhxWE5zQnJNZ2tUWW5hUVJOWEJyTFNkVlHSAe8BQVVfeXFMTV9PVThzeTh0NkMzRkNpSmptWTIwbmVGbjNsWGswc0F3R3dXaDNoVlhRXzJJVHhuYkNGOFVQa1J5NUh3ejhPazIwdUdITDAxX2RyN1RSUDdUTFloOTlGQW9FYThNM2hVcWQ0c3I1dEp4Y1ZPLW1vcG93MjhDSGZwYnJIS0M3M1JRYlhFaDZTOGVoUmtZYV9XbVVRcVh3dEpRZzFPbmJzRC13SVA3UGNJYi1KZFptSXMwRjRTOEhlYktUeDEySmVJdVZCRVV6bm0tMFRmVW5HSFp6TjBLSGR3cjBPSjQtT3dOUkhwSlpvM3c?oc=5",
+              "resolved_url": "https://www.moneycontrol.com/news/business/banks/hdfc-bank-sends-two-names-to-rbi-for-md-ceo-post-appoints-jimmy-tata-as-whole-time-director-14028566.html",
+              "source": "Moneycontrol.com",
+              "published": "2026-09-12T16:57:40+05:30",
+              "date": "2026-09-12",
+              "text_excerpt": "My Alerts Go Ad-Free Follow us on: 15                          Quick, easy & completely paperless. The names were provided in order of preference, along with the proposed remuneration for a three-year term subject to RBI approval, the bank said in an exchange filing    September 12, 2026 / 20:31 IST             HDFC Bank's Board of Directors on Saturday approved the appointment process for the ban",
+              "llm_returned": true,
+              "relevancy_score": 7,
+              "causal_score": 6,
+              "event_label": "CEO succession candidates named to RBI",
+              "causal_link": "direct",
+              "timing_plausible": true,
+              "sentiment": "positive",
+              "reasoning": "Confirming the submission of two names to RBI for the CEO post is part of the same positive succession process that supported the stock during the week."
+            },
+            {
+              "article_id": 6,
+              "title": "HDFC Bank Stock Climbs Over 3% As CEO Appointment Process Paces Up, Brokerages Remain Bullish",
+              "link": "https://news.google.com/rss/articles/CBMi0AFBVV95cUxNZXFyRTd4VlpwX0lBWUtxcE16U2wtSGhQUy0wYVA2OEh4X2xlQk5MUERzN3B3enJ6bG5tX2QxODZGUWc5Rnd0QmFiblh5RU5uLVpzUEpWZEdKMEg4QmxfWW95d3hRWXE2aVBGSC1lVmNwcGhvTlQ1VjQ2SVdyQUJkSkdNNkt5RkZWenVVQUltSGlEVzZsMHhCb0drVFdxZENRa0UyOEhhWnVnekFCRWsxajZlcjFzSVZYU2Q0b0xDbkNKaWJZSktpTWF3YUpGOW100gHYAUFVX3lxTE9aOUhhR0JSYmx2TmpuOEMtOURZVW9SSG9TVThmdFpxaURXN1FRNlJ3ZFJ5VGcxVXc5WXR1UmtpcVdYc3E0cmNMZ0wtRS1Mdk4xRWlkWDZLd3BhOHpMVTRHX2ZKN1dwUTNqTGRHcjhSOVpORzBzeGRUR3M1OWJRU0lEVElvZVAwcVY5ZExGXzJUWkhCM19QZEFRcHN4dTJLQ0RiR2oyWmJRT3hiVkp0T19KbUo5VEFoMW16dlUyZkR3WnFCUDhCTlcxNzg4b1NPb1g4V3lwc1BrXw?oc=5",
+              "resolved_url": "https://www.ndtvprofit.com/markets/hdfc-bank-share-price-opens-2-percent-higher-climbs-on-fast-progress-in-new-ceo-appointment-12047496",
+              "source": "NDTV Profit",
+              "published": "2026-09-15T09:24:11+05:30",
+              "date": "2026-09-15",
+              "text_excerpt": "HDFC Bank stock opened nearly 2% higher amid CEO appointment process update Two candidates, Anup Bagchi and Kaizad Bharucha, were sent to RBI for CEO approval RBI is expected to decide on the CEO appointment within the next 7-10 days India's largest private sector lender HDFC Bank Ltd.'s stock opened nearly 2% higher on Tuesday after the Bank's board narrowed down two prospects for the CEO post, i",
+              "llm_returned": true,
+              "relevancy_score": 9,
+              "causal_score": 9,
+              "event_label": "CEO succession candidates named to RBI",
+              "causal_link": "direct",
+              "timing_plausible": true,
+              "sentiment": "positive",
+              "reasoning": "This article explicitly links the CEO appointment process update to the stock opening nearly 2% higher and brokerages remaining bullish, making it the most direct catalyst for the weekly move."
+            }
+          ]
+        },
+        {
+          "event_label": "HDFC Bank CEO succession shortlist",
+          "cluster_key": "hdfc bank ceo succession shortlist",
+          "article_count": 1,
+          "articles": [
+            {
+              "article_id": 10,
+              "title": "HDFC Bank Fixes CEO Shortlist: Macquarie Eyes External Chief As Re-Rating Catalyst",
+              "link": "https://news.google.com/rss/articles/CBMi0wFBVV95cUxOQzVtSnVOcEZ0TU1iTHVqQUhxdkRBMHlsNnhZdm44REkxUk95ckRWdXczd2Fpc1BVYUNMZEZfUndrNHMxbVFBQU5UZmx3OUU0RDAySE5uRmUyRVFBd2hXVTNYeGFMMXByQldpWWw3Y0tOcFAxbVh5Y3RUNXptMXNBMzVYbEhCQTlhaVF4d0YyQ29TT1dTN3c0Z09GUndiM0tCZFUzUGNZd1FVVHZOTFRBLThRZ0IzLUMySElmRlY4SkVnMGlMRnUyWFZCUVdWSHhYQmxB0gHbAUFVX3lxTE56eHROOHFoYmdOVFpmaFJ1YmxhOGt3eHlZblZVOXdUZWVkb1ktdmpWU2RmVzlYemY0WUMyN1NWc2RtYVU5X1RVRmpnVFNvTi1kN2VDREFvbXlkamU3UldmVVFPZGRrMHh4WTBIVXNqXzROaFIzSmc2RlF6cHpITHQ1Q2p3MkZpdWhOUE84djZmWGdsNXk5NGNvb2hVbU90aU1od2J0b1gwSEdRSGhhUWRoekpaLVZidUpRRG9obFZvWTlJOWptX0FsZ0FmQkhCMnhtdGhaUVVpRXdsbw?oc=5",
+              "resolved_url": "https://www.ndtvprofit.com/markets/hdfc-bank-narrows-ceo-succession-race-macquarie-eyes-external-chief-as-key-re-rating-catalyst-12043627",
+              "source": "NDTV Profit",
+              "published": "2026-09-14T12:07:49+05:30",
+              "date": "2026-09-14",
+              "text_excerpt": "HDFC Bank Board shortlisted two candidates for MD and CEO and sent names to RBI Sashidhar Jagdishan retires as MD and CEO on October 26 Board created a fourth Whole-Time Director seat to enhance leadership depth HDFC Bank has moved decisively toward resolving its succession question, with the private lender's Board approving and submitting two  shortlisted candidates  to the Reserve Bank of India ",
+              "llm_returned": true,
+              "relevancy_score": 8,
+              "causal_score": 8,
+              "event_label": "HDFC Bank CEO succession shortlist",
+              "causal_link": "direct",
+              "timing_plausible": true,
+              "sentiment": "positive",
+              "reasoning": "The board shortlisting CEO candidates and sending names to RBI resolves a key uncertainty, which Macquarie sees as a re-rating catalyst. This positive development likely contributed to the stock's weekly gain."
+            }
+          ]
+        },
+        {
+          "event_label": "Jefferies on foreign investor allocation to Indian financials",
+          "cluster_key": "jefferies on foreign investor allocation to indian financials",
+          "article_count": 1,
+          "articles": [
+            {
+              "article_id": 20,
+              "title": "Foreign investors may rejig allocation to Indian financials: Jefferies",
+              "link": "https://news.google.com/rss/articles/CBMi0gFBVV95cUxNVzAxY29jV2tXNG9HNjRxRXZmM0hsMV9KRDM2c2NscXNMNHRUcFpraWJUUHN6dHAwQmNFamJuN0tsdGg0eGZXZkNwcExWRlF3VS03RjdhLVFyQVVISnZ6N0pma1BtTUdCZVQ3ZGVYdFpJakF3aHdPUHJIZnAtMmJ5eHdYWm1wUDRlQkxxYmt3QmRqSVVtUnYzMjNWTXRPMWpxcGRxa1paU19CQVNaWTYtbUhselAyeU5sQVp2SVJNNUphbEEzQmFtNHBBWE9zZGx4dXfSAdcBQVVfeXFMTmZnUzNGNDAta2FXc3c0S3ZNUUd4d0hHbXBLVEZmRVRGN00xbnRFVG5adDhUQmZnaXZydWFKWV9qMzdkRmo0MDcwUHE5b3BuMUQ2aVgzNzJwa3hRQmktZWk5aXFlNVJoTXMwQm94bVV5R1B4eWQ4MXRNb0VUNERQTHVBS1ZqY25YbWlzNTk4Uy1obzU5MzFRblNXbzVUR3ozTUgwWDFmUHdaX1h0ckZEVU1rQzdmLUw2d2hlNzhKWmttU3lPYklWaGJuMjMzSVc4TnN1QnVDb28?oc=5",
+              "resolved_url": "https://www.business-standard.com/markets/news/foreign-investors-may-rejig-allocation-to-indian-financials-jefferies-126091100183_1.html",
+              "source": "Business Standard",
+              "published": "2026-09-11T09:42:00+05:30",
+              "date": "2026-09-11",
+              "text_excerpt": "Foreign investors may rejig allocation to Indian financials: Jefferies Beyond the core earnings trajectory, clarity on the tenure and succession plans of chief executives at large financial institutions will also be important for the sector, analysts said. Banks, Banking sector, Indian banking sector Puneet Wadhwa New Delhi Listen to This Article Global financials have significantly outperformed t",
+              "llm_returned": true,
+              "relevancy_score": 9,
+              "causal_score": 8,
+              "event_label": "Jefferies on foreign investor allocation to Indian financials",
+              "causal_link": "sector",
+              "timing_plausible": true,
+              "sentiment": "positive",
+              "reasoning": "Jefferies suggesting foreign investors may rejig allocations toward Indian financials is a bullish sector catalyst that likely contributed to HDFC Bank's weekly rise."
+            }
+          ]
+        },
+        {
+          "event_label": "Moody's Indian bank deposit growth outlook",
+          "cluster_key": "moody's indian bank deposit growth outlook",
+          "article_count": 1,
+          "articles": [
+            {
+              "article_id": 17,
+              "title": "Moody's Pegs Indian Banks' FY27 Deposit Growth At 15% On FCNR(B) Boost, Loan Growth At 13-15%",
+              "link": "https://news.google.com/rss/articles/CBMiywFBVV95cUxON204M0x6V2tmb3JlcWFPRG9iT0w2MFNNV3NGOUdqeDd4RmY2OV9kZVJ2blMwV3Z6cEV4TV9SRGlkaDhWaW9XZUotLWFpcDI3dy0tM3lSdWloNmxGVkxNQnRCWEdxTFZfZ3BZYk5tWWVmVG16dDZGRHRMbm9YNGhCSTBMLTZkU0V0OExwSFlGVHYzV3NqUGtpTGxFcHF5OEhlUXdTVm56aXl6cmN4dEhtbUV1N1I5My1PbFUtR2Q1RnF3ZG9adTRNT3EyY9IB0wFBVV95cUxNamlTTGpSM0JtTktRUlpJN0w1dlA2M3JKZnpUQW9nWUV0T01hd0VaS09JYm9Ta3h5SlhIUTFvcjNhcGxIQ2hNQkRqUUViUUJqczd1clRhaGNabGtsY1VOUTlVYmxWLWZxajNQRWh1NVNFVXBZTDVZeHJyWDA1VVZJZ1hHMXYwMWFDRU5YaHNXOFZpSmN1aXBHUmxjZFhSeFZaV2hjbmJwYzk3S1lCLS1QcnZ2dlo3VGMzVGdGQjNYYUhJRkFpanNWM0NDS3YxV1d6ZURF?oc=5",
+              "resolved_url": "https://www.ndtvprofit.com/economy/moodys-pegs-indian-banks-fy27-deposit-growth-at-15-on-fcnr-b-boost-loan-growth-at-13-15-12023994",
+              "source": "NDTV Profit",
+              "published": "2026-09-09T18:57:06+05:30",
+              "date": "2026-09-09",
+              "text_excerpt": "Moody's expects Indian banks' deposit growth to accelerate to around 15% in FY27, helped by a surge in foreign-currency non-resident (FCNR(B)) deposits. Excluding the FCNR(B)-linked increase, deposit growth is seen at around 10% in FY27, while bank loan growth is projected at 13-15%, Moody's said, according to Informist. The rating agency said the Reserve Bank of India's swap schemes have helped r",
+              "llm_returned": true,
+              "relevancy_score": 8,
+              "causal_score": 7,
+              "event_label": "Moody's Indian bank deposit growth outlook",
+              "causal_link": "sector",
+              "timing_plausible": true,
+              "sentiment": "positive",
+              "reasoning": "Moody's forecast of accelerating deposit growth and steady loan growth is a bullish sector catalyst that can lift bank stocks, including HDFC Bank, contributing to the weekly gain."
+            }
+          ]
+        },
+        {
+          "event_label": "HDFC Bank low valuation buying opportunity",
+          "cluster_key": "hdfc bank low valuation buying opportunity",
+          "article_count": 1,
+          "articles": [
+            {
+              "article_id": 11,
+              "title": "HDFC Bank stock: Is its low valuation finally a buying opportunity?",
+              "link": "https://news.google.com/rss/articles/CBMi1gFBVV95cUxPUTBPYmRYSVI3dDdYbkhQWk9zVnFYa3NqNGtHeUJ0TlBOT3lkd1Zrd1BsamQ0M0RudVJ1dlpRV0lrbDRJVFBiWjlLaldId0tUNldsYWgxQk93Wmc1WG5DZ1Z5RUFRdHhCQVZDdVZtaU4tNjZXYVprNXJaNklZS2tITzNDcnhuSE9HRWZHN3BHU2lCSkhuUzlxTEc1MkFRM1kxUlBqVGtBOFd1LVFnLXNIaUFscDU1Um4yQkFabmpvZ0RVaVI1WTNOZlJMOGFBZUdDZHRBTGF30gHWAUFVX3lxTE9RME9iZFhJUjd0N1huSFBaT3NWcVhrc2o0a0d5QnROUE5PeWR3Vmt3UGxqZDQzRG51UnV2WlFXSWtsNElUUGJaOUtqV0h3S1Q2V2xhaDFCT3daZzVYbkNnVnlFQVF0eEJBVkN1Vm1pTi02NldhWms1clo2SVlLa0hPM0NyeG5IT0dFZkc3cEdTaUJKSG5TOXFMRzUyQVEzWTFSUGpUa0E4V3UtUWctc0hpQWxwNTVSbjJCQVpuam9nRFVpUjVZM05mUkw4YUFlR0NkdEFMYXc?oc=5",
+              "resolved_url": "https://www.livemint.com/market/stock-market-news/hdfc-bank-stock-is-its-low-valuation-finally-a-buying-opportunity/amp-11789462298143.html",
+              "source": "Livemint",
+              "published": "2026-09-16T08:00:43+05:30",
+              "date": "2026-09-16",
+              "text_excerpt": "For most companies, investors tend to focus on the  price-to-earnings  (PE) ratio. For banks, the  price-to-book  (PB) ratio is often more useful. For most companies, investors tend to focus on the  price-to-earnings  (PE) ratio. For banks, the  price-to-book  (PB) ratio is often more useful. Why? A bank's balance sheet is its business. It takes deposits, lends money and earns a return on the capi",
+              "llm_returned": true,
+              "relevancy_score": 7,
+              "causal_score": 6,
+              "event_label": "HDFC Bank low valuation buying opportunity",
+              "causal_link": "direct",
+              "timing_plausible": true,
+              "sentiment": "positive",
+              "reasoning": "The article highlights HDFC Bank's low valuation as a potential buying opportunity, which could attract investors and support the stock's weekly rise."
+            }
+          ]
+        },
+        {
+          "event_label": "Brokerage stock picks and views",
+          "cluster_key": "brokerage stock picks and views",
+          "article_count": 1,
+          "articles": [
+            {
+              "article_id": 7,
+              "title": "Stock Picks Today: HDFC Bank, BSE, Sun Pharma, SBI Life, HDFC Life And More On Brokerage's Radar",
+              "link": "https://news.google.com/rss/articles/CBMizwFBVV95cUxQT3FNMzBfVXRCWlB5U1pYZEpaR0Q2cm5zYkdtSzBYRXZqakxJcVBiRV9LaFQ4OWtmd1VXLXk2SXR2QTFXbElYdE9CVWtmNUxRYi1zbndqNTJ5cndOTHRPRU53SHpud1JNSnVIMFhLNEhSR3RJM0dNNEhXSFFQRHJjYWs4bjNJWlZFOGpNRV9obnd0TC1TNy1MQzNCSFhwNXRyQ3dfdDh5VUh2b2MwVVFEenRseExVVDl1eGRjTkNsb2RiWGxGTWFkSDNiajN1Z1nSAdcBQVVfeXFMTkQyT0hOT1M0UUVZX3R2VWhiYnNWYng4X0F3eDBFTTZib1Y1aVFuSU8zOFlZTzN5ZlZoSVRyTm5Ba2s1ZWY0MC1HczJNeE1MNFd1c1hJeURRMzNwSFBwWUNTQWZGWGZKeHIzMXNJcENnZE1NY1pCTXZac2VtbHpXc21tTzV5MnFnOVM5UEpJLXgxNVlKcnZqcmc5MnZxdHNzMU41V2ROaXpDd0swVVFVZkxLdVgwYWk4UzlBR2U4R1doUDNtTzBKZHR2Q0l5eVRUWHhKTFEtbGM?oc=5",
+              "resolved_url": "https://www.ndtvprofit.com/markets/stock-picks-today-hdfc-bank-bse-sun-pharma-sbi-life-hdfc-life-and-more-on-brokerages-radar-12047169",
+              "source": "NDTV Profit",
+              "published": "2026-09-15T07:19:54+05:30",
+              "date": "2026-09-15",
+              "text_excerpt": "HDFC Bank Ltd. has hogged much of the spotlight on the brokerage stage after developments in key management appointments. Besides that, brokerages have highlighted opportunities across Non-banking financial companies (NBFCs), Pharmaceuticals, and jewellery stocks issuing fresh calls on SBI Life Insurance, Sun Pharma, Kalyan Jewellers on Tuesday. Additionally, they have also offered their views on ",
+              "llm_returned": true,
+              "relevancy_score": 6,
+              "causal_score": 5,
+              "event_label": "Brokerage stock picks and views",
+              "causal_link": "direct",
+              "timing_plausible": true,
+              "sentiment": "positive",
+              "reasoning": "Article highlights HDFC Bank among brokerage picks after management appointment developments, which may have reinforced positive sentiment but is not a standalone catalyst."
+            }
+          ]
+        }
+      ],
+      "selected_events": [
+        {
+          "event_rank": 1,
+          "event_label": "CEO succession candidates named to RBI",
+          "event_summary": "This article explicitly links the CEO appointment process update to the stock opening nearly 2% higher and brokerages remaining bullish, making it the most direct catalyst for the weekly move.",
+          "article_count": 4,
+          "title": "HDFC Bank Stock Climbs Over 3% As CEO Appointment Process Paces Up, Brokerages Remain Bullish",
+          "source": "NDTV Profit",
+          "published": "2026-09-15T09:24:11+05:30",
+          "date": "2026-09-15",
+          "link": "https://news.google.com/rss/articles/CBMi0AFBVV95cUxNZXFyRTd4VlpwX0lBWUtxcE16U2wtSGhQUy0wYVA2OEh4X2xlQk5MUERzN3B3enJ6bG5tX2QxODZGUWc5Rnd0QmFiblh5RU5uLVpzUEpWZEdKMEg4QmxfWW95d3hRWXE2aVBGSC1lVmNwcGhvTlQ1VjQ2SVdyQUJkSkdNNkt5RkZWenVVQUltSGlEVzZsMHhCb0drVFdxZENRa0UyOEhhWnVnekFCRWsxajZlcjFzSVZYU2Q0b0xDbkNKaWJZSktpTWF3YUpGOW100gHYAUFVX3lxTE9aOUhhR0JSYmx2TmpuOEMtOURZVW9SSG9TVThmdFpxaURXN1FRNlJ3ZFJ5VGcxVXc5WXR1UmtpcVdYc3E0cmNMZ0wtRS1Mdk4xRWlkWDZLd3BhOHpMVTRHX2ZKN1dwUTNqTGRHcjhSOVpORzBzeGRUR3M1OWJRU0lEVElvZVAwcVY5ZExGXzJUWkhCM19QZEFRcHN4dTJLQ0RiR2oyWmJRT3hiVkp0T19KbUo5VEFoMW16dlUyZkR3WnFCUDhCTlcxNzg4b1NPb1g4V3lwc1BrXw?oc=5",
+          "resolved_url": "https://www.ndtvprofit.com/markets/hdfc-bank-share-price-opens-2-percent-higher-climbs-on-fast-progress-in-new-ceo-appointment-12047496",
+          "text": "HDFC Bank stock opened nearly 2% higher amid CEO appointment process update Two candidates, Anup Bagchi and Kaizad Bharucha, were sent to RBI for CEO approval RBI is expected to decide on the CEO appointment within the next 7-10 days India's largest private sector lender HDFC Bank Ltd.'s stock opened nearly 2% higher on Tuesday after the Bank's board narrowed down two prospects for the CEO post, i",
+          "relevancy_score": 9,
+          "causal_score": 9,
+          "causal_link": "direct",
+          "timing_plausible": true,
+          "sentiment": "positive",
+          "reasoning": "This article explicitly links the CEO appointment process update to the stock opening nearly 2% higher and brokerages remaining bullish, making it the most direct catalyst for the weekly move."
+        },
+        {
+          "event_rank": 2,
+          "event_label": "HDFC Bank CEO succession shortlist",
+          "event_summary": "The board shortlisting CEO candidates and sending names to RBI resolves a key uncertainty, which Macquarie sees as a re-rating catalyst. This positive development likely contributed to the stock's weekly gain.",
+          "article_count": 1,
+          "title": "HDFC Bank Fixes CEO Shortlist: Macquarie Eyes External Chief As Re-Rating Catalyst",
+          "source": "NDTV Profit",
+          "published": "2026-09-14T12:07:49+05:30",
+          "date": "2026-09-14",
+          "link": "https://news.google.com/rss/articles/CBMi0wFBVV95cUxOQzVtSnVOcEZ0TU1iTHVqQUhxdkRBMHlsNnhZdm44REkxUk95ckRWdXczd2Fpc1BVYUNMZEZfUndrNHMxbVFBQU5UZmx3OUU0RDAySE5uRmUyRVFBd2hXVTNYeGFMMXByQldpWWw3Y0tOcFAxbVh5Y3RUNXptMXNBMzVYbEhCQTlhaVF4d0YyQ29TT1dTN3c0Z09GUndiM0tCZFUzUGNZd1FVVHZOTFRBLThRZ0IzLUMySElmRlY4SkVnMGlMRnUyWFZCUVdWSHhYQmxB0gHbAUFVX3lxTE56eHROOHFoYmdOVFpmaFJ1YmxhOGt3eHlZblZVOXdUZWVkb1ktdmpWU2RmVzlYemY0WUMyN1NWc2RtYVU5X1RVRmpnVFNvTi1kN2VDREFvbXlkamU3UldmVVFPZGRrMHh4WTBIVXNqXzROaFIzSmc2RlF6cHpITHQ1Q2p3MkZpdWhOUE84djZmWGdsNXk5NGNvb2hVbU90aU1od2J0b1gwSEdRSGhhUWRoekpaLVZidUpRRG9obFZvWTlJOWptX0FsZ0FmQkhCMnhtdGhaUVVpRXdsbw?oc=5",
+          "resolved_url": "https://www.ndtvprofit.com/markets/hdfc-bank-narrows-ceo-succession-race-macquarie-eyes-external-chief-as-key-re-rating-catalyst-12043627",
+          "text": "HDFC Bank Board shortlisted two candidates for MD and CEO and sent names to RBI Sashidhar Jagdishan retires as MD and CEO on October 26 Board created a fourth Whole-Time Director seat to enhance leadership depth HDFC Bank has moved decisively toward resolving its succession question, with the private lender's Board approving and submitting two  shortlisted candidates  to the Reserve Bank of India ",
+          "relevancy_score": 8,
+          "causal_score": 8,
+          "causal_link": "direct",
+          "timing_plausible": true,
+          "sentiment": "positive",
+          "reasoning": "The board shortlisting CEO candidates and sending names to RBI resolves a key uncertainty, which Macquarie sees as a re-rating catalyst. This positive development likely contributed to the stock's weekly gain."
+        },
+        {
+          "event_rank": 3,
+          "event_label": "Jefferies on foreign investor allocation to Indian financials",
+          "event_summary": "Jefferies suggesting foreign investors may rejig allocations toward Indian financials is a bullish sector catalyst that likely contributed to HDFC Bank's weekly rise.",
+          "article_count": 1,
+          "title": "Foreign investors may rejig allocation to Indian financials: Jefferies",
+          "source": "Business Standard",
+          "published": "2026-09-11T09:42:00+05:30",
+          "date": "2026-09-11",
+          "link": "https://news.google.com/rss/articles/CBMi0gFBVV95cUxNVzAxY29jV2tXNG9HNjRxRXZmM0hsMV9KRDM2c2NscXNMNHRUcFpraWJUUHN6dHAwQmNFamJuN0tsdGg0eGZXZkNwcExWRlF3VS03RjdhLVFyQVVISnZ6N0pma1BtTUdCZVQ3ZGVYdFpJakF3aHdPUHJIZnAtMmJ5eHdYWm1wUDRlQkxxYmt3QmRqSVVtUnYzMjNWTXRPMWpxcGRxa1paU19CQVNaWTYtbUhselAyeU5sQVp2SVJNNUphbEEzQmFtNHBBWE9zZGx4dXfSAdcBQVVfeXFMTmZnUzNGNDAta2FXc3c0S3ZNUUd4d0hHbXBLVEZmRVRGN00xbnRFVG5adDhUQmZnaXZydWFKWV9qMzdkRmo0MDcwUHE5b3BuMUQ2aVgzNzJwa3hRQmktZWk5aXFlNVJoTXMwQm94bVV5R1B4eWQ4MXRNb0VUNERQTHVBS1ZqY25YbWlzNTk4Uy1obzU5MzFRblNXbzVUR3ozTUgwWDFmUHdaX1h0ckZEVU1rQzdmLUw2d2hlNzhKWmttU3lPYklWaGJuMjMzSVc4TnN1QnVDb28?oc=5",
+          "resolved_url": "https://www.business-standard.com/markets/news/foreign-investors-may-rejig-allocation-to-indian-financials-jefferies-126091100183_1.html",
+          "text": "Foreign investors may rejig allocation to Indian financials: Jefferies Beyond the core earnings trajectory, clarity on the tenure and succession plans of chief executives at large financial institutions will also be important for the sector, analysts said. Banks, Banking sector, Indian banking sector Puneet Wadhwa New Delhi Listen to This Article Global financials have significantly outperformed t",
+          "relevancy_score": 9,
+          "causal_score": 8,
+          "causal_link": "sector",
+          "timing_plausible": true,
+          "sentiment": "positive",
+          "reasoning": "Jefferies suggesting foreign investors may rejig allocations toward Indian financials is a bullish sector catalyst that likely contributed to HDFC Bank's weekly rise."
+        },
+        {
+          "event_rank": 4,
+          "event_label": "Moody's Indian bank deposit growth outlook",
+          "event_summary": "Moody's forecast of accelerating deposit growth and steady loan growth is a bullish sector catalyst that can lift bank stocks, including HDFC Bank, contributing to the weekly gain.",
+          "article_count": 1,
+          "title": "Moody's Pegs Indian Banks' FY27 Deposit Growth At 15% On FCNR(B) Boost, Loan Growth At 13-15%",
+          "source": "NDTV Profit",
+          "published": "2026-09-09T18:57:06+05:30",
+          "date": "2026-09-09",
+          "link": "https://news.google.com/rss/articles/CBMiywFBVV95cUxON204M0x6V2tmb3JlcWFPRG9iT0w2MFNNV3NGOUdqeDd4RmY2OV9kZVJ2blMwV3Z6cEV4TV9SRGlkaDhWaW9XZUotLWFpcDI3dy0tM3lSdWloNmxGVkxNQnRCWEdxTFZfZ3BZYk5tWWVmVG16dDZGRHRMbm9YNGhCSTBMLTZkU0V0OExwSFlGVHYzV3NqUGtpTGxFcHF5OEhlUXdTVm56aXl6cmN4dEhtbUV1N1I5My1PbFUtR2Q1RnF3ZG9adTRNT3EyY9IB0wFBVV95cUxNamlTTGpSM0JtTktRUlpJN0w1dlA2M3JKZnpUQW9nWUV0T01hd0VaS09JYm9Ta3h5SlhIUTFvcjNhcGxIQ2hNQkRqUUViUUJqczd1clRhaGNabGtsY1VOUTlVYmxWLWZxajNQRWh1NVNFVXBZTDVZeHJyWDA1VVZJZ1hHMXYwMWFDRU5YaHNXOFZpSmN1aXBHUmxjZFhSeFZaV2hjbmJwYzk3S1lCLS1QcnZ2dlo3VGMzVGdGQjNYYUhJRkFpanNWM0NDS3YxV1d6ZURF?oc=5",
+          "resolved_url": "https://www.ndtvprofit.com/economy/moodys-pegs-indian-banks-fy27-deposit-growth-at-15-on-fcnr-b-boost-loan-growth-at-13-15-12023994",
+          "text": "Moody's expects Indian banks' deposit growth to accelerate to around 15% in FY27, helped by a surge in foreign-currency non-resident (FCNR(B)) deposits. Excluding the FCNR(B)-linked increase, deposit growth is seen at around 10% in FY27, while bank loan growth is projected at 13-15%, Moody's said, according to Informist. The rating agency said the Reserve Bank of India's swap schemes have helped r",
+          "relevancy_score": 8,
+          "causal_score": 7,
+          "causal_link": "sector",
+          "timing_plausible": true,
+          "sentiment": "positive",
+          "reasoning": "Moody's forecast of accelerating deposit growth and steady loan growth is a bullish sector catalyst that can lift bank stocks, including HDFC Bank, contributing to the weekly gain."
+        },
+        {
+          "event_rank": 5,
+          "event_label": "HDFC Bank low valuation buying opportunity",
+          "event_summary": "The article highlights HDFC Bank's low valuation as a potential buying opportunity, which could attract investors and support the stock's weekly rise.",
+          "article_count": 1,
+          "title": "HDFC Bank stock: Is its low valuation finally a buying opportunity?",
+          "source": "Livemint",
+          "published": "2026-09-16T08:00:43+05:30",
+          "date": "2026-09-16",
+          "link": "https://news.google.com/rss/articles/CBMi1gFBVV95cUxPUTBPYmRYSVI3dDdYbkhQWk9zVnFYa3NqNGtHeUJ0TlBOT3lkd1Zrd1BsamQ0M0RudVJ1dlpRV0lrbDRJVFBiWjlLaldId0tUNldsYWgxQk93Wmc1WG5DZ1Z5RUFRdHhCQVZDdVZtaU4tNjZXYVprNXJaNklZS2tITzNDcnhuSE9HRWZHN3BHU2lCSkhuUzlxTEc1MkFRM1kxUlBqVGtBOFd1LVFnLXNIaUFscDU1Um4yQkFabmpvZ0RVaVI1WTNOZlJMOGFBZUdDZHRBTGF30gHWAUFVX3lxTE9RME9iZFhJUjd0N1huSFBaT3NWcVhrc2o0a0d5QnROUE5PeWR3Vmt3UGxqZDQzRG51UnV2WlFXSWtsNElUUGJaOUtqV0h3S1Q2V2xhaDFCT3daZzVYbkNnVnlFQVF0eEJBVkN1Vm1pTi02NldhWms1clo2SVlLa0hPM0NyeG5IT0dFZkc3cEdTaUJKSG5TOXFMRzUyQVEzWTFSUGpUa0E4V3UtUWctc0hpQWxwNTVSbjJCQVpuam9nRFVpUjVZM05mUkw4YUFlR0NkdEFMYXc?oc=5",
+          "resolved_url": "https://www.livemint.com/market/stock-market-news/hdfc-bank-stock-is-its-low-valuation-finally-a-buying-opportunity/amp-11789462298143.html",
+          "text": "For most companies, investors tend to focus on the  price-to-earnings  (PE) ratio. For banks, the  price-to-book  (PB) ratio is often more useful. For most companies, investors tend to focus on the  price-to-earnings  (PE) ratio. For banks, the  price-to-book  (PB) ratio is often more useful. Why? A bank's balance sheet is its business. It takes deposits, lends money and earns a return on the capi",
+          "relevancy_score": 7,
+          "causal_score": 6,
+          "causal_link": "direct",
+          "timing_plausible": true,
+          "sentiment": "positive",
+          "reasoning": "The article highlights HDFC Bank's low valuation as a potential buying opportunity, which could attract investors and support the stock's weekly rise."
+        }
+      ]
+    },
+    {
+      "name": "HCL Technologies Ltd.",
+      "type": "stock",
+      "industry": "IT - Software",
+      "ticker": "HCLTECH.NS",
+      "weekly_change_pct": 1.89,
+      "target_sentiment": "positive",
+      "clusters": [
+        {
+          "event_label": "IT Sector Rebound and Nifty IT Surge",
+          "cluster_key": "it sector rebound and nifty it surge",
+          "article_count": 2,
+          "articles": [
+            {
+              "article_id": 1,
+              "title": "IT Stocks Rally: Mphasis, HCL Tech, Tech Mahindra Surge Up To 7%; Nifty IT Index Zooms 5%",
+              "link": "https://news.google.com/rss/articles/CBMizgFBVV95cUxOWTQxemdoUENBcnQzajRyN253SkFQM3Ywc1l2ei1qcG9yM1dQR0k5bE1ZWFFHRjA2YVlKQ3A1QVpMX1JHSGNUdE9FNG05Uk1YbUJSYlJ0TnhsSnVmUDkzMmE5UEE4N0ZCOXY0SGlFZTYyMFAyR0VxbmN4dzFJaE1Ob3JOUXZId0hjdnF3NTlQR1BEZllJQ1lTemw3U2pfdmNLXzl3elJ4a2xMLU5XRlc0RjdscUo0QTgyZkVTUUtBb1dQQmdNMmZZdzltdURHQdIB1gFBVV95cUxOWDhES0xqWGRycmxZTHpKNTI2d2dCM0I1OUhEZDhWZ1JMMVVYdFBBSFptd2d5LWVTbHBGRmNmaGczeXY3THhoa0dtSTJQQUdKQ3JsM3dpT3VtSkRqRmZONEpXZ2ZpYU96ZVBnaDY5UXZzMUE2V0xsaUh1UC15c2NicUxDQm1zMUk0cGRDaG1kRlh6UXdqR0dVZ0lTN3pDUE8zSDdJZXpXclNTRVNXd0I1SUhrZXRlZ1FmLWFhRi0wWGlldnNfQjJTMW4xdFdfQUlBZHAxNGx3?oc=5",
+              "resolved_url": "https://www.ndtvprofit.com/markets/it-stocks-rally-mphasis-hcl-tech-tech-mahindra-surge-up-to-7-percent-nifty-it-index-zooms-12047693",
+              "source": "NDTV Profit",
+              "published": "2026-09-15T10:30:18+05:30",
+              "date": "2026-09-15",
+              "text_excerpt": "Indian IT Stocks Today: Indian IT stocks rebounded sharply on Tuesday, with the Nifty IT index rising 3.66% to 29,981.05 in early trade. The index touched an intraday high of 30,435, translating into a 5.23% gain from its previous close of 28,921.50. Among individual stocks, Mphasis led the gains, climbing as much as 7.24% intraday, followed by HCL Technologies, L&T Technology Services and Tech Ma",
+              "llm_returned": true,
+              "relevancy_score": 9,
+              "causal_score": 9,
+              "event_label": "IT Sector Rebound and Nifty IT Surge",
+              "causal_link": "direct",
+              "timing_plausible": true,
+              "sentiment": "positive",
+              "reasoning": "The article directly reports a sharp rebound in IT stocks on September 15, with HCL Tech surging up to 7%, which aligns with the 3.95% gain for HCLTECH on that day and the overall positive weekly move. This event is the primary catalyst for the observed price increase."
+            },
+            {
+              "article_id": 2,
+              "title": "Why are IT stocks on fire? Check TCS, HCL Tech, LTM, Tech Mahindra, Infosys share performance",
+              "link": "https://news.google.com/rss/articles/CBMi7wFBVV95cUxQUlB5OVg1bkpTbXFYc3V5c0hUY1pZVk9PS3RLNjBDSVI3UUVmTk5HWHAyOUotUnFvdzUzekdfVGxqeFdHOXdXa1VleU1Lb19OdFJwNjFLa0E1Rnk0RWRlTkFmRUoyY0JQYUdzYWFSdk8zRDBzVWduSFZSeGsyU1dEQlRybWVqeFhDMkJWSVdTb0hpaWFiQmh5V3NPNUU5UnpLRm9ETGRXOEo3em9lS0N3V3g0SjhvaHNxLUVQOGRuYmQzVEd2d0YzSkM2Q0hzSVhhdGl6OG45MTRwZkRmSHZRelNkOF9YaU9UZEhYQXhBNNIB9AFBVV95cUxQWnVRelVvUkdobm5oTXROTkc5bm5QQUhBajYzOHo0Mm9PbTdmby1WWWxVekJ3VC1HY01sMHFrcUpyRGZ1NFpvN2VhQm1LT2ZkSzJrRE1EQ2NYRG9tLTNHUUV3eS1qOHJCdEtsbURWajdWOXFlYnJpcm5rcEl4NjRrNDRkU1QyQ0k2ZDJmQUxBelZ5ajVIWG9TUzNmV05FWDkxNC01MllxZVpreVVZaUdramlKWEJwRXVITWduaVFwQVI3aFJmbjBMWUpXczJDMU5MYUpuTllTUGNTcHJzYnpIVUNQN0hmQ2NoMVBrT0Q4ODlrVENn?oc=5",
+              "resolved_url": "https://www.livemint.com/market/stock-market-news/why-are-it-stocks-on-fire-check-tcs-hcl-tech-ltm-tech-mahindra-infosys-share-performance-11789447093149.html",
+              "source": "Livemint",
+              "published": "2026-09-15T10:35:08+05:30",
+              "date": "2026-09-15",
+              "text_excerpt": "Updated15 Sep 2026, 10:53 AM IST Prefer Liveminton Google Stock market today: Amid buzz about the AI slowdown, Indian IT and tech stocks saw strong buying in the early morning session on Tuesday. The Nifty IT index shot up over 4%. Among the Indian IT majors, Tata Group's Tata Consultancy Services (TCS) share price is up by near 5%, HCL Technologies shares surged over 6%, Tech Mahindra share price",
+              "llm_returned": true,
+              "relevancy_score": 9,
+              "causal_score": 9,
+              "event_label": "IT Sector Rebound and Nifty IT Surge",
+              "causal_link": "direct",
+              "timing_plausible": true,
+              "sentiment": "positive",
+              "reasoning": "Similar to Article 1, this article highlights the strong buying in IT stocks on September 15, with HCL Tech surging over 6%, explaining the positive price move. It is a direct catalyst."
+            }
+          ]
+        }
+      ],
+      "selected_events": [
+        {
+          "event_rank": 1,
+          "event_label": "IT Sector Rebound and Nifty IT Surge",
+          "event_summary": "The article directly reports a sharp rebound in IT stocks on September 15, with HCL Tech surging up to 7%, which aligns with the 3.95% gain for HCLTECH on that day and the overall positive weekly move. This event is the primary catalyst for the observed price increase.",
+          "article_count": 2,
+          "title": "IT Stocks Rally: Mphasis, HCL Tech, Tech Mahindra Surge Up To 7%; Nifty IT Index Zooms 5%",
+          "source": "NDTV Profit",
+          "published": "2026-09-15T10:30:18+05:30",
+          "date": "2026-09-15",
+          "link": "https://news.google.com/rss/articles/CBMizgFBVV95cUxOWTQxemdoUENBcnQzajRyN253SkFQM3Ywc1l2ei1qcG9yM1dQR0k5bE1ZWFFHRjA2YVlKQ3A1QVpMX1JHSGNUdE9FNG05Uk1YbUJSYlJ0TnhsSnVmUDkzMmE5UEE4N0ZCOXY0SGlFZTYyMFAyR0VxbmN4dzFJaE1Ob3JOUXZId0hjdnF3NTlQR1BEZllJQ1lTemw3U2pfdmNLXzl3elJ4a2xMLU5XRlc0RjdscUo0QTgyZkVTUUtBb1dQQmdNMmZZdzltdURHQdIB1gFBVV95cUxOWDhES0xqWGRycmxZTHpKNTI2d2dCM0I1OUhEZDhWZ1JMMVVYdFBBSFptd2d5LWVTbHBGRmNmaGczeXY3THhoa0dtSTJQQUdKQ3JsM3dpT3VtSkRqRmZONEpXZ2ZpYU96ZVBnaDY5UXZzMUE2V0xsaUh1UC15c2NicUxDQm1zMUk0cGRDaG1kRlh6UXdqR0dVZ0lTN3pDUE8zSDdJZXpXclNTRVNXd0I1SUhrZXRlZ1FmLWFhRi0wWGlldnNfQjJTMW4xdFdfQUlBZHAxNGx3?oc=5",
+          "resolved_url": "https://www.ndtvprofit.com/markets/it-stocks-rally-mphasis-hcl-tech-tech-mahindra-surge-up-to-7-percent-nifty-it-index-zooms-12047693",
+          "text": "Indian IT Stocks Today: Indian IT stocks rebounded sharply on Tuesday, with the Nifty IT index rising 3.66% to 29,981.05 in early trade. The index touched an intraday high of 30,435, translating into a 5.23% gain from its previous close of 28,921.50. Among individual stocks, Mphasis led the gains, climbing as much as 7.24% intraday, followed by HCL Technologies, L&T Technology Services and Tech Ma",
+          "relevancy_score": 9,
+          "causal_score": 9,
+          "causal_link": "direct",
+          "timing_plausible": true,
+          "sentiment": "positive",
+          "reasoning": "The article directly reports a sharp rebound in IT stocks on September 15, with HCL Tech surging up to 7%, which aligns with the 3.95% gain for HCLTECH on that day and the overall positive weekly move. This event is the primary catalyst for the observed price increase."
+        }
+      ]
+    },
+    {
+      "name": "SBI Life Insurance Company Ltd.",
+      "type": "stock",
+      "industry": "Insurance",
+      "ticker": "SBILIFE.NS",
+      "weekly_change_pct": 0.83,
+      "target_sentiment": "positive",
+      "clusters": [],
+      "selected_events": []
+    },
+    {
+      "name": "Bharti Airtel Ltd.",
+      "type": "stock",
+      "industry": "Telecom - Services",
+      "ticker": "BHARTIARTL.BO",
+      "weekly_change_pct": 1.0,
+      "target_sentiment": "positive",
+      "clusters": [],
+      "selected_events": []
+    },
+    {
+      "name": "Axis Bank Ltd.",
+      "type": "stock",
+      "industry": "Banks",
+      "ticker": "AXISBANK.BO",
+      "weekly_change_pct": 0.36,
+      "target_sentiment": "positive",
+      "clusters": [
+        {
+          "event_label": "Jefferies on foreign investor reallocation to Indian financials",
+          "cluster_key": "jefferies on foreign investor reallocation to indian financials",
+          "article_count": 1,
+          "articles": [
+            {
+              "article_id": 13,
+              "title": "Foreign investors may rejig allocation to Indian financials: Jefferies",
+              "link": "https://news.google.com/rss/articles/CBMi0gFBVV95cUxNVzAxY29jV2tXNG9HNjRxRXZmM0hsMV9KRDM2c2NscXNMNHRUcFpraWJUUHN6dHAwQmNFamJuN0tsdGg0eGZXZkNwcExWRlF3VS03RjdhLVFyQVVISnZ6N0pma1BtTUdCZVQ3ZGVYdFpJakF3aHdPUHJIZnAtMmJ5eHdYWm1wUDRlQkxxYmt3QmRqSVVtUnYzMjNWTXRPMWpxcGRxa1paU19CQVNaWTYtbUhselAyeU5sQVp2SVJNNUphbEEzQmFtNHBBWE9zZGx4dXfSAdcBQVVfeXFMTmZnUzNGNDAta2FXc3c0S3ZNUUd4d0hHbXBLVEZmRVRGN00xbnRFVG5adDhUQmZnaXZydWFKWV9qMzdkRmo0MDcwUHE5b3BuMUQ2aVgzNzJwa3hRQmktZWk5aXFlNVJoTXMwQm94bVV5R1B4eWQ4MXRNb0VUNERQTHVBS1ZqY25YbWlzNTk4Uy1obzU5MzFRblNXbzVUR3ozTUgwWDFmUHdaX1h0ckZEVU1rQzdmLUw2d2hlNzhKWmttU3lPYklWaGJuMjMzSVc4TnN1QnVDb28?oc=5",
+              "resolved_url": "https://www.business-standard.com/markets/news/foreign-investors-may-rejig-allocation-to-indian-financials-jefferies-126091100183_1.html",
+              "source": "Business Standard",
+              "published": "2026-09-11T09:42:00+05:30",
+              "date": "2026-09-11",
+              "text_excerpt": "Foreign investors may rejig allocation to Indian financials: Jefferies Beyond the core earnings trajectory, clarity on the tenure and succession plans of chief executives at large financial institutions will also be important for the sector, analysts said. Banks, Banking sector, Indian banking sector Puneet Wadhwa New Delhi Listen to This Article Global financials have significantly outperformed t",
+              "llm_returned": true,
+              "relevancy_score": 8,
+              "causal_score": 8,
+              "event_label": "Jefferies on foreign investor reallocation to Indian financials",
+              "causal_link": "sector",
+              "timing_plausible": true,
+              "sentiment": "positive",
+              "reasoning": "Jefferies' note suggesting potential reallocation to Indian financials is a bullish signal that likely contributed to the sector's positive performance."
+            }
+          ]
+        },
+        {
+          "event_label": "Moody's positive FY27 deposit growth outlook",
+          "cluster_key": "moody's positive fy27 deposit growth outlook",
+          "article_count": 1,
+          "articles": [
+            {
+              "article_id": 10,
+              "title": "Moody's Pegs Indian Banks' FY27 Deposit Growth At 15% On FCNR(B) Boost, Loan Growth At 13-15%",
+              "link": "https://news.google.com/rss/articles/CBMiywFBVV95cUxON204M0x6V2tmb3JlcWFPRG9iT0w2MFNNV3NGOUdqeDd4RmY2OV9kZVJ2blMwV3Z6cEV4TV9SRGlkaDhWaW9XZUotLWFpcDI3dy0tM3lSdWloNmxGVkxNQnRCWEdxTFZfZ3BZYk5tWWVmVG16dDZGRHRMbm9YNGhCSTBMLTZkU0V0OExwSFlGVHYzV3NqUGtpTGxFcHF5OEhlUXdTVm56aXl6cmN4dEhtbUV1N1I5My1PbFUtR2Q1RnF3ZG9adTRNT3EyY9IB0wFBVV95cUxNamlTTGpSM0JtTktRUlpJN0w1dlA2M3JKZnpUQW9nWUV0T01hd0VaS09JYm9Ta3h5SlhIUTFvcjNhcGxIQ2hNQkRqUUViUUJqczd1clRhaGNabGtsY1VOUTlVYmxWLWZxajNQRWh1NVNFVXBZTDVZeHJyWDA1VVZJZ1hHMXYwMWFDRU5YaHNXOFZpSmN1aXBHUmxjZFhSeFZaV2hjbmJwYzk3S1lCLS1QcnZ2dlo3VGMzVGdGQjNYYUhJRkFpanNWM0NDS3YxV1d6ZURF?oc=5",
+              "resolved_url": "https://www.ndtvprofit.com/economy/moodys-pegs-indian-banks-fy27-deposit-growth-at-15-on-fcnr-b-boost-loan-growth-at-13-15-12023994",
+              "source": "NDTV Profit",
+              "published": "2026-09-09T18:57:06+05:30",
+              "date": "2026-09-09",
+              "text_excerpt": "Moody's expects Indian banks' deposit growth to accelerate to around 15% in FY27, helped by a surge in foreign-currency non-resident (FCNR(B)) deposits. Excluding the FCNR(B)-linked increase, deposit growth is seen at around 10% in FY27, while bank loan growth is projected at 13-15%, Moody's said, according to Informist. The rating agency said the Reserve Bank of India's swap schemes have helped r",
+              "llm_returned": true,
+              "relevancy_score": 8,
+              "causal_score": 7,
+              "event_label": "Moody's positive FY27 deposit growth outlook",
+              "causal_link": "sector",
+              "timing_plausible": true,
+              "sentiment": "positive",
+              "reasoning": "Moody's projection of accelerated deposit growth and steady loan growth for Indian banks is a bullish sector outlook that likely supported Axis Bank's positive weekly move."
+            }
+          ]
+        },
+        {
+          "event_label": "Banks seek foreign loans post FCNR surge",
+          "cluster_key": "banks seek foreign loans post fcnr surge",
+          "article_count": 1,
+          "articles": [
+            {
+              "article_id": 11,
+              "title": "Banks scramble for foreign loans after FCNR deluge",
+              "link": "https://news.google.com/rss/articles/CBMixAFBVV95cUxQVWxodHNMV3lwY3pqX0xiUGhsSEZ5cFVhdW9GbV9rYVI1SWx5ZHljSkZTU0JhLUNOTUNfWVBvSXl2QnVJNTY4dG5xT3FZQWFZMHMzLTd0cGp2OGVWZnBMRk1UeU1SNVMxa0h6Ykl2bjl5dXJubDZDQU5XeGR1SkxDYlRBTWhkVjVCaWFVVjg3UlFkdVZ5dVQxdGJzV3ctMl8zSkVYZ1kxRHowWm41Z1FERERwOXR5MG5IQ3BVcGt2eTRpZ0Vu0gHKAUFVX3lxTFBRUUdrNndNQUFDdUlzbk1FR3ZkdW5uRDVQU2l4Z21LQjdlQWZ2dkpnZlp1eHJxWUlpRUNBZDR3bWRKODRKNzZCSGtiNi1sbzRUR0ZZY1o5RzR3ck91NUh1SXdOazlaeHozTm4ydDQ5a0x1aXY2VTJiOERXdmtXcjYxWlRsc3FGNGlSZzJtWU1sYlpqR0YxdFJNNThFVTNGYk41UkdfVEpGd2dtTE8yYWpzYUlKNjlDQVJBaUhGV1dNTjViZ0tJNzN1UUE?oc=5",
+              "resolved_url": "https://www.livemint.com/industry/banking/banks-offshore-funding-127-billion-fcnr-b-deposit-scheme-nri-rbi-11788846434018.html",
+              "source": "Livemint",
+              "published": "2026-09-09T05:40:34+05:30",
+              "date": "2026-09-09",
+              "text_excerpt": "Mumbai: Indian banks are seeking longer-term overseas funding to replace short-term borrowings used during a rush to raise $127 billion through the Reserve Bank of India’s (RBI) special FCNR(B) deposit scheme, according to five treasury officials. Several lenders turned to short-term borrowing to bridge the gap while arranging longer-term funding for FCNR(B) deposits, the officials said. They are ",
+              "llm_returned": true,
+              "relevancy_score": 7,
+              "causal_score": 5,
+              "event_label": "Banks seek foreign loans post FCNR surge",
+              "causal_link": "sector",
+              "timing_plausible": true,
+              "sentiment": "positive",
+              "reasoning": "While the article highlights a positive development of higher FCNR deposits, the scramble for foreign loans may indicate funding pressures, offering mixed sentiment but aligning with the bullish trend."
+            }
+          ]
+        }
+      ],
+      "selected_events": [
+        {
+          "event_rank": 1,
+          "event_label": "Jefferies on foreign investor reallocation to Indian financials",
+          "event_summary": "Jefferies' note suggesting potential reallocation to Indian financials is a bullish signal that likely contributed to the sector's positive performance.",
+          "article_count": 1,
+          "title": "Foreign investors may rejig allocation to Indian financials: Jefferies",
+          "source": "Business Standard",
+          "published": "2026-09-11T09:42:00+05:30",
+          "date": "2026-09-11",
+          "link": "https://news.google.com/rss/articles/CBMi0gFBVV95cUxNVzAxY29jV2tXNG9HNjRxRXZmM0hsMV9KRDM2c2NscXNMNHRUcFpraWJUUHN6dHAwQmNFamJuN0tsdGg0eGZXZkNwcExWRlF3VS03RjdhLVFyQVVISnZ6N0pma1BtTUdCZVQ3ZGVYdFpJakF3aHdPUHJIZnAtMmJ5eHdYWm1wUDRlQkxxYmt3QmRqSVVtUnYzMjNWTXRPMWpxcGRxa1paU19CQVNaWTYtbUhselAyeU5sQVp2SVJNNUphbEEzQmFtNHBBWE9zZGx4dXfSAdcBQVVfeXFMTmZnUzNGNDAta2FXc3c0S3ZNUUd4d0hHbXBLVEZmRVRGN00xbnRFVG5adDhUQmZnaXZydWFKWV9qMzdkRmo0MDcwUHE5b3BuMUQ2aVgzNzJwa3hRQmktZWk5aXFlNVJoTXMwQm94bVV5R1B4eWQ4MXRNb0VUNERQTHVBS1ZqY25YbWlzNTk4Uy1obzU5MzFRblNXbzVUR3ozTUgwWDFmUHdaX1h0ckZEVU1rQzdmLUw2d2hlNzhKWmttU3lPYklWaGJuMjMzSVc4TnN1QnVDb28?oc=5",
+          "resolved_url": "https://www.business-standard.com/markets/news/foreign-investors-may-rejig-allocation-to-indian-financials-jefferies-126091100183_1.html",
+          "text": "Foreign investors may rejig allocation to Indian financials: Jefferies Beyond the core earnings trajectory, clarity on the tenure and succession plans of chief executives at large financial institutions will also be important for the sector, analysts said. Banks, Banking sector, Indian banking sector Puneet Wadhwa New Delhi Listen to This Article Global financials have significantly outperformed t",
+          "relevancy_score": 8,
+          "causal_score": 8,
+          "causal_link": "sector",
+          "timing_plausible": true,
+          "sentiment": "positive",
+          "reasoning": "Jefferies' note suggesting potential reallocation to Indian financials is a bullish signal that likely contributed to the sector's positive performance."
+        },
+        {
+          "event_rank": 2,
+          "event_label": "Moody's positive FY27 deposit growth outlook",
+          "event_summary": "Moody's projection of accelerated deposit growth and steady loan growth for Indian banks is a bullish sector outlook that likely supported Axis Bank's positive weekly move.",
+          "article_count": 1,
+          "title": "Moody's Pegs Indian Banks' FY27 Deposit Growth At 15% On FCNR(B) Boost, Loan Growth At 13-15%",
+          "source": "NDTV Profit",
+          "published": "2026-09-09T18:57:06+05:30",
+          "date": "2026-09-09",
+          "link": "https://news.google.com/rss/articles/CBMiywFBVV95cUxON204M0x6V2tmb3JlcWFPRG9iT0w2MFNNV3NGOUdqeDd4RmY2OV9kZVJ2blMwV3Z6cEV4TV9SRGlkaDhWaW9XZUotLWFpcDI3dy0tM3lSdWloNmxGVkxNQnRCWEdxTFZfZ3BZYk5tWWVmVG16dDZGRHRMbm9YNGhCSTBMLTZkU0V0OExwSFlGVHYzV3NqUGtpTGxFcHF5OEhlUXdTVm56aXl6cmN4dEhtbUV1N1I5My1PbFUtR2Q1RnF3ZG9adTRNT3EyY9IB0wFBVV95cUxNamlTTGpSM0JtTktRUlpJN0w1dlA2M3JKZnpUQW9nWUV0T01hd0VaS09JYm9Ta3h5SlhIUTFvcjNhcGxIQ2hNQkRqUUViUUJqczd1clRhaGNabGtsY1VOUTlVYmxWLWZxajNQRWh1NVNFVXBZTDVZeHJyWDA1VVZJZ1hHMXYwMWFDRU5YaHNXOFZpSmN1aXBHUmxjZFhSeFZaV2hjbmJwYzk3S1lCLS1QcnZ2dlo3VGMzVGdGQjNYYUhJRkFpanNWM0NDS3YxV1d6ZURF?oc=5",
+          "resolved_url": "https://www.ndtvprofit.com/economy/moodys-pegs-indian-banks-fy27-deposit-growth-at-15-on-fcnr-b-boost-loan-growth-at-13-15-12023994",
+          "text": "Moody's expects Indian banks' deposit growth to accelerate to around 15% in FY27, helped by a surge in foreign-currency non-resident (FCNR(B)) deposits. Excluding the FCNR(B)-linked increase, deposit growth is seen at around 10% in FY27, while bank loan growth is projected at 13-15%, Moody's said, according to Informist. The rating agency said the Reserve Bank of India's swap schemes have helped r",
+          "relevancy_score": 8,
+          "causal_score": 7,
+          "causal_link": "sector",
+          "timing_plausible": true,
+          "sentiment": "positive",
+          "reasoning": "Moody's projection of accelerated deposit growth and steady loan growth for Indian banks is a bullish sector outlook that likely supported Axis Bank's positive weekly move."
+        },
+        {
+          "event_rank": 3,
+          "event_label": "Banks seek foreign loans post FCNR surge",
+          "event_summary": "While the article highlights a positive development of higher FCNR deposits, the scramble for foreign loans may indicate funding pressures, offering mixed sentiment but aligning with the bullish trend.",
+          "article_count": 1,
+          "title": "Banks scramble for foreign loans after FCNR deluge",
+          "source": "Livemint",
+          "published": "2026-09-09T05:40:34+05:30",
+          "date": "2026-09-09",
+          "link": "https://news.google.com/rss/articles/CBMixAFBVV95cUxQVWxodHNMV3lwY3pqX0xiUGhsSEZ5cFVhdW9GbV9rYVI1SWx5ZHljSkZTU0JhLUNOTUNfWVBvSXl2QnVJNTY4dG5xT3FZQWFZMHMzLTd0cGp2OGVWZnBMRk1UeU1SNVMxa0h6Ykl2bjl5dXJubDZDQU5XeGR1SkxDYlRBTWhkVjVCaWFVVjg3UlFkdVZ5dVQxdGJzV3ctMl8zSkVYZ1kxRHowWm41Z1FERERwOXR5MG5IQ3BVcGt2eTRpZ0Vu0gHKAUFVX3lxTFBRUUdrNndNQUFDdUlzbk1FR3ZkdW5uRDVQU2l4Z21LQjdlQWZ2dkpnZlp1eHJxWUlpRUNBZDR3bWRKODRKNzZCSGtiNi1sbzRUR0ZZY1o5RzR3ck91NUh1SXdOazlaeHozTm4ydDQ5a0x1aXY2VTJiOERXdmtXcjYxWlRsc3FGNGlSZzJtWU1sYlpqR0YxdFJNNThFVTNGYk41UkdfVEpGd2dtTE8yYWpzYUlKNjlDQVJBaUhGV1dNTjViZ0tJNzN1UUE?oc=5",
+          "resolved_url": "https://www.livemint.com/industry/banking/banks-offshore-funding-127-billion-fcnr-b-deposit-scheme-nri-rbi-11788846434018.html",
+          "text": "Mumbai: Indian banks are seeking longer-term overseas funding to replace short-term borrowings used during a rush to raise $127 billion through the Reserve Bank of India’s (RBI) special FCNR(B) deposit scheme, according to five treasury officials. Several lenders turned to short-term borrowing to bridge the gap while arranging longer-term funding for FCNR(B) deposits, the officials said. They are ",
+          "relevancy_score": 7,
+          "causal_score": 5,
+          "causal_link": "sector",
+          "timing_plausible": true,
+          "sentiment": "positive",
+          "reasoning": "While the article highlights a positive development of higher FCNR deposits, the scramble for foreign loans may indicate funding pressures, offering mixed sentiment but aligning with the bullish trend."
+        }
+      ]
+    },
+    {
+      "name": "Kotak Mahindra Bank Limited",
+      "type": "stock",
+      "industry": "Banks",
+      "ticker": "KOTAKBANK.NS",
+      "weekly_change_pct": 0.24,
+      "target_sentiment": "positive",
+      "clusters": [],
+      "selected_events": []
+    },
+    {
+      "name": "Healthcare Services",
+      "type": "sector",
+      "industry": "Healthcare Services",
+      "ticker": null,
+      "weekly_change_pct": -2.8,
+      "target_sentiment": "negative",
+      "clusters": [],
+      "selected_events": []
+    },
+    {
+      "name": "Construction",
+      "type": "sector",
+      "industry": "Construction",
+      "ticker": null,
+      "weekly_change_pct": -1.25,
+      "target_sentiment": "negative",
+      "clusters": [],
+      "selected_events": []
+    },
+    {
+      "name": "Auto Components",
+      "type": "sector",
+      "industry": "Auto Components",
+      "ticker": null,
+      "weekly_change_pct": -2.2,
+      "target_sentiment": "negative",
+      "clusters": [],
+      "selected_events": []
+    }
+  ]
+}

@@ -170,15 +170,37 @@ def last_seven_nav(fund_id: str) -> dict:
 
 def read_summary(fund_id: str) -> dict:
     path = OUTPUT_SCRAPPER_DIR / fund_id / "result.json"
+    clustered = clustered_path(fund_id).is_file()
     if not path.exists():
-        return {"fund_id": fund_id, "investor_summary": "", "important_news": [], "found": False, "empty": False}
+        return {
+            "fund_id": fund_id,
+            "investor_summary": "",
+            "important_news": [],
+            "has_clustered": clustered,
+            "found": False,
+            "empty": False,
+        }
     raw = path.read_text(encoding="utf-8").strip()
     if not raw:
-        return {"fund_id": fund_id, "investor_summary": "", "important_news": [], "found": True, "empty": True}
+        return {
+            "fund_id": fund_id,
+            "investor_summary": "",
+            "important_news": [],
+            "has_clustered": clustered,
+            "found": True,
+            "empty": True,
+        }
     try:
         data = json.loads(raw)
     except json.JSONDecodeError:
-        return {"fund_id": fund_id, "investor_summary": raw, "important_news": [], "found": True, "empty": False}
+        return {
+            "fund_id": fund_id,
+            "investor_summary": raw,
+            "important_news": [],
+            "has_clustered": clustered,
+            "found": True,
+            "empty": False,
+        }
     text = str(data.get("investor_summary") or "").strip()
     news = data.get("important_news")
     if not isinstance(news, list):
@@ -206,8 +228,111 @@ def read_summary(fund_id: str) -> dict:
         "isin": str(data.get("isin") or fund_id),
         "nav_date": nav_date or None,
         "token_usage": parse_token_usage(data.get("token_usage")),
+        "has_clustered": clustered_path(fund_id).is_file(),
         "found": True,
         "empty": not bool(text),
+    }
+
+
+def clustered_path(fund_id: str) -> Path:
+    return OUTPUT_SCRAPPER_DIR / fund_id / "clustered.json"
+
+
+def _article_url(item: dict) -> str:
+    return str(item.get("resolved_url") or item.get("url") or item.get("link") or "").strip()
+
+
+def read_clustered(fund_id: str) -> dict:
+    path = clustered_path(fund_id)
+    if not path.exists():
+        return {
+            "found": False,
+            "fund_id": fund_id,
+            "isin": fund_id,
+            "nav_date": None,
+            "week_start": None,
+            "targets": [],
+        }
+    try:
+        data = json.loads(path.read_text(encoding="utf-8"))
+    except (OSError, json.JSONDecodeError):
+        return {
+            "found": False,
+            "fund_id": fund_id,
+            "isin": fund_id,
+            "nav_date": None,
+            "week_start": None,
+            "targets": [],
+        }
+    if not isinstance(data, dict):
+        data = {}
+    targets = []
+    for raw in data.get("targets") or []:
+        if not isinstance(raw, dict):
+            continue
+        target_type = str(raw.get("type") or "stock").strip().lower()
+        if target_type not in ("stock", "sector"):
+            target_type = "stock"
+        articles = []
+        seen = set()
+        for cluster in raw.get("clusters") or []:
+            if not isinstance(cluster, dict):
+                continue
+            for item in cluster.get("articles") or []:
+                if not isinstance(item, dict):
+                    continue
+                title = str(item.get("title") or "").strip()
+                url = _article_url(item)
+                if not title or not url:
+                    continue
+                key = url.lower()
+                if key in seen:
+                    continue
+                seen.add(key)
+                score = item.get("relevancy_score")
+                try:
+                    score = int(score) if score is not None else None
+                except (TypeError, ValueError):
+                    score = None
+                articles.append(
+                    {
+                        "title": title,
+                        "url": url,
+                        "source": str(item.get("source") or "").strip(),
+                        "date": str(item.get("date") or "").strip(),
+                        "relevancy_score": score,
+                        "reasoning": str(item.get("reasoning") or "").strip(),
+                    }
+                )
+        weekly = raw.get("weekly_change_pct")
+        try:
+            weekly = float(weekly) if weekly is not None else None
+        except (TypeError, ValueError):
+            weekly = None
+        targets.append(
+            {
+                "name": _clean_label(raw.get("name")),
+                "type": target_type,
+                "industry": _clean_label(raw.get("industry")),
+                "weekly_change_pct": weekly,
+                "target_sentiment": str(raw.get("target_sentiment") or "").strip(),
+                "articles": articles,
+            }
+        )
+    identity = identity_for_fund(fund_id) if known_fund(fund_id) else {
+        "fund_name": fund_id,
+        "subtitle": "",
+        "isin": fund_id,
+    }
+    return {
+        "found": True,
+        "fund_id": fund_id,
+        "isin": str(data.get("isin") or identity.get("isin") or fund_id),
+        "fund_name": identity.get("fund_name") or fund_id,
+        "subtitle": identity.get("subtitle") or "",
+        "nav_date": str(data.get("nav_date") or "").strip()[:10] or None,
+        "week_start": str(data.get("week_start") or "").strip()[:10] or None,
+        "targets": targets,
     }
 
 
@@ -252,6 +377,11 @@ def index():
     return send_from_directory(STATIC_DIR, "index.html")
 
 
+@app.get("/news")
+def news_page():
+    return send_from_directory(STATIC_DIR, "news.html")
+
+
 @app.get("/styles.css")
 def styles_css():
     return send_from_directory(STATIC_DIR, "styles.css")
@@ -260,6 +390,11 @@ def styles_css():
 @app.get("/app.js")
 def app_js():
     return send_from_directory(STATIC_DIR, "app.js")
+
+
+@app.get("/news.js")
+def news_js():
+    return send_from_directory(STATIC_DIR, "news.js")
 
 
 @app.get("/static/<path:filename>")
@@ -331,6 +466,7 @@ def api_lookup():
                 "important_news": summary.get("important_news") or [],
                 "summary_nav_date": summary.get("nav_date"),
                 "token_usage": summary.get("token_usage"),
+                "has_clustered": summary.get("has_clustered"),
             }
         )
     except FundFetchError as exc:
@@ -367,6 +503,18 @@ def api_summary(fund_id: str):
     if not path.exists() and not known_fund(fund_id):
         return jsonify({"error": "Unknown fund"}), 404
     return jsonify(read_summary(fund_id))
+
+
+@app.get("/api/clustered/<fund_id>")
+def api_clustered(fund_id: str):
+    try:
+        isin = normalize_isin(fund_id)
+    except FundFetchError:
+        isin = str(fund_id or "").strip()
+    payload = read_clustered(isin)
+    if not payload.get("found"):
+        return jsonify({"error": "No clustered news for this fund yet"}), 404
+    return jsonify(payload)
 
 
 @app.get("/api/run/status")

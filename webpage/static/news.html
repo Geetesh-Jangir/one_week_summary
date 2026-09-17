@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Relevant news</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600&family=Source+Sans+3:wght@400;500;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="/styles.css" />
+</head>
+<body class="news-body">
+  <div class="news-app">
+    <header class="news-top">
+      <a class="back-link" href="/">← Back to summary</a>
+      <p class="eyebrow" id="news-isin">Relevant news</p>
+      <h1 id="news-title">Pick a stock or sector</h1>
+      <p class="muted" id="news-sub">Stories kept after the weekly run, grouped by name.</p>
+    </header>
+
+    <div class="type-switch" role="tablist" aria-label="News group">
+      <button type="button" class="type-btn active" data-type="stock" id="btn-stocks" aria-pressed="true">Stocks</button>
+      <button type="button" class="type-btn" data-type="sector" id="btn-sectors" aria-pressed="false">Sectors</button>
+    </div>
+
+    <div class="name-row" id="name-row" role="tablist" aria-label="Names"></div>
+
+    <section class="news-board" id="news-board">
+      <p class="placeholder hidden" id="news-empty">Open this page from a finished run to see headlines.</p>
+      <div class="article-list hidden" id="article-list"></div>
+    </section>
+  </div>
+  <script src="/news.js"></script>
+</body>
+</html>

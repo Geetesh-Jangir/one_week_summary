@@ -1,5 +1,5 @@
 {
-  "investor_summary": "## Key Drivers\n\n• **Indian banks (ICICI Bank, State Bank of India)** — The RBI aggressively drained liquidity through roughly ₹1 trillion in bond sales and rejected short bond bids, pushing yields higher and raising funding costs across the banking system. With ICICI Bank and SBI among the fund's largest holdings (about 9.2% and 4.2% respectively), this macro tightening was the dominant drag on the fund, compounded by operational disruption flagged at SBI from a nationwide UFBU bank strike.\n\n• **Maruti Suzuki India** — India's largest carmaker fell to a 52-week low as production lagged demand, leaving vehicle shortages ahead of the key festive season. This operational shortfall weighed on the fund through a roughly 2.7% portfolio position.\n\n• **HDFC Bank** — The stock rose about 5% on a CEO succession announcement, bullish brokerage views, and Jefferies' call that foreign investors may reallocate toward Indian financials. As the fund's largest single holding at about 5.7%, this rally provided the most meaningful offset to the week's broad banking weakness. Axis Bank also edged higher on the same foreign-flow theme plus a fresh CLSA bullish call, though the gain was modest.\n\n• **HCL Technologies** — Indian IT stocks rallied sharply on September 15 amid buzz over an AI-related slowdown, with HCL Tech named among the top gainers for a nearly 4% single-day jump. This helped offset some weakness in the fund's other holdings.\n\n## Overall Summary\n\nThe fund fell about 1.3% for the week, driven mainly by the RBI's aggressive liquidity drain of roughly ₹1 trillion, which lifted bond yields and funding costs and pressured large banking holdings ICICI Bank and SBI. Maruti Suzuki added to the drag on festive-season vehicle shortages that pushed the stock to a 52-week low. These declines were partially offset by HDFC Bank's roughly 5% gain on its CEO succession and positive brokerage views on foreign flows into Indian financials, alongside an IT sector rally that lifted HCL Technologies. The takeaway: monetary tightening and sector-specific pressures on autos outweighed a strong rebound in select financial and technology names.",
+  "investor_summary": "## Key Drivers\n\n• **ICICI Bank and other Indian financials** — Rising FCNR(B) deposit costs threatened bank margins and a Jefferies note flagged the risk of foreign investors reducing their allocation to Indian financials. With ICICI Bank a large fund holding, this sector-wide pressure was a key reason the fund declined.\n\n• **InterGlobe Aviation (IndiGo)** — Retail inflation hit a 20-month high, raising concerns about continued RBI tightening and its effect on fuel and borrowing costs for airlines. The stock fell sharply over the week, dragging on fund performance.\n\n• **State Bank of India** — A nationwide bank strike disrupted public-sector bank operations, while SBI's role in a large debt financing to Vodafone Idea raised credit-risk concerns. These negative developments weighed on the stock.\n\n• **HDFC Bank and Axis Bank** — HDFC Bank's board shortlisted CEO candidates and sent names to the RBI, resolving a key uncertainty and prompting a bullish view from Macquarie. Jefferies also highlighted potential foreign investor reallocation toward Indian financials, and Moody's projected stronger deposit growth for banks, supporting both HDFC Bank and Axis Bank.\n\n• **HCL Technologies** — A sharp rebound in IT stocks lifted HCL Tech, which gained up to 7% in a single session, providing a positive offset for the fund.\n\n## Overall Summary\n\nThe fund ended the week lower, mainly because weakness in large financial holdings like ICICI Bank and State Bank of India, along with a sharp drop in InterGlobe Aviation, outweighed positive contributions. The financial sector faced concerns over rising FCNR(B) deposit costs and potential foreign investor outflows, while higher inflation pressured aviation. These drags were partly offset by strength in HDFC Bank, Axis Bank, and HCL Technologies, which benefited from improved sentiment around bank leadership, sector outlook, and an IT rebound. The net result was a weekly decline.",
   "important_news": [
     {
       "title": "HDFC Bank Stock Climbs Over 3% As CEO Appointment Process Paces Up, Brokerages Remain Bullish",
@@ -12,43 +12,43 @@
       "source": "NDTV Profit"
     },
     {
-      "title": "India’s Central Bank to Drain 1 Trillion Rupees Via Bond Sales",
-      "url": "https://www.bloomberg.com/news/articles/2026-09-11/india-s-central-bank-to-drain-1-trillion-rupees-via-bond-sales-mtwxwoj7",
-      "source": "Bloomberg.com"
-    },
-    {
-      "title": "Maruti Suzuki among 8 large-cap stocks to hit 52-week lows and fall up to 12% in a month",
-      "url": "https://economictimes.indiatimes.com/markets/stocks/news/maruti-suzuki-among-8-large-cap-stocks-to-hit-52-week-lows-and-fall-up-to-12-in-a-month/slideshow/134286817.cms",
-      "source": "The Economic Times"
-    },
-    {
-      "title": "India RBI Rejects Some Short Bond Bids As Cash Drain Fears Mount",
-      "url": "https://www.bloomberg.com/news/articles/2026-09-11/india-rbi-rejects-some-short-bond-bids-as-cash-drain-fears-mount",
-      "source": "Bloomberg.com"
-    },
-    {
-      "title": "Retail inflation breaches RBl's midpoint target for third successive month",
-      "url": "https://www.livemint.com/economy/india-retail-inflation-august-2026-cpi-food-fuel-prices-rbi-inflation-target-11789113577685.html",
-      "source": "livemint.com"
-    },
-    {
-      "title": "Maruti Suzuki faces vehicle shortage ahead of festive season, supplies to improve from January 2027",
-      "url": "https://www.moneycontrol.com/automobile/maruti-suzuki-faces-vehicle-shortage-ahead-of-festive-season-supplies-to-improve-from-january-2027-article-14027838.html",
-      "source": "Moneycontrol.com"
+      "title": "HDFC Bank Fixes CEO Shortlist: Macquarie Eyes External Chief As Re-Rating Catalyst",
+      "url": "https://www.ndtvprofit.com/markets/hdfc-bank-narrows-ceo-succession-race-macquarie-eyes-external-chief-as-key-re-rating-catalyst-12043627",
+      "source": "NDTV Profit"
     },
     {
       "title": "Foreign investors may rejig allocation to Indian financials: Jefferies",
       "url": "https://www.business-standard.com/markets/news/foreign-investors-may-rejig-allocation-to-indian-financials-jefferies-126091100183_1.html",
+      "source": "Business Standard"
+    },
+    {
+      "title": "Bank strike disrupts PSB operations across states, digital services normal",
+      "url": "https://www.business-standard.com/industry/banking/bank-strike-disrupts-psb-operations-across-states-digital-services-normal-126091101171_1.html",
+      "source": "Business Standard"
+    },
+    {
+      "title": "Moody's Pegs Indian Banks' FY27 Deposit Growth At 15% On FCNR(B) Boost, Loan Growth At 13-15%",
+      "url": "https://www.ndtvprofit.com/economy/moodys-pegs-indian-banks-fy27-deposit-growth-at-15-on-fcnr-b-boost-loan-growth-at-13-15-12023994",
+      "source": "NDTV Profit"
+    },
+    {
+      "title": "Banks likely to see 15-20 basis points rise in FCNR(B) deposit costs",
+      "url": "https://www.business-standard.com/finance/news/banks-likely-to-see-15-20-basis-points-rise-in-fcnr-b-deposit-costs-126091401048_1.html",
+      "source": "Business Standard"
+    },
+    {
+      "title": "SBI, Bank of Baroda flag possible disruption from bank unions' strike calls",
+      "url": "https://www.business-standard.com/industry/banking/sbi-bank-of-baroda-flag-possible-disruption-from-bank-unions-strike-calls-126090701306_1.html",
       "source": "Business Standard"
     }
   ],
   "isin": "INF179K01UT0",
   "nav_date": "2026-09-16",
   "token_usage": {
-    "prompt_tokens": 47991,
-    "completion_tokens": 20556,
-    "total_tokens": 68547,
-    "reasoning_tokens": 2077,
+    "prompt_tokens": 46875,
+    "completion_tokens": 22385,
+    "total_tokens": 69260,
+    "reasoning_tokens": 4534,
     "calls": 30
   }
 }

@@ -28,6 +28,7 @@ const els = {
   summaryBody: document.getElementById("summary-body"),
   summaryCaption: document.getElementById("summary-caption"),
   logTail: document.getElementById("log-tail"),
+  newsPageBtn: document.getElementById("news-page-btn"),
   newsList: document.getElementById("news-list"),
   newsCaption: document.getElementById("news-caption"),
   tokenBar: document.getElementById("token-bar"),
@@ -163,6 +164,16 @@ function applyNavChart(payload) {
   const end = payload.dates[payload.dates.length - 1] || "—";
   els.chartCaption.textContent = `${start} → ${end}`;
   drawChart(payload);
+}
+
+function setNewsPageLink(fundId, visible) {
+  if (!els.newsPageBtn) return;
+  if (!visible || !fundId) {
+    els.newsPageBtn.classList.add("hidden");
+    return;
+  }
+  els.newsPageBtn.href = `/news?isin=${encodeURIComponent(fundId)}`;
+  els.newsPageBtn.classList.remove("hidden");
 }
 
 function showPlaceholder(message) {
@@ -324,13 +335,20 @@ async function loadExistingSummary(fundId, token) {
     } else {
       els.summaryCaption.textContent = "The pipeline writes a news-backed summary after Run.";
       showPlaceholder("Select a fund, then run. The note will land here — reasons, not only percentages.");
+      setNewsPageLink(null, false);
     }
     if (payload.important_news && payload.important_news.length) {
       renderNews(payload.important_news);
     }
+    if (payload.investor_summary && payload.has_clustered) {
+      setNewsPageLink(fundId, true);
+    } else {
+      setNewsPageLink(null, false);
+    }
   } catch {
     if (token !== state.selectToken) return;
     showPlaceholder("Select a fund, then run.");
+    setNewsPageLink(null, false);
   }
 }
 
@@ -427,10 +445,12 @@ async function loadIsin(rawIsin, token) {
         : "Last saved note. Run to generate a new one from scratch.";
       renderSummary(payload.investor_summary);
       renderNews(payload.important_news);
+      setNewsPageLink(isin, Boolean(payload.has_clustered));
     } else {
       els.summaryCaption.textContent = "The pipeline writes a news-backed summary after Run.";
       showPlaceholder("Load looks good. Click Run to generate the investor note.");
       renderNews([]);
+      setNewsPageLink(null, false);
     }
     if (!state.running) {
       els.runHint.textContent = "Run always starts a new pipeline from scratch. This can take several minutes.";
@@ -446,6 +466,7 @@ async function loadIsin(rawIsin, token) {
     els.chartEmpty.classList.remove("hidden");
     showPlaceholder(error.message);
     setRunEnabled(false, "Fix the ISIN, then load again");
+    setNewsPageLink(null, false);
   } finally {
     if (selectToken === state.selectToken) setChartLoading(false);
   }
@@ -507,6 +528,10 @@ async function pollStatus() {
       }
       renderNews(payload.important_news);
       applyTokenUsage(payload.token_usage);
+      setNewsPageLink(
+        status.fund_id,
+        Boolean(payload.investor_summary && payload.has_clustered)
+      );
     } else if (status.status === "error") {
       els.summaryCaption.textContent = "Run failed.";
       const message = status.error || "The pipeline stopped before writing a summary.";
@@ -533,6 +558,7 @@ async function startRun() {
   showPlaceholder("Starting from scratch. Previous note, news, and tokens are cleared.");
   renderNews([]);
   applyTokenUsage(null);
+  setNewsPageLink(null, false);
   showLog([]);
   try {
     const result = await fetchJson("/api/run", {
