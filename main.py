@@ -36,7 +36,9 @@ from stocks_for_news import (
 from app import fetch_news_for_week, publisher_host_allowlisted
 from news_relevancy_agent import (
     build_summary_facts,
+    reset_token_usage,
     score_articles_causal,
+    token_usage_snapshot,
     write_investor_summary,
 )
 from lib.fetch import thread_session
@@ -275,6 +277,7 @@ def result_json_path_for(fund_id: str | None) -> Path:
 
 
 def main(fund_id: str | None = None):
+    reset_token_usage()
     clear_run_output_dirs(fund_id)
     data_dir = resolve_fund_data_dir(fund_id)
     logger.info("Loading fund holdings, NAV history, and sectors from %s", data_dir)
@@ -401,6 +404,14 @@ def main(fund_id: str | None = None):
     result_json_path.parent.mkdir(parents=True, exist_ok=True)
     logger.info("Saved investor summary to %s", result_json_path)
     important_news = select_important_news(news_targets)
+    token_usage = token_usage_snapshot()
+    logger.info(
+        "DeepSeek tokens: input=%s output=%s total=%s calls=%s",
+        token_usage["prompt_tokens"],
+        token_usage["completion_tokens"],
+        token_usage["total_tokens"],
+        token_usage["calls"],
+    )
     result_json_path.write_text(
         json.dumps(
             {
@@ -408,6 +419,7 @@ def main(fund_id: str | None = None):
                 "important_news": important_news,
                 "isin": fund_id,
                 "nav_date": official_nav["end"],
+                "token_usage": token_usage,
             },
             indent=2,
             ensure_ascii=False,

@@ -1,0 +1,472 @@
+[
+  {
+    "instrument_name": "ICICI BANK LTD",
+    "percentage": 9.25704690703513,
+    "industry": "Banks",
+    "asset_type": "Domestic Equities",
+    "rating": "Equity",
+    "market_value": 25594.76,
+    "fincode": 132174,
+    "isin": null
+  },
+  {
+    "instrument_name": "HDFC BANK LTD",
+    "percentage": 5.56938749183994,
+    "industry": "Banks",
+    "asset_type": "Domestic Equities",
+    "rating": "Equity",
+    "market_value": 15398.77,
+    "fincode": 100180,
+    "isin": null
+  },
+  {
+    "instrument_name": "BHARTI AIRTEL LTD",
+    "percentage": 5.53748392612299,
+    "industry": "Telecom - Services",
+    "asset_type": "Domestic Equities",
+    "rating": "Equity",
+    "market_value": 15310.56,
+    "fincode": 132454,
+    "isin": null
+  },
+  {
+    "instrument_name": "RELIANCE INDUSTRIES LTD",
+    "percentage": 4.84955176188331,
+    "industry": "Petroleum Products",
+    "asset_type": "Domestic Equities",
+    "rating": "Equity",
+    "market_value": 13408.5,
+    "fincode": 100325,
+    "isin": null
+  },
+  {
+    "instrument_name": "BAJAJ FINANCE LTD",
+    "percentage": 3.24949083078947,
+    "industry": "Finance",
+    "asset_type": "Domestic Equities",
+    "rating": "Equity",
+    "market_value": 8984.5,
+    "fincode": 100034,
+    "isin": null
+  },
+  {
+    "instrument_name": "STATE BANK OF INDIA",
+    "percentage": 3.14753396449757,
+    "industry": "Banks",
+    "asset_type": "Domestic Equities",
+    "rating": "Equity",
+    "market_value": 8702.6,
+    "fincode": 100112,
+    "isin": null
+  },
+  {
+    "instrument_name": "INFOSYS LTD",
+    "percentage": 3.10934806189701,
+    "industry": "IT - Software",
+    "asset_type": "Domestic Equities",
+    "rating": "Equity",
+    "market_value": 8597.02,
+    "fincode": 100209,
+    "isin": null
+  },
+  {
+    "instrument_name": "KOTAK MAHINDRA BANK LTD",
+    "percentage": 3.03375024638679,
+    "industry": "Banks",
+    "asset_type": "Domestic Equities",
+    "rating": "Equity",
+    "market_value": 8388,
+    "fincode": 100247,
+    "isin": null
+  },
+  {
+    "instrument_name": "SAMVARDHANA MOTHERSON INTERNATIONAL LTD",
+    "percentage": 2.99395849601632,
+    "industry": "Auto Components",
+    "asset_type": "Domestic Equities",
+    "rating": "Equity",
+    "market_value": 8277.98,
+    "fincode": 117334,
+    "isin": null
+  },
+  {
+    "instrument_name": "AXIS BANK LTD",
+    "percentage": 2.91512005077223,
+    "industry": "Banks",
+    "asset_type": "Domestic Equities",
+    "rating": "Equity",
+    "market_value": 8060,
+    "fincode": 132215,
+    "isin": null
+  },
+  {
+    "instrument_name": "TATA CONSULTANCY SERVICES LTD",
+    "percentage": 2.61957172562471,
+    "industry": "IT - Software",
+    "asset_type": "Domestic Equities",
+    "rating": "Equity",
+    "market_value": 7242.84,
+    "fincode": 132540,
+    "isin": null
+  },
+  {
+    "instrument_name": "SUN PHARMACEUTICAL INDUSTRIES LTD",
+    "percentage": 2.51250074053406,
+    "industry": "Pharmaceuticals & Biotechnology",
+    "asset_type": "Domestic Equities",
+    "rating": "Equity",
+    "market_value": 6946.8,
+    "fincode": 124715,
+    "isin": null
+  },
+  {
+    "instrument_name": "MAHINDRA & MAHINDRA LTD",
+    "percentage": 2.37405062199366,
+    "industry": "Automobiles",
+    "asset_type": "Domestic Equities",
+    "rating": "Equity",
+    "market_value": 6564,
+    "fincode": 100520,
+    "isin": null
+  },
+  {
+    "instrument_name": "ADANI ENERGY SOLUTIONS LTD",
+    "percentage": 2.35815128236191,
+    "industry": "Power",
+    "asset_type": "Domestic Equities",
+    "rating": "Equity",
+    "market_value": 6520.04,
+    "fincode": 271875,
+    "isin": null
+  },
+  {
+    "instrument_name": "MAX HEALTHCARE INSTITUTE LTD",
+    "percentage": 2.26142427164497,
+    "industry": "Healthcare Services",
+    "asset_type": "Domestic Equities",
+    "rating": "Equity",
+    "market_value": 6252.6,
+    "fincode": 218071,
+    "isin": null
+  },
+  {
+    "instrument_name": "TECH MAHINDRA LTD",
+    "percentage": 2.23748122606667,
+    "industry": "IT - Software",
+    "asset_type": "Domestic Equities",
+    "rating": "Equity",
+    "market_value": 6186.4,
+    "fincode": 132755,
+    "isin": null
+  },
+  {
+    "instrument_name": "MANKIND PHARMA LTD",
+    "percentage": 2.18742507035614,
+    "industry": "Pharmaceuticals & Biotechnology",
+    "asset_type": "Domestic Equities",
+    "rating": "Equity",
+    "market_value": 6048,
+    "fincode": 211840,
+    "isin": null
+  },
+  {
+    "instrument_name": "INTERGLOBE AVIATION LTD",
+    "percentage": 2.13911219983726,
+    "industry": "Transport Services",
+    "asset_type": "Domestic Equities",
+    "rating": "Equity",
+    "market_value": 5914.42,
+    "fincode": 222055,
+    "isin": null
+  },
+  {
+    "instrument_name": "JSW STEEL LTD",
+    "percentage": 2.03375194896996,
+    "industry": "Ferrous Metals",
+    "asset_type": "Domestic Equities",
+    "rating": "Equity",
+    "market_value": 5623.11,
+    "fincode": 100228,
+    "isin": null
+  },
+  {
+    "instrument_name": "SOLAR INDUSTRIES INDIA LTD",
+    "percentage": 1.81815241876328,
+    "industry": "Chemicals & Petrochemicals",
+    "asset_type": "Domestic Equities",
+    "rating": "Equity",
+    "market_value": 5027,
+    "fincode": 132725,
+    "isin": null
+  },
+  {
+    "instrument_name": "ADANI ENTERPRISES LTD",
+    "percentage": 1.793391982203,
+    "industry": "Metals & Minerals Trading",
+    "asset_type": "Domestic Equities",
+    "rating": "Equity",
+    "market_value": 4958.54,
+    "fincode": 112599,
+    "isin": null
+  },
+  {
+    "instrument_name": "ETERNAL LTD",
+    "percentage": 1.77999545035677,
+    "industry": "Retailing",
+    "asset_type": "Domestic Equities",
+    "rating": "Equity",
+    "market_value": 4921.5,
+    "fincode": 252306,
+    "isin": null
+  },
+  {
+    "instrument_name": "HINDUSTAN UNILEVER LTD",
+    "percentage": 1.74200847034031,
+    "industry": "Diversified FMCG",
+    "asset_type": "Domestic Equities",
+    "rating": "Equity",
+    "market_value": 4816.47,
+    "fincode": 100696,
+    "isin": null
+  },
+  {
+    "instrument_name": "BHARAT HEAVY ELECTRICALS LTD",
+    "percentage": 1.60096512465798,
+    "industry": "Electrical Equipment",
+    "asset_type": "Domestic Equities",
+    "rating": "Equity",
+    "market_value": 4426.5,
+    "fincode": 100103,
+    "isin": null
+  },
+  {
+    "instrument_name": "JSW CEMENT LTD",
+    "percentage": 1.56079722976483,
+    "industry": "Cement & Cement Products",
+    "asset_type": "Domestic Equities",
+    "rating": "Equity",
+    "market_value": 4315.44,
+    "fincode": 226611,
+    "isin": null
+  },
+  {
+    "instrument_name": "NTPC LTD",
+    "percentage": 1.54529211852704,
+    "industry": "Power",
+    "asset_type": "Domestic Equities",
+    "rating": "Equity",
+    "market_value": 4272.57,
+    "fincode": 132555,
+    "isin": null
+  },
+  {
+    "instrument_name": "CIPLA LTD",
+    "percentage": 1.48787221043019,
+    "industry": "Pharmaceuticals & Biotechnology",
+    "asset_type": "Domestic Equities",
+    "rating": "Equity",
+    "market_value": 4113.81,
+    "fincode": 100087,
+    "isin": null
+  },
+  {
+    "instrument_name": "LARSEN & TOUBRO LTD",
+    "percentage": 1.46294901902836,
+    "industry": "Construction",
+    "asset_type": "Domestic Equities",
+    "rating": "Equity",
+    "market_value": 4044.9,
+    "fincode": 100510,
+    "isin": null
+  },
+  {
+    "instrument_name": "ICICI PRUDENTIAL ASSET MANAGEMENT COMPANY LTD",
+    "percentage": 1.43915426119458,
+    "industry": "Capital Markets",
+    "asset_type": "Domestic Equities",
+    "rating": "Equity",
+    "market_value": 3979.11,
+    "fincode": 208364,
+    "isin": null
+  },
+  {
+    "instrument_name": "HDFC ASSET MANAGEMENT COMPANY LTD",
+    "percentage": 1.42253156671151,
+    "industry": "Capital Markets",
+    "asset_type": "Domestic Equities",
+    "rating": "Equity",
+    "market_value": 3933.15,
+    "fincode": 208280,
+    "isin": null
+  },
+  {
+    "instrument_name": "BILLIONBRAINS GARAGE VENTURES LTD (GROWW)",
+    "percentage": 1.38927532742262,
+    "industry": "Capital Markets",
+    "asset_type": "Domestic Equities",
+    "rating": "Equity",
+    "market_value": 3841.2,
+    "fincode": 322541,
+    "isin": null
+  },
+  {
+    "instrument_name": "HYUNDAI MOTOR INDIA LTD",
+    "percentage": 1.3529412132414,
+    "industry": "Automobiles",
+    "asset_type": "Domestic Equities",
+    "rating": "Equity",
+    "market_value": 3740.74,
+    "fincode": 208361,
+    "isin": null
+  },
+  {
+    "instrument_name": "AMBUJA CEMENTS LTD",
+    "percentage": 1.30578209371036,
+    "industry": "Cement & Cement Products",
+    "asset_type": "Domestic Equities",
+    "rating": "Equity",
+    "market_value": 3610.35,
+    "fincode": 100425,
+    "isin": null
+  },
+  {
+    "instrument_name": "POWER GRID CORPORATION OF INDIA LTD",
+    "percentage": 1.27093447374859,
+    "industry": "Power",
+    "asset_type": "Domestic Equities",
+    "rating": "Equity",
+    "market_value": 3514,
+    "fincode": 132898,
+    "isin": null
+  },
+  {
+    "instrument_name": "INDUS TOWERS LTD",
+    "percentage": 1.26558164784891,
+    "industry": "Telecom - Services",
+    "asset_type": "Domestic Equities",
+    "rating": "Equity",
+    "market_value": 3499.2,
+    "fincode": 209967,
+    "isin": null
+  },
+  {
+    "instrument_name": "WESTLIFE FOODWORLD LTD",
+    "percentage": 1.24560982040429,
+    "industry": "Leisure Services",
+    "asset_type": "Domestic Equities",
+    "rating": "Equity",
+    "market_value": 3443.98,
+    "fincode": 105533,
+    "isin": null
+  },
+  {
+    "instrument_name": "BRITANNIA INDUSTRIES LTD",
+    "percentage": 1.19089525945133,
+    "industry": "Food Products",
+    "asset_type": "Domestic Equities",
+    "rating": "Equity",
+    "market_value": 3292.7,
+    "fincode": 100825,
+    "isin": null
+  },
+  {
+    "instrument_name": "PB FINTECH LTD",
+    "percentage": 1.08503227696237,
+    "industry": "Financial Technology (Fintech)",
+    "asset_type": "Domestic Equities",
+    "rating": "Equity",
+    "market_value": 3000,
+    "fincode": 254493,
+    "isin": null
+  },
+  {
+    "instrument_name": "CHOLAMANDALAM INVESTMENT & FINANCE CO LTD",
+    "percentage": 1.00766947561495,
+    "industry": "Finance",
+    "asset_type": "Domestic Equities",
+    "rating": "Equity",
+    "market_value": 2786.1,
+    "fincode": 111243,
+    "isin": null
+  },
+  {
+    "instrument_name": "ASIAN PAINTS LTD",
+    "percentage": 0.959747216715781,
+    "industry": "Consumer Durables",
+    "asset_type": "Domestic Equities",
+    "rating": "Equity",
+    "market_value": 2653.6,
+    "fincode": 100820,
+    "isin": null
+  },
+  {
+    "instrument_name": "CYIENT LTD",
+    "percentage": 0.849797279316928,
+    "industry": "IT - Services",
+    "asset_type": "Domestic Equities",
+    "rating": "Equity",
+    "market_value": 2349.6,
+    "fincode": 132175,
+    "isin": null
+  },
+  {
+    "instrument_name": "SIEMENS LTD",
+    "percentage": 0.838270619761331,
+    "industry": "Electrical Equipment",
+    "asset_type": "Domestic Equities",
+    "rating": "Equity",
+    "market_value": 2317.73,
+    "fincode": 100550,
+    "isin": null
+  },
+  {
+    "instrument_name": "URBAN COMPANY LTD",
+    "percentage": 0.604399146010605,
+    "industry": "Retailing",
+    "asset_type": "Domestic Equities",
+    "rating": "Equity",
+    "market_value": 1671.1,
+    "fincode": 320350,
+    "isin": null
+  },
+  {
+    "instrument_name": "HONEYWELL AUTOMATION INDIA LTD",
+    "percentage": 0.578267952007095,
+    "industry": "Industrial Manufacturing",
+    "asset_type": "Domestic Equities",
+    "rating": "Equity",
+    "market_value": 1598.85,
+    "fincode": 117174,
+    "isin": null
+  },
+  {
+    "instrument_name": "ABB INDIA LTD",
+    "percentage": 0.552534603171804,
+    "industry": "Electrical Equipment",
+    "asset_type": "Domestic Equities",
+    "rating": "Equity",
+    "market_value": 1527.7,
+    "fincode": 100002,
+    "isin": null
+  },
+  {
+    "instrument_name": "I) REPO",
+    "percentage": 0.653044759761085,
+    "industry": null,
+    "asset_type": "Cash & Cash Equivalents and Net Assets",
+    "rating": "Cash",
+    "market_value": 1805.6,
+    "fincode": 218038,
+    "isin": null
+  },
+  {
+    "instrument_name": "CASH / NET CURRENT ASSET",
+    "percentage": 1.81096615824262,
+    "industry": null,
+    "asset_type": "Cash & Cash Equivalents and Net Assets",
+    "rating": "Cash",
+    "market_value": 5007.13074631998,
+    "fincode": 217287,
+    "isin": null
+  }
+]

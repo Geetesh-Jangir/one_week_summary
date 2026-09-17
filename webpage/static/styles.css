@@ -304,6 +304,33 @@ h3,
   color: var(--down);
 }
 
+.token-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  padding: 12px 18px;
+  border-radius: 16px;
+  background: var(--bg-raise);
+  border: 1px solid var(--line);
+}
+
+.token-stats {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 18px;
+  color: var(--cream-dim);
+}
+
+.token-stats strong {
+  color: var(--cream);
+  margin-left: 6px;
+}
+
+.token-calls {
+  color: var(--muted);
+}
+
 .panel {
   background: rgba(18, 27, 45, 0.78);
   border: 1px solid var(--line);

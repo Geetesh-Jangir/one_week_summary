@@ -1,0 +1,106 @@
+[
+  {
+    "sector": "Banks",
+    "percentage": 23.92
+  },
+  {
+    "sector": "It - Software",
+    "percentage": 7.97
+  },
+  {
+    "sector": "Telecom - Services",
+    "percentage": 6.8
+  },
+  {
+    "sector": "Pharmaceuticals & Biotechnology",
+    "percentage": 6.19
+  },
+  {
+    "sector": "Power",
+    "percentage": 5.17
+  },
+  {
+    "sector": "Petroleum Products",
+    "percentage": 4.85
+  },
+  {
+    "sector": "Finance",
+    "percentage": 4.26
+  },
+  {
+    "sector": "Capital Markets",
+    "percentage": 4.25
+  },
+  {
+    "sector": "Automobiles",
+    "percentage": 3.73
+  },
+  {
+    "sector": "Auto Components",
+    "percentage": 2.99
+  },
+  {
+    "sector": "Electrical Equipment",
+    "percentage": 2.99
+  },
+  {
+    "sector": "Cement & Cement Products",
+    "percentage": 2.87
+  },
+  {
+    "sector": "Retailing",
+    "percentage": 2.38
+  },
+  {
+    "sector": "Healthcare Services",
+    "percentage": 2.26
+  },
+  {
+    "sector": "Transport Services",
+    "percentage": 2.14
+  },
+  {
+    "sector": "Ferrous Metals",
+    "percentage": 2.03
+  },
+  {
+    "sector": "Chemicals & Petrochemicals",
+    "percentage": 1.82
+  },
+  {
+    "sector": "Metals & Minerals Trading",
+    "percentage": 1.79
+  },
+  {
+    "sector": "Diversified Fmcg",
+    "percentage": 1.74
+  },
+  {
+    "sector": "Construction",
+    "percentage": 1.46
+  },
+  {
+    "sector": "Leisure Services",
+    "percentage": 1.25
+  },
+  {
+    "sector": "Food Products",
+    "percentage": 1.19
+  },
+  {
+    "sector": "Financial Technology (fintech)",
+    "percentage": 1.09
+  },
+  {
+    "sector": "Consumer Durables",
+    "percentage": 0.96
+  },
+  {
+    "sector": "It - Services",
+    "percentage": 0.85
+  },
+  {
+    "sector": "Industrial Manufacturing",
+    "percentage": 0.58
+  }
+]

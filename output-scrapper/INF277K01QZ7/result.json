@@ -1,0 +1,54 @@
+{
+  "investor_summary": "## Key Drivers\n\n- **ICICI Bank** — The stock declined for a fifth consecutive session, weighing on the fund given its large portfolio weighting. This sustained weakness in a major holding contributed to the week's negative performance.\n\n- **Reliance Industries** — The US House advancing a Russia sanctions bill with 100% tariffs on India created macro uncertainty, particularly given Reliance's Russian oil exposure. This pressured the shares of this sizable fund holding.\n\n- **Automobiles sector** — Passenger vehicle exports fell 17% year-over-year in August, a negative data point that weighed on the sector. Domestic dispatch gains may have offset some of the impact, but export weakness remained a drag.\n\n- **HDFC Bank** — The stock rose as the CEO succession process advanced, with candidate names submitted to the RBI reducing leadership uncertainty. Brokerage Jefferies also suggested foreign investors may reallocate toward Indian financials, supporting this top fund holding and providing a meaningful offset to the week's declines.\n\n- **Axis Bank and Kotak Mahindra Bank** — Both banks posted modest gains, supported by the same Jefferies note on foreign investor reallocation to Indian financials and Moody's positive outlook for faster deposit and loan growth among Indian banks. This financial-sector strength helped offset some of the fund's broader weakness.\n\n## Overall Summary\n\nThe fund declined this week, driven primarily by weakness in ICICI Bank, which fell for a fifth straight session, and Reliance Industries, which faced uncertainty from a proposed US sanctions bill targeting India's Russian energy ties. The Automobiles sector also dragged on performance as PV exports fell sharply. These negative drivers were partially offset by strength in HDFC Bank, which benefited from progress on its CEO succession and a bullish brokerage view on foreign financial-sector allocations, along with modest gains in Axis Bank and Kotak Mahindra Bank. Overall, the fund's heavy exposure to financials cut both ways, with weakness in ICICI Bank outweighing gains elsewhere in the sector.",
+  "important_news": [
+    {
+      "title": "HDFC Bank Stock Climbs Over 3% As CEO Appointment Process Paces Up, Brokerages Remain Bullish",
+      "url": "https://www.ndtvprofit.com/markets/hdfc-bank-share-price-opens-2-percent-higher-climbs-on-fast-progress-in-new-ceo-appointment-12047496",
+      "source": "NDTV Profit"
+    },
+    {
+      "title": "TCS, Infosys, HCLTech Among Six IT Stocks On Nirmal Bang's 'Sell' List — Details Inside",
+      "url": "https://www.ndtvprofit.com/markets/tcs-infosys-hcltech-among-six-it-stocks-on-nirmal-bangs-sell-list-details-inside-12052644",
+      "source": "NDTV Profit"
+    },
+    {
+      "title": "Expert view: What a booming IPO market means for Indian investors",
+      "url": "https://www.livemint.com/market/stock-market-news/expert-view-what-a-booming-ipo-market-means-for-indian-investors-11789556704448.html",
+      "source": "Livemint"
+    },
+    {
+      "title": "100% tariff threat to India: US House advances Russia sanctions bill | What we know",
+      "url": "https://www.livemint.com/news/us-news/100-tariff-threat-to-india-us-house-advances-russia-sanctions-bill-what-we-know-11789522442630.html",
+      "source": "Livemint"
+    },
+    {
+      "title": "Daily Voice: Corporate India structurally stronger than in past cycles; JM Financial's Dimplekumar Shah...",
+      "url": "https://www.moneycontrol.com/news/business/markets/daily-voice-corporate-india-structurally-stronger-than-in-past-cycles-jm-financial-s-dimplekumar-shah-cites-three-reasons-14025607.html",
+      "source": "Moneycontrol.com"
+    },
+    {
+      "title": "HDFC Bank Fixes CEO Shortlist: Macquarie Eyes External Chief As Re-Rating Catalyst",
+      "url": "https://www.ndtvprofit.com/markets/hdfc-bank-narrows-ceo-succession-race-macquarie-eyes-external-chief-as-key-re-rating-catalyst-12043627",
+      "source": "NDTV Profit"
+    },
+    {
+      "title": "Foreign investors may rejig allocation to Indian financials: Jefferies",
+      "url": "https://www.business-standard.com/markets/news/foreign-investors-may-rejig-allocation-to-indian-financials-jefferies-126091100183_1.html",
+      "source": "Business Standard"
+    },
+    {
+      "title": "Run a biz? Amazon Pay-Kotak's new card offers 5% cashback and 48-Day credit",
+      "url": "https://www.business-standard.com/finance/personal-finance/run-a-biz-amazon-pay-kotak-s-new-card-offers-5-cashback-and-48-day-credit-126091000743_1.html",
+      "source": "Business Standard"
+    }
+  ],
+  "isin": "INF277K01QZ7",
+  "nav_date": "2026-09-16",
+  "token_usage": {
+    "prompt_tokens": 57189,
+    "completion_tokens": 27334,
+    "total_tokens": 84523,
+    "reasoning_tokens": 5849,
+    "calls": 35
+  }
+}

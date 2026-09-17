@@ -290,6 +290,60 @@ def _message_text(message: dict) -> str:
     return "\n".join(chunk for chunk in chunks if chunk.strip())
 
 
+_token_usage = {
+    "prompt_tokens": 0,
+    "completion_tokens": 0,
+    "total_tokens": 0,
+    "reasoning_tokens": 0,
+    "calls": 0,
+}
+
+
+def reset_token_usage() -> None:
+    _token_usage["prompt_tokens"] = 0
+    _token_usage["completion_tokens"] = 0
+    _token_usage["total_tokens"] = 0
+    _token_usage["reasoning_tokens"] = 0
+    _token_usage["calls"] = 0
+
+
+def token_usage_snapshot() -> dict:
+    return {
+        "prompt_tokens": int(_token_usage["prompt_tokens"]),
+        "completion_tokens": int(_token_usage["completion_tokens"]),
+        "total_tokens": int(_token_usage["total_tokens"]),
+        "reasoning_tokens": int(_token_usage["reasoning_tokens"]),
+        "calls": int(_token_usage["calls"]),
+    }
+
+
+def _as_int(value) -> int:
+    try:
+        return max(0, int(value or 0))
+    except (TypeError, ValueError):
+        return 0
+
+
+def record_token_usage(usage) -> None:
+    """Add one DeepSeek chat `usage` object into the run totals."""
+    if not isinstance(usage, dict):
+        return
+    prompt = _as_int(usage.get("prompt_tokens") or usage.get("input_tokens"))
+    completion = _as_int(usage.get("completion_tokens") or usage.get("output_tokens"))
+    total = _as_int(usage.get("total_tokens"))
+    if total == 0:
+        total = prompt + completion
+    reasoning = _as_int(usage.get("reasoning_tokens"))
+    details = usage.get("completion_tokens_details")
+    if isinstance(details, dict):
+        reasoning += _as_int(details.get("reasoning_tokens"))
+    _token_usage["prompt_tokens"] += prompt
+    _token_usage["completion_tokens"] += completion
+    _token_usage["total_tokens"] += total
+    _token_usage["reasoning_tokens"] += reasoning
+    _token_usage["calls"] += 1
+
+
 def _llm_json_chat(
     system_prompt: str,
     user_prompt: str,
@@ -321,6 +375,7 @@ def _llm_json_chat(
     if not response.ok:
         raise RuntimeError(f"DeepSeek HTTP {response.status_code}: {response.text[:500]}")
     body = response.json()
+    record_token_usage(body.get("usage"))
     choice = (body.get("choices") or [{}])[0]
     message = choice.get("message") or {}
     parsed = extract_json_from_text(_message_text(message))

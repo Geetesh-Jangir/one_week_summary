@@ -84,6 +84,32 @@ def _clean_label(value) -> str:
     return " ".join(str(value or "").replace("##", " ").replace("£", "").split())
 
 
+def parse_token_usage(raw) -> dict | None:
+    if not isinstance(raw, dict):
+        return None
+
+    def _n(value) -> int:
+        try:
+            return max(0, int(value or 0))
+        except (TypeError, ValueError):
+            return 0
+
+    prompt = _n(raw.get("prompt_tokens") or raw.get("input_tokens"))
+    completion = _n(raw.get("completion_tokens") or raw.get("output_tokens"))
+    total = _n(raw.get("total_tokens")) or (prompt + completion)
+    calls = _n(raw.get("calls"))
+    reasoning = _n(raw.get("reasoning_tokens"))
+    if prompt == 0 and completion == 0 and total == 0 and calls == 0:
+        return None
+    return {
+        "prompt_tokens": prompt,
+        "completion_tokens": completion,
+        "total_tokens": total,
+        "reasoning_tokens": reasoning,
+        "calls": calls,
+    }
+
+
 def top_book(fund_id: str) -> dict:
     data_dir = resolve_fund_data_dir(fund_id)
     holdings = load_holdings(data_dir / HOLDINGS_NAME)
@@ -178,6 +204,7 @@ def read_summary(fund_id: str) -> dict:
         "important_news": important_news,
         "isin": str(data.get("isin") or fund_id),
         "nav_date": nav_date or None,
+        "token_usage": parse_token_usage(data.get("token_usage")),
         "found": True,
         "empty": not bool(text),
     }
@@ -302,6 +329,7 @@ def api_lookup():
                 "investor_summary": summary.get("investor_summary") or "",
                 "important_news": summary.get("important_news") or [],
                 "summary_nav_date": summary.get("nav_date"),
+                "token_usage": summary.get("token_usage"),
             }
         )
     except FundFetchError as exc:

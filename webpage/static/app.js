@@ -30,6 +30,11 @@ const els = {
   logTail: document.getElementById("log-tail"),
   newsList: document.getElementById("news-list"),
   newsCaption: document.getElementById("news-caption"),
+  tokenBar: document.getElementById("token-bar"),
+  tokenInput: document.getElementById("token-input"),
+  tokenOutput: document.getElementById("token-output"),
+  tokenTotal: document.getElementById("token-total"),
+  tokenCalls: document.getElementById("token-calls"),
 };
 
 function formatNav(value) {
@@ -111,6 +116,24 @@ function renderNews(items) {
       </article>`;
     })
     .join("");
+}
+
+function formatTokens(value) {
+  if (value == null || Number.isNaN(Number(value))) return "—";
+  return Number(value).toLocaleString("en-IN");
+}
+
+function applyTokenUsage(usage) {
+  if (!els.tokenBar) return;
+  if (!usage || !(usage.total_tokens || usage.prompt_tokens || usage.completion_tokens || usage.calls)) {
+    els.tokenBar.classList.add("hidden");
+    return;
+  }
+  els.tokenInput.textContent = formatTokens(usage.prompt_tokens);
+  els.tokenOutput.textContent = formatTokens(usage.completion_tokens);
+  els.tokenTotal.textContent = formatTokens(usage.total_tokens);
+  if (els.tokenCalls) els.tokenCalls.textContent = formatTokens(usage.calls);
+  els.tokenBar.classList.remove("hidden");
 }
 
 function applyIdentity(payload) {
@@ -395,6 +418,7 @@ async function loadIsin(rawIsin, token) {
     state.selectedName = payload.fund_name || isin;
     applyIdentity(payload);
     applyNavChart(payload);
+    applyTokenUsage(payload.token_usage);
     renderRankList(els.holdingsList, payload.holdings, "No holdings in this file.", "industry");
     renderRankList(els.sectorsList, payload.sectors, "No sectors in this file.", "");
     if (payload.cached && payload.investor_summary) {
@@ -422,6 +446,7 @@ async function loadIsin(rawIsin, token) {
     if (selectToken !== state.selectToken) return;
     destroyChart();
     els.navChip.classList.add("hidden");
+    applyTokenUsage(null);
     els.chartCaption.textContent = "Fund could not be loaded.";
     els.chartEmpty.textContent = error.message;
     els.chartEmpty.classList.remove("hidden");
@@ -487,6 +512,7 @@ async function pollStatus() {
         showPlaceholder("The run finished, but no summary file was found.");
       }
       renderNews(payload.important_news);
+      applyTokenUsage(payload.token_usage);
     } else if (status.status === "error") {
       els.summaryCaption.textContent = "Run failed.";
       const message = status.error || "The pipeline stopped before writing a summary.";
@@ -526,6 +552,7 @@ async function startRun() {
       const payload = await fetchJson(`/api/summary/${encodeURIComponent(isin)}`);
       renderSummary(payload.investor_summary);
       renderNews(payload.important_news);
+      applyTokenUsage(payload.token_usage);
       showLog([]);
       return;
     }
