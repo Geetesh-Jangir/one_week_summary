@@ -462,37 +462,56 @@ def score_articles_causal(
     return {"scored_news": scored}
 
 
-SUMMARY_SYSTEM_PROMPT = """You write an Indian mutual-fund investor note.
+SUMMARY_SYSTEM_PROMPT = """You generate the final investor-facing weekly mutual fund performance summary.
+
+Your job is NOT to summarize every stock movement. Identify and present ONLY the most important events that meaningfully explain why the fund performed the way it did.
 
 Return a json object with one key:
-{"investor_summary": "..."}
+{"investor_summary": "<markdown>"}
 
-Length:
-- About 380 to 420 words (roughly 2.5 times a short 160-word note).
-- 12 to 18 sentences. Plain paragraphs, not bullets.
+The markdown inside investor_summary must be exactly two sections and nothing else:
 
-Voice:
-- Simple, professional financial English. Clear, not flashy.
-- Prefer words such as: NAV, drag, offset, allocation, outflow, inflows,
-  provisioning, downgrade, upgrade, earnings, strike, liquidity, FII,
-  valuation, catalyst, headwind, tailwind.
-- Do not use slang, hype, or filler.
+## Key Drivers
 
-What to write:
-- Open with the official NAV move for the week and the main equity drag or lift.
-- Then cover EVERY name in news_backed. For each one, pair the move with the news reason.
-  Pattern: "SBI Bank fell about 2.5% as bank unions called a strike and reports
-  pointed to foreign investors reducing exposure."
-- If NAV fell, explain the drop with drag names and their bearish news first.
-  Then cover offsets that still rose, with their bullish news.
-- If NAV rose, reverse that order.
-- The reader should finish knowing WHY names moved, not only by how much.
-- Never mention a stock or sector with only a percentage and no reason
-  unless it is listed under no_news_catalyst. For those, say the move looks
-  like price or flow action without a clear news catalyst.
-- Do not list article titles, URLs, or source names.
-- Do not invent numbers, FII flows, strikes, earnings, or any event not in the facts.
-- If news_backed is empty, say the NAV move looks mostly price/flow rather than a news catalyst.
+4-5 bullets max (fewer if evidence is thin). Each bullet:
+
+• **[Company / Sector / Market Event]** — [What happened and why it mattered to the fund.]
+
+1-3 sentences per bullet.
+
+## Overall Summary
+
+2-4 sentences covering: main reason for the week's performance; the most important sectors/companies/events; any meaningful explained offset; the takeaway. Do not introduce events that were not in Key Drivers.
+
+SELECTION
+- Pick only the highest explanatory-importance events.
+- Priority: large impact + strong causal evidence; then credible indirect evidence; then sector/market events hitting multiple holdings; then company events on major holdings; then a meaningful explained positive offset.
+- Do not select a name merely because the price moved a lot.
+- If only 3 events have strong evidence, return 3 bullets. Do not pad.
+
+OMIT UNEXPLAINED MOVES
+- If there is no meaningful news/event/fundamental/market explanation, omit that stock or sector entirely.
+- Never write that no catalyst was identified, that the move was price/flow, or that the reason is unclear.
+- Do not report sector performance by itself. Mention a sector only with a real event behind the move.
+
+NO NAV IMPACT PERCENTAGES
+- Never output NAV contribution/impact figures (e.g. -0.28 percentage points).
+- Do not lead with stock-price percentages. Event → transmission → fund impact is the insight. A brief price mention is optional only if it helps magnitude.
+- Portfolio weight may be used only to explain why an event mattered (large exposure).
+
+CAUSAL CHAIN
+- For each bullet: what happened, why it affected the company/sector, why that matters for this fund.
+- Combine names that share the same underlying event into one bullet.
+- Indirect links are allowed only when the supplied evidence supports the transmission. Do not speculate.
+
+POSITIVES
+- Include an offset only when it has a real explanation, not merely because the stock rose.
+
+STYLE
+- Retail mutual-fund investor. Clear, concise, financially accurate.
+- Do not invent events, numbers, or links that are not in the facts.
+- Do not list article titles or URLs.
+- Return ONLY the two markdown sections inside investor_summary.
 """
 
 
@@ -510,14 +529,6 @@ def _event_briefs(news: list[dict], limit: int = 3) -> list[dict]:
     return briefs
 
 
-def _compact_price_row(item: dict) -> dict:
-    return {
-        "name": item.get("name"),
-        "weekly_change_pct": item.get("weekly_change_pct"),
-        "weekly_nav_impact_pct": item.get("weekly_nav_impact_pct"),
-    }
-
-
 def build_summary_facts(
     official_nav: dict,
     approx_equity_impact_pct: float,
@@ -528,44 +539,35 @@ def build_summary_facts(
 ) -> dict:
     nav_change = official_nav.get("change_pct")
     news_backed = []
-    names_with_news = set()
     for target in news_targets:
         news = target.get("relevant_news") or []
         if not news:
             continue
         name = target.get("name")
-        names_with_news.add(name)
         news_backed.append(
             {
                 "name": name,
                 "type": target.get("type"),
                 "scope": target.get("scope"),
                 "role": target_vs_nav_role(target, nav_change),
+                "portfolio_weight_pct": target.get("nav_percentage")
+                or target.get("fund_weight_pct"),
                 "weekly_change_pct": target.get("weekly_change_pct"),
-                "weekly_nav_impact_pct": target.get("weekly_nav_impact_pct"),
                 "news": _event_briefs(news),
             }
         )
-
-    no_news_catalyst = []
-    for item in list(drags or [])[:5] + list(offsets or [])[:5]:
-        name = item.get("name")
-        if name in names_with_news:
-            continue
-        no_news_catalyst.append(_compact_price_row(item))
 
     return {
         "week": {
             "start": official_nav.get("start"),
             "end": official_nav.get("end"),
         },
+        "week_direction": (
+            "down" if (nav_change or 0) < 0 else "up" if (nav_change or 0) > 0 else "flat"
+        ),
         "official_nav_change_pct": nav_change,
-        "official_nav_start": official_nav.get("start_nav"),
-        "official_nav_end": official_nav.get("end_nav"),
-        "approx_equity_impact_pct": approx_equity_impact_pct,
-        "drags": [_compact_price_row(item) for item in (drags or [])[:5]],
-        "offsets": [_compact_price_row(item) for item in (offsets or [])[:5]],
-        "sector_wide": [
+        "explained_events": news_backed,
+        "sector_wide_with_context": [
             {
                 "sector": row.get("sector"),
                 "avg_weekly_change_pct": row.get("avg_weekly_change_pct"),
@@ -573,8 +575,6 @@ def build_summary_facts(
             for row in (sector_moves or [])
             if row.get("scope") == "sector_wide"
         ],
-        "news_backed": news_backed,
-        "no_news_catalyst": no_news_catalyst,
     }
 
 
@@ -584,9 +584,10 @@ def write_investor_summary(facts: dict) -> str:
         logger.error("DEEPSEEK_API_KEY not set in environment")
         return ""
     user_prompt = (
-        "Write the investor_summary json from these facts only. "
-        "For every news_backed name, state the weekly move and the news reason "
-        "in the same sentence. Do not write percentage-only lines.\n"
+        "Using ONLY the evidence below, write investor_summary markdown "
+        "(Key Drivers, then Overall Summary). "
+        "Omit unexplained names. Do not output NAV impact percentages. "
+        "Do not invent events.\n"
         + json.dumps(facts, ensure_ascii=False, indent=2)
     )
     parsed = None
@@ -610,7 +611,4 @@ def write_investor_summary(facts: dict) -> str:
             logger.error("Investor summary failed: %s", retry_exc)
             return ""
     text = str((parsed or {}).get("investor_summary") or "").strip()
-    words = text.split()
-    if len(words) > 450:
-        text = " ".join(words[:450]).rstrip(".,;") + "."
     return text

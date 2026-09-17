@@ -81,25 +81,54 @@ function markActive(fundId) {
   });
 }
 
-function splitSummary(text) {
-  const cleaned = (text || "").trim();
-  if (!cleaned) return [];
-  return cleaned.split(/(?<=\.)\s+/).filter(Boolean);
-}
-
 function showPlaceholder(message) {
   els.summaryBody.classList.remove("fade-in");
   els.summaryBody.innerHTML = `<p class="placeholder">${message}</p>`;
 }
 
+function escapeHtml(value) {
+  return String(value)
+    .replace(/&/g, "&amp;")
+    .replace(/</g, "&lt;")
+    .replace(/>/g, "&gt;");
+}
+
+function formatInline(value) {
+  return escapeHtml(value).replace(/\*\*(.+?)\*\*/g, "<strong>$1</strong>");
+}
+
 function renderSummary(text) {
-  const parts = splitSummary(text);
-  if (!parts.length) {
+  const cleaned = (text || "").trim();
+  if (!cleaned) {
     showPlaceholder("No summary yet. Run this fund to generate the investor note.");
     return;
   }
+  const blocks = [];
+  let listItems = [];
+  const flushList = () => {
+    if (!listItems.length) return;
+    blocks.push(`<ul>${listItems.map((item) => `<li>${formatInline(item)}</li>`).join("")}</ul>`);
+    listItems = [];
+  };
+  cleaned.split(/\n+/).forEach((raw) => {
+    const line = raw.trim();
+    if (!line) return;
+    if (/^##\s+/.test(line)) {
+      flushList();
+      blocks.push(`<h3>${formatInline(line.replace(/^##\s+/, ""))}</h3>`);
+      return;
+    }
+    const bullet = line.match(/^[•\-\*]\s+(.*)$/);
+    if (bullet) {
+      listItems.push(bullet[1]);
+      return;
+    }
+    flushList();
+    blocks.push(`<p>${formatInline(line)}</p>`);
+  });
+  flushList();
   els.summaryBody.classList.remove("fade-in");
-  els.summaryBody.innerHTML = parts.map((part) => `<p>${part}</p>`).join("");
+  els.summaryBody.innerHTML = blocks.join("");
   void els.summaryBody.offsetWidth;
   els.summaryBody.classList.add("fade-in");
 }
