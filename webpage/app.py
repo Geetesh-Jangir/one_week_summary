@@ -112,18 +112,37 @@ def last_seven_nav(fund_id: str) -> dict:
 def read_summary(fund_id: str) -> dict:
     path = OUTPUT_SCRAPPER_DIR / fund_id / "result.json"
     if not path.exists():
-        return {"fund_id": fund_id, "investor_summary": "", "found": False, "empty": False}
+        return {"fund_id": fund_id, "investor_summary": "", "important_news": [], "found": False, "empty": False}
     raw = path.read_text(encoding="utf-8").strip()
     if not raw:
-        return {"fund_id": fund_id, "investor_summary": "", "found": True, "empty": True}
+        return {"fund_id": fund_id, "investor_summary": "", "important_news": [], "found": True, "empty": True}
     try:
         data = json.loads(raw)
     except json.JSONDecodeError:
-        return {"fund_id": fund_id, "investor_summary": raw, "found": True, "empty": False}
+        return {"fund_id": fund_id, "investor_summary": raw, "important_news": [], "found": True, "empty": False}
     text = str(data.get("investor_summary") or "").strip()
+    news = data.get("important_news")
+    if not isinstance(news, list):
+        news = []
+    important_news = []
+    for item in news:
+        if not isinstance(item, dict):
+            continue
+        title = str(item.get("title") or "").strip()
+        url = str(item.get("url") or item.get("resolved_url") or item.get("link") or "").strip()
+        if not title or not url:
+            continue
+        important_news.append(
+            {
+                "title": title,
+                "url": url,
+                "source": str(item.get("source") or "").strip(),
+            }
+        )
     return {
         "fund_id": fund_id,
         "investor_summary": text,
+        "important_news": important_news,
         "found": True,
         "empty": not bool(text),
     }
@@ -189,13 +208,12 @@ def static_files(filename):
 def fund_book_file(fund_id: str):
     if not known_fund(fund_id):
         return jsonify({"error": "Unknown fund"}), 404
-    static_copy = STATIC_DIR / "data" / f"{fund_id}.json"
-    if static_copy.exists():
-        return send_from_directory(STATIC_DIR / "data", f"{fund_id}.json")
     try:
-        return jsonify(top_book(fund_id))
+        payload = top_book(fund_id)
     except FileNotFoundError as exc:
         return jsonify({"error": str(exc)}), 404
+    payload["important_news"] = read_summary(fund_id).get("important_news") or []
+    return jsonify(payload)
 
 
 @app.get("/api/funds")

@@ -1,3 +1,45 @@
 {
-  "investor_summary": "The official NAV moved from 2260.525 to 2207.727 for the week ended 15 September 2026, a decline of about 2.336%, while approximate equity impact was -1.178%. The equity impact of -1.178% indicates the portfolio’s equity allocation was the principal driver of the weekly decline. The main drag came from financials and select consumer and IT names, with banking stocks pressured by funding-cost and margin concerns. The financial sector accounted for several of the largest drags, as margin pressure and funding concerns dominated bank news flow. ICICI Bank Ltd. fell about 3.5% as rising FCNR(B) deposit costs by 15-20 bps threatened net interest margins and banks sought longer-term overseas funding. State Bank of India fell about 3.97% as FCNR(B) deposit cost rise, a bank strike that disrupted public sector operations, and banks seeking foreign loans weighed on sentiment. InterGlobe Aviation Ltd. fell about 4.48% after India retail inflation hit a 20-month high of 4.82%, increasing rate-hike risk and squeezing discretionary spending. Axis Bank Ltd. fell about 2.02% as a foreign investor allocation rejig suggested reallocation away from Indian financials, management warned about abnormal lending from record FCNR deposit inflows, and FCNR(B) deposit costs rose. Maruti Suzuki India Limited fell about 3.24% on vehicle shortage ahead of the festive season, implying lost sales momentum. SBI Life Insurance Company Ltd. fell about 2.51% and hit a 52-week low, reflecting broad selling pressure and negative momentum. Kotak Mahindra Bank Limited fell about 2.25% as FCNR(B) deposit cost rise threatened interest margins, a sector headwind. HCL Technologies Ltd. fell about 1.82% as it extended a losing streak and the IT index selloff weighed on the stock. Power Grid Corporation of India Ltd. fell about 1.11% amid a broad market sell-off driven by elevated crude oil prices and global bond yields. Bharti Airtel Ltd. fell about 0.53% after Vodafone Idea secured $3.5B debt financing, improving a competitor’s ability to compete. On the offset side, HDFC Bank rose about 1.93% as CEO succession candidates moved to RBI, a foreign investor allocation rejig pointed to inflows into Indian financials, and banking system liquidity glut supported sentiment. The only named offset was HDFC Bank, which helped cushion the fall but did not fully offset the broader weakness. Eicher Motors Ltd. fell about 3.81% without a clear news catalyst, so the move looks like price or flow action rather than a news-driven event."
+  "investor_summary": "## Key Drivers\n\n• **RBI bond sales tightened banking-system liquidity** — The RBI’s plan to drain ₹1 trillion via bond sales was a major liquidity tightening expected to push yields higher. This pressured rate-sensitive bank holdings including ICICI Bank, State Bank of India, Axis Bank, and Kotak Mahindra Bank, which are significant fund positions. ICICI Bank also extended a multi-session losing streak, and SBI weakened after the announcement.\n\n• **Rising FCNR(B) deposit hedging costs added margin pressure** — Higher hedging costs on FCNR(B) deposits can squeeze net interest margins at banks. This weighed on ICICI Bank and Kotak Mahindra Bank in particular, compounding the sector’s broader liquidity and rate concerns.\n\n• **Company-specific bank negatives added to the drag** — Axis Bank faced regulatory uncertainty from consultations on charging fees for large UPI transactions, while Kotak Mahindra Bank saw the resignation of a Group President. Both developments weighed on those holdings alongside the broader banking-sector pressure.\n\n• **Maruti Suzuki flagged a festive-season vehicle shortage** — Production constraints and vehicle shortage ahead of the festive season, with supplies not improving until January 2027, were a direct negative for near-term sales. This weighed on Maruti Suzuki, a fund holding in the auto sector.\n\n• **HDFC Bank provided a partial offset** — HDFC Bank rose as CEO candidates were submitted to the RBI and brokerage views turned constructive, including a Jefferies note suggesting foreign investors may reallocate toward Indian financials. This was the main explained positive counterweight to the week’s banking weakness.\n\n## Overall Summary\n\nThe fund ended the week lower, primarily because its large banking exposure was hit by the RBI’s liquidity-draining bond sales and by rising FCNR(B) deposit costs that threaten bank margins. Additional company-specific negatives at Axis Bank and Kotak Mahindra Bank, plus a festive-season vehicle shortage at Maruti Suzuki, added to the drag. HDFC Bank’s gain on CEO-process optimism and supportive brokerage views provided a meaningful partial offset. The takeaway is that financial-sector rate and liquidity headwinds drove the week’s performance, with HDFC Bank softening but not reversing the decline.",
+  "important_news": [
+    {
+      "title": "Kotak Mahindra Bank’s head of commercial banking Manish Kothari quits",
+      "url": "https://www.livemint.com/companies/news/kotak-mahindra-bank-s-head-of-commercial-banking-manish-kothari-quits-11789056768699.html",
+      "source": "Livemint"
+    },
+    {
+      "title": "HDFC Bank Stock Climbs Over 3% As CEO Appointment Process Paces Up, Brokerages Remain Bullish",
+      "url": "https://www.ndtvprofit.com/markets/hdfc-bank-share-price-opens-2-percent-higher-climbs-on-fast-progress-in-new-ceo-appointment-12047496",
+      "source": "NDTV Profit"
+    },
+    {
+      "title": "India’s Central Bank to Drain 1 Trillion Rupees Via Bond Sales",
+      "url": "https://www.bloomberg.com/news/articles/2026-09-11/india-s-central-bank-to-drain-1-trillion-rupees-via-bond-sales-mtwxwoj7",
+      "source": "Bloomberg.com"
+    },
+    {
+      "title": "India consults banks, payment firms on fees for large UPI payments, sources say",
+      "url": "https://economictimes.indiatimes.com/industry/banking/finance/india-consults-banks-payment-firms-on-fees-for-large-upi-payments-sources-say/articleshow/134254669.cms",
+      "source": "The Economic Times"
+    },
+    {
+      "title": "Maruti Suzuki faces vehicle shortage ahead of festive season, supplies to improve from January 2027",
+      "url": "https://www.moneycontrol.com/automobile/maruti-suzuki-faces-vehicle-shortage-ahead-of-festive-season-supplies-to-improve-from-january-2027-article-14027838.html",
+      "source": "Moneycontrol.com"
+    },
+    {
+      "title": "HCL Technologies Ltd slips for fifth straight session",
+      "url": "https://www.business-standard.com/markets/capital-market-news/hcl-technologies-ltd-slips-for-fifth-straight-session-126090800731_1.html",
+      "source": "Business Standard"
+    },
+    {
+      "title": "Foreign investors may rejig allocation to Indian financials: Jefferies",
+      "url": "https://www.business-standard.com/markets/news/foreign-investors-may-rejig-allocation-to-indian-financials-jefferies-126091100183_1.html",
+      "source": "Business Standard"
+    },
+    {
+      "title": "ICICI Bank Ltd eases for fifth straight session",
+      "url": "https://www.business-standard.com/markets/capital-market-news/icici-bank-ltd-eases-for-fifth-straight-session-126091500585_1.html",
+      "source": "Business Standard"
+    }
+  ]
 }

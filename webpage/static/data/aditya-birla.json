@@ -48,5 +48,47 @@
       "name": "Automobiles",
       "percentage": 6.95
     }
+  ],
+  "important_news": [
+    {
+      "title": "ICICI Bank Ltd eases for fifth straight session",
+      "url": "https://www.business-standard.com/markets/capital-market-news/icici-bank-ltd-eases-for-fifth-straight-session-126091500585_1.html",
+      "source": "Business Standard"
+    },
+    {
+      "title": "HDFC Bank Fixes CEO Shortlist: Macquarie Eyes External Chief As Re-Rating Catalyst",
+      "url": "https://www.ndtvprofit.com/markets/hdfc-bank-narrows-ceo-succession-race-macquarie-eyes-external-chief-as-key-re-rating-catalyst-12043627",
+      "source": "NDTV Profit"
+    },
+    {
+      "title": "Banks likely to see 15-20 basis points rise in FCNR(B) deposit costs",
+      "url": "https://www.business-standard.com/finance/news/banks-likely-to-see-15-20-basis-points-rise-in-fcnr-b-deposit-costs-126091401048_1.html",
+      "source": "Business Standard"
+    },
+    {
+      "title": "Axis Bank warns FCNR flood may trigger ‘abnormal lending’",
+      "url": "https://www.livemint.com/companies/axis-bank-chief-urges-caution-as-fcnr-funds-flood-banks-dollar-swap-rupee-11788952876695.html",
+      "source": "Livemint"
+    },
+    {
+      "title": "Bank strike on September 11: Banking services likely to be hit as unions push for 5-day week, PLI rollback",
+      "url": "https://www.moneycontrol.com/banking/bank-strike-on-september-11-banking-services-likely-to-be-hit-as-unions-push-for-5-day-week-pli-rollback-article-14026893.html",
+      "source": "Moneycontrol.com"
+    },
+    {
+      "title": "HDFC Bank Ltd spurts 1.51%, gains for third straight session",
+      "url": "https://www.business-standard.com/amp/markets/capital-market-news/hdfc-bank-ltd-spurts-1-51-gains-for-third-straight-session-126091500478_1.html",
+      "source": "Business Standard"
+    },
+    {
+      "title": "Moody's Pegs Indian Banks' FY27 Deposit Growth At 15% On FCNR(B) Boost, Loan Growth At 13-15%",
+      "url": "https://www.ndtvprofit.com/economy/moodys-pegs-indian-banks-fy27-deposit-growth-at-15-on-fcnr-b-boost-loan-growth-at-13-15-12023994",
+      "source": "NDTV Profit"
+    },
+    {
+      "title": "Foreign investors may rejig allocation to Indian financials: Jefferies",
+      "url": "https://www.business-standard.com/markets/news/foreign-investors-may-rejig-allocation-to-indian-financials-jefferies-126091100183_1.html",
+      "source": "Business Standard"
+    }
   ]
 }

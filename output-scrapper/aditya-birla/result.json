@@ -1,3 +1,45 @@
 {
-  "investor_summary": "## Key Drivers\n\n• **Indian banks — FCNR(B) deposit surge and margin/asset-quality concerns** — A record flood of FCNR(B) deposits (reported around $127 billion) left banks scrambling for overseas funding and pushed hedging costs higher, while Axis Bank's CEO warned the inflows could fuel \"abnormal lending.\" This combination of higher funding costs and potential asset-quality risk weighed on the fund's bank holdings, including ICICI Bank, SBI, Kotak Mahindra Bank and Axis Bank, all of which fell during the week.\n\n• **Public-sector bank strike** — Unions announced a nationwide bank strike on 11 September, and SBI itself flagged possible operational disruption. The strike weighed on SBI and added to the broadly negative sentiment toward PSU banks, a meaningful drag given SBI is one of the fund's larger bank positions.\n\n• **Foreign allocation concerns for Indian financials** — Jefferies flagged that foreign investors may rejig allocations away from Indian financials (and highlighted CEO succession concerns), pressuring large private banks including ICICI Bank and Axis Bank. This reinforced the sector-wide selling pressure that drove the fund's financial exposure lower.\n\n• **Rising bond yields** — The India 10-year bond yield crossed 7%, a headwind for financial asset valuations and debt holdings coinciding with the sector's weakest day. This macro move added to the pressure on the fund's finance-related exposure.\n\n• **HDFC Bank — CEO succession update and positive analyst views (offset)** — An update on HDFC Bank's CEO appointment process, along with bullish brokerage commentary, drove a sharp intraday climb and helped the stock gain for the week. As one of the fund's largest holdings, this provided a meaningful partial offset to the broader financials weakness.\n\n## Overall Summary\n\nThe fund's decline was driven mainly by its large financials exposure, as Indian banks were hit by a combination of record FCNR(B) deposit inflows, rising hedging and funding costs, an industry warning about abnormal lending, and a public-sector bank strike. Foreign reallocation concerns for Indian financials and the 10-year bond yield crossing 7% compounded the pressure across the fund's bank holdings, including ICICI Bank, SBI, Kotak Mahindra Bank and Axis Bank. A notable explained offset came from HDFC Bank, which rose on a CEO succession update and bullish brokerage views, though this was not enough to offset the broad weakness in financials that shaped the week's negative result."
+  "investor_summary": "## Key Drivers\n\n• **Indian bank stocks sold off on FCNR-deposit and funding-cost concerns** — Axis Bank's CEO warned that record FCNR(B) deposit inflows could fuel \"abnormal lending,\" while rising FCNR(B) deposit costs were flagged as a margin risk for Kotak Mahindra Bank, and reports noted banks left interest payments on roughly $127 billion of overseas deposits unhedged, adding dollar demand and rupee pressure. These are the fund's core banking holdings — ICICI Bank, HDFC Bank, SBI, Kotak and Axis together make up a large share of the portfolio — so a sector-wide de-rating in margins and asset-quality expectations was the single biggest reason for the week's decline.\n\n• **A nationwide bank strike on September 11 disrupted sentiment across lenders** — The one-day strike raised operational-disruption concerns for the sector, and it lines up with the weakest trading day of the week for SBI and Axis Bank. Because the fund holds the largest Indian banks, any event that hits the whole sector's operating backdrop feeds straight through to performance.\n\n• **Foreign investors were reported to be reallocating away from Indian financials** — Jefferies suggested global investors may rejig allocations out of Indian financials, implying potential selling pressure on the banks. With ICICI Bank the fund's largest single holding, this sector-level flow risk hit the portfolio's most heavily weighted exposure directly.\n\n• **Bond yields crossing 7% and finance-sector weakness weighed on financial valuations** — Indian bond yields moved back above 7%, pressuring financial-sector valuations and debt-market sentiment, on the day of the week's largest decline. This compounded the drag from the fund's finance exposure beyond the individual bank names.\n\n• **HDFC Bank was a partial offset on a positive governance and sector catalyst** — The board shortlisted two CEO candidates and submitted them to the RBI, with Macquarie calling an external appointment a potential re-rating catalyst, and Moody's simultaneously forecast strong deposit and loan growth for Indian banks. As one of the fund's largest holdings, HDFC Bank's gain softened — but did not reverse — the broader banking drag.\n\n## Overall Summary\n\nThe week's decline was driven overwhelmingly by the fund's banking and financial holdings, which sold off together on a cluster of funding-cost, allocation-flow and operational-disruption concerns rather than on any single company's earnings. The dominant themes were the risk of margin pressure and loose lending from record FCNR(B) deposit inflows, a nationwide bank strike on September 11, a reported shift by foreign investors away from Indian financials, and bond yields moving back above 7% — all of which hit the portfolio's largest weights, including ICICI Bank, SBI, Kotak and Axis Bank, at the same time. HDFC Bank provided a meaningful but partial offset, helped by progress on its CEO succession and a constructive sector outlook from Moody's. The takeaway is that this was a sector-wide banking and rates story concentrated in the fund's biggest exposures, not a broad-market event.",
+  "important_news": [
+    {
+      "title": "ICICI Bank Ltd eases for fifth straight session",
+      "url": "https://www.business-standard.com/markets/capital-market-news/icici-bank-ltd-eases-for-fifth-straight-session-126091500585_1.html",
+      "source": "Business Standard"
+    },
+    {
+      "title": "HDFC Bank Fixes CEO Shortlist: Macquarie Eyes External Chief As Re-Rating Catalyst",
+      "url": "https://www.ndtvprofit.com/markets/hdfc-bank-narrows-ceo-succession-race-macquarie-eyes-external-chief-as-key-re-rating-catalyst-12043627",
+      "source": "NDTV Profit"
+    },
+    {
+      "title": "Banks likely to see 15-20 basis points rise in FCNR(B) deposit costs",
+      "url": "https://www.business-standard.com/finance/news/banks-likely-to-see-15-20-basis-points-rise-in-fcnr-b-deposit-costs-126091401048_1.html",
+      "source": "Business Standard"
+    },
+    {
+      "title": "Axis Bank warns FCNR flood may trigger ‘abnormal lending’",
+      "url": "https://www.livemint.com/companies/axis-bank-chief-urges-caution-as-fcnr-funds-flood-banks-dollar-swap-rupee-11788952876695.html",
+      "source": "Livemint"
+    },
+    {
+      "title": "Bank strike on September 11: Banking services likely to be hit as unions push for 5-day week, PLI rollback",
+      "url": "https://www.moneycontrol.com/banking/bank-strike-on-september-11-banking-services-likely-to-be-hit-as-unions-push-for-5-day-week-pli-rollback-article-14026893.html",
+      "source": "Moneycontrol.com"
+    },
+    {
+      "title": "HDFC Bank Ltd spurts 1.51%, gains for third straight session",
+      "url": "https://www.business-standard.com/amp/markets/capital-market-news/hdfc-bank-ltd-spurts-1-51-gains-for-third-straight-session-126091500478_1.html",
+      "source": "Business Standard"
+    },
+    {
+      "title": "Moody's Pegs Indian Banks' FY27 Deposit Growth At 15% On FCNR(B) Boost, Loan Growth At 13-15%",
+      "url": "https://www.ndtvprofit.com/economy/moodys-pegs-indian-banks-fy27-deposit-growth-at-15-on-fcnr-b-boost-loan-growth-at-13-15-12023994",
+      "source": "NDTV Profit"
+    },
+    {
+      "title": "Foreign investors may rejig allocation to Indian financials: Jefferies",
+      "url": "https://www.business-standard.com/markets/news/foreign-investors-may-rejig-allocation-to-indian-financials-jefferies-126091100183_1.html",
+      "source": "Business Standard"
+    }
+  ]
 }

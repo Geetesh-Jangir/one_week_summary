@@ -435,3 +435,39 @@ def select_final_events(groups: dict, max_events: int = MAX_EVENTS_PER_TARGET) -
             }
         )
     return ranked
+
+
+IMPORTANT_NEWS_LIMIT = 8
+
+
+def select_important_news(news_targets: list[dict], limit: int = IMPORTANT_NEWS_LIMIT) -> list[dict]:
+    """One strongest kept article per event, then the top few by causal score."""
+    candidates = []
+    for target in news_targets:
+        for item in target.get("relevant_news") or []:
+            title = (item.get("title") or "").strip()
+            url = (item.get("resolved_url") or item.get("link") or "").strip()
+            if not title or not url:
+                continue
+            candidates.append(item)
+    candidates.sort(key=lambda item: float(item.get("causal_score") or 0), reverse=True)
+    picked = []
+    seen_urls = set()
+    seen_labels = set()
+    for item in candidates:
+        url = (item.get("resolved_url") or item.get("link") or "").strip()
+        label = (item.get("event_label") or item.get("title") or "").strip().lower()
+        if url in seen_urls or label in seen_labels:
+            continue
+        seen_urls.add(url)
+        seen_labels.add(label)
+        picked.append(
+            {
+                "title": (item.get("title") or "").strip(),
+                "url": url,
+                "source": (item.get("source") or "").strip(),
+            }
+        )
+        if len(picked) >= limit:
+            break
+    return picked

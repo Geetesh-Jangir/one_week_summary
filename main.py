@@ -27,6 +27,7 @@ from stocks_for_news import (
     headline_holdings as select_headline_holdings,
     select_drags,
     select_final_events,
+    select_important_news,
     select_news_targets,
     select_offsets,
 )
@@ -370,12 +371,35 @@ def main(fund_id: str | None = None):
 
     result_json_path = result_json_path_for(fund_id)
     result_json_path.parent.mkdir(parents=True, exist_ok=True)
+    logger.info("Saved investor summary to %s", result_json_path)
+    important_news = select_important_news(news_targets)
     result_json_path.write_text(
-        json.dumps({"investor_summary": investor_summary.strip()}, indent=2, ensure_ascii=False)
+        json.dumps(
+            {
+                "investor_summary": investor_summary.strip(),
+                "important_news": important_news,
+            },
+            indent=2,
+            ensure_ascii=False,
+        )
         + "\n",
         encoding="utf-8",
     )
-    logger.info("Saved investor summary to %s", result_json_path)
+    page_data_path = ROOT / "webpage" / "static" / "data" / f"{fund_id}.json"
+    if fund_id and page_data_path.parent.exists():
+        page_payload = {}
+        if page_data_path.exists():
+            try:
+                page_payload = json.loads(page_data_path.read_text(encoding="utf-8"))
+            except json.JSONDecodeError:
+                page_payload = {}
+        if not isinstance(page_payload, dict):
+            page_payload = {}
+        page_payload["important_news"] = important_news
+        page_data_path.write_text(
+            json.dumps(page_payload, indent=2, ensure_ascii=False) + "\n",
+            encoding="utf-8",
+        )
     print(investor_summary.strip())
 
 

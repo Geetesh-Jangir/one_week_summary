@@ -48,5 +48,47 @@
       "name": "It - Software",
       "percentage": 4.84
     }
+  ],
+  "important_news": [
+    {
+      "title": "Kotak Mahindra Bank’s head of commercial banking Manish Kothari quits",
+      "url": "https://www.livemint.com/companies/news/kotak-mahindra-bank-s-head-of-commercial-banking-manish-kothari-quits-11789056768699.html",
+      "source": "Livemint"
+    },
+    {
+      "title": "HDFC Bank Stock Climbs Over 3% As CEO Appointment Process Paces Up, Brokerages Remain Bullish",
+      "url": "https://www.ndtvprofit.com/markets/hdfc-bank-share-price-opens-2-percent-higher-climbs-on-fast-progress-in-new-ceo-appointment-12047496",
+      "source": "NDTV Profit"
+    },
+    {
+      "title": "India’s Central Bank to Drain 1 Trillion Rupees Via Bond Sales",
+      "url": "https://www.bloomberg.com/news/articles/2026-09-11/india-s-central-bank-to-drain-1-trillion-rupees-via-bond-sales-mtwxwoj7",
+      "source": "Bloomberg.com"
+    },
+    {
+      "title": "India consults banks, payment firms on fees for large UPI payments, sources say",
+      "url": "https://economictimes.indiatimes.com/industry/banking/finance/india-consults-banks-payment-firms-on-fees-for-large-upi-payments-sources-say/articleshow/134254669.cms",
+      "source": "The Economic Times"
+    },
+    {
+      "title": "Maruti Suzuki faces vehicle shortage ahead of festive season, supplies to improve from January 2027",
+      "url": "https://www.moneycontrol.com/automobile/maruti-suzuki-faces-vehicle-shortage-ahead-of-festive-season-supplies-to-improve-from-january-2027-article-14027838.html",
+      "source": "Moneycontrol.com"
+    },
+    {
+      "title": "HCL Technologies Ltd slips for fifth straight session",
+      "url": "https://www.business-standard.com/markets/capital-market-news/hcl-technologies-ltd-slips-for-fifth-straight-session-126090800731_1.html",
+      "source": "Business Standard"
+    },
+    {
+      "title": "Foreign investors may rejig allocation to Indian financials: Jefferies",
+      "url": "https://www.business-standard.com/markets/news/foreign-investors-may-rejig-allocation-to-indian-financials-jefferies-126091100183_1.html",
+      "source": "Business Standard"
+    },
+    {
+      "title": "ICICI Bank Ltd eases for fifth straight session",
+      "url": "https://www.business-standard.com/markets/capital-market-news/icici-bank-ltd-eases-for-fifth-straight-session-126091500585_1.html",
+      "source": "Business Standard"
+    }
   ]
 }

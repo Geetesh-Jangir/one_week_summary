@@ -24,6 +24,8 @@ const els = {
   summaryBody: document.getElementById("summary-body"),
   summaryCaption: document.getElementById("summary-caption"),
   logTail: document.getElementById("log-tail"),
+  newsList: document.getElementById("news-list"),
+  newsCaption: document.getElementById("news-caption"),
 };
 
 function formatNav(value) {
@@ -79,6 +81,28 @@ function markActive(fundId) {
   els.list.querySelectorAll(".fund-btn").forEach((button) => {
     button.classList.toggle("active", button.dataset.id === fundId);
   });
+}
+
+function renderNews(items) {
+  if (!els.newsList) return;
+  if (!items || !items.length) {
+    els.newsCaption.textContent = "Top kept stories after a run.";
+    els.newsList.innerHTML =
+      '<p class="placeholder">Run a fund to fill this rail with the most important articles.</p>';
+    return;
+  }
+  els.newsCaption.textContent = "Highest-scoring kept stories for this week.";
+  els.newsList.innerHTML = items
+    .map((item) => {
+      const title = escapeHtml(item.title || "");
+      const url = escapeHtml(item.url || "");
+      const source = escapeHtml(item.source || "Publisher");
+      return `<article class="news-card">
+        <a href="${url}" target="_blank" rel="noopener noreferrer">${title}</a>
+        <span class="source">${source}</span>
+      </article>`;
+    })
+    .join("");
 }
 
 function showPlaceholder(message) {
@@ -241,6 +265,9 @@ async function loadExistingSummary(fundId, token) {
       els.summaryCaption.textContent = "The pipeline writes a news-backed summary after Run.";
       showPlaceholder("Select a fund, then run. The note will land here — reasons, not only percentages.");
     }
+    if (payload.important_news && payload.important_news.length) {
+      renderNews(payload.important_news);
+    }
   } catch {
     if (token !== state.selectToken) return;
     showPlaceholder("Select a fund, then run.");
@@ -288,7 +315,13 @@ async function loadBook(fundId, token) {
       if (payload.holdings && payload.holdings.length) {
         renderRankList(els.holdingsList, payload.holdings, "No holdings in this file.", "industry");
         renderRankList(els.sectorsList, payload.sectors, "No sectors in this file.", "");
+        if (payload.important_news && payload.important_news.length) {
+          renderNews(payload.important_news);
+        }
         return;
+      }
+      if (payload.important_news && payload.important_news.length) {
+        renderNews(payload.important_news);
       }
     } catch {
       /* try next source */
@@ -371,6 +404,7 @@ async function pollStatus() {
       } else {
         showPlaceholder("The run finished, but no summary file was found.");
       }
+      renderNews(payload.important_news);
     } else if (status.status === "error") {
       els.summaryCaption.textContent = "Run failed.";
       const message = status.error || "The pipeline stopped before writing a summary.";
